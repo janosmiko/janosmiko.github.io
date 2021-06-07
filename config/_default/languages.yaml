@@ -1,0 +1,24 @@
+en:
+  languageCode: en
+  languageName: english
+
+hu:
+  languageCode: hu
+  languageName: magyar
+  contentDir: content/hu
+  title: Mikó János
+  menu:
+    main:
+      - name: rolam
+        url: '/hu/#rolam'
+        weight: 1
+      - name: blog
+        url: '/hu/blog'
+        weight: 2
+
+# Uncomment for multilingual sites, and customize the following config.
+# zh:
+#   languageCode: zh
+#   languageName: 简体中文
+#   contentDir: content/zh
+#   title: 中文标题
