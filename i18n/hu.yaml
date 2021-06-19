@@ -1,0 +1,26 @@
+readMore:
+  other: Továbbiak
+readingTime:
+  other: 'Olvasási idő: {{ .ReadingTime }} perc'
+toc:
+  other: Tartalomjegyzék
+seriesOfPosts:
+  other: Sorozat
+previous:
+  other: Előző
+next:
+  other: Következő
+seeAlso:
+  other: Lásd még
+recent:
+  other: Legutóbbi
+onThisPage:
+  other: Ezen az oldalon
+editThisPage:
+  other: Oldal szerkesztése
+light:
+  other: Világos
+dark:
+  other: Sötét
+auto:
+  other: Auto
