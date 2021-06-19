@@ -1,41 +1,43 @@
 ---
-title: Experiences
+title: Tapasztalat
 draft: false
 experiences:
-  - title: Lead DevOps Engineer
+  - title: Vezető DevOps mérnök
     organization:
       name: ITG Commerce
       url: https://itgcommerce.com
     dates: '2019 - Present'
-    location: Budapest - HU
-    writeup: >
-      Donec scelerisque egestas augue at tempor. Fusce faucibus magna in.
-
-      - Suspendisse lacinia mauris a laoreet vehicula.
-
-      - Aenean tincidunt enim vitae ante blandit tempor.
-
-      - Nam tincidunt diam quis lorem rutrum ullamcorper.
+    location: Budapest - HU | Chapel Hill, NC - US
+    writeup: |
+      - Jelenlegi munkahelyemen felelős vagyok a DevOps csapat vezetéséért.
+      - A teljes IT infrastruktúra építését és üzemeltetését végzem, beleértve a CI/CD
+        pipeline-okat, mentéseket, monitoringot, skálázást stb.
+      - Külső partnerekhez kiszervezett tanácsadóként segítek a felhőben architektúrájuk és
+        költségeik optimalizálásában, és biztonsági tanácsadásban.
       
-  - title: Lead Systems Engineer
+  - title: Vezető rendszermérnök
     organization:
       name: AionHill Kft.
       url: https://aionhill.com
     dates: '2017 - 2019'
     location: Budapest - HU
-    writeup: >
-      **Aliquam** at **rutrum** ante. In sed quam faucibus.
+    writeup: |
+      - Az IT csapat vezetéséért voltam felelős.
+      - Különböző webes alkalmazások üzemeltetését végeztem felhőben és saját fizikai
+        szervereken.
+      - IT auditokat végeztem, és résztvettem az IT biztonsági irányelvek megvalósításában.
       
-  - title: System Administator
+  - title: Rendszergazda
     organization:
       name: Ikron Kft.
       url: https://ikron.hu
     dates: '2015 - 2017'
     location: Szeged - HU
-    writeup: >
-      **Aliquam** at **rutrum** ante. In sed quam faucibus.
+    writeup: |
+      - A rendszergazda csapat tagjaként DOCSIS kábeltévé-hálózatokat, könyvtárkezelő és vállalatirányítási 
+        rendszereket üzemeltettünk, saját, fizikai szervereken.
 
-weight: 3
+weight: 4
 widget:
   handler: experiences
 
@@ -50,7 +52,7 @@ widget:
   
   background:
     # Options: primary, secondary, tertiary or any valid color value. Default is primary.
-    color: secondary
+    color: primary
     #image: images/funky-lines.png
     # Options: auto, cover and contain. Default is auto.
     size:

@@ -7,15 +7,13 @@ experiences:
       name: ITG Commerce
       url: https://itgcommerce.com
     dates: '2019 - Present'
-    location: Budapest - HU
-    writeup: >
-      Donec scelerisque egestas augue at tempor. Fusce faucibus magna in.
-
-      - Suspendisse lacinia mauris a laoreet vehicula.
-
-      - Aenean tincidunt enim vitae ante blandit tempor.
-
-      - Nam tincidunt diam quis lorem rutrum ullamcorper.
+    location: Budapest - HU | Chapel Hill, NC - US
+    writeup: |
+      - I am responsible for the management of the DevOps team.
+      - I build and maintain the whole IT development and production infrastructure
+        including CI/CD pipelines, backup, monitoring, scaling, etc.
+      - I am an outsourced consultant for external partners, I do cloud architecture-, and cost
+        optimization, security guidance.
       
   - title: Lead Systems Engineer
     organization:
@@ -23,19 +21,23 @@ experiences:
       url: https://aionhill.com
     dates: '2017 - 2019'
     location: Budapest - HU
-    writeup: >
-      **Aliquam** at **rutrum** ante. In sed quam faucibus.
+    writeup: |
+      - I was responsible for the management of the IT team. 
+      - I managed and maintained various web applications and the required cloud and
+        bare metal infrastructure.
+      - I did IT audits, determination and realization of IT policies.
       
-  - title: System Administator
+  - title: System Administrator
     organization:
       name: Ikron Kft.
       url: https://ikron.hu
     dates: '2015 - 2017'
     location: Szeged - HU
-    writeup: >
-      **Aliquam** at **rutrum** ante. In sed quam faucibus.
+    writeup: |
+      - I was a part of the system administrator team and I was responsible for managing and supervising 
+        DOCSIS CATV networks, Library Manager software and ERP systems on bare metal servers.
 
-weight: 3
+weight: 4
 widget:
   handler: experiences
 
@@ -50,7 +52,7 @@ widget:
   
   background:
     # Options: primary, secondary, tertiary or any valid color value. Default is primary.
-    color: secondary
+    color: primary
     #image: images/funky-lines.png
     # Options: auto, cover and contain. Default is auto.
     size:

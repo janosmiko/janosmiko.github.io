@@ -1,13 +1,9 @@
 main:
-  - name: about
-    url: '#about'
+  - name: About
     weight: 1
-  - name: blog
+  - name: Blog
     url: /blog/
     weight: 2
-#   - name: Docs
-#     url: /docs/
-#     weight: 3
 
 language:
   - name: en
