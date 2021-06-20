@@ -2,6 +2,7 @@
 title: Janos Miko
 role: DevOps Engineer
 avatar: images/janosmiko.jpeg
+avatar_webp: images/janosmiko.webp
 bio: Fill your bucket by drop by drop.
 organization:
   name: ITG Commerce

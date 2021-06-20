@@ -32,8 +32,8 @@ highlight:
     # See https://github.com/highlightjs/cdn-release/tree/master/build/styles for available styles.
     style: monokai-sublime
 
-math:
-  handler: katex
+# math:
+#   handler: katex
 
   # katex:
   #   # Browse https://katex.org/docs/options.html to see the options available.
@@ -69,8 +69,8 @@ comment:
   #   app-Id:
   #   app-Key:
 
-diagram:
-  handler: mermaid
+# diagram:
+#   handler: mermaid
 
   # mermaid:
   #   # Browse https://mermaid-js.github.io/mermaid/#/Setup to see the options available.

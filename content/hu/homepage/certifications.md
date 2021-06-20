@@ -22,7 +22,7 @@ certifications:
       
   - title: Mérnök informatikus BSc.
     organization:
-      name: Szegedi Tudományegyetem - Természettudományi és Informatikai Kar
+      name: SZTE - TTIK
       url: 'https://u-szeged.hu/'
     dates: '2015'
     icon: 
