@@ -22,6 +22,9 @@ social:
   - icon: linkedin
     iconPack: fab
     url: https://www.linkedin.com/in/janos-miko-797b6677/
+  - icon: facebook
+    iconPack: fab
+    url: https://www.facebook.com/mixe3y/
 
 weight: 2
 widget:
@@ -52,9 +55,9 @@ widget:
 
 Welcome to my site!
 
-Let me introduce myself: I'm János Mikó. I am a DevOps Engineer.
+Let me introduce myself: I'm János Mikó.
 
-I always loved the technology, I work as an enterprise IT engineer and software developer since nearly 10 years.
+I always loved the technology, I work as an enterprise Cloud / DevOps engineer and software developer since nearly 10 years.
 
 It sounds sentimental, but the "cloud" is where I really feel at home.
 

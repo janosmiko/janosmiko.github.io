@@ -16,16 +16,19 @@ social:
   - icon: github
     iconPack: fab
     url: https://github.com/janosmiko/
+  - icon: facebook
+    iconPack: fab
+    url: https://www.facebook.com/mixe3y/
 ---
 
 ## Bemutatkozás
 
 Üdvözöllek az oldalamon!
 
-Hadd mutatkozzam be: engem Mikó Jánosnak hívnak és DevOps Engineer vagyok.
+Hadd mutatkozzam be: Mikó Jánosnak hívnak.
 
 Mindig is imádtam az informatikát és a technológiát, közel 10 éve foglalkozom vállalati informatikai rendszerek
-üzemeltetésével és egyedi szoftverfejlesztéssel.
+üzemeltetésével és egyedi szoftverfejlesztéssel, mint Cloud / DevOps Engineer.
 
 Szentimentálisan hangozhat, de a "felhőben" érzem magam igazán otthon.
 
