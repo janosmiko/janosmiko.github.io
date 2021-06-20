@@ -4,7 +4,7 @@ draft: false
 certifications:
   - title: AWS Certified Developer Associate 
     organization:
-      name: Amazon Web Services
+      name: Amazon
       url: 'https://aws.amazon.com/certification/certified-developer-associate/'
     dates: '2020'
     img: '/images/aws-certified-developer-associate.png'
@@ -18,7 +18,7 @@ certifications:
     img: '/images/adobe-certified-expert-adobe-commerce-business-practitioner.png'
     url: 'https://www.credly.com/badges/99b5cd97-793e-4a5c-885d-af18264dd2cf/public_url'
       
-  - title: Mérnök informatikus Bsc.
+  - title: Mérnök informatikus BSc.
     organization:
       name: Szegedi Tudományegyetem - Természettudományi és Informatikai Kar
       url: 'https://u-szeged.hu/'
@@ -28,7 +28,7 @@ certifications:
       name: fa-graduation-cap
       factor: fa-5x
     img: ''
-    url: 'https://u-szeged.hu'
+    url: 'https://www.inf.u-szeged.hu/felvetelizoknek/szakok/mernokinformatikus-bsc'
 
 weight: 3
 widget:

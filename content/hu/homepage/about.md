@@ -55,9 +55,7 @@ Mindig is imádtam az informatikát és a technológiát, közel 10 éve foglalk
 
 Szentimentálisan hangozhat, de a "felhőben" érzem magam igazán otthon.
 
-## Részletek
-
-Személyes tulajdonságaim:
+### Néhány érdekesség
 - Az Everything as Code metodológiát vallom, vagyis ha egynél többször szükségem van valamire, akkor lekódolom.
 - A munkámat és az életemet is a GTD módszer segítségével menedzselem.
 - Perfekcionistának vallom magam.

@@ -4,7 +4,7 @@ draft: false
 certifications:
   - title: AWS Certified Developer Associate 
     organization:
-      name: Amazon Web Services
+      name: Amazon
       url: 'https://aws.amazon.com/certification/certified-developer-associate/'
     dates: '2020'
     img: '/images/aws-certified-developer-associate.png'
@@ -20,7 +20,7 @@ certifications:
       
   - title: BSc of Engineering Information Technology
     organization:
-      name: Univerisy of Szeged - Faculty of Science and Informatics
+      name: University of Szeged - Faculty of Science and Informatics
       url: 'https://u-szeged.hu/'
     dates: '2015'
     icon: 
@@ -28,7 +28,7 @@ certifications:
       name: fa-graduation-cap
       factor: fa-5x
     img: ''
-    url: 'https://u-szeged.hu'
+    url: 'https://www.inf.u-szeged.hu/en/future-students/academic-programs/bsc-in-engineering-information-technology'
 
 weight: 3
 widget:

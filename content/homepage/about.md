@@ -57,9 +57,9 @@ I always loved the technology, I work as an enterprise IT engineer and software 
 
 It sounds sentimental, but the "cloud" is where I really feel at home.
 
-## Details  
 
-Personal Skills:
+### Some Personal Stuff
+
 - I prefer Everything as Code methodology.
 - I manage my work, and my life using GTD.
 - I am a perfectionist.
