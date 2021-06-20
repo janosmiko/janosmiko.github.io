@@ -4,7 +4,7 @@ en:
   menu:
     main:
       - name: About
-        url: '/#self-introduction'
+        url: '/#introduction'
         weight: 1
       - name: Blog
         url: '/blog'

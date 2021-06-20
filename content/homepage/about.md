@@ -48,9 +48,9 @@ widget:
     attachment: fixed
 ---
 
-## Self Introduction
+## Introduction
 
-Welcome!
+Welcome to my site!
 
 Let me introduce myself: I'm János Mikó. I am a DevOps Engineer.
 
