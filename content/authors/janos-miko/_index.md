@@ -20,6 +20,9 @@ social:
   - icon: facebook
     iconPack: fab
     url: https://www.facebook.com/mixe3y/
+  - icon: suitcase
+    iconPack: fas
+    url: https://www.upwork.com/freelancers/~01bbf22d354f4e322c?viewMode=1
 ---
 
 ## Introduction

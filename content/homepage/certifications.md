@@ -26,7 +26,7 @@ certifications:
       url: 'https://u-szeged.hu/'
     dates: '2015'
     icon: 
-      class: fas
+      pack: fas
       name: fa-graduation-cap
       factor: fa-5x
     img: ''
