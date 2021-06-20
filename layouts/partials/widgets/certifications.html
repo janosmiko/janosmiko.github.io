@@ -22,7 +22,11 @@
         {{ if .img }}
         <div class="flex-none object-right w-24 pt-6">
           <a href="{{ .url }}">
-            <img src="{{ .img }}" class="object-scale-down" alt="{{ .title }}">
+            <picture>
+              <source srcset="{{ .img_webp }}" class="object-scale-down" alt="{{ .title }}" type="image/webp">
+              <source srcset="{{ .img }}" class="object-scale-down" alt="{{ .title }}" type="image/jpeg">
+              <img src="{{ .img }}" class="object-scale-down" alt="{{ .title }}">
+            </picture>
           </a>
         </div>
         {{ else }}

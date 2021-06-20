@@ -8,6 +8,7 @@ certifications:
       url: 'https://aws.amazon.com/certification/certified-developer-associate/'
     dates: '2020'
     img: '/images/aws-certified-developer-associate.png'
+    img_webp: '/images/aws-certified-developer-associate.webp'
     url: 'https://www.credly.com/badges/439b53a2-8fe7-4d52-8091-09ec06abe188/public_url'
       
   - title: Adobe Certified Expert-Adobe Commerce Business Practitioner
@@ -16,6 +17,7 @@ certifications:
       url: 'https://spark.adobe.com/page/87jLctNB6KxM0/'
     dates: '2019'
     img: '/images/adobe-certified-expert-adobe-commerce-business-practitioner.png'
+    img_webp: '/images/adobe-certified-expert-adobe-commerce-business-practitioner.webp'
     url: 'https://www.credly.com/badges/99b5cd97-793e-4a5c-885d-af18264dd2cf/public_url'
       
   - title: Mérnök informatikus BSc.
