@@ -1,0 +1,30 @@
+{{ range .Params.projects }}
+<div class="mb-6">
+  <div class="bg-secondary-bg rounded border hover:shadow-lg transition ease-in-out duration-200 px-6 pt-6 pb-4">
+    <div class="mb-4">
+      <div class="flex justify-between mb-4 items-center">
+        <div class="text-xl">
+          {{ if .url }}
+          <a class="font-bold" href="{{ .url }}">{{ .title | markdownify }}</a>
+          {{ else }}
+          <span class="font-bold">{{ .title | markdownify }}</span>
+          {{ end }}
+
+        {{ if .type }}
+        <div>
+          <span class="font-italic text-sm">{{ .type | markdownify }}</span>
+        </div>
+        {{ end }}
+        </div>
+        <div class="flex w-24 pt-6">
+          <img src="{{ .logo }}" class="rounded-full object-scale-down" alt="{{ .title }}">
+        </div>
+      </div>
+    </div>
+
+    <div class="content border-4">
+      {{ .writeup | markdownify }}
+    </div>
+  </div>
+</div>
+{{ end }}

@@ -2,7 +2,16 @@
 title: Tanúsítványok
 draft: false
 certifications:
-  - title: AWS Certified Developer Associate 
+  # - title: Adobe Certified Expert - Adobe Commerce Cloud Developer
+  #   organization:
+  #     name: Adobe
+  #     url: 'https://spark.adobe.com/page/GrkbPktpWMkkb/'
+  #   dates: '2021'
+  #   img: '/images/adobe-certified-expert-adobe-commerce-cloud-developer.png'
+  #   img_webp: '/images/adobe-certified-expert-adobe-commerce-cloud-developer.webp'
+  #   url: ''
+
+  - title: AWS Certified Developer Associate
     organization:
       name: Amazon
       url: 'https://aws.amazon.com/certification/certified-developer-associate/'
@@ -10,8 +19,8 @@ certifications:
     img: '/images/aws-certified-developer-associate.png'
     img_webp: '/images/aws-certified-developer-associate.webp'
     url: 'https://www.credly.com/badges/439b53a2-8fe7-4d52-8091-09ec06abe188/public_url'
-      
-  - title: Adobe Certified Expert-Adobe Commerce Business Practitioner
+
+  - title: Adobe Certified Expert - Adobe Commerce Business Practitioner
     organization:
       name: Adobe
       url: 'https://spark.adobe.com/page/87jLctNB6KxM0/'
@@ -19,13 +28,13 @@ certifications:
     img: '/images/adobe-certified-expert-adobe-commerce-business-practitioner.png'
     img_webp: '/images/adobe-certified-expert-adobe-commerce-business-practitioner.webp'
     url: 'https://www.credly.com/badges/99b5cd97-793e-4a5c-885d-af18264dd2cf/public_url'
-      
+
   - title: Mérnök informatikus BSc.
     organization:
       name: SZTE - TTIK
       url: 'https://u-szeged.hu/'
     dates: '2015'
-    icon: 
+    icon:
       pack: fas
       name: fa-graduation-cap
       factor: fa-5x
@@ -44,7 +53,7 @@ widget:
     position: left
     # Options: sm, md, lg and xl. Default is md.
     scale: md
-  
+
   background:
     # Options: primary, secondary, tertiary or any valid color value. Default is primary.
     color: secondary
