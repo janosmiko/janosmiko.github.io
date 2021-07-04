@@ -191,7 +191,7 @@ curl -X GET \
 
 ![Post and Response](/images/blog/2021-07-04-magento-rabbitmq/3-1-post-response.png)
 
-### Check the status on the Magento Admin Dashboard**
+### Check the status on the Magento Admin Dashboard
 
 Go to **System** → **Action Logs** → **Bulk Actions**
 
