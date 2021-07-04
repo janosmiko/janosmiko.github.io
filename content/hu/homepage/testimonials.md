@@ -9,7 +9,7 @@ testimonials:
       url: https://randomfood.hu
     avatar: https://www.digitalhungary.hu/uploads/who_is_who/presenters/2739.png
     writeup: |
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      "Jani a deployment feladatok automatizálása mellett segített a Random Food AWS infrastruktúrájának költséghatékony kialakításában, ezzel is segítve startupunk IT-biztonságát és hatékony működését."
 
 #  - name: Mező Mónika
 #    title: CEO

@@ -2,14 +2,14 @@
 title: Testimonials
 draft: false
 testimonials:
-  - name: Belányi József
+  - name: József Belányi
     title: CEO
     avatar: https://www.digitalhungary.hu/uploads/who_is_who/presenters/2739.png
     organization:
       name: Random Food
       url: https://randomfood.hu
     writeup: |
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      "In addition to automating deployment tasks, Jani cost-effectively designed Random Food's AWS infrastructure, helping our startup's IT security and efficiency."
 
 #  - name: Mező Mónika
 #    title: CEO
