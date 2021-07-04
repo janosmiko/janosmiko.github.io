@@ -200,3 +200,41 @@ Go to **System** → **Action Logs** → **Bulk Actions**
 Select the action and click on **Details.**
 
 ![Magento Admin Bulk Action Details](/images/blog/2021-07-04-magento-rabbitmq/3-3-magento-admin-action-details.png)
+
+## Super simple way to test RabbitMQ Authentication
+
+Requirements:
+  - python3
+  - pip3
+
+```bash
+pip3 install kombu
+
+cat << "EOF" >> test.py
+#!/usr/bin/env python3
+import socket
+from kombu import Connection
+host = "localhost"
+port = 5672
+user = "magento"
+password = "magento"
+vhost = "/"
+url = 'amqp://{0}:{1}@{2}:{3}/{4}'.format(user, password, host, port, vhost)
+with Connection(url) as c:
+    try:
+        c.connect()
+    except socket.error:
+        raise ValueError("Received socket.error, "
+                         "rabbitmq server probably isn't running")
+    except IOError:
+        raise ValueError("Received IOError, probably bad credentials")
+    else:
+        print("Credentials are valid")
+EOF
+
+chmod +x ./test.py
+
+./test.py
+```
+
+Credits: [Lorin Hochstein](https://stackoverflow.com/a/17950138)
