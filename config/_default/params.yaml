@@ -27,10 +27,11 @@ highlight:
       - dart
       - go
       - bash
-      - shell
       - terminal
+      - php
+      - json
     # See https://github.com/highlightjs/cdn-release/tree/master/build/styles for available styles.
-    style: monokai-sublime
+    style: vs
 
 # math:
 #   handler: katex
