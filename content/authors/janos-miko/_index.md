@@ -31,7 +31,7 @@ Welcome to my site!
 
 Let me introduce myself: I'm János Mikó.
 
-I always loved the technology, I work as an enterprise Cloud / DevOps engineer and software developer since nearly 10 years.
+I always loved the technology, I work as an enterprise Cloud / DevOps engineer and software developer for nearly 10 years.
 
 It sounds sentimental, but the "cloud" is where I really feel at home.
 
