@@ -45,7 +45,7 @@ We used the following settings in `app/etc/env.php`.
 //...
 ```
 
-The `consumers_wait_for_messages` setting will command Magento to run the AMQP consumer's in every minute alongside with the default Magento Cron, but the consumer's will instantly stop after they finished consuming all messages. You can read more about this setting here: [Magento DevDocs - Configure consumer behavior](https://devdocs.magento.com/guides/v2.4/install-gde/install/cli/install-cli-subcommands-consumers.html).
+The `consumers_wait_for_messages` setting will command Magento to run the AMQP consumer's in every minute alongside the default Magento Cron, but the consumers will instantly stop after they finished consuming all messages. You can read more about this setting here: [Magento DevDocs - Configure consumer behavior](https://devdocs.magento.com/guides/v2.4/install-gde/install/cli/install-cli-subcommands-consumers.html).
 
 ## Before we begin
 
@@ -54,10 +54,11 @@ The `consumers_wait_for_messages` setting will command Magento to run the AMQP c
 On the Magento Admin create a test product.
 
 - Catalog → Products → New Product
-- Fill the required attributes.
+- Fill in the required attributes.
 - Click on Save.
 
-For our test product we set the product's SKU to `test`.
+For our test product, we set the product's SKU to `test`.
+We are going to use this in this article.
 
 ### Get your Admin token
 
@@ -162,7 +163,7 @@ curl -X PUT \
 
 ![Mass Rename - Check the queue status in RabbitMQ Admin](/images/blog/2021-07-04-magento-rabbitmq/2-3-mass-rename-rabbitmq-queues.png)
 
-**Alternatively you can view the messages in the RabbitMQ Admin (Queues → Get messages)**
+**Alternatively, you can view the messages in the RabbitMQ Admin (Queues → Get messages)**
 
 ![Mass Rename - Check the messages in RabbitMQ admin](/images/blog/2021-07-04-magento-rabbitmq/2-4-mass-rename-messages-in-the-queue.png)
 
@@ -201,7 +202,7 @@ Select the action and click on **Details.**
 
 ![Magento Admin Bulk Action Details](/images/blog/2021-07-04-magento-rabbitmq/3-3-magento-admin-action-details.png)
 
-## Super simple way to test RabbitMQ Authentication
+## A super simple way to test RabbitMQ Authentication
 
 Requirements:
   - python3
