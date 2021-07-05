@@ -31,14 +31,14 @@ Welcome to my site!
 
 Let me introduce myself: I'm János Mikó.
 
-I always loved the technology, I work as an enterprise Cloud / DevOps engineer and software developer for nearly 10 years.
+I have always loved technology, I work as an enterprise Cloud / DevOps engineer and software developer for nearly 10 years.
 
-It sounds sentimental, but the "cloud" is where I really feel at home.
+It sounds sentimental, but the "cloud" is where I feel at home.
 
 
 ### Some Personal Stuff
 
 - I prefer Everything as Code methodology.
-- I manage my work, and my life using GTD.
+- I manage my work and my life using GTD.
 - I am a perfectionist.
 - I meditate daily.
