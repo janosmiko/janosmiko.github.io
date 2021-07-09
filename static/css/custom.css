@@ -23,3 +23,7 @@
 a:hover {
     @apply text-eureka transition duration-300 ease-in-out;
 }
+
+.content code {
+    font-family: SFMono-Regular, Menlo, Consolas, Ubuntu Mono, Source Code Pro;
+}
