@@ -4,11 +4,27 @@ en:
   menu:
     main:
       - name: About
-        url: '/#introduction'
+        url: '/#about'
         weight: 1
+#      - name: Certifications
+#        url: '/#certifications'
+#        parent: About
+#        weight: 1
+#      - name: Experiences
+#        url: '/#experiences'
+#        parent: About
+#        weight: 2
+#      - name: Testimonials
+#        url: '/#testimonials'
+#        parent: About
+#        weight: 3
+#      - name: Projects
+#        url: '/#projects'
+#        parent: About
+#        weight: 4
       - name: Blog
         url: '/blog'
-        weight: 2
+        weight: 9
 
 hu:
   languageCode: hu
@@ -18,8 +34,24 @@ hu:
   menu:
     main:
       - name: Rólam
-        url: '/hu/#bemutatkozás'
+        url: '/hu/#about'
         weight: 1
+#      - name: Tanúsítványok
+#        url: '/hu/#certifications'
+#        parent: Rólam
+#        weight: 1
+#      - name: Tapasztalat
+#        url: '/#experiences'
+#        parent: Rólam
+#        weight: 2
+#      - name: Vélemények
+#        url: '/#testimonials'
+#        parent: Rólam
+#        weight: 3
+#      - name: Projektek
+#        url: '/#projects'
+#        parent: Rólam
+#        weight: 4
       - name: Blog
         url: '/hu/blog'
-        weight: 2
+        weight: 9
