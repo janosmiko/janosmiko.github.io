@@ -1,6 +1,6 @@
 mainSections:
   - blog
-description: Eureka is a elegant and powerful theme for Hugo.
+description: The Homepage of Janos Miko. You'll find blogposts about DevOps and Personal stuff here.
 
 repoEditURL:
 
@@ -12,7 +12,7 @@ titleSeparator:
 colorScheme:
 
 # E.g. Person, Organization, LocalBusiness, Project, EducationalOrganization
-siteType: Personal
+siteType: Person
 icon: images/icon.png
 publisherName: Janos Miko
 publisherLogo:
