@@ -7,19 +7,19 @@ testimonials:
     organization:
       name: Random Food
       url: https://randomfood.hu
-    avatar: https://www.digitalhungary.hu/uploads/who_is_who/presenters/2739.png
+    avatar: /images/jozsefbelanyi.jpeg
     writeup: |
       "Jani a deployment feladatok automatizálása mellett segített a Random Food AWS infrastruktúrájának költséghatékony kialakításában, ezzel is segítve startupunk IT-biztonságát és hatékony működését."
 
-#  - name: Mező Mónika
-#    title: CEO
-#    organization:
-#      name: Peak Hungary
-#      url: https://peakshop.hu
-#    avatar:
-#    writeup: |
-#      "Ez volt az eddigi legsimább költözésünk. Ez volt az eddigi legsimább költözésünk."
-#
+  - name: Mező Mónika
+    title: CEO
+    organization:
+      name: Peak Hungary
+      url: https://peakshop.hu
+    avatar: /images/monikamezo.jpeg
+    writeup: |
+      "A Peakshop.hu vezetőjeként tudom, hogy egy nagyszerű szakértő dolgozik a háttérben, ha a szervereinkkel egyáltalán nincsenek gondok. János az egyik legmegbízhatóbb "láthatatlan" szakember, akire minden vállalatnak szüksége lenne."
+
 #  - name: Lempergel Csongor
 #    title: E-commerce Manager
 #    organization:

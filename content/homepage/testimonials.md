@@ -4,21 +4,22 @@ draft: false
 testimonials:
   - name: József Belányi
     title: CEO
-    avatar: https://www.digitalhungary.hu/uploads/who_is_who/presenters/2739.png
     organization:
       name: Random Food
       url: https://randomfood.hu
+    avatar: /images/jozsefbelanyi.jpeg
     writeup: |
       "In addition to automating deployment tasks, Jani cost-effectively designed Random Food's AWS infrastructure, helping our startup's IT security and efficiency."
 
-#  - name: Mező Mónika
-#    title: CEO
-#    organization:
-#      name: Peak Hungary
-#      url: https://peakshop.hu
-#    writeup: |
-#      -
-#
+  - name: Mónika Mező
+    title: CEO
+    organization:
+      name: Peak Hungary
+      url: https://peakshop.hu
+    avatar: /images/monikamezo.jpeg
+    writeup: |
+      "Well as the leader of Peakshop.hu, I know that there is a great specialist in the background, when there are NO errors on the servers. Janos is one of the most reliable, "silent" specialist, that every company needs."
+
 #  - name: Lempergel Csongor
 #    title: E-commerce Manager
 #    organization:
