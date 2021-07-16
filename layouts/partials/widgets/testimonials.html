@@ -23,7 +23,13 @@
         <!-- </blockquote> -->
         </div>
         <div class="flex-none w-24 min-w-24 pt-6 mx-auto">
-          <img src="{{ .avatar }}" class="rounded-full object-scale-down" alt="{{ .name }}">
+          <picture>
+            {{if .avatar_webp}}
+            <source srcset="{{ .avatar_webp }}" type="image/webp">
+            {{end}}
+            <source srcset="{{ .avatar }}" type="image/jpeg">
+            <img src="{{ .avatar }}" class="rounded-full object-scale-down" alt="{{ .name }}">
+          </picture>
         </div>
       </div>
     </div>

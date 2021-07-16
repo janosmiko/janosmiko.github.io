@@ -5,7 +5,9 @@
   {{ with $img }}
     <div class="flex-none w-48 mx-auto md:ml-0 md:mr-8 md:pr-8 md:border-r">
       <picture>
+        {{if $webp}}
         <source srcset="{{ $webp }}" type="image/webp">
+        {{end}}
         <source srcset="{{ $img }}" type="image/jpeg">
         <img src="{{ . }}" class="rounded-full" alt="Avatar">
       </picture>

@@ -8,6 +8,7 @@ testimonials:
       name: Random Food
       url: https://randomfood.hu
     avatar: /images/jozsefbelanyi.jpeg
+    avatar_webp: /images/jozsefbelanyi.webp
     writeup: |
       "Jani a deployment feladatok automatizálása mellett segített a Random Food AWS infrastruktúrájának költséghatékony kialakításában, ezzel is segítve startupunk IT-biztonságát és hatékony működését."
 
@@ -17,6 +18,7 @@ testimonials:
       name: Peak Hungary
       url: https://peakshop.hu
     avatar: /images/monikamezo.jpeg
+    #avatar_webp: /images/monikamezo.webp
     writeup: |
       "A Peakshop.hu vezetőjeként tudom, hogy egy nagyszerű szakértő dolgozik a háttérben, ha a szervereinkkel egyáltalán nincsenek gondok. János az egyik legmegbízhatóbb "láthatatlan" szakember, akire minden vállalatnak szüksége lenne."
 

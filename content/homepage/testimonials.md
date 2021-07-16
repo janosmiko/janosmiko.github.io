@@ -8,6 +8,7 @@ testimonials:
       name: Random Food
       url: https://randomfood.hu
     avatar: /images/jozsefbelanyi.jpeg
+    avatar_webp: /images/jozsefbelanyi.webp
     writeup: |
       "In addition to automating deployment tasks, Jani cost-effectively designed Random Food's AWS infrastructure, helping our startup's IT security and efficiency."
 
@@ -17,6 +18,7 @@ testimonials:
       name: Peak Hungary
       url: https://peakshop.hu
     avatar: /images/monikamezo.jpeg
+    avatar_webp: /images/monikamezo.webp
     writeup: |
       "Well as the leader of Peakshop.hu, I know that there is a great specialist in the background, when there are NO errors on the servers. Janos is one of the most reliable, "silent" specialist, that every company needs."
 
