@@ -18,7 +18,7 @@ testimonials:
       name: Peak Hungary
       url: https://peakshop.hu
     avatar: /images/monikamezo.jpeg
-    #avatar_webp: /images/monikamezo.webp
+    avatar_webp: /images/monikamezo.webp
     writeup: |
       "A Peakshop.hu vezetőjeként tudom, hogy egy nagyszerű szakértő dolgozik a háttérben, ha a szervereinkkel egyáltalán nincsenek gondok. János az egyik legmegbízhatóbb "láthatatlan" szakember, akire minden vállalatnak szüksége lenne."
 
