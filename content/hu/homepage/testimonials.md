@@ -21,6 +21,16 @@ testimonials:
     avatar_webp: /images/monikamezo.webp
     writeup: |
       "A Peakshop.hu vezetőjeként tudom, hogy egy nagyszerű szakértő dolgozik a háttérben, ha a szervereinkkel egyáltalán nincsenek gondok. János az egyik legmegbízhatóbb "láthatatlan" szakember, akire minden vállalatnak szüksége lenne."
+    
+  - name: Shabab Gruberg
+    title: CTO
+    organization:
+      name: See Tickets US
+      url: https://seetickets.us
+    avatar: /images/shababgruberg.jpeg
+    avatar_webp: /images/shababgruberg.webp
+    writeup: |
+      "Az elmúlt 2 évben János segített elmélyíteni a DevOps folyamatokat a vállalatunknál Dockerizálással és CI/CD folyamatok automatizálásával. Emellett csökkentette az AWS költségeinket is."
 
 #  - name: Lempergel Csongor
 #    title: E-commerce Manager
