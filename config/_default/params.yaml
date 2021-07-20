@@ -27,7 +27,6 @@ highlight:
       - dart
       - go
       - bash
-      - terminal
       - php
       - json
     # See https://github.com/highlightjs/cdn-release/tree/master/build/styles for available styles.
