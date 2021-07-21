@@ -2,14 +2,14 @@
 title: Tanúsítványok
 draft: false
 certifications:
-  # - title: Adobe Certified Expert - Adobe Commerce Cloud Developer
-  #   organization:
-  #     name: Adobe
-  #     url: 'https://spark.adobe.com/page/GrkbPktpWMkkb/'
-  #   dates: '2021'
-  #   img: '/images/adobe-certified-expert-adobe-commerce-cloud-developer.png'
-  #   img_webp: '/images/adobe-certified-expert-adobe-commerce-cloud-developer.webp'
-  #   url: ''
+  - title: Adobe Certified Expert - Adobe Commerce Cloud Developer
+    organization:
+      name: Adobe
+      url: 'https://spark.adobe.com/page/GrkbPktpWMkkb/'
+    dates: '2021'
+    img: '/images/adobe-certified-expert.png'
+    img_webp: '/images/adobe-certified-expert.webp'
+    url: ''
 
   - title: AWS Certified Developer Associate
     organization:
@@ -25,8 +25,8 @@ certifications:
       name: Adobe
       url: 'https://spark.adobe.com/page/87jLctNB6KxM0/'
     dates: '2019'
-    img: '/images/adobe-certified-expert-adobe-commerce-business-practitioner.png'
-    img_webp: '/images/adobe-certified-expert-adobe-commerce-business-practitioner.webp'
+    img: '/images/adobe-certified-expert.png'
+    img_webp: '/images/adobe-certified-expert.webp'
     url: 'https://www.credly.com/badges/99b5cd97-793e-4a5c-885d-af18264dd2cf/public_url'
 
   - title: Mérnök informatikus BSc.
