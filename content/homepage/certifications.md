@@ -9,7 +9,7 @@ certifications:
     dates: '2021'
     img: '/images/adobe-certified-expert.png'
     img_webp: '/images/adobe-certified-expert.webp'
-    url: ''
+    url: 'https://www.credly.com/badges/9f45d3f5-5c1a-453d-bf7a-79a1bf899b9a/public_url'
 
   - title: AWS Certified Developer Associate 
     organization:
