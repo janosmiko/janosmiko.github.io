@@ -58,7 +58,7 @@ widget:
 
 Welcome to my site!
 
-Let me introduce myself: I'm János Mikó.
+Let me introduce myself: I'm Janos Miko.
 
 I have always loved technology. I work as an enterprise Cloud / DevOps engineer and software developer for nearly 10 years.
 
