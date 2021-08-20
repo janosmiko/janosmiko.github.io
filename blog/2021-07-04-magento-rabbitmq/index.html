@@ -2,8 +2,8 @@
 <meta name=viewport content="width=device-width">
 <title>How to test if Magento RabbitMQ Consumers are working properly | Janos Miko</title>
 <meta name=generator content="Hugo Eureka 0.8.0">
-<link rel=stylesheet href=/css/eureka.min.css>
-<script defer src=/js/eureka.min.js></script>
+<link rel=stylesheet href=https://janosmiko.com/css/eureka.min.css>
+<script defer src=https://janosmiko.com/js/eureka.min.js></script>
 <link rel=preconnect href=https://fonts.gstatic.com crossorigin>
 <link rel=preload href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" as=style onload="this.onload=null,this.rel='stylesheet'">
 <link rel=stylesheet href=https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.1.0/build/styles/vs.min.css media=print onload="this.media='all',this.onload=null" crossorigin>
@@ -36,10 +36,10 @@
 <meta name=application-name content="Janos Miko">
 <meta name=description content="How can you verify if Magento can reach and utilize the benefits of RabbitMQ?
 This tutorial will help you to modify attributes of a product using Magento&rsquo;s async API and bulk API.">
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Blog","item":"/blog/"},{"@type":"ListItem","position":2,"name":"How to test if Magento RabbitMQ Consumers are working properly","item":"/blog/2021-07-04-magento-rabbitmq/"}]}</script>
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"/blog/2021-07-04-magento-rabbitmq/"},"headline":"How to test if Magento RabbitMQ Consumers are working properly | Janos Miko","image":"/images/blog/2021-07-04-magento-rabbitmq/magento-rabbitmq.png","datePublished":"2021-07-04T00:00:00+00:00","dateModified":"2021-07-16T11:01:12+02:00","wordCount":594,"author":{"@type":"Person","name":["janos-miko"]},"publisher":{"@type":"Person","name":"Janos Miko"},"description":"\u003cp\u003eHow can you verify if Magento can reach and utilize the benefits of RabbitMQ?\u003c\/p\u003e\n\u003cp\u003eThis tutorial will help you to modify attributes of a product using Magento\u0026rsquo;s async API and bulk API.\u003c\/p\u003e"}</script><meta property="og:title" content="How to test if Magento RabbitMQ Consumers are working properly | Janos Miko">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Blog","item":"https://janosmiko.com/blog/"},{"@type":"ListItem","position":2,"name":"How to test if Magento RabbitMQ Consumers are working properly","item":"https://janosmiko.com/blog/2021-07-04-magento-rabbitmq/"}]}</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://janosmiko.com/blog/2021-07-04-magento-rabbitmq/"},"headline":"How to test if Magento RabbitMQ Consumers are working properly | Janos Miko","image":"https://janosmiko.com/images/blog/2021-07-04-magento-rabbitmq/magento-rabbitmq.png","datePublished":"2021-07-04T00:00:00+00:00","dateModified":"2021-07-16T11:01:12+02:00","wordCount":594,"author":{"@type":"Person","name":["janos-miko"]},"publisher":{"@type":"Person","name":"Janos Miko"},"description":"\u003cp\u003eHow can you verify if Magento can reach and utilize the benefits of RabbitMQ?\u003c\/p\u003e\n\u003cp\u003eThis tutorial will help you to modify attributes of a product using Magento\u0026rsquo;s async API and bulk API.\u003c\/p\u003e"}</script><meta property="og:title" content="How to test if Magento RabbitMQ Consumers are working properly | Janos Miko">
 <meta property="og:type" content="article">
-<meta property="og:url" content="/blog/2021-07-04-magento-rabbitmq/">
+<meta property="og:url" content="https://janosmiko.com/blog/2021-07-04-magento-rabbitmq/">
 <meta property="og:description" content="How can you verify if Magento can reach and utilize the benefits of RabbitMQ?
 This tutorial will help you to modify attributes of a product using Magento&rsquo;s async API and bulk API.">
 <meta property="og:locale" content="en">
@@ -49,7 +49,7 @@ This tutorial will help you to modify attributes of a product using Magento&rsqu
 <meta property="article:section" content="blog">
 <meta property="article:tag" content="magento">
 <meta property="article:tag" content="rabbitmq">
-<meta property="og:see_also" content="/blog/2021-03-06-reward/">
+<meta property="og:see_also" content="https://janosmiko.com/blog/2021-03-06-reward/">
 <body class="flex flex-col min-h-screen">
 <header class="fixed flex items-center w-full min-h-16 pl-scrollbar z-50 bg-secondary-bg shadow-sm">
 <div class="w-full max-w-screen-xl mx-auto"><script>let storageColorScheme=localStorage.getItem("lightDarkMode");((storageColorScheme=='Auto'||storageColorScheme==null)&&window.matchMedia("(prefers-color-scheme: dark)").matches||storageColorScheme=="Dark")&&document.getElementsByTagName('html')[0].classList.add('dark')</script>
@@ -101,11 +101,11 @@ This tutorial will help you to modify attributes of a product using Magento&rsqu
 </div>
 <div class="mr-6 my-2">
 <i class="fas fa-folder mr-1"></i>
-<a href=/categories/tech/ class=hover:text-eureka>tech</a>
+<a href=https://janosmiko.com/categories/tech/ class=hover:text-eureka>tech</a>
 </div>
 </div>
 <div class=my-4>
-<img src=/images/blog/2021-07-04-magento-rabbitmq/magento-rabbitmq.png class=w-full alt="Featured Image">
+<img src=https://janosmiko.com/images/blog/2021-07-04-magento-rabbitmq/magento-rabbitmq.png class=w-full alt="Featured Image">
 </div>
 <div class=content>
 <p>How can you verify if Magento can reach and utilize the benefits of RabbitMQ?</p>
@@ -274,16 +274,16 @@ chmod +x ./test.py
 <p>Credits: <a href=https://stackoverflow.com/a/17950138>Lorin Hochstein</a></p>
 </div>
 <div class=my-4>
-<a href=/tags/magento/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#magento</a>
-<a href=/tags/rabbitmq/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#rabbitmq</a>
+<a href=https://janosmiko.com/tags/magento/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#magento</a>
+<a href=https://janosmiko.com/tags/rabbitmq/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#rabbitmq</a>
 </div>
 <div class=py-2>
 <div class="flex flex-col md:flex-row items-center my-8">
-<a href=/authors/janos-miko/ class="w-24 h-24 md:mr-4">
-<img src=/images/janosmiko.jpeg class="w-full bg-primary-bg rounded-full" alt=Avatar>
+<a href=https://janosmiko.com/authors/janos-miko/ class="w-24 h-24 md:mr-4">
+<img src=https://janosmiko.com/images/janosmiko.jpeg class="w-full bg-primary-bg rounded-full" alt=Avatar>
 </a>
 <div class="w-full md:w-auto mt-4 md:mt-0">
-<a href=/authors/janos-miko/ class="block font-bold text-lg pb-1 mb-2 border-b">Janos Miko</a>
+<a href=https://janosmiko.com/authors/janos-miko/ class="block font-bold text-lg pb-1 mb-2 border-b">Janos Miko</a>
 <span class="block pb-2">Fill your bucket by drop by drop.</span>
 <a href=mailto:example@example.com class=mr-1>
 <i class="fas fa-envelope"></i>
@@ -308,7 +308,7 @@ chmod +x ./test.py
 </div>
 <div class="md:text-right mt-4 md:mt-0">
 <span class="block font-bold">Next</span>
-<a href=/blog/2021-03-06-reward/ class=block>Reward – A development tool designed for Magento developers</a>
+<a href=https://janosmiko.com/blog/2021-03-06-reward/ class=block>Reward – A development tool designed for Magento developers</a>
 </div>
 </div>
 </div>
@@ -342,7 +342,7 @@ chmod +x ./test.py
 <div class="col-span-2 lg:col-span-6 bg-secondary-bg rounded p-6">
 <h2 class="text-lg font-semibold mb-4">See Also</h2>
 <div class=content>
-<a href=/blog/2021-03-06-reward/>Reward – A development tool designed for Magento developers</a>
+<a href=https://janosmiko.com/blog/2021-03-06-reward/>Reward – A development tool designed for Magento developers</a>
 <br>
 </div>
 </div>
