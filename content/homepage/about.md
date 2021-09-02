@@ -21,7 +21,7 @@ social:
     url: https://github.com/janosmiko/
   - icon: linkedin
     iconPack: fab
-    url: https://www.linkedin.com/in/janos-miko-797b6677/
+    url: https://www.linkedin.com/in/janosmiko/
   - icon: facebook
     iconPack: fab
     url: https://www.facebook.com/mixe3y/
