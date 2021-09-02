@@ -1,6 +1,6 @@
 ---
 title: Janos Miko
-role: DevOps Engineer
+role: Lead DevOps Engineer
 avatar: images/janosmiko.jpeg
 avatar_webp: images/janosmiko.webp
 bio: Fill your bucket by drop by drop.
@@ -31,7 +31,7 @@ Welcome to my site!
 
 Let me introduce myself: I'm János Mikó.
 
-I have always loved technology. I work as an enterprise Cloud / DevOps engineer and software developer for nearly 10 years.
+I have always loved technology. I work as a Lead DevOps Engineer and Go developer for nearly 10 years.
 
 It sounds sentimental, but the "cloud" is where I feel at home.
 
@@ -39,6 +39,7 @@ It sounds sentimental, but the "cloud" is where I feel at home.
 ### Some Personal Stuff
 
 - I prefer Everything as Code methodology.
-- I manage my work and my life using GTD.
+- I manage my work and my life using GTD and OKR.
 - I am a perfectionist.
 - I meditate daily.
+- I am a proud dad of 2 dachshunds.

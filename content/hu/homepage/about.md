@@ -2,7 +2,7 @@
 title: Mikó János
 translationKey: about
 draft: false
-role: DevOps Engineer
+role: Lead DevOps Engineer
 avatar: images/janosmiko.jpeg
 avatar_webp: images/janosmiko.webp
 bio: Fill your bucket by drop by drop.
@@ -58,12 +58,13 @@ attachment: fixed
 Hadd mutatkozzam be: Mikó Jánosnak hívnak.
 
 Mindig is imádtam az informatikát és a technológiát, közel 10 éve foglalkozom vállalati informatikai rendszerek
-üzemeltetésével és egyedi szoftverfejlesztéssel, mint Cloud / DevOps Engineer.
+üzemeltetésével és egyedi szoftverfejlesztéssel, mint vezető DevOps mérnök és Go fejlesztő.
 
 Szentimentálisan hangozhat, de a "felhőben" érzem magam igazán otthon.
 
 ### Néhány érdekesség
 - Az Everything as Code metodológiát vallom, vagyis ha egynél többször szükségem van valamire, akkor lekódolom.
-- A munkámat és az életemet is a GTD módszer segítségével menedzselem.
+- A munkámat és az életemet is a GTD és OKR módszerek segítségével menedzselem.
 - Perfekcionistának vallom magam.
 - Napi rendszerességgel meditálok.
+- Van kettő fantasztikus tacskóm.
