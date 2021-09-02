@@ -5,7 +5,7 @@ projects:
   - title: Reward
     url: https://github.com/rewardenv/reward
     dates: 2021
-    logo: https://github.com/rewardenv/reward/raw/main/docs/imgs/reward-github-card.png
+    logo: https://github.com/rewardenv/reward/raw/main/docs/imgs/reward-logo.png
     writeup: |
       - A Reward egy parancssori eszköz, amely Docker alapú fejlesztői környezetek futtatását könnyíti meg.
       - Segítségével lehetővé válik több fejlesztői környezet egyidejű, párhuzamos futtatása port ütközés nélkül. 

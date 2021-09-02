@@ -5,7 +5,7 @@ projects:
   - title: Reward
     url: https://github.com/rewardenv/reward
     dates: 2021
-    logo: https://github.com/rewardenv/reward/raw/main/docs/imgs/reward-github-card.png
+    logo: https://github.com/rewardenv/reward/raw/main/docs/imgs/reward-logo.png
     writeup: |
       - Reward is a Swiss Army knife CLI utility for orchestrating Docker based development environments.
       - It makes possible to run multiple local environments simultaneously without port conflicts by utilizing common services proxying requests to the correct environment's containers.
