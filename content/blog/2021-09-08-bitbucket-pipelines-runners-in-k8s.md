@@ -42,11 +42,11 @@ Click on the Settings and Scroll down to Workspace Runners and click on Add Runn
 
 Give your runner a name and click on next.
 
-![3_new_runner.png](/images/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/3_new_runner.png)
+![3_new_runner.png](/images/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/3_new_runner.png#300px)
 
 It is going to give you a command output like this:
 
-```bash
+```plaintext
 docker container run -it -v /tmp:/tmp -v /var/run/docker.sock:/var/run/docker.sock \
   -v /var/lib/docker/containers:/var/lib/docker/containers:ro \
   -e ACCOUNT_UUID={__ACCOUNT_UUID__} \
@@ -93,7 +93,7 @@ The following bash scripts are going to generate the `secret.yaml` and `job.yaml
 `secret.yaml:`
 
 ```bash
-cat > ./secret.yaml <<EOF
+cat > ./secret.yaml <<-EOF
 apiVersion: v1
 kind: Secret
 metadata:

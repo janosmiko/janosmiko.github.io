@@ -30,7 +30,7 @@ highlight:
       - php
       - json
     # See https://github.com/highlightjs/cdn-release/tree/master/build/styles for available styles.
-    style: vs
+    style: monokai-sublime
 
 # math:
 #   handler: katex
