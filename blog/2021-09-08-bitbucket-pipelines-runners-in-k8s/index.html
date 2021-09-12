@@ -36,14 +36,14 @@
 <meta name=application-name content="Janos Miko">
 <meta name=description content="Atlassian announced self-hosted Runners for Bitbucket Pipelines, let&rsquo;s try them out.">
 <script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Blog","item":"https://janosmiko.com/blog/"},{"@type":"ListItem","position":2,"name":"How to run Self Hosted Bitbucket Pipelines Runners in Kubernetes","item":"https://janosmiko.com/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/"}]}</script>
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://janosmiko.com/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/"},"headline":"How to run Self Hosted Bitbucket Pipelines Runners in Kubernetes | Janos Miko","image":"https://janosmiko.com/images/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/bitbucket-pipelines-runners-in-k8s.png","datePublished":"2021-09-08T00:00:00+00:00","dateModified":"2021-09-11T13:02:41+02:00","wordCount":780,"author":{"@type":"Person","name":["janos-miko"]},"publisher":{"@type":"Person","name":"Janos Miko"},"description":"\u003cp\u003eAtlassian \u003ca href=\u0022https:\/\/bitbucket.org\/blog\/pipelines-runners\u0022\u003eannounced\u003c\/a\u003e self-hosted Runners for Bitbucket Pipelines, let\u0026rsquo;s try them out.\u003c\/p\u003e"}</script><meta property="og:title" content="How to run Self Hosted Bitbucket Pipelines Runners in Kubernetes | Janos Miko">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://janosmiko.com/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/"},"headline":"How to run Self Hosted Bitbucket Pipelines Runners in Kubernetes | Janos Miko","image":"https://janosmiko.com/images/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/bitbucket-pipelines-runners-in-k8s.png","datePublished":"2021-09-08T00:00:00+00:00","dateModified":"2021-09-12T10:43:47+02:00","wordCount":783,"author":{"@type":"Person","name":["janos-miko"]},"publisher":{"@type":"Person","name":"Janos Miko"},"description":"\u003cp\u003eAtlassian \u003ca href=\u0022https:\/\/bitbucket.org\/blog\/pipelines-runners\u0022\u003eannounced\u003c\/a\u003e self-hosted Runners for Bitbucket Pipelines, let\u0026rsquo;s try them out.\u003c\/p\u003e"}</script><meta property="og:title" content="How to run Self Hosted Bitbucket Pipelines Runners in Kubernetes | Janos Miko">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://janosmiko.com/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/">
 <meta property="og:description" content="Atlassian announced self-hosted Runners for Bitbucket Pipelines, let&rsquo;s try them out.">
 <meta property="og:locale" content="en">
 <meta property="og:site_name" content="Janos Miko">
 <meta property="article:published_time" content="2021-09-08T00:00:00+00:00">
-<meta property="article:modified_time" content="2021-09-11T13:02:41+02:00">
+<meta property="article:modified_time" content="2021-09-12T10:43:47+02:00">
 <meta property="article:section" content="blog">
 <meta property="article:tag" content="bitbucket">
 <meta property="article:tag" content="pipelines">
@@ -116,12 +116,11 @@
 <p>Let&rsquo;s see how can we create Runners in Workspace level.</p>
 <h2 id=how-to-create-a-runner>How to create a Runner?</h2>
 <h3 id=create-a-new-workspace-runner-in-bitbucket>Create a new Workspace Runner in Bitbucket</h3>
-<p><strong>Go to the Workspace Settings</strong></p>
-<p>Click on your Profile Picture and Select the Workspace</p>
+<p>Go to the <strong>Workspace Settings</strong>: click on your <strong>Profile Picture</strong> and <strong>Select the Workspace</strong>.</p>
 <p><img src=/images/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/1_workspace_settings.png alt=1_workspace_settings.png></p>
-<p>Click on the Settings and Scroll down to Workspace Runners and click on Add Runner:</p>
+<p>Click on the <strong>Settings</strong> and Scroll down to <strong>Workspace Runners</strong> and click on <strong>Add Runner</strong>.</p>
 <p><img src=/images/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/2_workspace_runners.png alt=2_workspace_runners.png></p>
-<p>Give your runner a name and click on next.</p>
+<p>Give your runner a <strong>name</strong> and click on <strong>next</strong>.</p>
 <p><img src=/images/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/3_new_runner.png#300px alt=3_new_runner.png></p>
 <p>It is going to give you a command output like this:</p>
 <pre><code class=language-plaintext>docker container run -it -v /tmp:/tmp -v /var/run/docker.sock:/var/run/docker.sock \
@@ -134,7 +133,7 @@
   --name runner-7deb7740-f86b-50d0-9c85-671fcb3c9038 \
   docker-public.packages.atlassian.com/sox/atlassian/bitbucket-pipelines-runner:1
 </code></pre>
-<p><strong>Save it</strong> and click on finish.</p>
+<p><strong>Save it</strong> and click on <strong>finish</strong>.</p>
 <p>You have to extract the <code>ACCOUNT_UUID</code>, the <code>RUNNER_UUID</code>, the <code>OAUTH_CLIENT_ID</code> and the <code>OAUTH_CLIENT_SECRET</code> variables from the command.</p>
 <p>Watch out for the following:</p>
 <ul>
@@ -235,7 +234,7 @@ spec:
   parallelism: 1
 EOF
 </code></pre>
-<p>Apply the generate manifests to Kubernetes:</p>
+<p>Apply the generated manifests to Kubernetes:</p>
 <pre><code class=language-bash>kubectl create namespace bitbucket-runner --dry-run -o yaml | kubectl apply -f -
 
 kubectl -n bitbucket-runner apply -f secrets.yaml
@@ -256,7 +255,8 @@ kubectl delete namespace bitbucket-runner
     pipeline:
       - step:
           name: Step1
-          size: 8x # default 4gb, 8x for 32gb
+          # default: 4gb, 2x: 8GB, 4x: 16GB, 8x: 32gb
+          size: 8x 
           runs-on: 
             - 'self.hosted'
             - 'my.custom.label'
@@ -268,17 +268,17 @@ kubectl delete namespace bitbucket-runner
             - echo &quot;This step will run on Atlassian's infrastructure as usual.&quot;;
 </code></pre>
 <h2 id=error-status-500-in-bitbucket-pipelines>Error: Status 500 in Bitbucket Pipelines</h2>
-<p>As we wanted to build Docker images (using Docker in Docker or dind) in our pipeline we faced the following issue:</p>
+<p>As we wanted to build Docker images (using Docker in Docker or <em>dind</em>) in our pipeline we faced the following issue:</p>
 <pre><code class=language-json>Status 500: {&quot;message&quot;:&quot;io.containerd.runc.v2: failed to adjust OOM score for shim: set shim OOM score: write /proc/PROC_ID/oom_score_adj: invalid argument\n: exit status 1: unknown&quot;}
 </code></pre>
 <h3 id=how-to-fix-it>How to fix it</h3>
-<p>First I tried to find root cause of this error message but I couldn&rsquo;t find anything except some comments about this was already fixed in containerd&rsquo;s latest release, and so on&mldr; So I decided to check if the software versions are matching. Even while containerd was matching the required version I found that the Docker on the servers are a bit outdated (19.03) so I decided to update it.</p>
+<p>First I tried to find root cause of this error message, but I couldn&rsquo;t find anything except some comments about this was already fixed in containerd&rsquo;s latest release, and so on&mldr; So I decided to check if the software versions are matching. Even while containerd was matching the required version I found that the Docker on the servers are a bit outdated (19.03) so I decided to update it.</p>
 <p>After the upgrade I still saw the previously mentioned error messages in the Bitbucket Pipelines.</p>
 <p>I verified Docker version running on the server:</p>
 <pre><code class=language-yaml># docker --version    
 Docker version 20.10.7, build f0df350
 </code></pre>
-<p>I replaced docker in docker (dind) container image version to use the exact same version as the installed one on our k8s cluster.</p>
+<p>I replaced docker in docker (<em>dind</em>) container image version to use the exact same version as the installed one on our k8s cluster.</p>
 <pre><code class=language-yaml>- name: docker-in-docker
   image: docker:20.10.5-dind  -&gt;  docker:20.10.7-dind
 </code></pre>
