@@ -11,6 +11,7 @@ tags:
 categories: tech
 date: '2021-09-08'
 lastmod: '2021-09-08'
+sitemap_exclude: false
 featuredImage: /images/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/bitbucket-pipelines-runners-in-k8s.png 
 featuredImage_webp: /images/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/bitbucket-pipelines-runners-in-k8s.webp
 ---

@@ -9,6 +9,7 @@ tags:
 categories: tech
 date: '2021-07-04'
 lastmod: '2021-07-04'
+sitemap_exclude: false
 featuredImage: /images/blog/2021-07-04-magento-rabbitmq/magento-rabbitmq.png 
 featuredImage_webp: /images/blog/2021-07-04-magento-rabbitmq/magento-rabbitmq.webp
 ---
