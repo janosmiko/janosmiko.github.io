@@ -100,7 +100,7 @@ pre[class*="language-"] {
     color: white;
 }
 @media screen and (max-width: 1024px) {
-    .content .hljs {
+    .content pre code {
         white-space: pre;
     }
 }
