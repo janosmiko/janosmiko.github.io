@@ -18,19 +18,32 @@ publisherName: Janos Miko
 publisherLogo:
 
 highlight:
-  handler: highlightjs
+  handler: prism
 
   highlightjs:
     # highlight.js doesn't bundle every language. So please specify additional languages you want here.
     # See https://github.com/highlightjs/cdn-release/tree/master/build/languages for available languages.
     languages:
-      - dart
       - go
       - bash
       - php
       - json
     # See https://github.com/highlightjs/cdn-release/tree/master/build/styles for available styles.
     style: monokai-sublime
+
+  prism:
+    languages:
+      - markup-templating
+      - go
+      - bash
+      - php
+      - json
+    style: okaidia
+    plugins:
+#      - toolbar
+#      - copy-to-clipboard
+#      - diff-highlight
+#      - match-braces
 
 # math:
 #   handler: katex

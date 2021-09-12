@@ -10,6 +10,21 @@ highlightjs:
   languages:
     url: https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@%s/build/languages/%s.min.js
 
+prism:
+  version: 1.24.1
+  css:
+    url: /css/prism-%s.css
+    #url: https://cdn.jsdelivr.net/npm/prismjs@%s/themes/prism-%s.css
+  js:
+    url: https://cdn.jsdelivr.net/npm/prismjs@%s/prism.min.js
+  jsautoloader:
+    url: https://cdn.jsdelivr.net/npm/prismjs@%s/plugins/autoloader/prism-autoloader.min.js
+  plugins:
+    url: https://cdn.jsdelivr.net/npm/prismjs@%s/plugins/%s/prism-%s.min.js
+  languages:
+    url: https://cdn.jsdelivr.net/npm/prismjs@%s/components/prism-%s.min.js
+
+
 # Font Awesome
 fontawesome:
   version: 5.14.0

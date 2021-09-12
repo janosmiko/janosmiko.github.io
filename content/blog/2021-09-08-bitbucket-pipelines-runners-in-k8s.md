@@ -45,7 +45,7 @@ Give your runner a **name** and click on **next**.
 
 It is going to give you a command output like this:
 
-```plaintext
+```bash
 docker container run -it -v /tmp:/tmp -v /var/run/docker.sock:/var/run/docker.sock \
   -v /var/lib/docker/containers:/var/lib/docker/containers:ro \
   -e ACCOUNT_UUID={__ACCOUNT_UUID__} \
@@ -85,14 +85,14 @@ Now on the interesting part. Replace the `${VAR_NAME}` placeholders with the con
 Important:
 
 - use the base64 encoded versions of the OAUTH variables in the `secret.yaml`
-- keep the quotes and braces (", {, }) in the job.yaml lines 17 and 19
+- keep the quotes and braces (`"`, `{`, `}`) in the job.yaml lines 17 and 19
 
 The following bash scripts are going to generate the `secret.yaml` and `job.yaml` files in the current working directory.
 
 `secret.yaml:`
 
 ```bash
-cat > ./secret.yaml <<-EOF
+cat > ./secret.yaml <<EOF
 apiVersion: v1
 kind: Secret
 metadata:
