@@ -32,15 +32,15 @@ Let's see how can we create Runners in Workspace level.
 
 **Go to the Workspace Settings**
 
-Click on your Profile Picture and Select the Workspace
+Click on your **Profile Picture** and **Select the Workspace**.
 
 ![1_workspace_settings.png](/images/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/1_workspace_settings.png)
 
-Click on the Settings and Scroll down to Workspace Runners and click on Add Runner:
+Click on the **Settings** and Scroll down to **Workspace Runners** and click on **Add Runner**.
 
 ![2_workspace_runners.png](/images/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/2_workspace_runners.png)
 
-Give your runner a name and click on next.
+Give your runner a **name** and click on **next**.
 
 ![3_new_runner.png](/images/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/3_new_runner.png#300px)
 
@@ -58,7 +58,7 @@ docker container run -it -v /tmp:/tmp -v /var/run/docker.sock:/var/run/docker.so
   docker-public.packages.atlassian.com/sox/atlassian/bitbucket-pipelines-runner:1
 ```
 
-**Save it** and click on finish.
+**Save it** and click on **finish**.
 
 You have to extract the `ACCOUNT_UUID`, the `RUNNER_UUID`, the `OAUTH_CLIENT_ID` and the `OAUTH_CLIENT_SECRET` variables from the command.
 
@@ -172,7 +172,7 @@ spec:
 EOF
 ```
 
-Apply the generate manifests to Kubernetes:
+Apply the generated manifests to Kubernetes:
 
 ```bash
 kubectl create namespace bitbucket-runner --dry-run -o yaml | kubectl apply -f -
@@ -205,7 +205,8 @@ pipelines:
     pipeline:
       - step:
           name: Step1
-          size: 8x # default 4gb, 8x for 32gb
+          # default: 4gb, 2x: 8GB, 4x: 16GB, 8x: 32gb
+          size: 8x 
           runs-on: 
             - 'self.hosted'
             - 'my.custom.label'
@@ -219,7 +220,7 @@ pipelines:
 
 ## Error: Status 500 in Bitbucket Pipelines
 
-As we wanted to build Docker images (using Docker in Docker or dind) in our pipeline we faced the following issue:
+As we wanted to build Docker images (using Docker in Docker or _dind_) in our pipeline we faced the following issue:
 
 ```json
 Status 500: {"message":"io.containerd.runc.v2: failed to adjust OOM score for shim: set shim OOM score: write /proc/PROC_ID/oom_score_adj: invalid argument\n: exit status 1: unknown"}
@@ -227,7 +228,7 @@ Status 500: {"message":"io.containerd.runc.v2: failed to adjust OOM score for sh
 
 ### How to fix it
 
-First I tried to find root cause of this error message but I couldn't find anything except some comments about this was already fixed in containerd's latest release, and so on... So I decided to check if the software versions are matching. Even while containerd was matching the required version I found that the Docker on the servers are a bit outdated (19.03) so I decided to update it.
+First I tried to find root cause of this error message, but I couldn't find anything except some comments about this was already fixed in containerd's latest release, and so on... So I decided to check if the software versions are matching. Even while containerd was matching the required version I found that the Docker on the servers are a bit outdated (19.03) so I decided to update it.
 
 After the upgrade I still saw the previously mentioned error messages in the Bitbucket Pipelines.
 
@@ -238,7 +239,7 @@ I verified Docker version running on the server:
 Docker version 20.10.7, build f0df350
 ```
 
-I replaced docker in docker (dind) container image version to use the exact same version as the installed one on our k8s cluster.
+I replaced docker in docker (_dind_) container image version to use the exact same version as the installed one on our k8s cluster.
 
 ```yaml
 - name: docker-in-docker
