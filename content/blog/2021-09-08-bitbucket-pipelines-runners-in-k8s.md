@@ -30,9 +30,7 @@ Let's see how can we create Runners in Workspace level.
 
 ### Create a new Workspace Runner in Bitbucket
 
-**Go to the Workspace Settings**
-
-Click on your **Profile Picture** and **Select the Workspace**.
+Go to the **Workspace Settings**: click on your **Profile Picture** and **Select the Workspace**.
 
 ![1_workspace_settings.png](/images/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/1_workspace_settings.png)
 
