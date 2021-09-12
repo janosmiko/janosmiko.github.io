@@ -58,6 +58,11 @@ a:hover {
     word-break: break-all;
     word-wrap: break-word;
 }
+@media screen and (max-width: 1024px) {
+    .content .hljs {
+        white-space: pre;
+    }
+}
 
 .content .hljs-built_in,
 .content .hljs-selector-tag,
