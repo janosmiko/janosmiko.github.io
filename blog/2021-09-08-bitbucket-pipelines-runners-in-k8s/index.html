@@ -37,14 +37,14 @@
 <meta name=application-name content="Janos Miko">
 <meta name=description content="Atlassian announced self-hosted Runners for Bitbucket Pipelines, let&rsquo;s try them out.">
 <script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Blog","item":"https://janosmiko.com/blog/"},{"@type":"ListItem","position":2,"name":"How to run Self Hosted Bitbucket Pipelines Runners in Kubernetes","item":"https://janosmiko.com/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/"}]}</script>
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://janosmiko.com/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/"},"headline":"How to run Self Hosted Bitbucket Pipelines Runners in Kubernetes | Janos Miko","image":"https://janosmiko.com/images/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/bitbucket-pipelines-runners-in-k8s.png","datePublished":"2021-09-08T00:00:00+00:00","dateModified":"2021-09-12T16:50:45+02:00","wordCount":783,"author":{"@type":"Person","name":["janos-miko"]},"publisher":{"@type":"Person","name":"Janos Miko"},"description":"\u003cp\u003eAtlassian \u003ca href=\u0022https:\/\/bitbucket.org\/blog\/pipelines-runners\u0022\u003eannounced\u003c\/a\u003e self-hosted Runners for Bitbucket Pipelines, let\u0026rsquo;s try them out.\u003c\/p\u003e"}</script><meta property="og:title" content="How to run Self Hosted Bitbucket Pipelines Runners in Kubernetes | Janos Miko">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://janosmiko.com/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/"},"headline":"How to run Self Hosted Bitbucket Pipelines Runners in Kubernetes | Janos Miko","image":"https://janosmiko.com/images/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/bitbucket-pipelines-runners-in-k8s.png","datePublished":"2021-09-08T00:00:00+00:00","dateModified":"2021-09-17T00:00:00+00:00","wordCount":1358,"author":{"@type":"Person","name":["janos-miko"]},"publisher":{"@type":"Person","name":"Janos Miko"},"description":"\u003cp\u003eAtlassian \u003ca href=\u0022https:\/\/bitbucket.org\/blog\/pipelines-runners\u0022\u003eannounced\u003c\/a\u003e self-hosted Runners for Bitbucket Pipelines, let\u0026rsquo;s try them out.\u003c\/p\u003e"}</script><meta property="og:title" content="How to run Self Hosted Bitbucket Pipelines Runners in Kubernetes | Janos Miko">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://janosmiko.com/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/">
 <meta property="og:description" content="Atlassian announced self-hosted Runners for Bitbucket Pipelines, let&rsquo;s try them out.">
 <meta property="og:locale" content="en">
 <meta property="og:site_name" content="Janos Miko">
 <meta property="article:published_time" content="2021-09-08T00:00:00+00:00">
-<meta property="article:modified_time" content="2021-09-12T16:50:45+02:00">
+<meta property="article:modified_time" content="2021-09-17T00:00:00+00:00">
 <meta property="article:section" content="blog">
 <meta property="article:tag" content="bitbucket">
 <meta property="article:tag" content="pipelines">
@@ -96,8 +96,12 @@
 <span>2021-09-08</span>
 </div>
 <div class="mr-6 my-2">
+<i class="fa fa-sync mr-1"></i>
+<span>2021-09-17</span>
+</div>
+<div class="mr-6 my-2">
 <i class="fas fa-clock mr-1"></i>
-<span>4 min read</span>
+<span>7 min read</span>
 </div>
 <div class="mr-6 my-2">
 <i class="fas fa-folder mr-1"></i>
@@ -268,11 +272,12 @@ kubectl delete namespace bitbucket-runner
           script:
             - echo &quot;This step will run on Atlassian's infrastructure as usual.&quot;;
 </code></pre>
-<h2 id=error-status-500-in-bitbucket-pipelines>Error: Status 500 in Bitbucket Pipelines</h2>
-<p>As we wanted to build Docker images (using Docker in Docker or <em>dind</em>) in our pipeline we faced the following issue:</p>
+<h2 id=possible-issues>Possible Issues</h2>
+<h3 id=status-500-in-bitbucket-pipelines>Status 500 in Bitbucket Pipelines</h3>
+<p>As I wanted to build Docker images (using Docker in Docker or <em>dind</em>) in our pipeline I faced the following issue:</p>
 <pre><code class=language-json>Status 500: {&quot;message&quot;:&quot;io.containerd.runc.v2: failed to adjust OOM score for shim: set shim OOM score: write /proc/PROC_ID/oom_score_adj: invalid argument\n: exit status 1: unknown&quot;}
 </code></pre>
-<h3 id=how-to-fix-it>How to fix it</h3>
+<h4 id=how-to-fix-it>How to fix it</h4>
 <p>First I tried to find root cause of this error message, but I couldn&rsquo;t find anything except some comments about this was already fixed in containerd&rsquo;s latest release, and so on&mldr; So I decided to check if the software versions are matching. Even while containerd was matching the required version I found that the Docker on the servers are a bit outdated (19.03) so I decided to update it.</p>
 <p>After the upgrade I still saw the previously mentioned error messages in the Bitbucket Pipelines.</p>
 <p>I verified Docker version running on the server:</p>
@@ -284,10 +289,69 @@ Docker version 20.10.7, build f0df350
   image: docker:20.10.5-dind  -&gt;  docker:20.10.7-dind
 </code></pre>
 <p>And magically the error went away and everything works as expected.</p>
+<hr>
+<h3 id=pipeline-is-hanging>Pipeline is hanging</h3>
+<p>The next issue I faced was a bit trickier to catch.</p>
+<p>First things first: how does Bitbucket Pipelines Runner run a single <code>docker build</code>?</p>
+<ul>
+<li>You start your self-hosted Runner <strong>alongside a docker-in-docker container</strong>.</li>
+<li>Spoiler Alert(!): <strong>The Runner is going to launch its own docker-in-docker container</strong> and use this to build containers.</li>
+</ul>
+<blockquote>
+<p>So docker-in-docker-in-docker-in Kubernetes. Whoa.</p>
+</blockquote>
+<p>About the issue. Sometimes the pipelines ran without issues. But when I tried to build docker images, it started to timeout randomly (after 120 minutes).
+At first glance, I checked the steps inside the docker build (like npm install / yarn install and so on). These steps seemed to <em>work well in an isolated environment</em>. They also ran well using Bitbucket Cloud&rsquo;s Pipeline.</p>
+<p><strong>So this problem only occurred running docker-in-docker in Kubernetes.</strong></p>
+<p>I decided to check the problem where it occurs. Let&rsquo;s put a <code>sleep 100000</code> to the Dockerfile entrypoint, and go down to the deepest layer of this docker-in-docker-in-docker nightmare.</p>
+<p>After a <code>kubectl exec</code> - to the docker-in-docker pod - and 2 <code>docker exec</code>s - 1st to the docker-in-docker of Bitbucket Pipelines, 2nd to the real build container -, I&rsquo;ve found a clue. Even if I ran the <code>apt-get update</code> command it hanged. But if I interrupted and rerun it, then it was successful. And this was reproducible by recreating the pipelines. After a short search, I found some blog posts about issues with Docker in Docker and network MTU.
+| Network MTU is the Maximum Transmission Unit. If in one network layer it&rsquo;s larger than on the other, the network packet is not going to fit the network.</p>
+<p>OK, check the MTUs on each layer from top to bottom.</p>
+<ul>
+<li>The Network MTU on the <strong>Ethernet level</strong> was set to <code>1500</code>.</li>
+<li>The Network MTU on the <strong>1st Docker network level</strong> was set to <code>1500</code>.</li>
+<li>The Network MTU on the <strong>Kubernetes pod network (calico) level</strong> was set to <code>1450</code>. 🤯</li>
+<li>The Network MTU on the <strong>2nd Docker network level</strong> was set to <code>1500</code>.</li>
+<li>(at this point I didn&rsquo;t know there&rsquo;s a 3rd Docker network level).</li>
+</ul>
+<p>Here we go, we have an issue here, the second-level Docker packets are not going to fit the K8s' network.</p>
+<h4 id=how-to-fix-it-1>How to fix it</h4>
+<p>Run your docker-in-docker with the following argument:
+<code>--mtu=1300</code>.</p>
+<p>Easy, change the Kubernetes Job to use this param:</p>
+<p><code>job.yaml:</code></p>
+<pre><code class=language-yaml>- name: docker-in-docker
+  image: docker:20.10.7-dind
+  args:
+    - &quot;--mtu=1300&quot;
+</code></pre>
+<p>Restart the pods, wait for the wonder. <strong>And it still failed.</strong></p>
+<p>Let&rsquo;s check it again.</p>
+<p><em>(Somewhere around this time I discovered the fact Bitbucket Pipelines Runner runs its own docker daemon.)</em></p>
+<ul>
+<li>The Network MTU on the <strong>Ethernet level</strong> was set to <code>1500</code>.</li>
+<li>The Network MTU on the <strong>1st Docker network level</strong> was set to <code>1500</code>.</li>
+<li>The Network MTU on the <strong>Kubernetes pod network (calico) level</strong> was set to <code>1450</code>.</li>
+<li>The Network MTU on the <strong>2nd Docker network level</strong> was set to <code>1300</code>.</li>
+<li>The Network MTU on the <strong>3rd Docker network level</strong> was set to <code>1500</code>. 🤯</li>
+</ul>
+<p>The third layer of Docker is still 1500? How? And why?</p>
+<p>Because Bitbucket Pipelines Runner is going to launch its very own, dedicated dind and that&rsquo;s not going to inherit the MTU.</p>
+<h4 id=how-to-fix-it-part-2>How to fix it (part 2)</h4>
+<p>Let&rsquo;s build our own <a href=https://github.com/rewardenv/docker>docker image</a> and pass it to the Pipeline.</p>
+<pre><code class=language-yaml>definitions:
+  services:
+    docker:
+      image: rewardenv/docker:20.10.7-dind
+      variables:
+        DOCKER_OPTS: &quot;--mtu=1300&quot;
+</code></pre>
+<p>And voilà! The build process runs without any issues.</p>
 <p>Further reading:</p>
 <ul>
-<li><a href=https://bitbucket.org/blog/pipelines-runners>https://bitbucket.org/blog/pipelines-runners</a></li>
-<li><a href=https://community.atlassian.com/t5/Bitbucket-Pipelines-articles/Bitbucket-Pipelines-Runners-is-now-in-open-beta/ba-p/1691022>https://community.atlassian.com/t5/Bitbucket-Pipelines-articles/Bitbucket-Pipelines-Runners-is-now-in-open-beta/ba-p/1691022</a></li>
+<li><a href=https://bitbucket.org/blog/pipelines-runners>It’s official! Announcing Runners in Bitbucket Pipelines</a></li>
+<li><a href=https://community.atlassian.com/t5/Bitbucket-Pipelines-articles/Bitbucket-Pipelines-Runners-is-now-in-open-beta/ba-p/1691022>Bitbucket Pipelines Runners is now in open beta</a></li>
+<li><a href=https://support.atlassian.com/bitbucket-cloud/docs/configure-your-runner-in-bitbucket-pipelines-yml>Configure your runner in bitbucket-pipelines.yml</a></li>
 </ul>
 </div>
 <div class=my-4>
@@ -345,9 +409,19 @@ Docker version 20.10.7, build f0df350
 </ul>
 </li>
 <li><a href=#how-to-use-this-runner-in-a-bitbucket-pipeline>How to use this runner in a Bitbucket Pipeline?</a></li>
-<li><a href=#error-status-500-in-bitbucket-pipelines>Error: Status 500 in Bitbucket Pipelines</a>
+<li><a href=#possible-issues>Possible Issues</a>
+<ul>
+<li><a href=#status-500-in-bitbucket-pipelines>Status 500 in Bitbucket Pipelines</a>
 <ul>
 <li><a href=#how-to-fix-it>How to fix it</a></li>
+</ul>
+</li>
+<li><a href=#pipeline-is-hanging>Pipeline is hanging</a>
+<ul>
+<li><a href=#how-to-fix-it-1>How to fix it</a></li>
+<li><a href=#how-to-fix-it-part-2>How to fix it (part 2)</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
