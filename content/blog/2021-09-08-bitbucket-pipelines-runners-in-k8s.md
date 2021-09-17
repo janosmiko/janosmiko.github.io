@@ -198,6 +198,8 @@ kubectl delete namespace bitbucket-runner
 
 It's pretty straightforward, add the runner's labels to the pipeline step.
 
+`bitbucket-pipelines.yml:`
+
 ```yaml
 pipelines:
   custom:
@@ -240,6 +242,8 @@ Docker version 20.10.7, build f0df350
 ```
 
 I replaced docker in docker (_dind_) container image version to use the exact same version as the installed one on our k8s cluster.
+
+`job.yaml:`
 
 ```yaml
 - name: docker-in-docker
@@ -314,6 +318,8 @@ Because Bitbucket Pipelines Runner is going to launch its very own, dedicated di
 #### How to fix it (part 2)
 
 Let's build our own [docker image](https://github.com/rewardenv/docker) and pass it to the Pipeline.
+
+`bitbucket-pipelines.yml:`
 
 ```yaml
 definitions:
