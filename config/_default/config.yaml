@@ -10,7 +10,7 @@ paginate: 3
 copyright: >
   &copy; Janos Miko
 enableEmoji: true
-enableGitInfo: true
+enableGitInfo: false
 summaryLength: 75
 
 defaultContentLanguage: en
