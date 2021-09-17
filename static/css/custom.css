@@ -31,6 +31,7 @@ a:hover {
     height: auto;
     border: .5rem solid rgba(242,242,247,1.00);
     border-radius: .25rem;
+    width: 1024px;
 }
 
 .dark .content img {
