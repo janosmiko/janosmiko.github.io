@@ -8,8 +8,8 @@ tags:
   - pipelines
   - memory
 categories: tech
-date: '2021-09-18'
-lastmod: '2021-09-18'
+date: '2021-09-17'
+lastmod: '2021-09-17'
 sitemap_exclude: false
 featuredImage: /images/blog/2021-09-18-demystifying-bitbucket-pipelines-memory-limits/demystifying-bitbucket-pipelines-memory-limits.jpeg
 featuredImage_webp: /images/blog/2021-09-18-demystifying-bitbucket-pipelines-memory-limits/demystifying-bitbucket-pipelines-memory-limits.webp
