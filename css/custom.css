@@ -103,6 +103,7 @@ pre[class*="language-"] {
 @media screen and (max-width: 1024px) {
     .content pre code {
         white-space: pre;
+        word-wrap: normal;
     }
 }
 
