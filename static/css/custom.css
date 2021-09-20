@@ -88,6 +88,10 @@ pre[class*="language-"] {
 .content token {
 }
 
+.content pre {
+    padding: 0.5rem;
+}
+
 .content pre code {
     display: block;
     overflow-x: auto;
