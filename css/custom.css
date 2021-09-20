@@ -99,6 +99,7 @@ pre[class*="language-"] {
     word-break: break-all;
     word-wrap: break-word;
     color: white;
+    font-size: small;
 }
 @media screen and (max-width: 1024px) {
     .content pre code {
