@@ -115,13 +115,13 @@ Extended Variables:     %{X}x
 
 #### Client side logs
 
-```bash
+```json
 varnishncsa -F '{"Timestamp": "%t", "Varnish-Side": "%{Varnish:side}x", "Age": %{age}o, "Handling": "%{Varnish:handling}x", "Request": "%r", "Status": "%s", "Response-Reason": "%{VSL:RespReason}x", "Fetch-Error": "%{VSL:FetchError}x", "X-Forwarded-For": "%{x-forwarded-for}i", "Remote-User": "%u", "Bytes": "%b", "Time-To-Serve": %D, "User-Agent": "%{User-agent}i", "Referer": "%{Referer}i", "X-Varnish": "%{x-varnish}o", "X-Magento-Tags": "%{x-magento-tags}o"}}'
 ```
 
 #### Backend side logs
 
-```bash
+```json
 varnishncsa -b -F '{"Timestamp": "%t", "Varnish-Side": "%{Varnish:side}x", "Handling": "%{Varnish:handling}x", "Request": "%r", "Status": "%s", "Response-Reason": "%{VSL:RespReason}x", "Fetch-Error": "%{VSL:FetchError}x", "Bytes": "%b", "Time-To-Serve": %D}'
 ```
 
@@ -147,6 +147,8 @@ These tools can become handy when you want to get statistics about the running V
 
 ```bash
 BogoHeader     Too many headers
+```
+```bash
 FetchError     http read error: overflow
 ```
 
@@ -163,10 +165,12 @@ DAEMON_OPTS="... -p http_resp_hdr_len=65536 -p http_resp_size=98304"
 
 ```bash
 FetchError     b overflow
+```
+```bash
 FetchError     b Workspace overflow
 ```
 
-If you face these errors and you've already raised the `http_resp_hdr_len` and `http_resp_size` values it can be a good idea to also increase the Varnish workspace for the Backend transactions because the memory for them will be allocated from `workspace_backend` memory segment.
+If you face one of these errors and you've already raised the `http_resp_hdr_len` and `http_resp_size` values it can be a good idea to also increase the Varnish workspace for the Backend transactions because the memory for them will be allocated from `workspace_backend` memory segment.
 
 ```bash
 DAEMON_OPTS="... -p workspace_backend=131072"
