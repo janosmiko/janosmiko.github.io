@@ -37,13 +37,13 @@
 <meta name=theme-color content="#1e2028">
 <meta name=description content="The Homepage of Janos Miko. You'll find blogposts about DevOps and Personal stuff here.">
 <script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Categories","item":"https://janosmiko.com/categories/"},{"@type":"ListItem","position":2,"name":"tech","item":"https://janosmiko.com/categories/tech/"}]}</script>
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"ItemList","itemListElement":[{"@type":"ListItem","position":1,"name":"Demystifying Bitbucket Pipelines Memory Limits","description":"\u003cp\u003eBitbucket Pipelines memory management can be a headache in complex cases.\u003c/p\u003e\n\u003cp\u003eAnd its documentation is confusing.\u003c/p\u003e\n\u003cp\u003eSo let's figure out through examples how it works.\u003c/p\u003e","image":"https://janosmiko.com/images/blog/2021-09-18-demystifying-bitbucket-pipelines-memory-limits/demystifying-bitbucket-pipelines-memory-limits.jpeg","url":"https://janosmiko.com/blog/2021-09-18-demystifying-bitbucket-pipelines-memory-limits/"},{"@type":"ListItem","position":2,"name":"How to run Self Hosted Bitbucket Pipelines Runners in Kubernetes","description":"\u003cp\u003eAtlassian \u003ca href=\"https://bitbucket.org/blog/pipelines-runners\"\u003eannounced\u003c/a\u003e self-hosted Runners for Bitbucket Pipelines, let\u0026rsquo;s try them out.\u003c/p\u003e","image":"https://janosmiko.com/images/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/bitbucket-pipelines-runners-in-k8s.png","url":"https://janosmiko.com/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/"},{"@type":"ListItem","position":3,"name":"How to test if Magento RabbitMQ Consumers are working properly","description":"\u003cp\u003eHow can you verify if Magento can reach and utilize the benefits of RabbitMQ?\u003c/p\u003e\n\u003cp\u003eThis tutorial will help you to modify attributes of a product using Magento\u0026rsquo;s async API and bulk API.\u003c/p\u003e","image":"https://janosmiko.com/images/blog/2021-07-04-magento-rabbitmq/magento-rabbitmq.png","url":"https://janosmiko.com/blog/2021-07-04-magento-rabbitmq/"}]}</script><meta property="og:title" content="tech | Janos Miko">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"ItemList","itemListElement":[{"@type":"ListItem","position":1,"name":"How to debug Varnish? - A detailed guide with some practical examples","description":"\u003cp\u003e\u003ccode\u003e503 Backend Fetch Failed\u003c/code\u003e - if you ever used Varnish, mostly you will be familiar with this error message.\u003c/p\u003e\n\u003cp\u003eIt can be a headache to determine what causes these issues.\u003c/p\u003e\n\u003cp\u003eIn the following guide, I will give you some tools which will help to determine and eliminate these error messages.\u003c/p\u003e","image":"https://janosmiko.com/images/blog/2021-10-01-how-to-debug-varnish/2021-10-01-how-to-debug-varnish.png","url":"https://janosmiko.com/blog/2021-10-01-how-to-debug-varnish/"},{"@type":"ListItem","position":2,"name":"Demystifying Bitbucket Pipelines Memory Limits","description":"\u003cp\u003eBitbucket Pipelines memory management can be a headache in complex cases.\u003c/p\u003e\n\u003cp\u003eAnd its documentation is confusing.\u003c/p\u003e\n\u003cp\u003eSo let's figure out through examples how it works.\u003c/p\u003e","image":"https://janosmiko.com/images/blog/2021-09-18-demystifying-bitbucket-pipelines-memory-limits/demystifying-bitbucket-pipelines-memory-limits.jpeg","url":"https://janosmiko.com/blog/2021-09-18-demystifying-bitbucket-pipelines-memory-limits/"},{"@type":"ListItem","position":3,"name":"How to run Self Hosted Bitbucket Pipelines Runners in Kubernetes","description":"\u003cp\u003eAtlassian \u003ca href=\"https://bitbucket.org/blog/pipelines-runners\"\u003eannounced\u003c/a\u003e self-hosted Runners for Bitbucket Pipelines, let\u0026rsquo;s try them out.\u003c/p\u003e","image":"https://janosmiko.com/images/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/bitbucket-pipelines-runners-in-k8s.png","url":"https://janosmiko.com/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/"}]}</script><meta property="og:title" content="tech | Janos Miko">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://janosmiko.com/categories/tech/">
 <meta property="og:description" content="The Homepage of Janos Miko. You'll find blogposts about DevOps and Personal stuff here.">
 <meta property="og:locale" content="en">
 <meta property="og:site_name" content="Janos Miko">
-<meta property="og:updated_time" content="2021-09-17T00:00:00+00:00">
+<meta property="og:updated_time" content="2021-10-01T00:00:00+00:00">
 <meta property="article:section" content="categories">
 <link rel=alternate type=application/rss+xml href=https://janosmiko.com/categories/tech/index.xml title="Janos Miko">
 <body class="flex flex-col min-h-screen">
@@ -88,6 +88,41 @@
 </article>
 <div class="bg-secondary-bg rounded px-6">
 <div class="overflow-hidden divide-y">
+<div class=py-6>
+<div class="flex flex-col-reverse lg:flex-row justify-between">
+<div class="w-full lg:w-2/3">
+<div class=mb-4>
+<a href=https://janosmiko.com/blog/2021-10-01-how-to-debug-varnish/ class="font-bold text-xl hover:text-eureka">How to debug Varnish? - A detailed guide with some practical examples</a>
+</div>
+<div class=content>
+503 Backend Fetch Failed - if you ever used Varnish, mostly you will be familiar with this error message.
+It can be a headache to determine what causes these issues.
+In the following guide, I will give you some tools which will help to determine and eliminate these error messages.
+</div>
+<div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text">
+<div class="mr-6 my-2">
+<i class="fas fa-calendar mr-1"></i>
+<span>2021-10-01</span>
+</div>
+<div class="mr-6 my-2">
+<i class="fa fa-sync mr-1"></i>
+<span>2021-10-01</span>
+</div>
+<div class="mr-6 my-2">
+<i class="fas fa-clock mr-1"></i>
+<span>5 min read</span>
+</div>
+<div class="mr-6 my-2">
+<i class="fas fa-folder mr-1"></i>
+<a href=https://janosmiko.com/categories/tech/ class=hover:text-eureka>tech</a>
+</div>
+</div>
+</div>
+<div class="w-full lg:w-1/3 mb-4 lg:mb-0 lg:ml-8">
+<img src=https://janosmiko.com/images/blog/2021-10-01-how-to-debug-varnish/2021-10-01-how-to-debug-varnish.png class=w-full alt="Featured Image">
+</div>
+</div>
+</div>
 <div class=py-6>
 <div class="flex flex-col-reverse lg:flex-row justify-between">
 <div class="w-full lg:w-2/3">
@@ -153,40 +188,6 @@ Atlassian announced self-hosted Runners for Bitbucket Pipelines, let&amp;rsquo;s
 </div>
 <div class="w-full lg:w-1/3 mb-4 lg:mb-0 lg:ml-8">
 <img src=https://janosmiko.com/images/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/bitbucket-pipelines-runners-in-k8s.png class=w-full alt="Featured Image">
-</div>
-</div>
-</div>
-<div class=py-6>
-<div class="flex flex-col-reverse lg:flex-row justify-between">
-<div class="w-full lg:w-2/3">
-<div class=mb-4>
-<a href=https://janosmiko.com/blog/2021-07-04-magento-rabbitmq/ class="font-bold text-xl hover:text-eureka">How to test if Magento RabbitMQ Consumers are working properly</a>
-</div>
-<div class=content>
-How can you verify if Magento can reach and utilize the benefits of RabbitMQ?
-This tutorial will help you to modify attributes of a product using Magento&amp;rsquo;s async API and bulk API.
-</div>
-<div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text">
-<div class="mr-6 my-2">
-<i class="fas fa-calendar mr-1"></i>
-<span>2021-07-04</span>
-</div>
-<div class="mr-6 my-2">
-<i class="fa fa-sync mr-1"></i>
-<span>2021-07-04</span>
-</div>
-<div class="mr-6 my-2">
-<i class="fas fa-clock mr-1"></i>
-<span>3 min read</span>
-</div>
-<div class="mr-6 my-2">
-<i class="fas fa-folder mr-1"></i>
-<a href=https://janosmiko.com/categories/tech/ class=hover:text-eureka>tech</a>
-</div>
-</div>
-</div>
-<div class="w-full lg:w-1/3 mb-4 lg:mb-0 lg:ml-8">
-<img src=https://janosmiko.com/images/blog/2021-07-04-magento-rabbitmq/magento-rabbitmq.png class=w-full alt="Featured Image">
 </div>
 </div>
 </div>

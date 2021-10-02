@@ -1,0 +1,337 @@
+<!doctype html><html lang=en><meta charset=utf-8>
+<meta name=viewport content="width=device-width">
+<title>How to debug Varnish? - A detailed guide with some practical examples | Janos Miko</title>
+<meta name=generator content="Hugo Eureka 0.8.0">
+<link rel=stylesheet href=https://janosmiko.com/css/eureka.min.css>
+<script defer src=https://janosmiko.com/js/eureka.min.js></script>
+<link rel=preconnect href=https://fonts.gstatic.com crossorigin>
+<link rel=preload href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" as=style onload="this.onload=null,this.rel='stylesheet'">
+<link rel=stylesheet href=/css/prism-okaidia.css media=print onload="this.media='all',this.onload=null" crossorigin>
+<script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.24.1/prism.min.js crossorigin></script>
+<script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.24.1/plugins/autoloader/prism-autoloader.min.js crossorigin></script>
+<script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.24.1/components/prism-markup-templating.min.js crossorigin></script>
+<script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.24.1/components/prism-go.min.js crossorigin></script>
+<script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.24.1/components/prism-bash.min.js crossorigin></script>
+<script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.24.1/components/prism-php.min.js crossorigin></script>
+<script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.24.1/components/prism-json.min.js crossorigin></script>
+<script defer src=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/js/all.min.js integrity="sha256-uNYoXefWRqv+PsIF/OflNmwtKM4lStn9yrz2gVl6ymo=" crossorigin></script>
+<link rel=stylesheet href=/css/custom.css>
+<link rel=apple-touch-icon sizes=57x57 href=/apple-icon-57x57.png>
+<link rel=apple-touch-icon sizes=60x60 href=/apple-icon-60x60.png>
+<link rel=apple-touch-icon sizes=72x72 href=/apple-icon-72x72.png>
+<link rel=apple-touch-icon sizes=76x76 href=/apple-icon-76x76.png>
+<link rel=apple-touch-icon sizes=114x114 href=/apple-icon-114x114.png>
+<link rel=apple-touch-icon sizes=120x120 href=/apple-icon-120x120.png>
+<link rel=apple-touch-icon sizes=144x144 href=/apple-icon-144x144.png>
+<link rel=apple-touch-icon sizes=152x152 href=/apple-icon-152x152.png>
+<link rel=apple-touch-icon sizes=180x180 href=/apple-icon-180x180.png>
+<link rel=icon type=image/png sizes=192x192 href=/android-icon-192x192.png>
+<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
+<link rel=icon type=image/png sizes=96x96 href=/favicon-96x96.png>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
+<link rel=manifest href=/manifest.json>
+<meta name=msapplication-TileColor content="#ffffff">
+<meta name=msapplication-TileImage content="/ms-icon-144x144.png">
+<meta name=apple-mobile-web-app-title content="Janos Miko">
+<meta name=application-name content="Janos Miko">
+<meta name=theme-color content="#1e2028">
+<meta name=description content="503 Backend Fetch Failed - if you ever used Varnish, mostly you will be familiar with this error message.
+It can be a headache to determine what causes these issues.
+In the following guide, I will give you some tools which will help to determine and eliminate these error messages.">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Blog","item":"https://janosmiko.com/blog/"},{"@type":"ListItem","position":2,"name":"How to debug Varnish? - A detailed guide with some practical examples","item":"https://janosmiko.com/blog/2021-10-01-how-to-debug-varnish/"}]}</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://janosmiko.com/blog/2021-10-01-how-to-debug-varnish/"},"headline":"How to debug Varnish? - A detailed guide with some practical examples | Janos Miko","image":"https://janosmiko.com/images/blog/2021-10-01-how-to-debug-varnish/2021-10-01-how-to-debug-varnish.png","datePublished":"2021-10-01T00:00:00+00:00","dateModified":"2021-10-01T00:00:00+00:00","wordCount":905,"author":{"@type":"Person","name":["janos-miko"]},"publisher":{"@type":"Person","name":"Janos Miko"},"description":"\u003cp\u003e\u003ccode\u003e503 Backend Fetch Failed\u003c\/code\u003e - if you ever used Varnish, mostly you will be familiar with this error message.\u003c\/p\u003e\n\u003cp\u003eIt can be a headache to determine what causes these issues.\u003c\/p\u003e\n\u003cp\u003eIn the following guide, I will give you some tools which will help to determine and eliminate these error messages.\u003c\/p\u003e"}</script><meta property="og:title" content="How to debug Varnish? - A detailed guide with some practical examples | Janos Miko">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://janosmiko.com/blog/2021-10-01-how-to-debug-varnish/">
+<meta property="og:description" content="503 Backend Fetch Failed - if you ever used Varnish, mostly you will be familiar with this error message.
+It can be a headache to determine what causes these issues.
+In the following guide, I will give you some tools which will help to determine and eliminate these error messages.">
+<meta property="og:locale" content="en">
+<meta property="og:site_name" content="Janos Miko">
+<meta property="article:published_time" content="2021-10-01T00:00:00+00:00">
+<meta property="article:modified_time" content="2021-10-01T00:00:00+00:00">
+<meta property="article:section" content="blog">
+<meta property="article:tag" content="varnish">
+<meta property="article:tag" content="magento">
+<meta property="article:tag" content="kubernetes">
+<meta property="article:tag" content="varnishncsa">
+<meta property="article:tag" content="varnishlog">
+<meta property="og:see_also" content="https://janosmiko.com/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/">
+<meta property="og:see_also" content="https://janosmiko.com/blog/2021-07-04-magento-rabbitmq/">
+<meta property="og:see_also" content="https://janosmiko.com/blog/2021-03-06-reward/">
+<body class="flex flex-col min-h-screen">
+<header class="fixed flex items-center w-full min-h-16 pl-scrollbar z-50 bg-secondary-bg shadow-sm">
+<div class="w-full max-w-screen-xl mx-auto"><script>let storageColorScheme=localStorage.getItem("lightDarkMode");((storageColorScheme=='Auto'||storageColorScheme==null)&&window.matchMedia("(prefers-color-scheme: dark)").matches||storageColorScheme=="Dark")&&document.getElementsByTagName('html')[0].classList.add('dark')</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+<a href=/ class="mr-6 text-primary-text text-xl font-bold">Janos Miko</a>
+<button id=navbar-btn class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+<i class="fas fa-bars"></i>
+</button>
+<div id=target class="hidden block md:flex md:flex-grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+<div class="md:flex md:h-16 text-sm md:flex-grow pb-4 md:pb-0 border-b md:border-b-0">
+<a href=/#about class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 border-transparent mr-4">About</a>
+<a href=/blog class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 selected-menu-item mr-4">Blog</a>
+</div>
+<div class=flex>
+<div class="relative pt-4 md:pt-0">
+<div class="cursor-pointer hover:text-eureka" id=lightDarkMode>
+<i class="fas fa-adjust"></i>
+</div>
+<div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id=is-open>
+</div>
+<div class="absolute flex flex-col left-0 md:left-auto right-auto md:right-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40" id=lightDarkOptions>
+<span class="px-4 py-1 hover:text-eureka" name=Light>Light</span>
+<span class="px-4 py-1 hover:text-eureka" name=Dark>Dark</span>
+<span class="px-4 py-1 hover:text-eureka" name=Auto>Auto</span>
+</div>
+</div>
+</div>
+</div>
+<div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id=is-open-mobile>
+</div>
+</nav>
+<script>let element=document.getElementById('lightDarkMode');storageColorScheme==null||storageColorScheme=='Auto'?document.addEventListener('DOMContentLoaded',()=>{window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change',switchDarkMode)}):storageColorScheme=="Light"?(element.firstElementChild.classList.remove('fa-adjust'),element.firstElementChild.setAttribute("data-icon",'sun'),element.firstElementChild.classList.add('fa-sun')):storageColorScheme=="Dark"&&(element.firstElementChild.classList.remove('fa-adjust'),element.firstElementChild.setAttribute("data-icon",'moon'),element.firstElementChild.classList.add('fa-moon')),document.addEventListener('DOMContentLoaded',()=>{getcolorscheme(),switchBurger()})</script>
+</div>
+</header>
+<main class="flex-grow pt-16">
+<div class=pl-scrollbar>
+<div class="w-full max-w-screen-xl lg:px-4 xl:px-8 mx-auto">
+<div class="grid grid-cols-2 lg:grid-cols-8 gap-4 lg:pt-12">
+<div class="col-span-2 lg:col-span-6 bg-secondary-bg rounded px-6 py-8">
+<h1 class="font-bold text-3xl text-primary-text">How to debug Varnish? - A detailed guide with some practical examples</h1>
+<div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text">
+<div class="mr-6 my-2">
+<i class="fas fa-calendar mr-1"></i>
+<span>2021-10-01</span>
+</div>
+<div class="mr-6 my-2">
+<i class="fa fa-sync mr-1"></i>
+<span>2021-10-01</span>
+</div>
+<div class="mr-6 my-2">
+<i class="fas fa-clock mr-1"></i>
+<span>5 min read</span>
+</div>
+<div class="mr-6 my-2">
+<i class="fas fa-folder mr-1"></i>
+<a href=https://janosmiko.com/categories/tech/ class=hover:text-eureka>tech</a>
+</div>
+</div>
+<div class=my-4>
+<img src=https://janosmiko.com/images/blog/2021-10-01-how-to-debug-varnish/2021-10-01-how-to-debug-varnish.png class=w-full alt="Featured Image">
+</div>
+<div class=content>
+<p><code>503 Backend Fetch Failed</code> - if you ever used Varnish, mostly you will be familiar with this error message.</p>
+<p>It can be a headache to determine what causes these issues.</p>
+<p>In the following guide, I will give you some tools which will help to determine and eliminate these error messages.</p>
+<h2 id=how-do-varnish-transactions-work>How do Varnish transactions work?</h2>
+<p>It&rsquo;s important to understand if a request is going through Varnish it will show two different transaction types in the logs.</p>
+<p><img src=/images/blog/2021-10-01-how-to-debug-varnish/1-varnish-sides.png alt=1-varnish-sides.png></p>
+<p>Varnish communicates in two directions. It communicates with the client (client mode) and it also communicates with the backend (backend mode). Varnish&rsquo;s logging tools provide separate functionalities for these separate transaction flows. Sometimes if you can&rsquo;t find the issue on one side, you will find the answer on the other side.</p>
+<h2 id=the-tools-we-have>The tools we have</h2>
+<p>First of all, Varnish provides really good tools for debugging but firstly it can be hard to understand how do they work. So let&rsquo;s take a look at them.</p>
+<h3 id=varnishlog>Varnishlog</h3>
+<p>The main and most advanced tool to see what&rsquo;s happening inside Varnish. You can simply invoke the <code>varnishlog</code> command in most of the cases and you will already see useful information, but it also provides some great command-line flags if you want to get more details.</p>
+<h4 id=group-requests>Group requests</h4>
+<p>You can group the logs by the <em>session</em>, <em>requests</em>, <em>vxid</em> or you can see the <em>raw</em> results.</p>
+<pre><code class=language-bash>varnishlog -g raw
+</code></pre>
+<h4 id=display-client-or-backend-transactions>Display Client or Backend transactions</h4>
+<p>It can be useful to show only the Backend transactions if you want to see why Varnish throws a <code>503 - Backend fetch failed</code> error.</p>
+<pre><code class=language-bash>varnishlog -b
+</code></pre>
+<h4 id=queryfilter-the-results>Query/Filter the results</h4>
+<p>You can also limit the shown logs. For example, if you implemented a health check and Kubernetes will ping varnish every 3 sec, it will just spam your screen.</p>
+<pre><code class=language-bash>varnishlog -q 'ReqURL ne &quot;/healthcheck&quot;'
+</code></pre>
+<p>Another use-case can be to show only the requests which end up with 50x Error messages.</p>
+<pre><code class=language-bash>varnishlog -q 'RespStatus &gt;= 500 or BerespStatus &gt;= 500&quot;'
+</code></pre>
+<h4 id=display-only-specific-fields>Display only specific fields</h4>
+<p>If you find that varnishlog is too spammy, you can select specific tags to be displayed.</p>
+<pre><code class=language-bash>varnishlog -i 'FetchError,BerespStatus,BerespReason'
+...
+*   &lt;&lt; BeReq    &gt;&gt; 45940878
+-   BerespStatus   200
+-   BerespReason   OK
+...
+</code></pre>
+<h3 id=varnishncsa>Varnishncsa</h3>
+<p>The <code>varnishncsa</code> tool is something similar to <code>varnishlog</code>, but using it you can specify the output format. Eg.: you can generate JSON output which can be extremely useful in various use-cases (eg.: Google Cloud Platform Logs Explorer).</p>
+<p>Most of the flags which are available for <code>varnishlog</code> can be also used for <code>varnishncsa</code>.</p>
+<p>You can also display all the HTTP Request/Response Headers. This can also be really helpful in some cases.</p>
+<p><a href=https://varnish-cache.org/docs/trunk/reference/varnishncsa.html#format>https://varnish-cache.org/docs/trunk/reference/varnishncsa.html#format</a></p>
+<h4 id=some-of-the-most-useful-formatting-options>Some of the most useful formatting options</h4>
+<pre><code class=language-bash>Request Headers:        %{X}i
+  Eg: X-Forwarded For:  %{x-forwarded-for}i
+
+Response Header:        %{X}o
+  Eg: X-Magento-Tags:   %{x-magento-tags}o
+
+Extended Variables:     %{X}x
+  Examples:
+    Varnish Vars:       %{Varnish:handling}x
+                        %{Varnish:hitmiss}x
+    VCL Logs:           %{VCL_Log:key}x
+    VSL Tags:           %{VSL:RespReason}x
+                        %{VSL:FetchError}x
+</code></pre>
+<h4 id=client-side-logs>Client side logs</h4>
+<pre><code class=language-json>varnishncsa -F '{&quot;Timestamp&quot;: &quot;%t&quot;, &quot;Varnish-Side&quot;: &quot;%{Varnish:side}x&quot;, &quot;Age&quot;: %{age}o, &quot;Handling&quot;: &quot;%{Varnish:handling}x&quot;, &quot;Request&quot;: &quot;%r&quot;, &quot;Status&quot;: &quot;%s&quot;, &quot;Response-Reason&quot;: &quot;%{VSL:RespReason}x&quot;, &quot;Fetch-Error&quot;: &quot;%{VSL:FetchError}x&quot;, &quot;X-Forwarded-For&quot;: &quot;%{x-forwarded-for}i&quot;, &quot;Remote-User&quot;: &quot;%u&quot;, &quot;Bytes&quot;: &quot;%b&quot;, &quot;Time-To-Serve&quot;: %D, &quot;User-Agent&quot;: &quot;%{User-agent}i&quot;, &quot;Referer&quot;: &quot;%{Referer}i&quot;, &quot;X-Varnish&quot;: &quot;%{x-varnish}o&quot;, &quot;X-Magento-Tags&quot;: &quot;%{x-magento-tags}o&quot;}}'
+</code></pre>
+<h4 id=backend-side-logs>Backend side logs</h4>
+<pre><code class=language-json>varnishncsa -b -F '{&quot;Timestamp&quot;: &quot;%t&quot;, &quot;Varnish-Side&quot;: &quot;%{Varnish:side}x&quot;, &quot;Handling&quot;: &quot;%{Varnish:handling}x&quot;, &quot;Request&quot;: &quot;%r&quot;, &quot;Status&quot;: &quot;%s&quot;, &quot;Response-Reason&quot;: &quot;%{VSL:RespReason}x&quot;, &quot;Fetch-Error&quot;: &quot;%{VSL:FetchError}x&quot;, &quot;Bytes&quot;: &quot;%b&quot;, &quot;Time-To-Serve&quot;: %D}'
+</code></pre>
+<p>Using these examples we can get the following JSON output which can be examined in GCP Logging.</p>
+<p><img src=/images/blog/2021-10-01-how-to-debug-varnish/2-gcp-log-entry.png alt=2-gcp-log-entry.png></p>
+<p>If we pin the <code>Status</code>, the <code>Varnish-Side</code>, the <code>Time-To-Serve</code> (in microseconds), and the <code>Handling</code> fields and we will get a really useful Dashboard.</p>
+<p><img src=/images/blog/2021-10-01-how-to-debug-varnish/3-gcp-logs-dashboard.png alt=3-gcp-logs-dashboard.png></p>
+<h3 id=varnishhist-varnishstat-varnishtop>Varnishhist, varnishstat, varnishtop</h3>
+<p>These tools can become handy when you want to get statistics about the running Varnish instance. They read the Varnish shared memory logs and generate some output for you.</p>
+<ul>
+<li><code>varnishhist</code>: shows you a histogram of the last requests.</li>
+<li><code>varnishtop</code>: presents a continuously updated list of the commonly occurring log entries.</li>
+<li><code>varnishstat</code>: displays statistics, like hit/miss rate, evictions, etc..</li>
+</ul>
+<h2 id=frequent-errors>Frequent Errors</h2>
+<h3 id=header-size-exceeded>Header Size exceeded</h3>
+<pre><code class=language-bash>BogoHeader     Too many headers
+</code></pre>
+<pre><code class=language-bash>FetchError     http read error: overflow
+</code></pre>
+<p>By default Varnish will allocate 8KB memory for HTTP Headers (<code>http_resp_hdr_len</code>). This means any Backend Response which has larger headers than this will cause a <code>503</code> error. Sometimes it&rsquo;s just not enough. If you want to increase this limit you should also increase the HTTP Response Size (<code>http_resp_size</code>) which is 32KB by default. To raise these limits add these two options to the DAEMON_OPTS in the varnish.params file.</p>
+<ul>
+<li>CentOS 7: <code>/etc/varnish/varnish.params</code></li>
+<li>Ubuntu/Debian: <code>/etc/default/varnish</code></li>
+</ul>
+<pre><code class=language-bash>DAEMON_OPTS=&quot;... -p http_resp_hdr_len=65536 -p http_resp_size=98304&quot;
+</code></pre>
+<h3 id=workspace-size-exceeded>Workspace size exceeded</h3>
+<pre><code class=language-bash>FetchError     b overflow
+</code></pre>
+<pre><code class=language-bash>FetchError     b Workspace overflow
+</code></pre>
+<p>If you face one of these errors and you&rsquo;ve already raised the <code>http_resp_hdr_len</code> and <code>http_resp_size</code> values it can be a good idea to also increase the Varnish workspace for the Backend transactions because the memory for them will be allocated from <code>workspace_backend</code> memory segment.</p>
+<pre><code class=language-bash>DAEMON_OPTS=&quot;... -p workspace_backend=131072&quot;
+</code></pre>
+<p>Note 1: For efficient virtual memory allocation it is recommended to set values that can be divided by <code>4096</code>.</p>
+<p>Note 2: the same options can be configured for incoming requests using <code>http_req_hdr_len</code>, <code>http_req_size</code>, and <code>workspace_client</code> params.</p>
+<h3 id=the-backend-closes-the-connection-unexpectedly>The backend closes the connection unexpectedly</h3>
+<pre><code class=language-bash>FetchError     HTC status -1
+</code></pre>
+<p>As we can find in the <a href=https://github.com/varnishcache/varnish-cache/blob/508ae8bc149d3ad338d227a04ddc030e2045105b/include/tbl/htc.h#L41>source code of Varnish</a>, the <code>HTC status -1</code> error code means an unexpected EOF from the backend. To find the cause of this error you will have to dive deeper. In my case, I used <code>tcpdump</code> and <code>Wireshark</code>. In the HTTP backend response, I was able to catch the custom Nginx response code. It was <code>HTTP 444 - No Response</code> and Varnish interpreted it as a bad response.</p>
+<p>Further reading:</p>
+<ul>
+<li><a href=https://varnish-cache.org/docs/trunk/reference/varnishd.html>https://varnish-cache.org/docs/trunk/reference/varnishd.html</a></li>
+<li><a href=https://varnish-cache.org/docs/trunk/reference/varnishlog.html>https://varnish-cache.org/docs/trunk/reference/varnishlog.html</a></li>
+<li><a href=https://varnish-cache.org/docs/trunk/reference/varnishncsa.html#varnishncsa-1>https://varnish-cache.org/docs/trunk/reference/varnishncsa.html</a></li>
+<li><a href=https://varnish-cache.org/docs/6.1/reference/vsl.html>https://varnish-cache.org/docs/6.1/reference/vsl.html</a></li>
+<li><a href=https://support.magento.com/hc/en-us/articles/360034631211>https://support.magento.com/hc/en-us/articles/360034631211</a></li>
+<li><a href=https://github.com/DataDog/the-monitor/blob/master/varnish/how_to_monitor_varnish.md>https://github.com/DataDog/the-monitor/blob/master/varnish/how_to_monitor_varnish.md</a></li>
+</ul>
+</div>
+<div class=my-4>
+<a href=https://janosmiko.com/tags/varnish/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#varnish</a>
+<a href=https://janosmiko.com/tags/magento/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#magento</a>
+<a href=https://janosmiko.com/tags/kubernetes/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#kubernetes</a>
+<a href=https://janosmiko.com/tags/varnishncsa/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#varnishncsa</a>
+<a href=https://janosmiko.com/tags/varnishlog/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#varnishlog</a>
+</div>
+<div class=py-2>
+<div class="flex flex-col md:flex-row items-center my-8">
+<a href=https://janosmiko.com/authors/janos-miko/ class="w-24 h-24 md:mr-4">
+<img src=https://janosmiko.com/images/janosmiko.jpeg class="w-full bg-primary-bg rounded-full" alt=Avatar>
+</a>
+<div class="w-full md:w-auto mt-4 md:mt-0">
+<a href=https://janosmiko.com/authors/janos-miko/ class="block font-bold text-lg pb-1 mb-2 border-b">Janos Miko</a>
+<span class="block pb-2">Fill your bucket by drop by drop.</span>
+<a href=mailto:example@example.com class=mr-1>
+<i class="fas fa-envelope"></i>
+</a>
+<a href=https://twitter.com/mixe3y/ class=mr-1>
+<i class="fab fa-twitter"></i>
+</a>
+<a href=https://github.com/janosmiko/ class=mr-1>
+<i class="fab fa-github"></i>
+</a>
+<a href=https://www.facebook.com/mixe3y/ class=mr-1>
+<i class="fab fa-facebook"></i>
+</a>
+<a href="https://www.upwork.com/freelancers/~01bbf22d354f4e322c?viewMode=1" class=mr-1>
+<i class="fas fa-suitcase"></i>
+</a>
+</div>
+</div>
+</div>
+<div class="flex flex-col md:flex-row md:justify-between -mx-2 mt-4 px-2 pt-4 border-t">
+<div>
+</div>
+<div class="md:text-right mt-4 md:mt-0">
+<span class="block font-bold">Next</span>
+<a href=https://janosmiko.com/blog/2021-09-18-demystifying-bitbucket-pipelines-memory-limits/ class=block>Demystifying Bitbucket Pipelines Memory Limits</a>
+</div>
+</div>
+</div>
+<div class=col-span-2>
+<div class="sticky top-16 z-10 hidden lg:block px-6 py-4 bg-primary-bg">
+<span class="text-lg font-semibold">On This Page</span>
+</div>
+<div class="sticky-toc hidden lg:block px-6 pb-6">
+<nav id=TableOfContents>
+<ul>
+<li><a href=#how-do-varnish-transactions-work>How do Varnish transactions work?</a></li>
+<li><a href=#the-tools-we-have>The tools we have</a>
+<ul>
+<li><a href=#varnishlog>Varnishlog</a>
+<ul>
+<li><a href=#group-requests>Group requests</a></li>
+<li><a href=#display-client-or-backend-transactions>Display Client or Backend transactions</a></li>
+<li><a href=#queryfilter-the-results>Query/Filter the results</a></li>
+<li><a href=#display-only-specific-fields>Display only specific fields</a></li>
+</ul>
+</li>
+<li><a href=#varnishncsa>Varnishncsa</a>
+<ul>
+<li><a href=#some-of-the-most-useful-formatting-options>Some of the most useful formatting options</a></li>
+<li><a href=#client-side-logs>Client side logs</a></li>
+<li><a href=#backend-side-logs>Backend side logs</a></li>
+</ul>
+</li>
+<li><a href=#varnishhist-varnishstat-varnishtop>Varnishhist, varnishstat, varnishtop</a></li>
+</ul>
+</li>
+<li><a href=#frequent-errors>Frequent Errors</a>
+<ul>
+<li><a href=#header-size-exceeded>Header Size exceeded</a></li>
+<li><a href=#workspace-size-exceeded>Workspace size exceeded</a></li>
+<li><a href=#the-backend-closes-the-connection-unexpectedly>The backend closes the connection unexpectedly</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+<script>window.addEventListener('DOMContentLoaded',()=>{enableStickyToc()})</script>
+</div>
+<div class="col-span-2 lg:col-span-6 bg-secondary-bg rounded p-6">
+<h2 class="text-lg font-semibold mb-4">See Also</h2>
+<div class=content>
+<a href=https://janosmiko.com/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/>How to run Self Hosted Bitbucket Pipelines Runners in Kubernetes</a>
+<br>
+<a href=https://janosmiko.com/blog/2021-07-04-magento-rabbitmq/>How to test if Magento RabbitMQ Consumers are working properly</a>
+<br>
+<a href=https://janosmiko.com/blog/2021-03-06-reward/>Reward – A development tool designed for Magento developers</a>
+<br>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class=pl-scrollbar>
+<div class="w-full max-w-screen-xl mx-auto"><div class="text-center p-6 pin-b">
+<p class="text-sm text-tertiary-text">&copy; Janos Miko
+&#183; Made with <i class="fas fa-heart"></i> using <a href=https://github.com/wangchucheng/hugo-eureka class=hover:text-eureka>Eureka</a> theme for <a href=https://gohugo.io class=hover:text-eureka>Hugo</a></p>
+</div>
+</div>
+</footer>
+</body>
+</html>
