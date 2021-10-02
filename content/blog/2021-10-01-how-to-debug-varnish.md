@@ -6,10 +6,13 @@ authors:
   - janos-miko
 tags:
   - varnish
-  - magento
-  - kubernetes
   - varnishncsa
   - varnishlog
+  - magento
+  - gcp
+  - googlecloudplatform
+  - gke
+  - kubernetes
 categories: tech
 date: '2021-10-01'
 lastmod: '2021-10-01'
