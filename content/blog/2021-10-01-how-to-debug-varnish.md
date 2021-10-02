@@ -18,7 +18,7 @@ featuredImage: /images/blog/2021-10-01-how-to-debug-varnish/2021-10-01-how-to-de
 featuredImage_webp: /images/blog/2021-10-01-how-to-debug-varnish/2021-10-01-how-to-debug-varnish.webp
 ---
 
-`503 Backend Fetch Failed` - if you ever used Varnish, mostly you will be familiar with this error message. 
+`503 Backend Fetch Failed` - if you ever used Varnish, most probably you will be familiar with this error message. 
 
 It can be a headache to determine what causes these issues. 
 
