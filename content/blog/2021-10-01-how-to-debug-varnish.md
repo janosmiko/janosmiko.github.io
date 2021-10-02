@@ -1,6 +1,6 @@
 ---
 title: How to debug Varnish? - A detailed guide with some practical examples
-draft: true
+draft: false
 toc: true
 authors:
   - janos-miko
@@ -14,7 +14,7 @@ categories: tech
 date: '2021-10-01'
 lastmod: '2021-10-01'
 sitemap_exclude: false
-featuredImage: /images/blog/2021-10-01-how-to-debug-varnish/2021-10-01-how-to-debug-varnish.jpeg
+featuredImage: /images/blog/2021-10-01-how-to-debug-varnish/2021-10-01-how-to-debug-varnish.png
 featuredImage_webp: /images/blog/2021-10-01-how-to-debug-varnish/2021-10-01-how-to-debug-varnish.webp
 ---
 
@@ -30,7 +30,7 @@ In the following guide, I will give you some tools which will help to determine 
 
 It's important to understand if a request is going through Varnish it will show two different transaction types in the logs.
 
-![Untitled](2021%2009%2030%20-%20Running%20Varnish%20inside%20a%20Docker%20Conta%20b21e63da28034e83a630e71904c1c1d3/Untitled.png)
+![1-varnish-sides.png](/images/blog/2021-10-01-how-to-debug-varnish/1-varnish-sides.png)
 
 Varnish communicates in two directions. It communicates with the client (client mode) and it also communicates with the backend (backend mode). Varnish's logging tools provide separate functionalities for these separate transaction flows. Sometimes if you can't find the issue on one side, you will find the answer on the other side.
 
@@ -127,11 +127,11 @@ varnishncsa -b -F '{"Timestamp": "%t", "Varnish-Side": "%{Varnish:side}x", "Hand
 
 Using these examples we can get the following JSON output which can be examined in GCP Logging.
 
-![1-gcp-log-entry.png](/images/blog/2021-10-01-how-to-debug-varnish/1-gcp-log-entry.png)
+![2-gcp-log-entry.png](/images/blog/2021-10-01-how-to-debug-varnish/2-gcp-log-entry.png)
 
 If we pin the `Status`, the `Varnish-Side`, the `Time-To-Serve` (in microseconds), and the `Handling` fields and we will get a really useful Dashboard.
 
-![2-gcp-logs-dashboard.png](/images/blog/2021-10-01-how-to-debug-varnish/2-gcp-logs-dashboard.png)
+![3-gcp-logs-dashboard.png](/images/blog/2021-10-01-how-to-debug-varnish/3-gcp-logs-dashboard.png)
 
 ### Varnishhist, varnishstat, varnishtop
 
