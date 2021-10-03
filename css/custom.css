@@ -121,10 +121,10 @@ pre[class*="language-"] {
 }
 
 .content *:target, h1:target, h2:target, h3:target, h4:target, h5:target, h6:target {
-    #border-radius: 11px;
+    border-radius: 11px;
     animation: fadeOut-headings .4s;
     animation-fill-mode: forwards;
-    background: #fff1d2;
+    background: #f2f2f7;
     background-clip: content-box;
     filter: drop-shadow(2px 2px 6px rgba(0,0,0,0.5));
     /*box-shadow: -10px 0 0 12px #fff1d2;*/
