@@ -1,6 +1,6 @@
 :root {
     @apply font-serif bg-primary-bg text-primary-text;
-    font-family: Lora, Noto Serif SC, serif;
+    font-family: Lora, Noto Serif SC, -apple-system, serif;
     --color-eureka: #2582E2;
     --color-primary-bg: rgba(242,242,247,1.00);
     --color-secondary-bg: rgba(255,255,255,1.00);
@@ -120,6 +120,18 @@ pre[class*="language-"] {
     line-height: calc(1ex / 0.32);
 }
 
+.content *:target, h1:target, h2:target, h3:target, h4:target, h5:target, h6:target {
+    #border-radius: 11px;
+    animation: fadeOut-headings .4s;
+    animation-fill-mode: forwards;
+    background: #fff1d2;
+    background-clip: content-box;
+    filter: drop-shadow(2px 2px 6px rgba(0,0,0,0.5));
+    /*box-shadow: -10px 0 0 12px #fff1d2;*/
+    /*padding-top: unset;*/
+    /*margin-top: calc(1ex / 0.42);*/
+}
+
 .content h1, h2, h3, h4 {
     text-transform: uppercase;
     letter-spacing: 0.1rem;
@@ -173,7 +185,6 @@ pre[class*="language-"] {
     --aa-color: calc((var(--aa-brightness) - 128) * -1000);
     background: rgb(var(--red), var(--green), var(--blue));
     color: rgb(var(--aa-color), var(--aa-color), var(--aa-color));
-
 }
 
 .content a.anchor {
