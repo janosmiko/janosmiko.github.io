@@ -38,7 +38,7 @@
 <meta name=description content="How can you verify if Magento can reach and utilize the benefits of RabbitMQ?
 This tutorial will help you to modify attributes of a product using Magento&rsquo;s async API and bulk API.">
 <script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Blog","item":"https://janosmiko.com/blog/"},{"@type":"ListItem","position":2,"name":"How to test if Magento RabbitMQ Consumers are working properly","item":"https://janosmiko.com/blog/2021-07-04-magento-rabbitmq/"}]}</script>
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://janosmiko.com/blog/2021-07-04-magento-rabbitmq/"},"headline":"How to test if Magento RabbitMQ Consumers are working properly | Janos Miko","image":"https://janosmiko.com/images/blog/2021-07-04-magento-rabbitmq/magento-rabbitmq.png","datePublished":"2021-07-04T00:00:00+00:00","dateModified":"2021-07-04T00:00:00+00:00","wordCount":594,"author":{"@type":"Person","name":["janos-miko"]},"publisher":{"@type":"Person","name":"Janos Miko"},"description":"\u003cp\u003eHow can you verify if Magento can reach and utilize the benefits of RabbitMQ?\u003c\/p\u003e\n\u003cp\u003eThis tutorial will help you to modify attributes of a product using Magento\u0026rsquo;s async API and bulk API.\u003c\/p\u003e"}</script><meta property="og:title" content="How to test if Magento RabbitMQ Consumers are working properly | Janos Miko">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://janosmiko.com/blog/2021-07-04-magento-rabbitmq/"},"headline":"How to test if Magento RabbitMQ Consumers are working properly | Janos Miko","image":"https://janosmiko.com/images/blog/2021-07-04-magento-rabbitmq/magento-rabbitmq.png","datePublished":"2021-07-04T00:00:00+00:00","dateModified":"2021-07-04T00:00:00+00:00","wordCount":603,"author":{"@type":"Person","name":["janos-miko"]},"publisher":{"@type":"Person","name":"Janos Miko"},"description":"\u003cp\u003eHow can you verify if Magento can reach and utilize the benefits of RabbitMQ?\u003c\/p\u003e\n\u003cp\u003eThis tutorial will help you to modify attributes of a product using Magento\u0026rsquo;s async API and bulk API.\u003c\/p\u003e"}</script><meta property="og:title" content="How to test if Magento RabbitMQ Consumers are working properly | Janos Miko">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://janosmiko.com/blog/2021-07-04-magento-rabbitmq/">
 <meta property="og:description" content="How can you verify if Magento can reach and utilize the benefits of RabbitMQ?
@@ -115,7 +115,7 @@ This tutorial will help you to modify attributes of a product using Magento&rsqu
 <div class=content>
 <p>How can you verify if Magento can reach and utilize the benefits of RabbitMQ?</p>
 <p>This tutorial will help you to modify attributes of a product using Magento&rsquo;s async API and bulk API.</p>
-<h2 id=magento-settings>Magento settings</h2>
+<h2 id=magento-settings>Magento settings <a class=anchor href=#magento-settings>#</a></h2>
 <p>We used the following settings in <code>app/etc/env.php</code>.</p>
 <pre><code class=language-php>//...
 'queue' =&gt; [
@@ -139,8 +139,8 @@ This tutorial will help you to modify attributes of a product using Magento&rsqu
 //...
 </code></pre>
 <p>The <code>consumers_wait_for_messages</code> setting will command Magento to run the AMQP consumer&rsquo;s in every minute alongside the default Magento Cron, but the consumers will instantly stop after they finished consuming all messages. You can read more about this setting here: <a href=https://devdocs.magento.com/guides/v2.4/install-gde/install/cli/install-cli-subcommands-consumers.html>Magento DevDocs - Configure consumer behavior</a>.</p>
-<h2 id=before-we-begin>Before we begin</h2>
-<h3 id=create-a-test-product>Create a test product</h3>
+<h2 id=before-we-begin>Before we begin <a class=anchor href=#before-we-begin>#</a></h2>
+<h3 id=create-a-test-product>Create a test product <a class=anchor href=#create-a-test-product>#</a></h3>
 <p>On the Magento Admin create a test product.</p>
 <ul>
 <li>Catalog → Products → New Product</li>
@@ -149,7 +149,7 @@ This tutorial will help you to modify attributes of a product using Magento&rsqu
 </ul>
 <p>For our test product, we set the product&rsquo;s SKU to <code>test</code>.
 We are going to use this in this article.</p>
-<h3 id=get-your-admin-token>Get your Admin token</h3>
+<h3 id=get-your-admin-token>Get your Admin token <a class=anchor href=#get-your-admin-token>#</a></h3>
 <ul>
 <li>Open the Magento Swagger UI. The URL should be something similar to this.
 <ul>
@@ -160,7 +160,7 @@ We are going to use this in this article.</p>
 <li>Save the Bearer token.</li>
 </ul>
 <hr>
-<h2 id=1---rename-the-product-using-magentos-async-api>1 - Rename the product using Magento&rsquo;s async API</h2>
+<h2 id=1---rename-the-product-using-magentos-async-api>1 - Rename the product using Magento&rsquo;s async API <a class=anchor href=#1---rename-the-product-using-magentos-async-api>#</a></h2>
 <p>Based on <strong>catalogProductRepositoryV1</strong> endpoint insert the <code>/async</code> path before <code>/V1</code> in the API call.</p>
 <p><strong>The new API endpoint</strong></p>
 <pre><code class=language-bash>https://my-magento-shop.com/rest/all/async/V1/products/{SKU}
@@ -186,7 +186,7 @@ We are going to use this in this article.</p>
 <p><strong>You can verify if the message arrived to the queue using RabbitMQ Admin (in the Queues section)</strong></p>
 <p><img src=/images/blog/2021-07-04-magento-rabbitmq/1-2-rename-rabbitmq-queues.png alt="Rename - Check the queue status in RabbitMQ Admin"></p>
 <hr>
-<h2 id=2---rename-multiple-products-using-async-bulk-api>2 - Rename multiple products using async Bulk API</h2>
+<h2 id=2---rename-multiple-products-using-async-bulk-api>2 - Rename multiple products using async Bulk API <a class=anchor href=#2---rename-multiple-products-using-async-bulk-api>#</a></h2>
 <p>Based on catalogProductRepositoryV1 add <code>/async/bulk</code> path before <code>/V1</code> in the API call.</p>
 <p>API Endpoint (note: we are not using SKUs in this URL)</p>
 <pre><code class=language-bash>https://my-magento-shop.com/rest/all/async/bulk/V1/products
@@ -224,7 +224,7 @@ We are going to use this in this article.</p>
 <p><strong>Alternatively, you can view the messages in the RabbitMQ Admin (Queues → Get messages)</strong></p>
 <p><img src=/images/blog/2021-07-04-magento-rabbitmq/2-4-mass-rename-messages-in-the-queue.png alt="Mass Rename - Check the messages in RabbitMQ admin"></p>
 <hr>
-<h2 id=3---check-the-bulk-update-status-using-magento-api>3 - Check the Bulk update status using Magento API</h2>
+<h2 id=3---check-the-bulk-update-status-using-magento-api>3 - Check the Bulk update status using Magento API <a class=anchor href=#3---check-the-bulk-update-status-using-magento-api>#</a></h2>
 <p>We will use the BulkUuid from our previous request&rsquo;s response:</p>
 <pre><code class=language-bash>730538f2-92cf-443e-ba07-403f63e9d16b
 </code></pre>
@@ -237,12 +237,12 @@ We are going to use this in this article.</p>
 </code></pre>
 <p><strong>Response</strong></p>
 <p><img src=/images/blog/2021-07-04-magento-rabbitmq/3-1-post-response.png alt="Post and Response"></p>
-<h3 id=check-the-status-on-the-magento-admin-dashboard>Check the status on the Magento Admin Dashboard</h3>
+<h3 id=check-the-status-on-the-magento-admin-dashboard>Check the status on the Magento Admin Dashboard <a class=anchor href=#check-the-status-on-the-magento-admin-dashboard>#</a></h3>
 <p>Go to <strong>System</strong> → <strong>Action Logs</strong> → <strong>Bulk Actions</strong></p>
 <p><img src=/images/blog/2021-07-04-magento-rabbitmq/3-2-magento-admin-bulk-action-log.png alt="Magento Admin Bulk Action Log"></p>
 <p>Select the action and click on <strong>Details.</strong></p>
 <p><img src=/images/blog/2021-07-04-magento-rabbitmq/3-3-magento-admin-action-details.png alt="Magento Admin Bulk Action Details"></p>
-<h2 id=a-super-simple-way-to-test-rabbitmq-authentication>A super simple way to test RabbitMQ Authentication</h2>
+<h2 id=a-super-simple-way-to-test-rabbitmq-authentication>A super simple way to test RabbitMQ Authentication <a class=anchor href=#a-super-simple-way-to-test-rabbitmq-authentication>#</a></h2>
 <p>Requirements:</p>
 <ul>
 <li>python3</li>

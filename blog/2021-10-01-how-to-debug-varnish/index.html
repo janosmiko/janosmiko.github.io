@@ -39,7 +39,7 @@
 It can be a headache to determine what causes these issues.
 In the following guide, I will give you some tools which will help to determine and eliminate these error messages.">
 <script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Blog","item":"https://janosmiko.com/blog/"},{"@type":"ListItem","position":2,"name":"How to debug Varnish? - A detailed guide with some practical examples","item":"https://janosmiko.com/blog/2021-10-01-how-to-debug-varnish/"}]}</script>
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://janosmiko.com/blog/2021-10-01-how-to-debug-varnish/"},"headline":"How to debug Varnish? - A detailed guide with some practical examples | Janos Miko","image":"https://janosmiko.com/images/blog/2021-10-01-how-to-debug-varnish/2021-10-01-how-to-debug-varnish.png","datePublished":"2021-10-01T00:00:00+00:00","dateModified":"2021-10-01T00:00:00+00:00","wordCount":906,"author":{"@type":"Person","name":["janos-miko"]},"publisher":{"@type":"Person","name":"Janos Miko"},"description":"\u003cp\u003e\u003ccode\u003e503 Backend Fetch Failed\u003c\/code\u003e - if you ever used Varnish, most probably you will be familiar with this error message.\u003c\/p\u003e\n\u003cp\u003eIt can be a headache to determine what causes these issues.\u003c\/p\u003e\n\u003cp\u003eIn the following guide, I will give you some tools which will help to determine and eliminate these error messages.\u003c\/p\u003e"}</script><meta property="og:title" content="How to debug Varnish? - A detailed guide with some practical examples | Janos Miko">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://janosmiko.com/blog/2021-10-01-how-to-debug-varnish/"},"headline":"How to debug Varnish? - A detailed guide with some practical examples | Janos Miko","image":"https://janosmiko.com/images/blog/2021-10-01-how-to-debug-varnish/2021-10-01-how-to-debug-varnish.png","datePublished":"2021-10-01T00:00:00+00:00","dateModified":"2021-10-01T00:00:00+00:00","wordCount":930,"author":{"@type":"Person","name":["janos-miko"]},"publisher":{"@type":"Person","name":"Janos Miko"},"description":"\u003cp\u003e\u003ccode\u003e503 Backend Fetch Failed\u003c\/code\u003e - if you ever used Varnish, most probably you will be familiar with this error message.\nIt can be a headache to determine what causes these issues.\u003c\/p\u003e\n\u003cp\u003eIn the following guide, I will give you some tools which will help to determine and eliminate these error messages.\u003c\/p\u003e"}</script><meta property="og:title" content="How to debug Varnish? - A detailed guide with some practical examples | Janos Miko">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://janosmiko.com/blog/2021-10-01-how-to-debug-varnish/">
 <meta property="og:description" content="503 Backend Fetch Failed - if you ever used Varnish, most probably you will be familiar with this error message.
@@ -121,33 +121,33 @@ In the following guide, I will give you some tools which will help to determine 
 <img src=https://janosmiko.com/images/blog/2021-10-01-how-to-debug-varnish/2021-10-01-how-to-debug-varnish.png class=w-full alt="Featured Image">
 </div>
 <div class=content>
-<p><code>503 Backend Fetch Failed</code> - if you ever used Varnish, most probably you will be familiar with this error message.</p>
-<p>It can be a headache to determine what causes these issues.</p>
+<p><code>503 Backend Fetch Failed</code> - if you ever used Varnish, most probably you will be familiar with this error message.
+It can be a headache to determine what causes these issues.</p>
 <p>In the following guide, I will give you some tools which will help to determine and eliminate these error messages.</p>
-<h2 id=how-do-varnish-transactions-work>How do Varnish transactions work?</h2>
+<h2 id=how-do-varnish-transactions-work>How do Varnish transactions work? <a class=anchor href=#how-do-varnish-transactions-work>#</a></h2>
 <p>It&rsquo;s important to understand if a request is going through Varnish it will show two different transaction types in the logs.</p>
 <p><img src=/images/blog/2021-10-01-how-to-debug-varnish/1-varnish-sides.png alt=1-varnish-sides.png></p>
 <p>Varnish communicates in two directions. It communicates with the client (client mode) and it also communicates with the backend (backend mode). Varnish&rsquo;s logging tools provide separate functionalities for these separate transaction flows. Sometimes if you can&rsquo;t find the issue on one side, you will find the answer on the other side.</p>
-<h2 id=the-tools-we-have>The tools we have</h2>
-<p>First of all, Varnish provides really good tools for debugging but firstly it can be hard to understand how do they work. So let&rsquo;s take a look at them.</p>
-<h3 id=varnishlog>Varnishlog</h3>
+<h2 id=the-tools-we-have>The tools we have <a class=anchor href=#the-tools-we-have>#</a></h2>
+<p>First of all, Varnish provides really good tools for debugging but on first sight it can be hard to understand how do they work. Namely these are <code>varnishlog</code>, <code>varnishncsa</code>, <code>varnishhist</code>, <code>varnishstat</code>, and <code>varnishtop</code>. Let&rsquo;s take a look at each of them.</p>
+<h3 id=varnishlog>Varnishlog <a class=anchor href=#varnishlog>#</a></h3>
 <p>The main and most advanced tool to see what&rsquo;s happening inside Varnish. You can simply invoke the <code>varnishlog</code> command in most of the cases and you will already see useful information, but it also provides some great command-line flags if you want to get more details.</p>
-<h4 id=group-requests>Group requests</h4>
+<h4 id=group-requests>Group requests <a class=anchor href=#group-requests>#</a></h4>
 <p>You can group the logs by the <em>session</em>, <em>requests</em>, <em>vxid</em> or you can see the <em>raw</em> results.</p>
 <pre><code class=language-bash>varnishlog -g raw
 </code></pre>
-<h4 id=display-client-or-backend-transactions>Display Client or Backend transactions</h4>
+<h4 id=display-client-or-backend-transactions>Display Client or Backend transactions <a class=anchor href=#display-client-or-backend-transactions>#</a></h4>
 <p>It can be useful to show only the Backend transactions if you want to see why Varnish throws a <code>503 - Backend fetch failed</code> error.</p>
 <pre><code class=language-bash>varnishlog -b
 </code></pre>
-<h4 id=queryfilter-the-results>Query/Filter the results</h4>
+<h4 id=queryfilter-the-results>Query/Filter the results <a class=anchor href=#queryfilter-the-results>#</a></h4>
 <p>You can also limit the shown logs. For example, if you implemented a health check and Kubernetes will ping varnish every 3 sec, it will just spam your screen.</p>
 <pre><code class=language-bash>varnishlog -q 'ReqURL ne &quot;/healthcheck&quot;'
 </code></pre>
 <p>Another use-case can be to show only the requests which end up with 50x Error messages.</p>
 <pre><code class=language-bash>varnishlog -q 'RespStatus &gt;= 500 or BerespStatus &gt;= 500&quot;'
 </code></pre>
-<h4 id=display-only-specific-fields>Display only specific fields</h4>
+<h4 id=display-only-specific-fields>Display only specific fields <a class=anchor href=#display-only-specific-fields>#</a></h4>
 <p>If you find that varnishlog is too spammy, you can select specific tags to be displayed.</p>
 <pre><code class=language-bash>varnishlog -i 'FetchError,BerespStatus,BerespReason'
 ...
@@ -156,12 +156,12 @@ In the following guide, I will give you some tools which will help to determine 
 -   BerespReason   OK
 ...
 </code></pre>
-<h3 id=varnishncsa>Varnishncsa</h3>
+<h3 id=varnishncsa>Varnishncsa <a class=anchor href=#varnishncsa>#</a></h3>
 <p>The <code>varnishncsa</code> tool is something similar to <code>varnishlog</code>, but using it you can specify the output format. Eg.: you can generate JSON output which can be extremely useful in various use-cases (eg.: Google Cloud Platform Logs Explorer).</p>
 <p>Most of the flags which are available for <code>varnishlog</code> can be also used for <code>varnishncsa</code>.</p>
 <p>You can also display all the HTTP Request/Response Headers. This can also be really helpful in some cases.</p>
 <p><a href=https://varnish-cache.org/docs/trunk/reference/varnishncsa.html#format>https://varnish-cache.org/docs/trunk/reference/varnishncsa.html#format</a></p>
-<h4 id=some-of-the-most-useful-formatting-options>Some of the most useful formatting options</h4>
+<h4 id=useful-formatting-options>Useful formatting options <a class=anchor href=#useful-formatting-options>#</a></h4>
 <pre><code class=language-bash>Request Headers:        %{X}i
   Eg: X-Forwarded For:  %{x-forwarded-for}i
 
@@ -176,25 +176,25 @@ Extended Variables:     %{X}x
     VSL Tags:           %{VSL:RespReason}x
                         %{VSL:FetchError}x
 </code></pre>
-<h4 id=client-side-logs>Client side logs</h4>
+<h4 id=client-side-logs>Client side logs <a class=anchor href=#client-side-logs>#</a></h4>
 <pre><code class=language-json>varnishncsa -F '{&quot;Timestamp&quot;: &quot;%t&quot;, &quot;Varnish-Side&quot;: &quot;%{Varnish:side}x&quot;, &quot;Age&quot;: %{age}o, &quot;Handling&quot;: &quot;%{Varnish:handling}x&quot;, &quot;Request&quot;: &quot;%r&quot;, &quot;Status&quot;: &quot;%s&quot;, &quot;Response-Reason&quot;: &quot;%{VSL:RespReason}x&quot;, &quot;Fetch-Error&quot;: &quot;%{VSL:FetchError}x&quot;, &quot;X-Forwarded-For&quot;: &quot;%{x-forwarded-for}i&quot;, &quot;Remote-User&quot;: &quot;%u&quot;, &quot;Bytes&quot;: &quot;%b&quot;, &quot;Time-To-Serve&quot;: %D, &quot;User-Agent&quot;: &quot;%{User-agent}i&quot;, &quot;Referer&quot;: &quot;%{Referer}i&quot;, &quot;X-Varnish&quot;: &quot;%{x-varnish}o&quot;, &quot;X-Magento-Tags&quot;: &quot;%{x-magento-tags}o&quot;}}'
 </code></pre>
-<h4 id=backend-side-logs>Backend side logs</h4>
+<h4 id=backend-side-logs>Backend side logs <a class=anchor href=#backend-side-logs>#</a></h4>
 <pre><code class=language-json>varnishncsa -b -F '{&quot;Timestamp&quot;: &quot;%t&quot;, &quot;Varnish-Side&quot;: &quot;%{Varnish:side}x&quot;, &quot;Handling&quot;: &quot;%{Varnish:handling}x&quot;, &quot;Request&quot;: &quot;%r&quot;, &quot;Status&quot;: &quot;%s&quot;, &quot;Response-Reason&quot;: &quot;%{VSL:RespReason}x&quot;, &quot;Fetch-Error&quot;: &quot;%{VSL:FetchError}x&quot;, &quot;Bytes&quot;: &quot;%b&quot;, &quot;Time-To-Serve&quot;: %D}'
 </code></pre>
 <p>Using these examples we can get the following JSON output which can be examined in GCP Logging.</p>
 <p><img src=/images/blog/2021-10-01-how-to-debug-varnish/2-gcp-log-entry.png alt=2-gcp-log-entry.png></p>
 <p>If we pin the <code>Status</code>, the <code>Varnish-Side</code>, the <code>Time-To-Serve</code> (in microseconds), and the <code>Handling</code> fields and we will get a really useful Dashboard.</p>
 <p><img src=/images/blog/2021-10-01-how-to-debug-varnish/3-gcp-logs-dashboard.png alt=3-gcp-logs-dashboard.png></p>
-<h3 id=varnishhist-varnishstat-varnishtop>Varnishhist, varnishstat, varnishtop</h3>
+<h3 id=varnishhist-varnishstat-varnishtop>Varnishhist, varnishstat, varnishtop <a class=anchor href=#varnishhist-varnishstat-varnishtop>#</a></h3>
 <p>These tools can become handy when you want to get statistics about the running Varnish instance. They read the Varnish shared memory logs and generate some output for you.</p>
 <ul>
 <li><code>varnishhist</code>: shows you a histogram of the last requests.</li>
 <li><code>varnishtop</code>: presents a continuously updated list of the commonly occurring log entries.</li>
 <li><code>varnishstat</code>: displays statistics, like hit/miss rate, evictions, etc..</li>
 </ul>
-<h2 id=frequent-errors>Frequent Errors</h2>
-<h3 id=header-size-exceeded>Header Size exceeded</h3>
+<h2 id=frequent-errors>Frequent Errors <a class=anchor href=#frequent-errors>#</a></h2>
+<h3 id=header-size-exceeded>Header Size exceeded <a class=anchor href=#header-size-exceeded>#</a></h3>
 <pre><code class=language-bash>BogoHeader     Too many headers
 </code></pre>
 <pre><code class=language-bash>FetchError     http read error: overflow
@@ -206,7 +206,7 @@ Extended Variables:     %{X}x
 </ul>
 <pre><code class=language-bash>DAEMON_OPTS=&quot;... -p http_resp_hdr_len=65536 -p http_resp_size=98304&quot;
 </code></pre>
-<h3 id=workspace-size-exceeded>Workspace size exceeded</h3>
+<h3 id=workspace-size-exceeded>Workspace size exceeded <a class=anchor href=#workspace-size-exceeded>#</a></h3>
 <pre><code class=language-bash>FetchError     b overflow
 </code></pre>
 <pre><code class=language-bash>FetchError     b Workspace overflow
@@ -216,7 +216,7 @@ Extended Variables:     %{X}x
 </code></pre>
 <p>Note 1: For efficient virtual memory allocation it is recommended to set values that can be divided by <code>4096</code>.</p>
 <p>Note 2: the same options can be configured for incoming requests using <code>http_req_hdr_len</code>, <code>http_req_size</code>, and <code>workspace_client</code> params.</p>
-<h3 id=the-backend-closes-the-connection-unexpectedly>The backend closes the connection unexpectedly</h3>
+<h3 id=the-backend-closes-the-connection-unexpectedly>The backend closes the connection unexpectedly <a class=anchor href=#the-backend-closes-the-connection-unexpectedly>#</a></h3>
 <pre><code class=language-bash>FetchError     HTC status -1
 </code></pre>
 <p>As we can find in the <a href=https://github.com/varnishcache/varnish-cache/blob/508ae8bc149d3ad338d227a04ddc030e2045105b/include/tbl/htc.h#L41>source code of Varnish</a>, the <code>HTC status -1</code> error code means an unexpected EOF from the backend. To find the cause of this error you will have to dive deeper. In my case, I used <code>tcpdump</code> and <code>Wireshark</code>. In the HTTP backend response, I was able to catch the custom Nginx response code. It was <code>HTTP 444 - No Response</code> and Varnish interpreted it as a bad response.</p>
@@ -295,7 +295,7 @@ Extended Variables:     %{X}x
 </li>
 <li><a href=#varnishncsa>Varnishncsa</a>
 <ul>
-<li><a href=#some-of-the-most-useful-formatting-options>Some of the most useful formatting options</a></li>
+<li><a href=#useful-formatting-options>Useful formatting options</a></li>
 <li><a href=#client-side-logs>Client side logs</a></li>
 <li><a href=#backend-side-logs>Backend side logs</a></li>
 </ul>

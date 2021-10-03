@@ -39,7 +39,7 @@
 And its documentation is confusing.
 So let's figure out through examples how it works.">
 <script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Blog","item":"https://janosmiko.com/blog/"},{"@type":"ListItem","position":2,"name":"Demystifying Bitbucket Pipelines Memory Limits","item":"https://janosmiko.com/blog/2021-09-18-demystifying-bitbucket-pipelines-memory-limits/"}]}</script>
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://janosmiko.com/blog/2021-09-18-demystifying-bitbucket-pipelines-memory-limits/"},"headline":"Demystifying Bitbucket Pipelines Memory Limits | Janos Miko","image":"https://janosmiko.com/images/blog/2021-09-18-demystifying-bitbucket-pipelines-memory-limits/demystifying-bitbucket-pipelines-memory-limits.jpeg","datePublished":"2021-09-17T00:00:00+00:00","dateModified":"2021-09-17T00:00:00+00:00","wordCount":1637,"author":{"@type":"Person","name":["janos-miko"]},"publisher":{"@type":"Person","name":"Janos Miko"},"description":"\u003cp\u003eBitbucket Pipelines memory management can be a headache in complex cases.\u003c\/p\u003e\n\u003cp\u003eAnd its documentation is confusing.\u003c\/p\u003e\n\u003cp\u003eSo let\u0027s figure out through examples how it works.\u003c\/p\u003e"}</script><meta property="og:title" content="Demystifying Bitbucket Pipelines Memory Limits | Janos Miko">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://janosmiko.com/blog/2021-09-18-demystifying-bitbucket-pipelines-memory-limits/"},"headline":"Demystifying Bitbucket Pipelines Memory Limits | Janos Miko","image":"https://janosmiko.com/images/blog/2021-09-18-demystifying-bitbucket-pipelines-memory-limits/demystifying-bitbucket-pipelines-memory-limits.jpeg","datePublished":"2021-09-17T00:00:00+00:00","dateModified":"2021-09-17T00:00:00+00:00","wordCount":1645,"author":{"@type":"Person","name":["janos-miko"]},"publisher":{"@type":"Person","name":"Janos Miko"},"description":"\u003cp\u003eBitbucket Pipelines memory management can be a headache in complex cases.\u003c\/p\u003e\n\u003cp\u003eAnd its documentation is confusing.\u003c\/p\u003e\n\u003cp\u003eSo let\u0027s figure out through examples how it works.\u003c\/p\u003e"}</script><meta property="og:title" content="Demystifying Bitbucket Pipelines Memory Limits | Janos Miko">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://janosmiko.com/blog/2021-09-18-demystifying-bitbucket-pipelines-memory-limits/">
 <meta property="og:description" content="Bitbucket Pipelines memory management can be a headache in complex cases.
@@ -119,7 +119,7 @@ So let's figure out through examples how it works.">
 <p>Bitbucket Pipelines memory management can be a headache in complex cases.</p>
 <p>And its documentation is confusing.</p>
 <p>So let's figure out through examples how it works.</p>
-<h2 id=why-are-we-here>Why are we here?</h2>
+<h2 id=why-are-we-here>Why are we here? <a class=anchor href=#why-are-we-here>#</a></h2>
 <ul>
 <li><code>A step does not have the minimum resources needed to run (x MB). Services on the current step are consuming y MB.</code></li>
 </ul>
@@ -128,7 +128,7 @@ So let's figure out through examples how it works.">
 <li><code>Service 'docker' exceeded memory limit.</code></li>
 </ul>
 <p>If you ever faced these error messages, then this article is for you.</p>
-<h2 id=the-limitations>The limitations</h2>
+<h2 id=the-limitations>The limitations <a class=anchor href=#the-limitations>#</a></h2>
 <p>In this first part, let&rsquo;s go through the limitations with some detailed explanation. And later take a look at some examples.</p>
 <ul>
 <li>
@@ -168,8 +168,8 @@ So let's figure out through examples how it works.">
 </blockquote>
 </li>
 </ul>
-<h2 id=examples>Examples</h2>
-<h3 id=1-super-simple-one-step-setup>1. Super simple one-step setup</h3>
+<h2 id=examples>Examples <a class=anchor href=#examples>#</a></h2>
+<h3 id=1-super-simple-one-step-setup>1. Super simple one-step setup <a class=anchor href=#1-super-simple-one-step-setup>#</a></h3>
 <p>In this case we will run one single step without any attached service.</p>
 <p><code>bitbucket-pipelines.yml:</code></p>
 <pre><code class=language-yaml>clone:
@@ -193,7 +193,7 @@ pipelines:
 | SUM            |       1 GB      |
 ------------------------------------
 </code></pre>
-<h3 id=2-attaching-a-service-to-the-setup>2. Attaching a service to the setup</h3>
+<h3 id=2-attaching-a-service-to-the-setup>2. Attaching a service to the setup <a class=anchor href=#2-attaching-a-service-to-the-setup>#</a></h3>
 <p>In the next case we attach a Redis service to the step.</p>
 <p><code>bitbucket-pipelines.yml:</code></p>
 <pre><code class=language-yaml>clone:
@@ -233,7 +233,7 @@ pipelines:
 | SUM            |       2 GB      |
 ------------------------------------
 </code></pre>
-<h3 id=3-multiple-services-setup-with-docker-build>3. Multiple services setup with <code>docker build</code></h3>
+<h3 id=3-multiple-services-setup-with-docker-build>3. Multiple services setup with <code>docker build</code> <a class=anchor href=#3-multiple-services-setup-with-docker-build>#</a></h3>
 <p>Now let&rsquo;s add a MySQL service and a Docker service, because we want to build a container.</p>
 <p><code>bitbucket-pipelines.yml:</code></p>
 <pre><code class=language-yaml>clone:
@@ -294,7 +294,7 @@ In that case enable <code>size: 2x</code>.</p>
 | SUM            |       4 GB      |
 ------------------------------------
 </code></pre>
-<h3 id=4-using-different-docker-services-for-different-steps>4. Using different Docker services for different steps</h3>
+<h3 id=4-using-different-docker-services-for-different-steps>4. Using different Docker services for different steps <a class=anchor href=#4-using-different-docker-services-for-different-steps>#</a></h3>
 <p>Now let&rsquo;s assume the following situation:</p>
 <ul>
 <li>One of our build steps requires 6 GB memory for Docker build and a Redis service with 1 GB memory.</li>
@@ -389,7 +389,7 @@ pipelines:
 | SUM            |       8 GB      |  | SUM            |       7 GB      |
 ------------------------------------  ------------------------------------
 </code></pre>
-<h3 id=1-reusable-bitbucket-steps-using-yaml-anchors>+1. Reusable bitbucket steps using YAML anchors</h3>
+<h3 id=1-reusable-bitbucket-steps-using-yaml-anchors>+1. Reusable bitbucket steps using YAML anchors <a class=anchor href=#1-reusable-bitbucket-steps-using-yaml-anchors>#</a></h3>
 <p>It is not only possible to define services, but you can also define steps or even scripts and reuse them in various situations.</p>
 <p>In the following example we are going to rewrite the previous file to use YAML anchors (templates).</p>
 <ul>

@@ -37,7 +37,7 @@
 <meta name=theme-color content="#1e2028">
 <meta name=description content="It can be a headache to find solutions to run multiple local environments simultaneously without port conflicts when using tools like Docker. This is where Reward can be a very useful tool.">
 <script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Blog","item":"https://janosmiko.com/blog/"},{"@type":"ListItem","position":2,"name":"Reward – A development tool designed for Magento developers","item":"https://janosmiko.com/blog/2021-03-06-reward/"}]}</script>
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://janosmiko.com/blog/2021-03-06-reward/"},"headline":"Reward – A development tool designed for Magento developers | Janos Miko","image":"https://janosmiko.com/images/blog/2021-03-06-reward/reward-github-card.png","datePublished":"2021-03-06T00:00:00+00:00","dateModified":"2021-03-06T00:00:00+00:00","wordCount":1499,"author":{"@type":"Person","name":["janos-miko"]},"publisher":{"@type":"Person","name":"Janos Miko"},"description":"\u003cp\u003eIt can be a headache to find solutions to run multiple local environments simultaneously without port conflicts when using tools like Docker. This is where Reward can be a very useful tool.\u003c\/p\u003e"}</script><meta property="og:title" content="Reward – A development tool designed for Magento developers | Janos Miko">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://janosmiko.com/blog/2021-03-06-reward/"},"headline":"Reward – A development tool designed for Magento developers | Janos Miko","image":"https://janosmiko.com/images/blog/2021-03-06-reward/reward-github-card.png","datePublished":"2021-03-06T00:00:00+00:00","dateModified":"2021-03-06T00:00:00+00:00","wordCount":1512,"author":{"@type":"Person","name":["janos-miko"]},"publisher":{"@type":"Person","name":"Janos Miko"},"description":"\u003cp\u003eIt can be a headache to find solutions to run multiple local environments simultaneously without port conflicts when using tools like Docker. This is where Reward can be a very useful tool.\u003c\/p\u003e"}</script><meta property="og:title" content="Reward – A development tool designed for Magento developers | Janos Miko">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://janosmiko.com/blog/2021-03-06-reward/">
 <meta property="og:description" content="It can be a headache to find solutions to run multiple local environments simultaneously without port conflicts when using tools like Docker. This is where Reward can be a very useful tool.">
@@ -118,9 +118,9 @@
 </div>
 <div class=content>
 <p>It can be a headache to find solutions to run multiple local environments simultaneously without port conflicts when using tools like Docker. This is where Reward can be a very useful tool.</p>
-<h2 id=the-need---fixing-slow-syncing>The need - fixing slow syncing</h2>
+<h2 id=the-need---fixing-slow-syncing>The need - fixing slow syncing <a class=anchor href=#the-need---fixing-slow-syncing>#</a></h2>
 <p>In this first section, we will go through the technical difficulties Magento 2 developers meet and why it is hard to resolve the architectural problems of <a href=https://www.docker.com/>Docker</a> on Windows and macOS, even for big fishes like Microsoft.</p>
-<h3 id=the-architecture-of-docker-on-windows-and-macos>The architecture of Docker on Windows and macOS</h3>
+<h3 id=the-architecture-of-docker-on-windows-and-macos>The architecture of Docker on Windows and macOS <a class=anchor href=#the-architecture-of-docker-on-windows-and-macos>#</a></h3>
 <p>Generally speaking, we can say development standardization for most software becomes challenging if we want to make sure developers can use whatever operating systems they prefer. Ever since software development methodologies existed, system engineers have struggled with this problem.</p>
 <p>In chronological order, these are the main stages of standardization for local software development:</p>
 <ul>
@@ -140,7 +140,7 @@
 <p>This is where file synchronization tools can come in handy. With them, we have an option to have code on the guest operating system&rsquo;s file system and keep it in sync with the host&rsquo;s file system. In this case, we will duplicate files, but the network overhead will be &ldquo;deferred&rdquo;. Nowadays, as we have hard drives with hundreds of gigabytes of storage that&rsquo;s something reasonable to sacrifice for the performance boost, just so long as you don&rsquo;t have to duplicate hundreds of gigabytes of unnecessary data.</p>
 <p>For example, with Magento, you might want to sync only the code and mount the media files directly, because these are larger files that don&rsquo;t impact the application performance directly.</p>
 <p>As you can see, the problem here is already starting to get quite complex, especially if keeping in mind we want to use a tool to make it work similarly on Linux, Windows, and macOS.</p>
-<h3 id=multiple-projects---multiple-needs>Multiple projects - multiple needs</h3>
+<h3 id=multiple-projects---multiple-needs>Multiple projects - multiple needs <a class=anchor href=#multiple-projects---multiple-needs>#</a></h3>
 <p>Working only on a single project, it is relatively easy to maintain the project&rsquo;s environment. If we find an error or opportunity for improvement in the environment, we update the configuration in this single project and the problem will be eliminated. If a dependent software&rsquo;s version needs to be upgraded, we upgrade it and are good to go. However, if we start working on multiple projects, it is worth starting to manage these configurations more dynamically.</p>
 <p>Take a Magento 2.4 project as an example. It consists of the following components:</p>
 <ul>
@@ -162,14 +162,14 @@
 <p>(and so on)</p>
 <p>To overcome the situation, docker-compose can help by creating a file (<code>docker-compose.yml</code>) to describe your environment&rsquo;s needs. You can define what (docker) services you want to run but this <code>docker-compose.yml</code> file is not dynamic, and it&rsquo;s pretty hard to standardize it if we want to use it for both Windows and Linux environments at the same time. And what will handle the file synchronization for Windows?</p>
 <p>Another topic that comes to mind: what if an environment configuration option works so well that we want to distribute it into all of our projects?</p>
-<h3 id=multiple-project-types---exponential-needs>Multiple project types - exponential needs</h3>
+<h3 id=multiple-project-types---exponential-needs>Multiple project types - exponential needs <a class=anchor href=#multiple-project-types---exponential-needs>#</a></h3>
 <p>If the previous topics weren&rsquo;t enough, imagine the possibility that, in addition to the previous two Magento projects, we should start working on a WordPress or Shopware project – these would need newer versions of newer services and other settings.</p>
 <p>How can we handle so many needs at once? <strong>This is where Reward comes in.</strong></p>
-<h2 id=what-is-reward-and-how-to-use-it>What is Reward and how to use it?</h2>
+<h2 id=what-is-reward-and-how-to-use-it>What is Reward and how to use it? <a class=anchor href=#what-is-reward-and-how-to-use-it>#</a></h2>
 <p>From the readme description: Reward is a Swiss Army knife CLI utility for orchestrating Docker-based development environments. Reward makes it possible to run multiple local environments simultaneously without port conflicts by utilizing common services proxying requests to the correct environment&rsquo;s containers.</p>
-<h3 id=what-does-that-mean>What does that mean?</h3>
+<h3 id=what-does-that-mean>What does that mean? <a class=anchor href=#what-does-that-mean>#</a></h3>
 <p>Reward will generate docker-compose files dynamically for use with docker-compose vs. the developer on a per-project basis.</p>
-<h3 id=how-can-reward-help-me>How can Reward help me?</h3>
+<h3 id=how-can-reward-help-me>How can Reward help me? <a class=anchor href=#how-can-reward-help-me>#</a></h3>
 <ul>
 <li>Reward manages common services to solve port conflicts and provide awesome development tools (Traefik for HTTP proxying, Mailhog for caching outgoing mails, Portainer to view what&rsquo;s happening in Docker, and many more)</li>
 <li>Reward manages local Root Certificate Authority (to work with valid HTTPS certificates)</li>
@@ -177,7 +177,7 @@
 <li>Reward manages dynamic docker-compose files (based on the project or operating systems needs for best performance)</li>
 </ul>
 <p>And so on and so on.</p>
-<h3 id=how-does-reward-work>How does Reward work?</h3>
+<h3 id=how-does-reward-work>How does Reward work? <a class=anchor href=#how-does-reward-work>#</a></h3>
 <p>Behind the scenes, Reward uses Golang&rsquo;s powerful templating system, and a <code>.env</code> file in the project directory.</p>
 <p>With this file, you can simply configure the parameters each project needs, like the following:</p>
 <ul>
@@ -186,16 +186,16 @@
 <li><code>MARIADB_VERSION=10.4</code>.</li>
 </ul>
 <p>Reward will read the contents of this file and generate docker-compose files in real time and, based on its templates, run docker-compose and bring up the development environment.</p>
-<h2 id=is-reward-easy-to-use>Is Reward easy to use?</h2>
+<h2 id=is-reward-easy-to-use>Is Reward easy to use? <a class=anchor href=#is-reward-easy-to-use>#</a></h2>
 <p>For developers with Docker or Magento command-line utility experience, Reward will be rather easy to manage.</p>
 <p>For example, installation of Reward in macOS is 2 commands – Reward takes care of the rest.</p>
-<h3 id=install-reward>Install Reward</h3>
+<h3 id=install-reward>Install Reward <a class=anchor href=#install-reward>#</a></h3>
 <pre><code class=language-bash>$ brew install rewardenv/tap/reward
 
 $ reward install
 </code></pre>
 <p><img src=/images/blog/2021-03-06-reward/reward-install.gif alt="Install Reward on macOS"></p>
-<h3 id=initialize-an-empty-wordpress>Initialize an empty Wordpress</h3>
+<h3 id=initialize-an-empty-wordpress>Initialize an empty Wordpress <a class=anchor href=#initialize-an-empty-wordpress>#</a></h3>
 <pre><code class=language-bash># Create an empty directory
 $ mkdir wp-project
 $ cd wp-project
@@ -206,7 +206,7 @@ $ reward bootstrap
 </code></pre>
 <p>Initializing WordPress from &lsquo;zero to hero&rsquo; using Reward is easy, check out the gif:</p>
 <p><img src=/images/blog/2021-03-06-reward/reward-init-wordpress.gif alt="Initializing Wordpress with Reward"></p>
-<h3 id=initialize-and-empty-magento-2>Initialize and empty Magento 2</h3>
+<h3 id=initialize-and-empty-magento-2>Initialize and empty Magento 2 <a class=anchor href=#initialize-and-empty-magento-2>#</a></h3>
 <pre><code class=language-bash># Create an empty directory
 $ mkdir wp-project
 $ cd wp-project
@@ -220,7 +220,7 @@ $ reward bootstrap --disable-tfa --with-sampledata
 </code></pre>
 <p>If you want to run or install a Magento 2 project with Reward that&rsquo;s pretty similar:</p>
 <p><img src=/images/blog/2021-03-06-reward/reward-init-magento2.gif alt="Initializing Magento 2 with Reward"></p>
-<h2 id=where-can-i-learn-more-about-reward>Where can I learn more about Reward?</h2>
+<h2 id=where-can-i-learn-more-about-reward>Where can I learn more about Reward? <a class=anchor href=#where-can-i-learn-more-about-reward>#</a></h2>
 <p>Reward has detailed documentation with information, use-cases, examples, FAQs and much more.</p>
 <p>Check it out here: <strong><a href=https://rewardenv.readthedocs.io/en/latest/>Welcome to Reward&rsquo;s documentation!</a></strong></p>
 <hr>
