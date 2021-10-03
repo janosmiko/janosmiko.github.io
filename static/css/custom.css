@@ -1,6 +1,6 @@
 :root {
     @apply font-serif bg-primary-bg text-primary-text;
-    font-family: Lora,Noto Serif SC,serif;
+    font-family: Lora, Noto Serif SC, serif;
     --color-eureka: #2582E2;
     --color-primary-bg: rgba(242,242,247,1.00);
     --color-secondary-bg: rgba(255,255,255,1.00);
@@ -120,32 +120,64 @@ pre[class*="language-"] {
     line-height: calc(1ex / 0.32);
 }
 
+.content h1, h2, h3, h4 {
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    margin-top: 6rem;
+}
+
 .content h1 {
-    font-size: 2.5em;
+    font-size: 2em;
     line-height: calc(1ex / 0.42);
-    /*margin: calc(1ex / 0.42) 0;*/
+    margin-top: calc(1ex / 0.42);
 }
 
 .content h2 {
-    font-size: 2em;
+    font-size: 1.75em;
     line-height: calc(1ex / 0.42);
-    /*margin: calc(1ex / 0.42) 0;*/
+    margin-top: calc(1ex / 0.42);
 }
 
 .content h3 {
-    font-size: 1.75em;
+    font-size: 1.5em;
     line-height: calc(1ex / 0.38);
-    /*margin: calc(1ex / 0.38) 0;*/
+    /*margin: calc(1ex / 0.40) 0;*/
+    margin-top: calc(1ex / 0.4);
 }
 
 .content h4 {
-    font-size: 1.5em;
+    font-size: 1.125em;
     line-height: calc(1ex / 0.37);
-    /*margin: calc(1ex / 0.37) 0;*/
+    margin-top: calc(1ex / 0.3);
 }
 
 .content p {
     font-size: 1em;
     line-height: calc(1ex / 0.32);
     /*margin: calc(1ex / 0.32) 0;*/
+    --red: 230;
+    --green: 230;
+    --blue: 230;
+    --aa-brightness: calc((
+    (var(--red) * 299) +
+    (var(--green) * 587) +
+    (var(--blue) * 114)
+    ) / 1000;
+    --aa-brightness: calc((
+    (var(--red) * 299) +
+    (var(--green) * 587) +
+    (var(--blue) * 114)
+    ) / 1000);
+
+
+    --aa-color: calc((var(--aa-brightness) - 128) * -1000);
+    background: rgb(var(--red), var(--green), var(--blue));
+    color: rgb(var(--aa-color), var(--aa-color), var(--aa-color));
+
+}
+
+.content a.anchor {
+    text-decoration: none;
+    transition: color 3s ease-in-out;
+    padding: .35em .05em;
 }

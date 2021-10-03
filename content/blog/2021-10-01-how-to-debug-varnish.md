@@ -22,7 +22,6 @@ featuredImage_webp: /images/blog/2021-10-01-how-to-debug-varnish/2021-10-01-how-
 ---
 
 `503 Backend Fetch Failed` - if you ever used Varnish, most probably you will be familiar with this error message. 
-
 It can be a headache to determine what causes these issues. 
 
 In the following guide, I will give you some tools which will help to determine and eliminate these error messages.
@@ -39,7 +38,7 @@ Varnish communicates in two directions. It communicates with the client (client 
 
 ## The tools we have
 
-First of all, Varnish provides really good tools for debugging but firstly it can be hard to understand how do they work. So let's take a look at them.
+First of all, Varnish provides really good tools for debugging but on first sight it can be hard to understand how do they work. Namely these are `varnishlog`, `varnishncsa`, `varnishhist`, `varnishstat`, and `varnishtop`. Let's take a look at each of them.
 
 ### Varnishlog
 
@@ -98,7 +97,7 @@ You can also display all the HTTP Request/Response Headers. This can also be rea
 
 [https://varnish-cache.org/docs/trunk/reference/varnishncsa.html#format](https://varnish-cache.org/docs/trunk/reference/varnishncsa.html#format)
 
-#### Some of the most useful formatting options
+#### Useful formatting options
 
 ```bash
 Request Headers:        %{X}i
