@@ -38,7 +38,7 @@
 <meta name=theme-color content="#1e2028">
 <meta name=description content="Atlassian announced self-hosted Runners for Bitbucket Pipelines, let&rsquo;s try them out.">
 <script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Blog","item":"https://janosmiko.com/blog/"},{"@type":"ListItem","position":2,"name":"How to run Self Hosted Bitbucket Pipelines Runners in Kubernetes","item":"https://janosmiko.com/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/"}]}</script>
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://janosmiko.com/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/"},"headline":"How to run Self Hosted Bitbucket Pipelines Runners in Kubernetes | Janos Miko","image":"https://janosmiko.com/images/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/bitbucket-pipelines-runners-in-k8s.png","datePublished":"2021-09-08T00:00:00+00:00","dateModified":"2021-09-17T00:00:00+00:00","wordCount":1371,"author":{"@type":"Person","name":["janos-miko"]},"publisher":{"@type":"Person","name":"Janos Miko"},"description":"\u003cp\u003eAtlassian \u003ca href=\u0022https:\/\/bitbucket.org\/blog\/pipelines-runners\u0022\u003eannounced\u003c\/a\u003e self-hosted Runners for Bitbucket Pipelines, let\u0026rsquo;s try them out.\u003c\/p\u003e"}</script><meta property="og:title" content="How to run Self Hosted Bitbucket Pipelines Runners in Kubernetes | Janos Miko">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://janosmiko.com/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/"},"headline":"How to run Self Hosted Bitbucket Pipelines Runners in Kubernetes | Janos Miko","image":"https://janosmiko.com/images/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/bitbucket-pipelines-runners-in-k8s.png","datePublished":"2021-09-08T00:00:00+00:00","dateModified":"2021-09-17T00:00:00+00:00","wordCount":1361,"author":{"@type":"Person","name":["janos-miko"]},"publisher":{"@type":"Person","name":"Janos Miko"},"description":"\u003cp\u003eAtlassian \u003ca href=\u0022https:\/\/bitbucket.org\/blog\/pipelines-runners\u0022\u003eannounced\u003c\/a\u003e self-hosted Runners for Bitbucket Pipelines, let\u0026rsquo;s try them out.\u003c\/p\u003e"}</script><meta property="og:title" content="How to run Self Hosted Bitbucket Pipelines Runners in Kubernetes | Janos Miko">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://janosmiko.com/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/">
 <meta property="og:description" content="Atlassian announced self-hosted Runners for Bitbucket Pipelines, let&rsquo;s try them out.">
@@ -120,8 +120,8 @@
 <li>Project level</li>
 </ul>
 <p>Let&rsquo;s see how can we create Runners in Workspace level.</p>
-<h2 id=how-to-create-a-runner>How to create a Runner? <a class=anchor href=#how-to-create-a-runner>#</a></h2>
-<h3 id=create-a-new-workspace-runner-in-bitbucket>Create a new Workspace Runner in Bitbucket <a class=anchor href=#create-a-new-workspace-runner-in-bitbucket>#</a></h3>
+<h2 id=how-to-create-a-runner>How to create a Runner?&nbsp;<a class=anchor href=#how-to-create-a-runner>#</a></h2>
+<h3 id=create-a-new-workspace-runner-in-bitbucket>Create a new Workspace Runner in Bitbucket&nbsp;<a class=anchor href=#create-a-new-workspace-runner-in-bitbucket>#</a></h3>
 <p>Go to the <strong>Workspace Settings</strong>: click on your <strong>Profile Picture</strong> and <strong>Select the Workspace</strong>.</p>
 <p><img src=/images/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/1_workspace_settings.png alt=1_workspace_settings.png></p>
 <p>Click on the <strong>Settings</strong> and Scroll down to <strong>Workspace Runners</strong> and click on <strong>Add Runner</strong>.</p>
@@ -156,7 +156,7 @@ export OAUTH_CLIENT_SECRET=__OAUTH_CLIENT_SECRET__
 export BASE64_OAUTH_CLIENT_ID=$(echo -n $OAUTH_CLIENT_ID | base64)
 export BASE64_OAUTH_CLIENT_SECRET=$(echo -n $OAUTH_CLIENT_SECRET | base64)
 </code></pre>
-<h3 id=implementation-in-kubernetes>Implementation in Kubernetes <a class=anchor href=#implementation-in-kubernetes>#</a></h3>
+<h3 id=implementation-in-kubernetes>Implementation in Kubernetes&nbsp;<a class=anchor href=#implementation-in-kubernetes>#</a></h3>
 <p>Now on the interesting part. Replace the <code>${VAR_NAME}</code> placeholders with the contents of those variables.</p>
 <p>Important:</p>
 <ul>
@@ -254,7 +254,7 @@ kubectl -n bitbucket-runner delete -f secret.yaml
 
 kubectl delete namespace bitbucket-runner
 </code></pre>
-<h2 id=how-to-use-this-runner-in-a-bitbucket-pipeline>How to use this runner in a Bitbucket Pipeline? <a class=anchor href=#how-to-use-this-runner-in-a-bitbucket-pipeline>#</a></h2>
+<h2 id=how-to-use-this-runner-in-a-bitbucket-pipeline>How to use this runner in a Bitbucket Pipeline?&nbsp;<a class=anchor href=#how-to-use-this-runner-in-a-bitbucket-pipeline>#</a></h2>
 <p>It&rsquo;s pretty straightforward, add the runner&rsquo;s labels to the pipeline step.</p>
 <p><code>bitbucket-pipelines.yml:</code></p>
 <pre><code class=language-yaml>pipelines:
@@ -274,12 +274,12 @@ kubectl delete namespace bitbucket-runner
           script:
             - echo &quot;This step will run on Atlassian's infrastructure as usual.&quot;;
 </code></pre>
-<h2 id=possible-issues>Possible Issues <a class=anchor href=#possible-issues>#</a></h2>
-<h3 id=status-500-in-bitbucket-pipelines>Status 500 in Bitbucket Pipelines <a class=anchor href=#status-500-in-bitbucket-pipelines>#</a></h3>
+<h2 id=possible-issues>Possible Issues&nbsp;<a class=anchor href=#possible-issues>#</a></h2>
+<h3 id=status-500-in-bitbucket-pipelines>Status 500 in Bitbucket Pipelines&nbsp;<a class=anchor href=#status-500-in-bitbucket-pipelines>#</a></h3>
 <p>As I wanted to build Docker images (using Docker in Docker or <em>dind</em>) in our pipeline I faced the following issue:</p>
 <pre><code class=language-json>Status 500: {&quot;message&quot;:&quot;io.containerd.runc.v2: failed to adjust OOM score for shim: set shim OOM score: write /proc/PROC_ID/oom_score_adj: invalid argument\n: exit status 1: unknown&quot;}
 </code></pre>
-<h4 id=how-to-fix-it>How to fix it <a class=anchor href=#how-to-fix-it>#</a></h4>
+<h4 id=how-to-fix-it>How to fix it&nbsp;<a class=anchor href=#how-to-fix-it>#</a></h4>
 <p>First I tried to find root cause of this error message, but I couldn&rsquo;t find anything except some comments about this was already fixed in containerd&rsquo;s latest release, and so on&mldr; So I decided to check if the software versions are matching. Even while containerd was matching the required version I found that the Docker on the servers are a bit outdated (19.03) so I decided to update it.</p>
 <p>After the upgrade I still saw the previously mentioned error messages in the Bitbucket Pipelines.</p>
 <p>I verified Docker version running on the server:</p>
@@ -293,7 +293,7 @@ Docker version 20.10.7, build f0df350
 </code></pre>
 <p>And magically the error went away and everything works as expected.</p>
 <hr>
-<h3 id=pipeline-is-hanging>Pipeline is hanging <a class=anchor href=#pipeline-is-hanging>#</a></h3>
+<h3 id=pipeline-is-hanging>Pipeline is hanging&nbsp;<a class=anchor href=#pipeline-is-hanging>#</a></h3>
 <p>The next issue I faced was a bit trickier to catch.</p>
 <p>First things first: how does Bitbucket Pipelines Runner run a single <code>docker build</code>?</p>
 <ul>
@@ -318,7 +318,7 @@ At first glance, I checked the steps inside the docker build (like npm install /
 <li>(at this point I didn&rsquo;t know there&rsquo;s a 3rd Docker network level).</li>
 </ul>
 <p>Here we go, we have an issue here, the second-level Docker packets are not going to fit the K8s' network.</p>
-<h4 id=how-to-fix-it-1>How to fix it <a class=anchor href=#how-to-fix-it-1>#</a></h4>
+<h4 id=how-to-fix-it-1>How to fix it&nbsp;<a class=anchor href=#how-to-fix-it-1>#</a></h4>
 <p>Run your docker-in-docker with the following argument:
 <code>--mtu=1300</code>.</p>
 <p>Easy, change the Kubernetes Job to use this param:</p>
@@ -340,7 +340,7 @@ At first glance, I checked the steps inside the docker build (like npm install /
 </ul>
 <p>The third layer of Docker is still 1500? How? And why?</p>
 <p>Because Bitbucket Pipelines Runner is going to launch its very own, dedicated dind and that&rsquo;s not going to inherit the MTU.</p>
-<h4 id=how-to-fix-it-part-2>How to fix it (part 2) <a class=anchor href=#how-to-fix-it-part-2>#</a></h4>
+<h4 id=how-to-fix-it-part-2>How to fix it (part 2)&nbsp;<a class=anchor href=#how-to-fix-it-part-2>#</a></h4>
 <p>Let&rsquo;s build our own <a href=https://github.com/rewardenv/docker>docker image</a> and pass it to the Pipeline.</p>
 <p><code>bitbucket-pipelines.yml:</code></p>
 <pre><code class=language-yaml>definitions:
