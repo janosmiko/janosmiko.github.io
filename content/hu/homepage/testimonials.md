@@ -32,7 +32,7 @@ testimonials:
     writeup: |
       "Az elmúlt 2 évben János segített elmélyíteni a DevOps folyamatokat a vállalatunknál Dockerizálással és CI/CD folyamatok automatizálásával. Emellett csökkentette az AWS költségeinket is."
 
-  - name: Balázs Péter Szabó
+  - name: Szabó Balázs Péter
     title: Tulajdonos
     organization:
       name: Heritage - Hair&More Szalon
