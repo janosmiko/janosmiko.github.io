@@ -32,17 +32,19 @@ testimonials:
     writeup: |
       "In the last two years, Janos helped us to advance the DevOps practice in our company with Dockerization and CI/CD automation. He also managed to cut back our AWS costs."
 
-#  - name: Lempergel Csongor
-#    title: E-commerce Manager
-#    organization:
-#      name: Dockyard Islands Kft.
-#      url: https://www.dockyard.hu
-#    writeup: |
-#      -
+  - name: Balázs Péter Szabó
+    title: Owner
+    organization:
+      name: Heritage - Hair&More Saloon
+      url: https://szabobalazspeter.com
+    avatar: /images/balazspeterszabo.jpeg
+    avatar_webp: /images/balazspeterszabo.webp
+    writeup: |
+      "Janos develops and manages all my IT systems. Partner in everything, I can count on him at any time. There is nothing that is impossible for him. He is fast, efficient and has excellent expertise."
 
 weight: 5
 widget:
-  handler: testimonials
+handler: testimonials
 
   # Options: sm, md, lg and xl. Default is md.
   width: lg

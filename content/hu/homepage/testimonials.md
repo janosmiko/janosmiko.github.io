@@ -32,14 +32,15 @@ testimonials:
     writeup: |
       "Az elmúlt 2 évben János segített elmélyíteni a DevOps folyamatokat a vállalatunknál Dockerizálással és CI/CD folyamatok automatizálásával. Emellett csökkentette az AWS költségeinket is."
 
-#  - name: Lempergel Csongor
-#    title: E-commerce Manager
-#    organization:
-#      name: Dockyard Islands Kft.
-#      url: https://www.dockyard.hu
-#    avatar:
-#    writeup: |
-#      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+  - name: Balázs Péter Szabó
+    title: Tulajdonos
+    organization:
+      name: Heritage - Hair&More Szalon
+      url: https://szabobalazspeter.hu
+    avatar: /images/balazspeterszabo.jpeg
+    avatar_webp: /images/balazspeterszabo.webp
+    writeup: |
+      "János fejleszti és kezeli minden informatika rendszeremet. Mindenben partner, bármikor számíthatok rá. Nincs olyan, ami lehetetlen lenne számára. Gyors, hatékony és kiváló szaktudással rendelkezik."
 
 weight: 5
 widget:
