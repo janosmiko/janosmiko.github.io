@@ -44,7 +44,7 @@ testimonials:
 
 weight: 5
 widget:
-handler: testimonials
+  handler: testimonials
 
   # Options: sm, md, lg and xl. Default is md.
   width: lg
