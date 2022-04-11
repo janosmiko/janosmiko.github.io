@@ -1,14 +1,5 @@
-<!doctype html><html lang=en><meta charset=utf-8>
-<meta name=viewport content="width=device-width">
-<title>Demystifying Bitbucket Pipelines Memory Limits | Janos Miko</title>
-<meta name=generator content="Hugo Eureka 0.8.0">
-<link rel=stylesheet href=https://janosmiko.com/css/eureka.min.css>
-<script defer src=https://janosmiko.com/js/eureka.min.js></script>
-<link rel=dns-prefetch href=//fonts.googleapis.com>
-<link rel=preconnect href=https://fonts.gstatic.com crossorigin>
-<link rel=preload href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" as=style onload="this.onload=null,this.rel='stylesheet'">
-<link rel=stylesheet href=/css/prism-okaidia.css media=print onload="this.media='all',this.onload=null" crossorigin>
-<script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.24.1/prism.min.js crossorigin></script>
+<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content="width=device-width"><title>Demystifying Bitbucket Pipelines Memory Limits | Janos Miko</title><meta name=generator content="Hugo Eureka 0.8.0"><link rel=stylesheet href=https://janosmiko.com/css/eureka.min.css><script defer src=https://janosmiko.com/js/eureka.min.js></script>
+<link rel=dns-prefetch href=//fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=preload href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" as=style onload='this.onload=null,this.rel="stylesheet"'><link rel=stylesheet href=/css/prism-okaidia.css media=print onload='this.media="all",this.onload=null' crossorigin><script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.24.1/prism.min.js crossorigin></script>
 <script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.24.1/plugins/autoloader/prism-autoloader.min.js crossorigin></script>
 <script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.24.1/components/prism-markup-templating.min.js crossorigin></script>
 <script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.24.1/components/prism-go.min.js crossorigin></script>
@@ -16,164 +7,20 @@
 <script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.24.1/components/prism-php.min.js crossorigin></script>
 <script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.24.1/components/prism-json.min.js crossorigin></script>
 <script defer src=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/js/all.min.js integrity="sha256-uNYoXefWRqv+PsIF/OflNmwtKM4lStn9yrz2gVl6ymo=" crossorigin></script>
-<link rel=stylesheet href=/css/custom.css>
-<link rel=apple-touch-icon sizes=57x57 href=/apple-icon-57x57.png>
-<link rel=apple-touch-icon sizes=60x60 href=/apple-icon-60x60.png>
-<link rel=apple-touch-icon sizes=72x72 href=/apple-icon-72x72.png>
-<link rel=apple-touch-icon sizes=76x76 href=/apple-icon-76x76.png>
-<link rel=apple-touch-icon sizes=114x114 href=/apple-icon-114x114.png>
-<link rel=apple-touch-icon sizes=120x120 href=/apple-icon-120x120.png>
-<link rel=apple-touch-icon sizes=144x144 href=/apple-icon-144x144.png>
-<link rel=apple-touch-icon sizes=152x152 href=/apple-icon-152x152.png>
-<link rel=apple-touch-icon sizes=180x180 href=/apple-icon-180x180.png>
-<link rel=icon type=image/png sizes=192x192 href=/android-icon-192x192.png>
-<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
-<link rel=icon type=image/png sizes=96x96 href=/favicon-96x96.png>
-<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
-<link rel=manifest href=/manifest.json>
-<meta name=msapplication-TileColor content="#ffffff">
-<meta name=msapplication-TileImage content="/ms-icon-144x144.png">
-<meta name=apple-mobile-web-app-title content="Janos Miko">
-<meta name=application-name content="Janos Miko">
-<meta name=theme-color content="#1e2028">
-<meta name=description content="Bitbucket Pipelines memory management can be a headache in complex cases.
+<link rel=stylesheet href=/css/custom.css><link rel=apple-touch-icon sizes=57x57 href=/apple-icon-57x57.png><link rel=apple-touch-icon sizes=60x60 href=/apple-icon-60x60.png><link rel=apple-touch-icon sizes=72x72 href=/apple-icon-72x72.png><link rel=apple-touch-icon sizes=76x76 href=/apple-icon-76x76.png><link rel=apple-touch-icon sizes=114x114 href=/apple-icon-114x114.png><link rel=apple-touch-icon sizes=120x120 href=/apple-icon-120x120.png><link rel=apple-touch-icon sizes=144x144 href=/apple-icon-144x144.png><link rel=apple-touch-icon sizes=152x152 href=/apple-icon-152x152.png><link rel=apple-touch-icon sizes=180x180 href=/apple-icon-180x180.png><link rel=icon type=image/png sizes=192x192 href=/android-icon-192x192.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=96x96 href=/favicon-96x96.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><meta name=msapplication-TileColor content="#ffffff"><meta name=msapplication-TileImage content="/ms-icon-144x144.png"><meta name=apple-mobile-web-app-title content="Janos Miko"><meta name=application-name content="Janos Miko"><meta name=theme-color content="#1e2028"><meta name=description content="Bitbucket Pipelines memory management can be a headache in complex cases.
 And its documentation is confusing.
-So let's figure out through examples how it works.">
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Blog","item":"https://janosmiko.com/blog/"},{"@type":"ListItem","position":2,"name":"Demystifying Bitbucket Pipelines Memory Limits","item":"https://janosmiko.com/blog/2021-09-18-demystifying-bitbucket-pipelines-memory-limits/"}]}</script>
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://janosmiko.com/blog/2021-09-18-demystifying-bitbucket-pipelines-memory-limits/"},"headline":"Demystifying Bitbucket Pipelines Memory Limits | Janos Miko","image":"https://janosmiko.com/images/blog/2021-09-18-demystifying-bitbucket-pipelines-memory-limits/demystifying-bitbucket-pipelines-memory-limits.jpeg","datePublished":"2021-09-17T00:00:00+00:00","dateModified":"2021-09-17T00:00:00+00:00","wordCount":1637,"author":{"@type":"Person","name":["janos-miko"]},"publisher":{"@type":"Person","name":"Janos Miko"},"description":"\u003cp\u003eBitbucket Pipelines memory management can be a headache in complex cases.\u003c\/p\u003e\n\u003cp\u003eAnd its documentation is confusing.\u003c\/p\u003e\n\u003cp\u003eSo let\u0027s figure out through examples how it works.\u003c\/p\u003e"}</script><meta property="og:title" content="Demystifying Bitbucket Pipelines Memory Limits | Janos Miko">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://janosmiko.com/blog/2021-09-18-demystifying-bitbucket-pipelines-memory-limits/">
-<meta property="og:description" content="Bitbucket Pipelines memory management can be a headache in complex cases.
+So let's figure out through examples how it works."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Blog","item":"https://janosmiko.com/blog/"},{"@type":"ListItem","position":2,"name":"Demystifying Bitbucket Pipelines Memory Limits","item":"https://janosmiko.com/blog/2021-09-18-demystifying-bitbucket-pipelines-memory-limits/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://janosmiko.com/blog/2021-09-18-demystifying-bitbucket-pipelines-memory-limits/"},"headline":"Demystifying Bitbucket Pipelines Memory Limits | Janos Miko","image":"https://janosmiko.com/images/blog/2021-09-18-demystifying-bitbucket-pipelines-memory-limits/demystifying-bitbucket-pipelines-memory-limits.jpeg","datePublished":"2021-09-17T00:00:00+00:00","dateModified":"2021-09-17T00:00:00+00:00","wordCount":1637,"author":{"@type":"Person","name":["janos-miko"]},"publisher":{"@type":"Person","name":"Janos Miko"},"description":"\u003cp\u003eBitbucket Pipelines memory management can be a headache in complex cases.\u003c\/p\u003e\n\u003cp\u003eAnd its documentation is confusing.\u003c\/p\u003e\n\u003cp\u003eSo let\u0027s figure out through examples how it works.\u003c\/p\u003e"}</script><meta property="og:title" content="Demystifying Bitbucket Pipelines Memory Limits | Janos Miko"><meta property="og:type" content="article"><meta property="og:url" content="https://janosmiko.com/blog/2021-09-18-demystifying-bitbucket-pipelines-memory-limits/"><meta property="og:description" content="Bitbucket Pipelines memory management can be a headache in complex cases.
 And its documentation is confusing.
-So let's figure out through examples how it works.">
-<meta property="og:locale" content="en">
-<meta property="og:site_name" content="Janos Miko">
-<meta property="article:published_time" content="2021-09-17T00:00:00+00:00">
-<meta property="article:modified_time" content="2021-09-17T00:00:00+00:00">
-<meta property="article:section" content="blog">
-<meta property="article:tag" content="bitbucket">
-<meta property="article:tag" content="pipelines">
-<meta property="article:tag" content="memory">
-<meta property="og:see_also" content="https://janosmiko.com/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/">
-<body class="flex flex-col min-h-screen">
-<header class="fixed flex items-center w-full min-h-16 pl-scrollbar z-50 bg-secondary-bg shadow-sm">
-<div class="w-full max-w-screen-xl mx-auto"><script>let storageColorScheme=localStorage.getItem("lightDarkMode");((storageColorScheme=='Auto'||storageColorScheme==null)&&window.matchMedia("(prefers-color-scheme: dark)").matches||storageColorScheme=="Dark")&&document.getElementsByTagName('html')[0].classList.add('dark')</script>
-<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
-<a href=/ class="mr-6 text-primary-text text-xl font-bold">Janos Miko</a>
+So let's figure out through examples how it works."><meta property="og:locale" content="en"><meta property="og:site_name" content="Janos Miko"><meta property="article:published_time" content="2021-09-17T00:00:00+00:00"><meta property="article:modified_time" content="2021-09-17T00:00:00+00:00"><meta property="article:section" content="blog"><meta property="article:tag" content="bitbucket"><meta property="article:tag" content="pipelines"><meta property="article:tag" content="memory"><meta property="og:see_also" content="https://janosmiko.com/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/"><body class="flex flex-col min-h-screen"><header class="fixed flex items-center w-full min-h-16 pl-scrollbar z-50 bg-secondary-bg shadow-sm"><div class="w-full max-w-screen-xl mx-auto"><script>let storageColorScheme=localStorage.getItem("lightDarkMode");((storageColorScheme=="Auto"||storageColorScheme==null)&&window.matchMedia("(prefers-color-scheme: dark)").matches||storageColorScheme=="Dark")&&document.getElementsByTagName("html")[0].classList.add("dark")</script><nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0"><a href=/ class="mr-6 text-primary-text text-xl font-bold">Janos Miko</a>
 <button id=navbar-btn class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
-<i class="fas fa-bars"></i>
-</button>
-<div id=target class="hidden block md:flex md:flex-grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
-<div class="md:flex md:h-16 text-sm md:flex-grow pb-4 md:pb-0 border-b md:border-b-0">
-<a href=/#about class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 border-transparent mr-4">About</a>
-<a href=/blog class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 selected-menu-item mr-4">Blog</a>
-</div>
-<div class=flex>
-<div class="relative pt-4 md:pt-0">
-<div class="cursor-pointer hover:text-eureka" id=lightDarkMode>
-<i class="fas fa-adjust"></i>
-</div>
-<div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id=is-open>
-</div>
-<div class="absolute flex flex-col left-0 md:left-auto right-auto md:right-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40" id=lightDarkOptions>
-<span class="px-4 py-1 hover:text-eureka" name=Light>Light</span>
+<i class="fas fa-bars"></i></button><div id=target class="hidden block md:flex md:flex-grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20"><div class="md:flex md:h-16 text-sm md:flex-grow pb-4 md:pb-0 border-b md:border-b-0"><a href=/#about class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 border-transparent mr-4">About</a>
+<a href=/blog class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 selected-menu-item mr-4">Blog</a></div><div class=flex><div class="relative pt-4 md:pt-0"><div class="cursor-pointer hover:text-eureka" id=lightDarkMode><i class="fas fa-adjust"></i></div><div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id=is-open></div><div class="absolute flex flex-col left-0 md:left-auto right-auto md:right-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40" id=lightDarkOptions><span class="px-4 py-1 hover:text-eureka" name=Light>Light</span>
 <span class="px-4 py-1 hover:text-eureka" name=Dark>Dark</span>
-<span class="px-4 py-1 hover:text-eureka" name=Auto>Auto</span>
-</div>
-</div>
-</div>
-</div>
-<div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id=is-open-mobile>
-</div>
-</nav>
-<script>let element=document.getElementById('lightDarkMode');storageColorScheme==null||storageColorScheme=='Auto'?document.addEventListener('DOMContentLoaded',()=>{window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change',switchDarkMode)}):storageColorScheme=="Light"?(element.firstElementChild.classList.remove('fa-adjust'),element.firstElementChild.setAttribute("data-icon",'sun'),element.firstElementChild.classList.add('fa-sun')):storageColorScheme=="Dark"&&(element.firstElementChild.classList.remove('fa-adjust'),element.firstElementChild.setAttribute("data-icon",'moon'),element.firstElementChild.classList.add('fa-moon')),document.addEventListener('DOMContentLoaded',()=>{getcolorscheme(),switchBurger()})</script>
-</div>
-</header>
-<main class="flex-grow pt-16">
-<div class=pl-scrollbar>
-<div class="w-full max-w-screen-xl lg:px-4 xl:px-8 mx-auto">
-<div class="grid grid-cols-2 lg:grid-cols-8 gap-4 lg:pt-12">
-<div class="col-span-2 lg:col-span-6 bg-secondary-bg rounded px-6 py-8">
-<h1 class="font-bold text-3xl text-primary-text">Demystifying Bitbucket Pipelines Memory Limits</h1>
-<div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text">
-<div class="mr-6 my-2">
-<i class="fas fa-calendar mr-1"></i>
-<span>2021-09-17</span>
-</div>
-<div class="mr-6 my-2">
-<i class="fa fa-sync mr-1"></i>
-<span>2021-09-17</span>
-</div>
-<div class="mr-6 my-2">
-<i class="fas fa-clock mr-1"></i>
-<span>8 min read</span>
-</div>
-<div class="mr-6 my-2">
-<i class="fas fa-folder mr-1"></i>
-<a href=https://janosmiko.com/categories/tech/ class=hover:text-eureka>tech</a>
-</div>
-</div>
-<div class=my-4>
-<img src=https://janosmiko.com/images/blog/2021-09-18-demystifying-bitbucket-pipelines-memory-limits/demystifying-bitbucket-pipelines-memory-limits.jpeg class=w-full alt="Featured Image">
-</div>
-<div class=content>
-<p>Bitbucket Pipelines memory management can be a headache in complex cases.</p>
-<p>And its documentation is confusing.</p>
-<p>So let's figure out through examples how it works.</p>
-<h2 id=why-are-we-here>Why are we here?&nbsp;<a class=anchor href=#why-are-we-here>#</a></h2>
-<ul>
-<li><code>A step does not have the minimum resources needed to run (x MB). Services on the current step are consuming y MB.</code></li>
-</ul>
-<p>or</p>
-<ul>
-<li><code>Service 'docker' exceeded memory limit.</code></li>
-</ul>
-<p>If you ever faced these error messages, then this article is for you.</p>
-<h2 id=the-limitations>The limitations&nbsp;<a class=anchor href=#the-limitations>#</a></h2>
-<p>In this first part, let&rsquo;s go through the limitations with some detailed explanation. And later take a look at some examples.</p>
-<ul>
-<li>
-<p>The default max memory in the Bitbucket Cloud Pipeline Steps are 4 GB.</p>
-<blockquote>
-<p>But this can be <strong>raised up to 8 GB</strong> using 2x in steps.</p>
-</blockquote>
-</li>
-<li>
-<p>The build container consumes 1 GB.</p>
-<blockquote>
-<p>Now you only have 3/7 GB left.</p>
-</blockquote>
-</li>
-<li>
-<p>You can add additional services to the steps and set their memory limits.</p>
-<blockquote>
-<p>E.g. You can set up a redis service. In this case this will consume a part of the 8 GB.</p>
-</blockquote>
-</li>
-<li>
-<p>The total memory of services must not exceed the remaining memory.</p>
-<blockquote>
-<p>The 8 GB is a limit across the whole step, including build container, services, etc.</p>
-</blockquote>
-</li>
-<li>
-<p>Docker itself is a service as well.</p>
-<blockquote>
-<p>If you run <code>docker build</code> inside a pipeline step, it will consume memory.</p>
-</blockquote>
-</li>
-<li>
-<p>You can configure all steps' memory requirements on its own.</p>
-<blockquote>
-<p>If you want to.</p>
-</blockquote>
-</li>
-</ul>
-<h2 id=examples>Examples&nbsp;<a class=anchor href=#examples>#</a></h2>
-<h3 id=1-super-simple-one-step-setup>1. Super simple one-step setup&nbsp;<a class=anchor href=#1-super-simple-one-step-setup>#</a></h3>
-<p>In this case we will run one single step without any attached service.</p>
-<p><code>bitbucket-pipelines.yml:</code></p>
-<pre><code class=language-yaml>clone:
+<span class="px-4 py-1 hover:text-eureka" name=Auto>Auto</span></div></div></div></div><div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id=is-open-mobile></div></nav><script>let element=document.getElementById("lightDarkMode");storageColorScheme==null||storageColorScheme=="Auto"?document.addEventListener("DOMContentLoaded",()=>{window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",switchDarkMode)}):storageColorScheme=="Light"?(element.firstElementChild.classList.remove("fa-adjust"),element.firstElementChild.setAttribute("data-icon","sun"),element.firstElementChild.classList.add("fa-sun")):storageColorScheme=="Dark"&&(element.firstElementChild.classList.remove("fa-adjust"),element.firstElementChild.setAttribute("data-icon","moon"),element.firstElementChild.classList.add("fa-moon")),document.addEventListener("DOMContentLoaded",()=>{getcolorscheme(),switchBurger()})</script></div></header><main class="flex-grow pt-16"><div class=pl-scrollbar><div class="w-full max-w-screen-xl lg:px-4 xl:px-8 mx-auto"><div class="grid grid-cols-2 lg:grid-cols-8 gap-4 lg:pt-12"><div class="col-span-2 lg:col-span-6 bg-secondary-bg rounded px-6 py-8"><h1 class="font-bold text-3xl text-primary-text">Demystifying Bitbucket Pipelines Memory Limits</h1><div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text"><div class="mr-6 my-2"><i class="fas fa-calendar mr-1"></i>
+<span>2021-09-17</span></div><div class="mr-6 my-2"><i class="fa fa-sync mr-1"></i>
+<span>2021-09-17</span></div><div class="mr-6 my-2"><i class="fas fa-clock mr-1"></i>
+<span>8 min read</span></div><div class="mr-6 my-2"><i class="fas fa-folder mr-1"></i>
+<a href=https://janosmiko.com/categories/tech/ class=hover:text-eureka>tech</a></div></div><div class=my-4><img src=https://janosmiko.com/images/blog/2021-09-18-demystifying-bitbucket-pipelines-memory-limits/demystifying-bitbucket-pipelines-memory-limits.jpeg class=w-full alt="Featured Image"></div><div class=content><p>Bitbucket Pipelines memory management can be a headache in complex cases.</p><p>And its documentation is confusing.</p><p>So let's figure out through examples how it works.</p><h2 id=why-are-we-here>Why are we here?&nbsp;<a class=anchor href=#why-are-we-here>#</a></h2><ul><li><code>A step does not have the minimum resources needed to run (x MB). Services on the current step are consuming y MB.</code></li></ul><p>or</p><ul><li><code>Service 'docker' exceeded memory limit.</code></li></ul><p>If you ever faced these error messages, then this article is for you.</p><h2 id=the-limitations>The limitations&nbsp;<a class=anchor href=#the-limitations>#</a></h2><p>In this first part, let&rsquo;s go through the limitations with some detailed explanation. And later take a look at some examples.</p><ul><li><p>The default max memory in the Bitbucket Cloud Pipeline Steps are 4 GB.</p><blockquote><p>But this can be <strong>raised up to 8 GB</strong> using 2x in steps.</p></blockquote></li><li><p>The build container consumes 1 GB.</p><blockquote><p>Now you only have 3/7 GB left.</p></blockquote></li><li><p>You can add additional services to the steps and set their memory limits.</p><blockquote><p>E.g. You can set up a redis service. In this case this will consume a part of the 8 GB.</p></blockquote></li><li><p>The total memory of services must not exceed the remaining memory.</p><blockquote><p>The 8 GB is a limit across the whole step, including build container, services, etc.</p></blockquote></li><li><p>Docker itself is a service as well.</p><blockquote><p>If you run <code>docker build</code> inside a pipeline step, it will consume memory.</p></blockquote></li><li><p>You can configure all steps&rsquo; memory requirements on its own.</p><blockquote><p>If you want to.</p></blockquote></li></ul><h2 id=examples>Examples&nbsp;<a class=anchor href=#examples>#</a></h2><h3 id=1-super-simple-one-step-setup>1. Super simple one-step setup&nbsp;<a class=anchor href=#1-super-simple-one-step-setup>#</a></h3><p>In this case we will run one single step without any attached service.</p><p><code>bitbucket-pipelines.yml:</code></p><pre><code class=language-yaml>clone:
   enabled: false
 
 pipelines:
@@ -184,20 +31,14 @@ pipelines:
           image: alpine
           script:
             - echo test
-</code></pre>
-<p>The memory reservation table is pretty simple here:</p>
-<pre><code>------------------------------------
+</code></pre><p>The memory reservation table is pretty simple here:</p><pre><code>------------------------------------
 | Service name   | Reserved memory |
 |----------------|-----------------|
 | Step container |       1 GB      |
 |----------------|-----------------|
 | SUM            |       1 GB      |
 ------------------------------------
-</code></pre>
-<h3 id=2-attaching-a-service-to-the-setup>2. Attaching a service to the setup&nbsp;<a class=anchor href=#2-attaching-a-service-to-the-setup>#</a></h3>
-<p>In the next case we attach a Redis service to the step.</p>
-<p><code>bitbucket-pipelines.yml:</code></p>
-<pre><code class=language-yaml>clone:
+</code></pre><h3 id=2-attaching-a-service-to-the-setup>2. Attaching a service to the setup&nbsp;<a class=anchor href=#2-attaching-a-service-to-the-setup>#</a></h3><p>In the next case we attach a Redis service to the step.</p><p><code>bitbucket-pipelines.yml:</code></p><pre><code class=language-yaml>clone:
   enabled: false
 
 definitions:
@@ -223,9 +64,7 @@ pipelines:
             - apk add -u netcat-openbsd
             - echo info | nc -q 5 -v localhost 6379
 
-</code></pre>
-<p>In this case both the build step and the Redis service will require 1 GB memory.</p>
-<pre><code>------------------------------------
+</code></pre><p>In this case both the build step and the Redis service will require 1 GB memory.</p><pre><code>------------------------------------
 | Service name   | Reserved memory |
 |----------------|-----------------|
 | Step container |       1 GB      |
@@ -233,11 +72,7 @@ pipelines:
 |----------------|-----------------|
 | SUM            |       2 GB      |
 ------------------------------------
-</code></pre>
-<h3 id=3-multiple-services-setup-with-docker-build>3. Multiple services setup with <code>docker build</code>&nbsp;<a class=anchor href=#3-multiple-services-setup-with-docker-build>#</a></h3>
-<p>Now let&rsquo;s add a MySQL service and a Docker service, because we want to build a container.</p>
-<p><code>bitbucket-pipelines.yml:</code></p>
-<pre><code class=language-yaml>clone:
+</code></pre><h3 id=3-multiple-services-setup-with-docker-build>3. Multiple services setup with <code>docker build</code>&nbsp;<a class=anchor href=#3-multiple-services-setup-with-docker-build>#</a></h3><p>Now let&rsquo;s add a MySQL service and a Docker service, because we want to build a container.</p><p><code>bitbucket-pipelines.yml:</code></p><pre><code class=language-yaml>clone:
   enabled: false
 
 definitions:
@@ -280,11 +115,9 @@ pipelines:
             - mysql -h127.0.0.1 -upipeline -ppipeline -e 'SHOW VARIABLES LIKE &quot;%version%&quot;;'
             - echo &quot;FROM alpine&quot; &gt; Dockerfile
             - docker build .
-</code></pre>
-<p>Note that this is the limit of 1x size Step.
+</code></pre><p>Note that this is the limit of 1x size Step.
 If we increase the docker memory limit from 1024 to 1025 the pipeline will fail.
-In that case enable <code>size: 2x</code>.</p>
-<pre><code>------------------------------------
+In that case enable <code>size: 2x</code>.</p><pre><code>------------------------------------
 | Service name   | Reserved memory |
 |----------------|-----------------|
 | Step container |       1 GB      |
@@ -294,23 +127,7 @@ In that case enable <code>size: 2x</code>.</p>
 |----------------|-----------------|
 | SUM            |       4 GB      |
 ------------------------------------
-</code></pre>
-<h3 id=4-using-different-docker-services-for-different-steps>4. Using different Docker services for different steps&nbsp;<a class=anchor href=#4-using-different-docker-services-for-different-steps>#</a></h3>
-<p>Now let&rsquo;s assume the following situation:</p>
-<ul>
-<li>One of our build steps requires 6 GB memory for Docker build and a Redis service with 1 GB memory.</li>
-<li>The other step requires a Redis and a MySQL with 2-2 GB memory</li>
-</ul>
-<p>In this case if we configure docker service to reserve 6 GB memory, the second step will not have enough memory to run Redis and MySQL.</p>
-<p>How to handle this?</p>
-<p>It&rsquo;s pretty simple, because we can define our own custom services.</p>
-<blockquote>
-<p><strong>Watch out:</strong> <br>
-You can only use alphanumeric characters and hyphens in the custom service names.<br>
-If you define a docker service, you will have to add <code>type: docker</code> to it.</p>
-</blockquote>
-<p><code>bitbucket-pipelines.yml:</code></p>
-<pre><code class=language-yaml>clone:
+</code></pre><h3 id=4-using-different-docker-services-for-different-steps>4. Using different Docker services for different steps&nbsp;<a class=anchor href=#4-using-different-docker-services-for-different-steps>#</a></h3><p>Now let&rsquo;s assume the following situation:</p><ul><li>One of our build steps requires 6 GB memory for Docker build and a Redis service with 1 GB memory.</li><li>The other step requires a Redis and a MySQL with 2-2 GB memory</li></ul><p>In this case if we configure docker service to reserve 6 GB memory, the second step will not have enough memory to run Redis and MySQL.</p><p>How to handle this?</p><p>It&rsquo;s pretty simple, because we can define our own custom services.</p><blockquote><p><strong>Watch out:</strong><br>You can only use alphanumeric characters and hyphens in the custom service names.<br>If you define a docker service, you will have to add <code>type: docker</code> to it.</p></blockquote><p><code>bitbucket-pipelines.yml:</code></p><pre><code class=language-yaml>clone:
   enabled: false
 
 definitions:
@@ -376,9 +193,7 @@ pipelines:
             - mysql -h127.0.0.1 -upipeline -ppipeline -e 'SHOW VARIABLES LIKE &quot;%version%&quot;;'
             - echo &quot;FROM alpine&quot; &gt; Dockerfile
             - docker build .
-</code></pre>
-<p>The memory reservation table looks like this:</p>
-<pre><code>Step 1.                               Step 2.
+</code></pre><p>The memory reservation table looks like this:</p><pre><code>Step 1.                               Step 2.
 ------------------------------------  ------------------------------------
 | Service name   | Reserved memory |  | Service name   | Reserved memory |
 |----------------|-----------------|  |----------------|-----------------|
@@ -389,17 +204,7 @@ pipelines:
 |----------------|-----------------|  |----------------|-----------------|
 | SUM            |       8 GB      |  | SUM            |       7 GB      |
 ------------------------------------  ------------------------------------
-</code></pre>
-<h3 id=1-reusable-bitbucket-steps-using-yaml-anchors>+1. Reusable bitbucket steps using YAML anchors&nbsp;<a class=anchor href=#1-reusable-bitbucket-steps-using-yaml-anchors>#</a></h3>
-<p>It is not only possible to define services, but you can also define steps or even scripts and reuse them in various situations.</p>
-<p>In the following example we are going to rewrite the previous file to use YAML anchors (templates).</p>
-<ul>
-<li>We define 3 scripts (check_redis, check_mysql, build_docker)</li>
-<li>We define 2 steps (and utilize in the previously defined scripts in both)</li>
-<li>Use these 2 steps for multiple pipelines without code duplication.</li>
-</ul>
-<p><code>bitbucket-pipelines.yml:</code></p>
-<pre><code class=language-yaml>clone:
+</code></pre><h3 id=1-reusable-bitbucket-steps-using-yaml-anchors>+1. Reusable bitbucket steps using YAML anchors&nbsp;<a class=anchor href=#1-reusable-bitbucket-steps-using-yaml-anchors>#</a></h3><p>It is not only possible to define services, but you can also define steps or even scripts and reuse them in various situations.</p><p>In the following example we are going to rewrite the previous file to use YAML anchors (templates).</p><ul><li>We define 3 scripts (check_redis, check_mysql, build_docker)</li><li>We define 2 steps (and utilize in the previously defined scripts in both)</li><li>Use these 2 steps for multiple pipelines without code duplication.</li></ul><p><code>bitbucket-pipelines.yml:</code></p><pre><code class=language-yaml>clone:
   enabled: false
   
 # SCRIPT DEFINITIONS
@@ -494,94 +299,15 @@ pipelines:
       - step:
           &lt;&lt;: *checkRedisCheckMysqlAndBuild
 
-</code></pre>
-<p>Further reading:</p>
-<ul>
-<li><a href=https://support.atlassian.com/bitbucket-cloud/docs/databases-and-service-containers/>Build, test, and deploy with Pipelines - Databases and service containers</a></li>
-</ul>
-</div>
-<div class=my-4>
-<a href=https://janosmiko.com/tags/bitbucket/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#bitbucket</a>
+</code></pre><p>Further reading:</p><ul><li><a href=https://support.atlassian.com/bitbucket-cloud/docs/databases-and-service-containers/>Build, test, and deploy with Pipelines - Databases and service containers</a></li></ul></div><div class=my-4><a href=https://janosmiko.com/tags/bitbucket/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#bitbucket</a>
 <a href=https://janosmiko.com/tags/pipelines/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#pipelines</a>
-<a href=https://janosmiko.com/tags/memory/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#memory</a>
-</div>
-<div class=py-2>
-<div class="flex flex-col md:flex-row items-center my-8">
-<a href=https://janosmiko.com/authors/janos-miko/ class="w-24 h-24 md:mr-4">
-<img src=https://janosmiko.com/images/janosmiko-400x300.jpeg class="w-full bg-primary-bg rounded-full" alt=Avatar>
-</a>
-<div class="w-full md:w-auto mt-4 md:mt-0">
-<a href=https://janosmiko.com/authors/janos-miko/ class="block font-bold text-lg pb-1 mb-2 border-b">Janos Miko</a>
+<a href=https://janosmiko.com/tags/memory/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#memory</a></div><div class=py-2><div class="flex flex-col md:flex-row items-center my-8"><a href=https://janosmiko.com/authors/janos-miko/ class="w-24 h-24 md:mr-4"><img src=https://janosmiko.com/images/janosmiko-400x300.jpeg class="w-full bg-primary-bg rounded-full" alt=Avatar></a><div class="w-full md:w-auto mt-4 md:mt-0"><a href=https://janosmiko.com/authors/janos-miko/ class="block font-bold text-lg pb-1 mb-2 border-b">Janos Miko</a>
 <span class="block pb-2">Fill your bucket by drop by drop.</span>
-<a href=mailto:example@example.com class=mr-1>
-<i class="fas fa-envelope"></i>
-</a>
-<a href=https://twitter.com/mixe3y/ class=mr-1>
-<i class="fab fa-twitter"></i>
-</a>
-<a href=https://github.com/janosmiko/ class=mr-1>
-<i class="fab fa-github"></i>
-</a>
-<a href=https://www.facebook.com/mixe3y/ class=mr-1>
-<i class="fab fa-facebook"></i>
-</a>
-<a href="https://www.upwork.com/freelancers/~01bbf22d354f4e322c?viewMode=1" class=mr-1>
-<i class="fas fa-suitcase"></i>
-</a>
-</div>
-</div>
-</div>
-<div class="flex flex-col md:flex-row md:justify-between -mx-2 mt-4 px-2 pt-4 border-t">
-<div>
-<span class="block font-bold">Previous</span>
-<a href=https://janosmiko.com/blog/2021-10-01-how-to-debug-varnish/ class=block>How to debug Varnish? - A detailed guide with some practical examples</a>
-</div>
-<div class="md:text-right mt-4 md:mt-0">
-<span class="block font-bold">Next</span>
-<a href=https://janosmiko.com/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/ class=block>How to run Self Hosted Bitbucket Pipelines Runners in Kubernetes</a>
-</div>
-</div>
-</div>
-<div class=col-span-2>
-<div class="sticky top-16 z-10 hidden lg:block px-6 py-4 bg-primary-bg">
-<span class="text-lg font-semibold">On This Page</span>
-</div>
-<div class="sticky-toc hidden lg:block px-6 pb-6">
-<nav id=TableOfContents>
-<ul>
-<li><a href=#why-are-we-here>Why are we here?</a></li>
-<li><a href=#the-limitations>The limitations</a></li>
-<li><a href=#examples>Examples</a>
-<ul>
-<li><a href=#1-super-simple-one-step-setup>1. Super simple one-step setup</a></li>
-<li><a href=#2-attaching-a-service-to-the-setup>2. Attaching a service to the setup</a></li>
-<li><a href=#3-multiple-services-setup-with-docker-build>3. Multiple services setup with <code>docker build</code></a></li>
-<li><a href=#4-using-different-docker-services-for-different-steps>4. Using different Docker services for different steps</a></li>
-<li><a href=#1-reusable-bitbucket-steps-using-yaml-anchors>+1. Reusable bitbucket steps using YAML anchors</a></li>
-</ul>
-</li>
-</ul>
-</nav>
-</div>
-<script>window.addEventListener('DOMContentLoaded',()=>{enableStickyToc()})</script>
-</div>
-<div class="col-span-2 lg:col-span-6 bg-secondary-bg rounded p-6">
-<h2 class="text-lg font-semibold mb-4">See Also</h2>
-<div class=content>
-<a href=https://janosmiko.com/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/>How to run Self Hosted Bitbucket Pipelines Runners in Kubernetes</a>
-<br>
-</div>
-</div>
-</div>
-</div>
-</div>
-</main>
-<footer class=pl-scrollbar>
-<div class="w-full max-w-screen-xl mx-auto"><div class="text-center p-6 pin-b">
-<p class="text-sm text-tertiary-text">&copy; Janos Miko
-&#183; Made with <i class="fas fa-heart"></i> using <a href=https://github.com/wangchucheng/hugo-eureka class=hover:text-eureka>Eureka</a> theme for <a href=https://gohugo.io class=hover:text-eureka>Hugo</a></p>
-</div>
-</div>
-</footer>
-</body>
-</html>
+<a href=mailto:example@example.com class=mr-1><i class="fas fa-envelope"></i></a>
+<a href=https://twitter.com/mixe3y/ class=mr-1><i class="fab fa-twitter"></i></a>
+<a href=https://github.com/janosmiko/ class=mr-1><i class="fab fa-github"></i></a>
+<a href=https://www.facebook.com/mixe3y/ class=mr-1><i class="fab fa-facebook"></i></a>
+<a href="https://www.upwork.com/freelancers/~01bbf22d354f4e322c?viewMode=1" class=mr-1><i class="fas fa-suitcase"></i></a></div></div></div><div class="flex flex-col md:flex-row md:justify-between -mx-2 mt-4 px-2 pt-4 border-t"><div><span class="block font-bold">Previous</span>
+<a href=https://janosmiko.com/blog/2021-10-01-how-to-debug-varnish/ class=block>How to debug Varnish? - A detailed guide with some practical examples</a></div><div class="md:text-right mt-4 md:mt-0"><span class="block font-bold">Next</span>
+<a href=https://janosmiko.com/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/ class=block>How to run Self Hosted Bitbucket Pipelines Runners in Kubernetes</a></div></div></div><div class=col-span-2><div class="sticky top-16 z-10 hidden lg:block px-6 py-4 bg-primary-bg"><span class="text-lg font-semibold">On This Page</span></div><div class="sticky-toc hidden lg:block px-6 pb-6"><nav id=TableOfContents><ul><li><a href=#why-are-we-here>Why are we here?</a></li><li><a href=#the-limitations>The limitations</a></li><li><a href=#examples>Examples</a><ul><li><a href=#1-super-simple-one-step-setup>1. Super simple one-step setup</a></li><li><a href=#2-attaching-a-service-to-the-setup>2. Attaching a service to the setup</a></li><li><a href=#3-multiple-services-setup-with-docker-build>3. Multiple services setup with <code>docker build</code></a></li><li><a href=#4-using-different-docker-services-for-different-steps>4. Using different Docker services for different steps</a></li><li><a href=#1-reusable-bitbucket-steps-using-yaml-anchors>+1. Reusable bitbucket steps using YAML anchors</a></li></ul></li></ul></nav></div><script>window.addEventListener("DOMContentLoaded",()=>{enableStickyToc()})</script></div><div class="col-span-2 lg:col-span-6 bg-secondary-bg rounded p-6"><h2 class="text-lg font-semibold mb-4">See Also</h2><div class=content><a href=https://janosmiko.com/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/>How to run Self Hosted Bitbucket Pipelines Runners in Kubernetes</a><br></div></div></div></div></div></main><footer class=pl-scrollbar><div class="w-full max-w-screen-xl mx-auto"><div class="text-center p-6 pin-b"><p class="text-sm text-tertiary-text">&copy; Janos Miko
+&#183; Made with <i class="fas fa-heart"></i> using <a href=https://github.com/wangchucheng/hugo-eureka class=hover:text-eureka>Eureka</a> theme for <a href=https://gohugo.io class=hover:text-eureka>Hugo</a></p></div></div></footer></body></html>

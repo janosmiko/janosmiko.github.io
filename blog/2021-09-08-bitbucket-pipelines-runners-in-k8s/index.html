@@ -1,14 +1,5 @@
-<!doctype html><html lang=en><meta charset=utf-8>
-<meta name=viewport content="width=device-width">
-<title>How to run Self Hosted Bitbucket Pipelines Runners in Kubernetes | Janos Miko</title>
-<meta name=generator content="Hugo Eureka 0.8.0">
-<link rel=stylesheet href=https://janosmiko.com/css/eureka.min.css>
-<script defer src=https://janosmiko.com/js/eureka.min.js></script>
-<link rel=dns-prefetch href=//fonts.googleapis.com>
-<link rel=preconnect href=https://fonts.gstatic.com crossorigin>
-<link rel=preload href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" as=style onload="this.onload=null,this.rel='stylesheet'">
-<link rel=stylesheet href=/css/prism-okaidia.css media=print onload="this.media='all',this.onload=null" crossorigin>
-<script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.24.1/prism.min.js crossorigin></script>
+<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content="width=device-width"><title>How to run Self Hosted Bitbucket Pipelines Runners in Kubernetes | Janos Miko</title><meta name=generator content="Hugo Eureka 0.8.0"><link rel=stylesheet href=https://janosmiko.com/css/eureka.min.css><script defer src=https://janosmiko.com/js/eureka.min.js></script>
+<link rel=dns-prefetch href=//fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=preload href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" as=style onload='this.onload=null,this.rel="stylesheet"'><link rel=stylesheet href=/css/prism-okaidia.css media=print onload='this.media="all",this.onload=null' crossorigin><script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.24.1/prism.min.js crossorigin></script>
 <script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.24.1/plugins/autoloader/prism-autoloader.min.js crossorigin></script>
 <script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.24.1/components/prism-markup-templating.min.js crossorigin></script>
 <script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.24.1/components/prism-go.min.js crossorigin></script>
@@ -16,120 +7,16 @@
 <script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.24.1/components/prism-php.min.js crossorigin></script>
 <script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.24.1/components/prism-json.min.js crossorigin></script>
 <script defer src=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/js/all.min.js integrity="sha256-uNYoXefWRqv+PsIF/OflNmwtKM4lStn9yrz2gVl6ymo=" crossorigin></script>
-<link rel=stylesheet href=/css/custom.css>
-<link rel=apple-touch-icon sizes=57x57 href=/apple-icon-57x57.png>
-<link rel=apple-touch-icon sizes=60x60 href=/apple-icon-60x60.png>
-<link rel=apple-touch-icon sizes=72x72 href=/apple-icon-72x72.png>
-<link rel=apple-touch-icon sizes=76x76 href=/apple-icon-76x76.png>
-<link rel=apple-touch-icon sizes=114x114 href=/apple-icon-114x114.png>
-<link rel=apple-touch-icon sizes=120x120 href=/apple-icon-120x120.png>
-<link rel=apple-touch-icon sizes=144x144 href=/apple-icon-144x144.png>
-<link rel=apple-touch-icon sizes=152x152 href=/apple-icon-152x152.png>
-<link rel=apple-touch-icon sizes=180x180 href=/apple-icon-180x180.png>
-<link rel=icon type=image/png sizes=192x192 href=/android-icon-192x192.png>
-<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
-<link rel=icon type=image/png sizes=96x96 href=/favicon-96x96.png>
-<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
-<link rel=manifest href=/manifest.json>
-<meta name=msapplication-TileColor content="#ffffff">
-<meta name=msapplication-TileImage content="/ms-icon-144x144.png">
-<meta name=apple-mobile-web-app-title content="Janos Miko">
-<meta name=application-name content="Janos Miko">
-<meta name=theme-color content="#1e2028">
-<meta name=description content="Atlassian announced self-hosted Runners for Bitbucket Pipelines, let&rsquo;s try them out.">
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Blog","item":"https://janosmiko.com/blog/"},{"@type":"ListItem","position":2,"name":"How to run Self Hosted Bitbucket Pipelines Runners in Kubernetes","item":"https://janosmiko.com/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/"}]}</script>
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://janosmiko.com/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/"},"headline":"How to run Self Hosted Bitbucket Pipelines Runners in Kubernetes | Janos Miko","image":"https://janosmiko.com/images/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/bitbucket-pipelines-runners-in-k8s.png","datePublished":"2021-09-08T00:00:00+00:00","dateModified":"2021-09-17T00:00:00+00:00","wordCount":1361,"author":{"@type":"Person","name":["janos-miko"]},"publisher":{"@type":"Person","name":"Janos Miko"},"description":"\u003cp\u003eAtlassian \u003ca href=\u0022https:\/\/bitbucket.org\/blog\/pipelines-runners\u0022\u003eannounced\u003c\/a\u003e self-hosted Runners for Bitbucket Pipelines, let\u0026rsquo;s try them out.\u003c\/p\u003e"}</script><meta property="og:title" content="How to run Self Hosted Bitbucket Pipelines Runners in Kubernetes | Janos Miko">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://janosmiko.com/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/">
-<meta property="og:description" content="Atlassian announced self-hosted Runners for Bitbucket Pipelines, let&rsquo;s try them out.">
-<meta property="og:locale" content="en">
-<meta property="og:site_name" content="Janos Miko">
-<meta property="article:published_time" content="2021-09-08T00:00:00+00:00">
-<meta property="article:modified_time" content="2021-09-17T00:00:00+00:00">
-<meta property="article:section" content="blog">
-<meta property="article:tag" content="bitbucket">
-<meta property="article:tag" content="pipelines">
-<meta property="article:tag" content="runners">
-<meta property="article:tag" content="kubernetes">
-<body class="flex flex-col min-h-screen">
-<header class="fixed flex items-center w-full min-h-16 pl-scrollbar z-50 bg-secondary-bg shadow-sm">
-<div class="w-full max-w-screen-xl mx-auto"><script>let storageColorScheme=localStorage.getItem("lightDarkMode");((storageColorScheme=='Auto'||storageColorScheme==null)&&window.matchMedia("(prefers-color-scheme: dark)").matches||storageColorScheme=="Dark")&&document.getElementsByTagName('html')[0].classList.add('dark')</script>
-<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
-<a href=/ class="mr-6 text-primary-text text-xl font-bold">Janos Miko</a>
+<link rel=stylesheet href=/css/custom.css><link rel=apple-touch-icon sizes=57x57 href=/apple-icon-57x57.png><link rel=apple-touch-icon sizes=60x60 href=/apple-icon-60x60.png><link rel=apple-touch-icon sizes=72x72 href=/apple-icon-72x72.png><link rel=apple-touch-icon sizes=76x76 href=/apple-icon-76x76.png><link rel=apple-touch-icon sizes=114x114 href=/apple-icon-114x114.png><link rel=apple-touch-icon sizes=120x120 href=/apple-icon-120x120.png><link rel=apple-touch-icon sizes=144x144 href=/apple-icon-144x144.png><link rel=apple-touch-icon sizes=152x152 href=/apple-icon-152x152.png><link rel=apple-touch-icon sizes=180x180 href=/apple-icon-180x180.png><link rel=icon type=image/png sizes=192x192 href=/android-icon-192x192.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=96x96 href=/favicon-96x96.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><meta name=msapplication-TileColor content="#ffffff"><meta name=msapplication-TileImage content="/ms-icon-144x144.png"><meta name=apple-mobile-web-app-title content="Janos Miko"><meta name=application-name content="Janos Miko"><meta name=theme-color content="#1e2028"><meta name=description content="Atlassian announced self-hosted Runners for Bitbucket Pipelines, let&rsquo;s try them out."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Blog","item":"https://janosmiko.com/blog/"},{"@type":"ListItem","position":2,"name":"How to run Self Hosted Bitbucket Pipelines Runners in Kubernetes","item":"https://janosmiko.com/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://janosmiko.com/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/"},"headline":"How to run Self Hosted Bitbucket Pipelines Runners in Kubernetes | Janos Miko","image":"https://janosmiko.com/images/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/bitbucket-pipelines-runners-in-k8s.png","datePublished":"2021-09-08T00:00:00+00:00","dateModified":"2021-09-17T00:00:00+00:00","wordCount":1361,"author":{"@type":"Person","name":["janos-miko"]},"publisher":{"@type":"Person","name":"Janos Miko"},"description":"\u003cp\u003eAtlassian \u003ca href=\u0022https:\/\/bitbucket.org\/blog\/pipelines-runners\u0022\u003eannounced\u003c\/a\u003e self-hosted Runners for Bitbucket Pipelines, let\u0026rsquo;s try them out.\u003c\/p\u003e"}</script><meta property="og:title" content="How to run Self Hosted Bitbucket Pipelines Runners in Kubernetes | Janos Miko"><meta property="og:type" content="article"><meta property="og:url" content="https://janosmiko.com/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/"><meta property="og:description" content="Atlassian announced self-hosted Runners for Bitbucket Pipelines, let&rsquo;s try them out."><meta property="og:locale" content="en"><meta property="og:site_name" content="Janos Miko"><meta property="article:published_time" content="2021-09-08T00:00:00+00:00"><meta property="article:modified_time" content="2021-09-17T00:00:00+00:00"><meta property="article:section" content="blog"><meta property="article:tag" content="bitbucket"><meta property="article:tag" content="pipelines"><meta property="article:tag" content="runners"><meta property="article:tag" content="kubernetes"><body class="flex flex-col min-h-screen"><header class="fixed flex items-center w-full min-h-16 pl-scrollbar z-50 bg-secondary-bg shadow-sm"><div class="w-full max-w-screen-xl mx-auto"><script>let storageColorScheme=localStorage.getItem("lightDarkMode");((storageColorScheme=="Auto"||storageColorScheme==null)&&window.matchMedia("(prefers-color-scheme: dark)").matches||storageColorScheme=="Dark")&&document.getElementsByTagName("html")[0].classList.add("dark")</script><nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0"><a href=/ class="mr-6 text-primary-text text-xl font-bold">Janos Miko</a>
 <button id=navbar-btn class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
-<i class="fas fa-bars"></i>
-</button>
-<div id=target class="hidden block md:flex md:flex-grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
-<div class="md:flex md:h-16 text-sm md:flex-grow pb-4 md:pb-0 border-b md:border-b-0">
-<a href=/#about class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 border-transparent mr-4">About</a>
-<a href=/blog class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 selected-menu-item mr-4">Blog</a>
-</div>
-<div class=flex>
-<div class="relative pt-4 md:pt-0">
-<div class="cursor-pointer hover:text-eureka" id=lightDarkMode>
-<i class="fas fa-adjust"></i>
-</div>
-<div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id=is-open>
-</div>
-<div class="absolute flex flex-col left-0 md:left-auto right-auto md:right-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40" id=lightDarkOptions>
-<span class="px-4 py-1 hover:text-eureka" name=Light>Light</span>
+<i class="fas fa-bars"></i></button><div id=target class="hidden block md:flex md:flex-grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20"><div class="md:flex md:h-16 text-sm md:flex-grow pb-4 md:pb-0 border-b md:border-b-0"><a href=/#about class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 border-transparent mr-4">About</a>
+<a href=/blog class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 selected-menu-item mr-4">Blog</a></div><div class=flex><div class="relative pt-4 md:pt-0"><div class="cursor-pointer hover:text-eureka" id=lightDarkMode><i class="fas fa-adjust"></i></div><div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id=is-open></div><div class="absolute flex flex-col left-0 md:left-auto right-auto md:right-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40" id=lightDarkOptions><span class="px-4 py-1 hover:text-eureka" name=Light>Light</span>
 <span class="px-4 py-1 hover:text-eureka" name=Dark>Dark</span>
-<span class="px-4 py-1 hover:text-eureka" name=Auto>Auto</span>
-</div>
-</div>
-</div>
-</div>
-<div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id=is-open-mobile>
-</div>
-</nav>
-<script>let element=document.getElementById('lightDarkMode');storageColorScheme==null||storageColorScheme=='Auto'?document.addEventListener('DOMContentLoaded',()=>{window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change',switchDarkMode)}):storageColorScheme=="Light"?(element.firstElementChild.classList.remove('fa-adjust'),element.firstElementChild.setAttribute("data-icon",'sun'),element.firstElementChild.classList.add('fa-sun')):storageColorScheme=="Dark"&&(element.firstElementChild.classList.remove('fa-adjust'),element.firstElementChild.setAttribute("data-icon",'moon'),element.firstElementChild.classList.add('fa-moon')),document.addEventListener('DOMContentLoaded',()=>{getcolorscheme(),switchBurger()})</script>
-</div>
-</header>
-<main class="flex-grow pt-16">
-<div class=pl-scrollbar>
-<div class="w-full max-w-screen-xl lg:px-4 xl:px-8 mx-auto">
-<div class="grid grid-cols-2 lg:grid-cols-8 gap-4 lg:pt-12">
-<div class="col-span-2 lg:col-span-6 bg-secondary-bg rounded px-6 py-8">
-<h1 class="font-bold text-3xl text-primary-text">How to run Self Hosted Bitbucket Pipelines Runners in Kubernetes</h1>
-<div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text">
-<div class="mr-6 my-2">
-<i class="fas fa-calendar mr-1"></i>
-<span>2021-09-08</span>
-</div>
-<div class="mr-6 my-2">
-<i class="fa fa-sync mr-1"></i>
-<span>2021-09-17</span>
-</div>
-<div class="mr-6 my-2">
-<i class="fas fa-clock mr-1"></i>
-<span>7 min read</span>
-</div>
-<div class="mr-6 my-2">
-<i class="fas fa-folder mr-1"></i>
-<a href=https://janosmiko.com/categories/tech/ class=hover:text-eureka>tech</a>
-</div>
-</div>
-<div class=my-4>
-<img src=https://janosmiko.com/images/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/bitbucket-pipelines-runners-in-k8s.png class=w-full alt="Featured Image">
-</div>
-<div class=content>
-<p>Atlassian <a href=https://bitbucket.org/blog/pipelines-runners>announced</a> self-hosted Runners for Bitbucket Pipelines, let&rsquo;s try them out.</p>
-<p>Runners can be configured on 2 levels:</p>
-<ul>
-<li>Workspace level</li>
-<li>Project level</li>
-</ul>
-<p>Let&rsquo;s see how can we create Runners in Workspace level.</p>
-<h2 id=how-to-create-a-runner>How to create a Runner?&nbsp;<a class=anchor href=#how-to-create-a-runner>#</a></h2>
-<h3 id=create-a-new-workspace-runner-in-bitbucket>Create a new Workspace Runner in Bitbucket&nbsp;<a class=anchor href=#create-a-new-workspace-runner-in-bitbucket>#</a></h3>
-<p>Go to the <strong>Workspace Settings</strong>: click on your <strong>Profile Picture</strong> and <strong>Select the Workspace</strong>.</p>
-<p><img src=/images/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/1_workspace_settings.png alt=1_workspace_settings.png></p>
-<p>Click on the <strong>Settings</strong> and Scroll down to <strong>Workspace Runners</strong> and click on <strong>Add Runner</strong>.</p>
-<p><img src=/images/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/2_workspace_runners.png alt=2_workspace_runners.png></p>
-<p>Give your runner a <strong>name</strong> and click on <strong>next</strong>.</p>
-<p><img src=/images/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/3_new_runner.png#300px alt=3_new_runner.png></p>
-<p>It is going to give you a command output like this:</p>
-<pre><code class=language-bash>docker container run -it -v /tmp:/tmp -v /var/run/docker.sock:/var/run/docker.sock \
+<span class="px-4 py-1 hover:text-eureka" name=Auto>Auto</span></div></div></div></div><div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id=is-open-mobile></div></nav><script>let element=document.getElementById("lightDarkMode");storageColorScheme==null||storageColorScheme=="Auto"?document.addEventListener("DOMContentLoaded",()=>{window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",switchDarkMode)}):storageColorScheme=="Light"?(element.firstElementChild.classList.remove("fa-adjust"),element.firstElementChild.setAttribute("data-icon","sun"),element.firstElementChild.classList.add("fa-sun")):storageColorScheme=="Dark"&&(element.firstElementChild.classList.remove("fa-adjust"),element.firstElementChild.setAttribute("data-icon","moon"),element.firstElementChild.classList.add("fa-moon")),document.addEventListener("DOMContentLoaded",()=>{getcolorscheme(),switchBurger()})</script></div></header><main class="flex-grow pt-16"><div class=pl-scrollbar><div class="w-full max-w-screen-xl lg:px-4 xl:px-8 mx-auto"><div class="grid grid-cols-2 lg:grid-cols-8 gap-4 lg:pt-12"><div class="col-span-2 lg:col-span-6 bg-secondary-bg rounded px-6 py-8"><h1 class="font-bold text-3xl text-primary-text">How to run Self Hosted Bitbucket Pipelines Runners in Kubernetes</h1><div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text"><div class="mr-6 my-2"><i class="fas fa-calendar mr-1"></i>
+<span>2021-09-08</span></div><div class="mr-6 my-2"><i class="fa fa-sync mr-1"></i>
+<span>2021-09-17</span></div><div class="mr-6 my-2"><i class="fas fa-clock mr-1"></i>
+<span>7 min read</span></div><div class="mr-6 my-2"><i class="fas fa-folder mr-1"></i>
+<a href=https://janosmiko.com/categories/tech/ class=hover:text-eureka>tech</a></div></div><div class=my-4><img src=https://janosmiko.com/images/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/bitbucket-pipelines-runners-in-k8s.png class=w-full alt="Featured Image"></div><div class=content><p>Atlassian <a href=https://bitbucket.org/blog/pipelines-runners>announced</a> self-hosted Runners for Bitbucket Pipelines, let&rsquo;s try them out.</p><p>Runners can be configured on 2 levels:</p><ul><li>Workspace level</li><li>Project level</li></ul><p>Let&rsquo;s see how can we create Runners in Workspace level.</p><h2 id=how-to-create-a-runner>How to create a Runner?&nbsp;<a class=anchor href=#how-to-create-a-runner>#</a></h2><h3 id=create-a-new-workspace-runner-in-bitbucket>Create a new Workspace Runner in Bitbucket&nbsp;<a class=anchor href=#create-a-new-workspace-runner-in-bitbucket>#</a></h3><p>Go to the <strong>Workspace Settings</strong>: click on your <strong>Profile Picture</strong> and <strong>Select the Workspace</strong>.</p><p><img src=/images/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/1_workspace_settings.png alt=1_workspace_settings.png></p><p>Click on the <strong>Settings</strong> and Scroll down to <strong>Workspace Runners</strong> and click on <strong>Add Runner</strong>.</p><p><img src=/images/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/2_workspace_runners.png alt=2_workspace_runners.png></p><p>Give your runner a <strong>name</strong> and click on <strong>next</strong>.</p><p><img src=/images/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/3_new_runner.png#300px alt=3_new_runner.png></p><p>It is going to give you a command output like this:</p><pre><code class=language-bash>docker container run -it -v /tmp:/tmp -v /var/run/docker.sock:/var/run/docker.sock \
   -v /var/lib/docker/containers:/var/lib/docker/containers:ro \
   -e ACCOUNT_UUID={__ACCOUNT_UUID__} \
   -e RUNNER_UUID={__RUNNER_UUID__} \
@@ -138,34 +25,14 @@
   -e WORKING_DIRECTORY=/tmp \
   --name runner-7deb7740-f86b-50d0-9c85-671fcb3c9038 \
   docker-public.packages.atlassian.com/sox/atlassian/bitbucket-pipelines-runner:1
-</code></pre>
-<p><strong>Save it</strong> and click on <strong>finish</strong>.</p>
-<p>You have to extract the <code>ACCOUNT_UUID</code>, the <code>RUNNER_UUID</code>, the <code>OAUTH_CLIENT_ID</code> and the <code>OAUTH_CLIENT_SECRET</code> variables from the command.</p>
-<p>Watch out for the following:</p>
-<ul>
-<li>Copy the <code>ACCOUNT_UUID</code> and the <code>RUNNER_UUID</code> <strong>without</strong> the curly braces.</li>
-<li>Make sure to copy the whole <code>OAUTH_CLIENT_SECRET</code> (it may contain special characters like dashes or underscores).</li>
-<li>The <code>OAUTH</code> variables have to be converted to base64.</li>
-</ul>
-<p>You can fill the following script and later generate the k8s resources using these variables:</p>
-<pre><code class=language-bash>export ACCOUNT_UUID=__ACCOUNT_UUID__
+</code></pre><p><strong>Save it</strong> and click on <strong>finish</strong>.</p><p>You have to extract the <code>ACCOUNT_UUID</code>, the <code>RUNNER_UUID</code>, the <code>OAUTH_CLIENT_ID</code> and the <code>OAUTH_CLIENT_SECRET</code> variables from the command.</p><p>Watch out for the following:</p><ul><li>Copy the <code>ACCOUNT_UUID</code> and the <code>RUNNER_UUID</code> <strong>without</strong> the curly braces.</li><li>Make sure to copy the whole <code>OAUTH_CLIENT_SECRET</code> (it may contain special characters like dashes or underscores).</li><li>The <code>OAUTH</code> variables have to be converted to base64.</li></ul><p>You can fill the following script and later generate the k8s resources using these variables:</p><pre><code class=language-bash>export ACCOUNT_UUID=__ACCOUNT_UUID__
 export RUNNER_UUID=__RUNNER_UUID__
 export OAUTH_CLIENT_ID=__OAUTH_CLIENT_ID__
 export OAUTH_CLIENT_SECRET=__OAUTH_CLIENT_SECRET__
 
 export BASE64_OAUTH_CLIENT_ID=$(echo -n $OAUTH_CLIENT_ID | base64)
 export BASE64_OAUTH_CLIENT_SECRET=$(echo -n $OAUTH_CLIENT_SECRET | base64)
-</code></pre>
-<h3 id=implementation-in-kubernetes>Implementation in Kubernetes&nbsp;<a class=anchor href=#implementation-in-kubernetes>#</a></h3>
-<p>Now on the interesting part. Replace the <code>${VAR_NAME}</code> placeholders with the contents of those variables.</p>
-<p>Important:</p>
-<ul>
-<li>use the base64 encoded versions of the OAUTH variables in the <code>secret.yaml</code></li>
-<li>keep the quotes and braces (<code>"</code>, <code>{</code>, <code>}</code>) in the job.yaml lines 17 and 19</li>
-</ul>
-<p>The following bash scripts are going to generate the <code>secret.yaml</code> and <code>job.yaml</code> files in the current working directory.</p>
-<p><code>secret.yaml:</code></p>
-<pre><code class=language-bash>cat &gt; ./secret.yaml &lt;&lt;EOF
+</code></pre><h3 id=implementation-in-kubernetes>Implementation in Kubernetes&nbsp;<a class=anchor href=#implementation-in-kubernetes>#</a></h3><p>Now on the interesting part. Replace the <code>${VAR_NAME}</code> placeholders with the contents of those variables.</p><p>Important:</p><ul><li>use the base64 encoded versions of the OAUTH variables in the <code>secret.yaml</code></li><li>keep the quotes and braces (<code>"</code>, <code>{</code>, <code>}</code>) in the job.yaml lines 17 and 19</li></ul><p>The following bash scripts are going to generate the <code>secret.yaml</code> and <code>job.yaml</code> files in the current working directory.</p><p><code>secret.yaml:</code></p><pre><code class=language-bash>cat &gt; ./secret.yaml &lt;&lt;EOF
 apiVersion: v1
 kind: Secret
 metadata:
@@ -177,9 +44,7 @@ data:
   oauthClientId: ${BASE64_OAUTH_CLIENT_ID}
   oauthClientSecret: ${BASE64_OAUTH_CLIENT_SECRET}
 EOF
-</code></pre>
-<p><code>job.yaml:</code></p>
-<pre><code class=language-bash>cat &gt; ./job.yaml &lt;&lt;EOF
+</code></pre><p><code>job.yaml:</code></p><pre><code class=language-bash>cat &gt; ./job.yaml &lt;&lt;EOF
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -239,25 +104,15 @@ spec:
   completions: 1
   parallelism: 1
 EOF
-</code></pre>
-<p>Apply the generated manifests to Kubernetes:</p>
-<pre><code class=language-bash>kubectl create namespace bitbucket-runner --dry-run -o yaml | kubectl apply -f -
+</code></pre><p>Apply the generated manifests to Kubernetes:</p><pre><code class=language-bash>kubectl create namespace bitbucket-runner --dry-run -o yaml | kubectl apply -f -
 
 kubectl -n bitbucket-runner apply -f secrets.yaml
 kubectl -n bitbucket-runner apply -f job.yaml
-</code></pre>
-<p>If everything went fine, you will soon see the runner with <code>ONLINE</code> status on the Workspace Runners page.</p>
-<p><img src=/images/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/4_registered_runner.png alt=4_registered_runner.png></p>
-<p>If you decide to delete the runner from Kubernetes, you run the following steps:</p>
-<pre><code class=language-bash>kubectl -n bitbucket-runner delete -f job.yaml            
+</code></pre><p>If everything went fine, you will soon see the runner with <code>ONLINE</code> status on the Workspace Runners page.</p><p><img src=/images/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/4_registered_runner.png alt=4_registered_runner.png></p><p>If you decide to delete the runner from Kubernetes, you run the following steps:</p><pre><code class=language-bash>kubectl -n bitbucket-runner delete -f job.yaml            
 kubectl -n bitbucket-runner delete -f secret.yaml 
 
 kubectl delete namespace bitbucket-runner
-</code></pre>
-<h2 id=how-to-use-this-runner-in-a-bitbucket-pipeline>How to use this runner in a Bitbucket Pipeline?&nbsp;<a class=anchor href=#how-to-use-this-runner-in-a-bitbucket-pipeline>#</a></h2>
-<p>It&rsquo;s pretty straightforward, add the runner&rsquo;s labels to the pipeline step.</p>
-<p><code>bitbucket-pipelines.yml:</code></p>
-<pre><code class=language-yaml>pipelines:
+</code></pre><h2 id=how-to-use-this-runner-in-a-bitbucket-pipeline>How to use this runner in a Bitbucket Pipeline?&nbsp;<a class=anchor href=#how-to-use-this-runner-in-a-bitbucket-pipeline>#</a></h2><p>It&rsquo;s pretty straightforward, add the runner&rsquo;s labels to the pipeline step.</p><p><code>bitbucket-pipelines.yml:</code></p><pre><code class=language-yaml>pipelines:
   custom:
     pipeline:
       - step:
@@ -273,178 +128,34 @@ kubectl delete namespace bitbucket-runner
           name: Step2
           script:
             - echo &quot;This step will run on Atlassian's infrastructure as usual.&quot;;
-</code></pre>
-<h2 id=possible-issues>Possible Issues&nbsp;<a class=anchor href=#possible-issues>#</a></h2>
-<h3 id=status-500-in-bitbucket-pipelines>Status 500 in Bitbucket Pipelines&nbsp;<a class=anchor href=#status-500-in-bitbucket-pipelines>#</a></h3>
-<p>As I wanted to build Docker images (using Docker in Docker or <em>dind</em>) in our pipeline I faced the following issue:</p>
-<pre><code class=language-json>Status 500: {&quot;message&quot;:&quot;io.containerd.runc.v2: failed to adjust OOM score for shim: set shim OOM score: write /proc/PROC_ID/oom_score_adj: invalid argument\n: exit status 1: unknown&quot;}
-</code></pre>
-<h4 id=how-to-fix-it>How to fix it&nbsp;<a class=anchor href=#how-to-fix-it>#</a></h4>
-<p>First I tried to find root cause of this error message, but I couldn&rsquo;t find anything except some comments about this was already fixed in containerd&rsquo;s latest release, and so on&mldr; So I decided to check if the software versions are matching. Even while containerd was matching the required version I found that the Docker on the servers are a bit outdated (19.03) so I decided to update it.</p>
-<p>After the upgrade I still saw the previously mentioned error messages in the Bitbucket Pipelines.</p>
-<p>I verified Docker version running on the server:</p>
-<pre><code class=language-yaml># docker --version    
+</code></pre><h2 id=possible-issues>Possible Issues&nbsp;<a class=anchor href=#possible-issues>#</a></h2><h3 id=status-500-in-bitbucket-pipelines>Status 500 in Bitbucket Pipelines&nbsp;<a class=anchor href=#status-500-in-bitbucket-pipelines>#</a></h3><p>As I wanted to build Docker images (using Docker in Docker or <em>dind</em>) in our pipeline I faced the following issue:</p><pre><code class=language-json>Status 500: {&quot;message&quot;:&quot;io.containerd.runc.v2: failed to adjust OOM score for shim: set shim OOM score: write /proc/PROC_ID/oom_score_adj: invalid argument\n: exit status 1: unknown&quot;}
+</code></pre><h4 id=how-to-fix-it>How to fix it&nbsp;<a class=anchor href=#how-to-fix-it>#</a></h4><p>First I tried to find root cause of this error message, but I couldn&rsquo;t find anything except some comments about this was already fixed in containerd&rsquo;s latest release, and so on&mldr; So I decided to check if the software versions are matching. Even while containerd was matching the required version I found that the Docker on the servers are a bit outdated (19.03) so I decided to update it.</p><p>After the upgrade I still saw the previously mentioned error messages in the Bitbucket Pipelines.</p><p>I verified Docker version running on the server:</p><pre><code class=language-yaml># docker --version    
 Docker version 20.10.7, build f0df350
-</code></pre>
-<p>I replaced docker in docker (<em>dind</em>) container image version to use the exact same version as the installed one on our k8s cluster.</p>
-<p><code>job.yaml:</code></p>
-<pre><code class=language-yaml>- name: docker-in-docker
+</code></pre><p>I replaced docker in docker (<em>dind</em>) container image version to use the exact same version as the installed one on our k8s cluster.</p><p><code>job.yaml:</code></p><pre><code class=language-yaml>- name: docker-in-docker
   image: docker:20.10.5-dind  -&gt;  docker:20.10.7-dind
-</code></pre>
-<p>And magically the error went away and everything works as expected.</p>
-<hr>
-<h3 id=pipeline-is-hanging>Pipeline is hanging&nbsp;<a class=anchor href=#pipeline-is-hanging>#</a></h3>
-<p>The next issue I faced was a bit trickier to catch.</p>
-<p>First things first: how does Bitbucket Pipelines Runner run a single <code>docker build</code>?</p>
-<ul>
-<li>You start your self-hosted Runner <strong>alongside a docker-in-docker container</strong>.</li>
-<li>Spoiler Alert(!): <strong>The Runner is going to launch its own docker-in-docker container</strong> and use this to build containers.</li>
-</ul>
-<blockquote>
-<p>So docker-in-docker-in-docker-in Kubernetes. Whoa.</p>
-</blockquote>
-<p>About the issue. Sometimes the pipelines ran without issues. But when I tried to build docker images, it started to timeout randomly (after 120 minutes).
-At first glance, I checked the steps inside the docker build (like npm install / yarn install and so on). These steps seemed to <em>work well in an isolated environment</em>. They also ran well using Bitbucket Cloud&rsquo;s Pipeline.</p>
-<p><strong>So this problem only occurred running docker-in-docker in Kubernetes.</strong></p>
-<p>I decided to check the problem where it occurs. Let&rsquo;s put a <code>sleep 100000</code> to the Dockerfile entrypoint, and go down to the deepest layer of this docker-in-docker-in-docker nightmare.</p>
-<p>After a <code>kubectl exec</code> - to the docker-in-docker pod - and 2 <code>docker exec</code>s - 1st to the docker-in-docker of Bitbucket Pipelines, 2nd to the real build container -, I&rsquo;ve found a clue. Even if I ran the <code>apt-get update</code> command it hanged. But if I interrupted and rerun it, then it was successful. And this was reproducible by recreating the pipelines. After a short search, I found some blog posts about issues with Docker in Docker and network MTU.
-| Network MTU is the Maximum Transmission Unit. If in one network layer it&rsquo;s larger than on the other, the network packet is not going to fit the network.</p>
-<p>OK, check the MTUs on each layer from top to bottom.</p>
-<ul>
-<li>The Network MTU on the <strong>Ethernet level</strong> was set to <code>1500</code>.</li>
-<li>The Network MTU on the <strong>1st Docker network level</strong> was set to <code>1500</code>.</li>
-<li>The Network MTU on the <strong>Kubernetes pod network (calico) level</strong> was set to <code>1450</code>. 🤯</li>
-<li>The Network MTU on the <strong>2nd Docker network level</strong> was set to <code>1500</code>.</li>
-<li>(at this point I didn&rsquo;t know there&rsquo;s a 3rd Docker network level).</li>
-</ul>
-<p>Here we go, we have an issue here, the second-level Docker packets are not going to fit the K8s' network.</p>
-<h4 id=how-to-fix-it-1>How to fix it&nbsp;<a class=anchor href=#how-to-fix-it-1>#</a></h4>
-<p>Run your docker-in-docker with the following argument:
-<code>--mtu=1300</code>.</p>
-<p>Easy, change the Kubernetes Job to use this param:</p>
-<p><code>job.yaml:</code></p>
-<pre><code class=language-yaml>- name: docker-in-docker
+</code></pre><p>And magically the error went away and everything works as expected.</p><hr><h3 id=pipeline-is-hanging>Pipeline is hanging&nbsp;<a class=anchor href=#pipeline-is-hanging>#</a></h3><p>The next issue I faced was a bit trickier to catch.</p><p>First things first: how does Bitbucket Pipelines Runner run a single <code>docker build</code>?</p><ul><li>You start your self-hosted Runner <strong>alongside a docker-in-docker container</strong>.</li><li>Spoiler Alert(!): <strong>The Runner is going to launch its own docker-in-docker container</strong> and use this to build containers.</li></ul><blockquote><p>So docker-in-docker-in-docker-in Kubernetes. Whoa.</p></blockquote><p>About the issue. Sometimes the pipelines ran without issues. But when I tried to build docker images, it started to timeout randomly (after 120 minutes).
+At first glance, I checked the steps inside the docker build (like npm install / yarn install and so on). These steps seemed to <em>work well in an isolated environment</em>. They also ran well using Bitbucket Cloud&rsquo;s Pipeline.</p><p><strong>So this problem only occurred running docker-in-docker in Kubernetes.</strong></p><p>I decided to check the problem where it occurs. Let&rsquo;s put a <code>sleep 100000</code> to the Dockerfile entrypoint, and go down to the deepest layer of this docker-in-docker-in-docker nightmare.</p><p>After a <code>kubectl exec</code> - to the docker-in-docker pod - and 2 <code>docker exec</code>s - 1st to the docker-in-docker of Bitbucket Pipelines, 2nd to the real build container -, I&rsquo;ve found a clue. Even if I ran the <code>apt-get update</code> command it hanged. But if I interrupted and rerun it, then it was successful. And this was reproducible by recreating the pipelines. After a short search, I found some blog posts about issues with Docker in Docker and network MTU.
+| Network MTU is the Maximum Transmission Unit. If in one network layer it&rsquo;s larger than on the other, the network packet is not going to fit the network.</p><p>OK, check the MTUs on each layer from top to bottom.</p><ul><li>The Network MTU on the <strong>Ethernet level</strong> was set to <code>1500</code>.</li><li>The Network MTU on the <strong>1st Docker network level</strong> was set to <code>1500</code>.</li><li>The Network MTU on the <strong>Kubernetes pod network (calico) level</strong> was set to <code>1450</code>. 🤯</li><li>The Network MTU on the <strong>2nd Docker network level</strong> was set to <code>1500</code>.</li><li>(at this point I didn&rsquo;t know there&rsquo;s a 3rd Docker network level).</li></ul><p>Here we go, we have an issue here, the second-level Docker packets are not going to fit the K8s&rsquo; network.</p><h4 id=how-to-fix-it-1>How to fix it&nbsp;<a class=anchor href=#how-to-fix-it-1>#</a></h4><p>Run your docker-in-docker with the following argument:
+<code>--mtu=1300</code>.</p><p>Easy, change the Kubernetes Job to use this param:</p><p><code>job.yaml:</code></p><pre><code class=language-yaml>- name: docker-in-docker
   image: docker:20.10.7-dind
   args:
     - &quot;--mtu=1300&quot;
-</code></pre>
-<p>Restart the pods, wait for the wonder. <strong>And it still failed.</strong></p>
-<p>Let&rsquo;s check it again.</p>
-<p><em>(Somewhere around this time I discovered the fact Bitbucket Pipelines Runner runs its own docker daemon.)</em></p>
-<ul>
-<li>The Network MTU on the <strong>Ethernet level</strong> was set to <code>1500</code>.</li>
-<li>The Network MTU on the <strong>1st Docker network level</strong> was set to <code>1500</code>.</li>
-<li>The Network MTU on the <strong>Kubernetes pod network (calico) level</strong> was set to <code>1450</code>.</li>
-<li>The Network MTU on the <strong>2nd Docker network level</strong> was set to <code>1300</code>.</li>
-<li>The Network MTU on the <strong>3rd Docker network level</strong> was set to <code>1500</code>. 🤯</li>
-</ul>
-<p>The third layer of Docker is still 1500? How? And why?</p>
-<p>Because Bitbucket Pipelines Runner is going to launch its very own, dedicated dind and that&rsquo;s not going to inherit the MTU.</p>
-<h4 id=how-to-fix-it-part-2>How to fix it (part 2)&nbsp;<a class=anchor href=#how-to-fix-it-part-2>#</a></h4>
-<p>Let&rsquo;s build our own <a href=https://github.com/rewardenv/docker>docker image</a> and pass it to the Pipeline.</p>
-<p><code>bitbucket-pipelines.yml:</code></p>
-<pre><code class=language-yaml>definitions:
+</code></pre><p>Restart the pods, wait for the wonder. <strong>And it still failed.</strong></p><p>Let&rsquo;s check it again.</p><p><em>(Somewhere around this time I discovered the fact Bitbucket Pipelines Runner runs its own docker daemon.)</em></p><ul><li>The Network MTU on the <strong>Ethernet level</strong> was set to <code>1500</code>.</li><li>The Network MTU on the <strong>1st Docker network level</strong> was set to <code>1500</code>.</li><li>The Network MTU on the <strong>Kubernetes pod network (calico) level</strong> was set to <code>1450</code>.</li><li>The Network MTU on the <strong>2nd Docker network level</strong> was set to <code>1300</code>.</li><li>The Network MTU on the <strong>3rd Docker network level</strong> was set to <code>1500</code>. 🤯</li></ul><p>The third layer of Docker is still 1500? How? And why?</p><p>Because Bitbucket Pipelines Runner is going to launch its very own, dedicated dind and that&rsquo;s not going to inherit the MTU.</p><h4 id=how-to-fix-it-part-2>How to fix it (part 2)&nbsp;<a class=anchor href=#how-to-fix-it-part-2>#</a></h4><p>Let&rsquo;s build our own <a href=https://github.com/rewardenv/docker>docker image</a> and pass it to the Pipeline.</p><p><code>bitbucket-pipelines.yml:</code></p><pre><code class=language-yaml>definitions:
   services:
     docker:
       image: rewardenv/docker:20.10.7-dind
       variables:
         DOCKER_OPTS: &quot;--mtu=1300&quot;
-</code></pre>
-<p>And voilà! The build process runs without any issues.</p>
-<p>Further reading:</p>
-<ul>
-<li><a href=https://bitbucket.org/blog/pipelines-runners>It’s official! Announcing Runners in Bitbucket Pipelines</a></li>
-<li><a href=https://community.atlassian.com/t5/Bitbucket-Pipelines-articles/Bitbucket-Pipelines-Runners-is-now-in-open-beta/ba-p/1691022>Bitbucket Pipelines Runners is now in open beta</a></li>
-<li><a href=https://support.atlassian.com/bitbucket-cloud/docs/configure-your-runner-in-bitbucket-pipelines-yml>Configure your runner in bitbucket-pipelines.yml</a></li>
-</ul>
-</div>
-<div class=my-4>
-<a href=https://janosmiko.com/tags/bitbucket/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#bitbucket</a>
+</code></pre><p>And voilà! The build process runs without any issues.</p><p>Further reading:</p><ul><li><a href=https://bitbucket.org/blog/pipelines-runners>It’s official! Announcing Runners in Bitbucket Pipelines</a></li><li><a href=https://community.atlassian.com/t5/Bitbucket-Pipelines-articles/Bitbucket-Pipelines-Runners-is-now-in-open-beta/ba-p/1691022>Bitbucket Pipelines Runners is now in open beta</a></li><li><a href=https://support.atlassian.com/bitbucket-cloud/docs/configure-your-runner-in-bitbucket-pipelines-yml>Configure your runner in bitbucket-pipelines.yml</a></li></ul></div><div class=my-4><a href=https://janosmiko.com/tags/bitbucket/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#bitbucket</a>
 <a href=https://janosmiko.com/tags/pipelines/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#pipelines</a>
 <a href=https://janosmiko.com/tags/runners/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#runners</a>
-<a href=https://janosmiko.com/tags/kubernetes/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#kubernetes</a>
-</div>
-<div class=py-2>
-<div class="flex flex-col md:flex-row items-center my-8">
-<a href=https://janosmiko.com/authors/janos-miko/ class="w-24 h-24 md:mr-4">
-<img src=https://janosmiko.com/images/janosmiko-400x300.jpeg class="w-full bg-primary-bg rounded-full" alt=Avatar>
-</a>
-<div class="w-full md:w-auto mt-4 md:mt-0">
-<a href=https://janosmiko.com/authors/janos-miko/ class="block font-bold text-lg pb-1 mb-2 border-b">Janos Miko</a>
+<a href=https://janosmiko.com/tags/kubernetes/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#kubernetes</a></div><div class=py-2><div class="flex flex-col md:flex-row items-center my-8"><a href=https://janosmiko.com/authors/janos-miko/ class="w-24 h-24 md:mr-4"><img src=https://janosmiko.com/images/janosmiko-400x300.jpeg class="w-full bg-primary-bg rounded-full" alt=Avatar></a><div class="w-full md:w-auto mt-4 md:mt-0"><a href=https://janosmiko.com/authors/janos-miko/ class="block font-bold text-lg pb-1 mb-2 border-b">Janos Miko</a>
 <span class="block pb-2">Fill your bucket by drop by drop.</span>
-<a href=mailto:example@example.com class=mr-1>
-<i class="fas fa-envelope"></i>
-</a>
-<a href=https://twitter.com/mixe3y/ class=mr-1>
-<i class="fab fa-twitter"></i>
-</a>
-<a href=https://github.com/janosmiko/ class=mr-1>
-<i class="fab fa-github"></i>
-</a>
-<a href=https://www.facebook.com/mixe3y/ class=mr-1>
-<i class="fab fa-facebook"></i>
-</a>
-<a href="https://www.upwork.com/freelancers/~01bbf22d354f4e322c?viewMode=1" class=mr-1>
-<i class="fas fa-suitcase"></i>
-</a>
-</div>
-</div>
-</div>
-<div class="flex flex-col md:flex-row md:justify-between -mx-2 mt-4 px-2 pt-4 border-t">
-<div>
-<span class="block font-bold">Previous</span>
-<a href=https://janosmiko.com/blog/2021-09-18-demystifying-bitbucket-pipelines-memory-limits/ class=block>Demystifying Bitbucket Pipelines Memory Limits</a>
-</div>
-<div class="md:text-right mt-4 md:mt-0">
-<span class="block font-bold">Next</span>
-<a href=https://janosmiko.com/blog/2021-07-04-magento-rabbitmq/ class=block>How to test if Magento RabbitMQ Consumers are working properly</a>
-</div>
-</div>
-</div>
-<div class=col-span-2>
-<div class="sticky top-16 z-10 hidden lg:block px-6 py-4 bg-primary-bg">
-<span class="text-lg font-semibold">On This Page</span>
-</div>
-<div class="sticky-toc hidden lg:block px-6 pb-6">
-<nav id=TableOfContents>
-<ul>
-<li><a href=#how-to-create-a-runner>How to create a Runner?</a>
-<ul>
-<li><a href=#create-a-new-workspace-runner-in-bitbucket>Create a new Workspace Runner in Bitbucket</a></li>
-<li><a href=#implementation-in-kubernetes>Implementation in Kubernetes</a></li>
-</ul>
-</li>
-<li><a href=#how-to-use-this-runner-in-a-bitbucket-pipeline>How to use this runner in a Bitbucket Pipeline?</a></li>
-<li><a href=#possible-issues>Possible Issues</a>
-<ul>
-<li><a href=#status-500-in-bitbucket-pipelines>Status 500 in Bitbucket Pipelines</a>
-<ul>
-<li><a href=#how-to-fix-it>How to fix it</a></li>
-</ul>
-</li>
-<li><a href=#pipeline-is-hanging>Pipeline is hanging</a>
-<ul>
-<li><a href=#how-to-fix-it-1>How to fix it</a></li>
-<li><a href=#how-to-fix-it-part-2>How to fix it (part 2)</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</nav>
-</div>
-<script>window.addEventListener('DOMContentLoaded',()=>{enableStickyToc()})</script>
-</div>
-</div>
-</div>
-</div>
-</main>
-<footer class=pl-scrollbar>
-<div class="w-full max-w-screen-xl mx-auto"><div class="text-center p-6 pin-b">
-<p class="text-sm text-tertiary-text">&copy; Janos Miko
-&#183; Made with <i class="fas fa-heart"></i> using <a href=https://github.com/wangchucheng/hugo-eureka class=hover:text-eureka>Eureka</a> theme for <a href=https://gohugo.io class=hover:text-eureka>Hugo</a></p>
-</div>
-</div>
-</footer>
-</body>
-</html>
+<a href=mailto:example@example.com class=mr-1><i class="fas fa-envelope"></i></a>
+<a href=https://twitter.com/mixe3y/ class=mr-1><i class="fab fa-twitter"></i></a>
+<a href=https://github.com/janosmiko/ class=mr-1><i class="fab fa-github"></i></a>
+<a href=https://www.facebook.com/mixe3y/ class=mr-1><i class="fab fa-facebook"></i></a>
+<a href="https://www.upwork.com/freelancers/~01bbf22d354f4e322c?viewMode=1" class=mr-1><i class="fas fa-suitcase"></i></a></div></div></div><div class="flex flex-col md:flex-row md:justify-between -mx-2 mt-4 px-2 pt-4 border-t"><div><span class="block font-bold">Previous</span>
+<a href=https://janosmiko.com/blog/2021-09-18-demystifying-bitbucket-pipelines-memory-limits/ class=block>Demystifying Bitbucket Pipelines Memory Limits</a></div><div class="md:text-right mt-4 md:mt-0"><span class="block font-bold">Next</span>
+<a href=https://janosmiko.com/blog/2021-07-04-magento-rabbitmq/ class=block>How to test if Magento RabbitMQ Consumers are working properly</a></div></div></div><div class=col-span-2><div class="sticky top-16 z-10 hidden lg:block px-6 py-4 bg-primary-bg"><span class="text-lg font-semibold">On This Page</span></div><div class="sticky-toc hidden lg:block px-6 pb-6"><nav id=TableOfContents><ul><li><a href=#how-to-create-a-runner>How to create a Runner?</a><ul><li><a href=#create-a-new-workspace-runner-in-bitbucket>Create a new Workspace Runner in Bitbucket</a></li><li><a href=#implementation-in-kubernetes>Implementation in Kubernetes</a></li></ul></li><li><a href=#how-to-use-this-runner-in-a-bitbucket-pipeline>How to use this runner in a Bitbucket Pipeline?</a></li><li><a href=#possible-issues>Possible Issues</a><ul><li><a href=#status-500-in-bitbucket-pipelines>Status 500 in Bitbucket Pipelines</a><ul><li><a href=#how-to-fix-it>How to fix it</a></li></ul></li><li><a href=#pipeline-is-hanging>Pipeline is hanging</a><ul><li><a href=#how-to-fix-it-1>How to fix it</a></li><li><a href=#how-to-fix-it-part-2>How to fix it (part 2)</a></li></ul></li></ul></li></ul></nav></div><script>window.addEventListener("DOMContentLoaded",()=>{enableStickyToc()})</script></div></div></div></div></main><footer class=pl-scrollbar><div class="w-full max-w-screen-xl mx-auto"><div class="text-center p-6 pin-b"><p class="text-sm text-tertiary-text">&copy; Janos Miko
+&#183; Made with <i class="fas fa-heart"></i> using <a href=https://github.com/wangchucheng/hugo-eureka class=hover:text-eureka>Eureka</a> theme for <a href=https://gohugo.io class=hover:text-eureka>Hugo</a></p></div></div></footer></body></html>
