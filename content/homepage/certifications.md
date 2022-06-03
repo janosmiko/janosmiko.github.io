@@ -2,6 +2,24 @@
 title: Certifications
 draft: false
 certifications:
+  - title: Certified Kubernetes Administrator (CKA)
+    organization:
+      name: The Linux Foundation & Cloud Native Computing Foundation
+      url: 'https://training.linuxfoundation.org/certification/certified-kubernetes-administrator-cka/'
+    dates: '2022'
+    img: '/images/cka.png'
+    img_webp: '/images/cka.webp'
+    url: 'https://www.credly.com/badges/f46158d2-9ab8-4e7d-b905-e30594655e1f/public_url'
+
+  - title: Certified Kubernetes Application Developer (CKAD)
+    organization:
+      name: The Linux Foundation & Cloud Native Computing Foundation
+      url: 'https://training.linuxfoundation.org/certification/certified-kubernetes-application-developer-ckad/'
+    dates: '2022'
+    img: '/images/ckad.png'
+    img_webp: '/images/ckad.webp'
+    url: 'https://www.credly.com/badges/d9753b83-92d3-4649-8450-08790d1f406d/public_url'
+
   - title: Adobe Certified Expert - Adobe Commerce Cloud Developer
     organization:
       name: Adobe
