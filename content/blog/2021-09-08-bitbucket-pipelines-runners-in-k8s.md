@@ -78,6 +78,11 @@ export BASE64_OAUTH_CLIENT_ID=$(echo -n $OAUTH_CLIENT_ID | base64)
 export BASE64_OAUTH_CLIENT_SECRET=$(echo -n $OAUTH_CLIENT_SECRET | base64)
 ```
 
+Note: if you are using an `echo` command which doesn't support `-n` (skip trailing newline) you can change base64
+behaviour to ignore it using the following flag: `base64 –wrap 0`.
+
+Thanks Dave Harvey for pointing this out!
+
 ### Implementation in Kubernetes
 
 Now on the interesting part. Replace the `${VAR_NAME}` placeholders with the contents of those variables.
