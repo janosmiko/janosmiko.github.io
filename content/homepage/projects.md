@@ -11,6 +11,16 @@ projects:
       - It makes possible to run multiple local environments simultaneously without port conflicts by utilizing common services proxying requests to the correct environment's containers.
       - Reward is written in Go, and it supports Linux, macOS and Windows (and WSL2).
 
+  - title: Hetzner K3s
+    url: https://github.com/janosmiko/hetzner-k3s
+    dates: 2022
+    logo: /images/hetzner-k3s.png
+    writeup: |
+      - This tool is able to create Lightweight Kubernetes (k3s) clusters in Hetzner Cloud in minutes.
+      - It can install Highly-Available kubernetes clusters with multiple masters
+      - It supports static node pools or (multiple) autoscaling node pools
+      - It automatically installs the required kubernetes addons for Hetzner (CCM, CSI driver, cluster-autoscaler, etc.)
+
   - title: Gitea LDAP Sync
     url: https://github.com/janosmiko/gitea-ldap-sync
     dates: 2022

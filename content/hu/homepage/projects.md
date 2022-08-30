@@ -11,6 +11,16 @@ projects:
       - Segítségével lehetővé válik több fejlesztői környezet egyidejű, párhuzamos futtatása port ütközés nélkül. 
       - A Reward Go nyelven íródott és fut Linuxon, macOS-en és Windows-on (valamint támogatja  WSL2-t).
 
+  - title: Hetzner K3s
+    url: https://github.com/janosmiko/hetzner-k3s
+    dates: 2022
+    logo: /images/hetzner-k3s.png
+    writeup: |
+      - Ezzel a CLI programmal percek alatt készíthetünk K3s alapú kubernetes clustereket a Hetzner Cloud felhőjében.
+      - Képes nagy rendelkezésre állású (HA) cluster telepítésére több master node létrehozásával.
+      - Támogatja statikus és automatikusan skálázódó node poolok létrehozását.
+      - Automatikusan telepítí a Hetznerhez szükséges kubernetes "addonokat" (CCM, CSI, cluster-autoscaler, stb.).
+
   - title: Gitea LDAP Sync
     url: https://github.com/janosmiko/gitea-ldap-sync
     dates: 2022
