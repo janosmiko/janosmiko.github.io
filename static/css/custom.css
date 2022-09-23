@@ -117,12 +117,17 @@ pre[class*="language-"] {
 }
 
 .content {
-    transform: translateY(1%);
+    transform: translateY(20%);
     opacity: 0;
     line-height: calc(1ex / 0.32);
 }
 
-.show-content {
+.single.content {
+  transform: translateY(3%);
+}
+
+.show-content,
+.single.show-content {
     opacity: 1;
     filter: blur(0);
     transform: translateY(0);
