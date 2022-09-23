@@ -16,7 +16,7 @@ featuredImage: /images/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/bitbuc
 featuredImage_webp: /images/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/bitbucket-pipelines-runners-in-k8s.webp
 ---
 
-Atlassian [announced](https://bitbucket.org/blog/pipelines-runners) self-hosted Runners for Bitbucket Pipelines, let's try them out. 
+Atlassian [announced](https://bitbucket.org/blog/pipelines-runners) self-hosted Runners for Bitbucket Pipelines, let&apos;s try them out. 
 
 <!--more-->
 

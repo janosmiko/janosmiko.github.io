@@ -6,7 +6,7 @@ theme: eureka
 # Uncomment when installing using Hugo Modules
 # theme: github.com/wangchucheng/hugo-eureka
 
-paginate: 3
+paginate: 10
 copyright: >
   &copy; Janos Miko
 enableEmoji: true

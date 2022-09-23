@@ -16,7 +16,7 @@ featuredImage_webp: /images/blog/2021-07-04-magento-rabbitmq/magento-rabbitmq.we
 
 How can you verify if Magento can reach and utilize the benefits of RabbitMQ?
 
-This tutorial will help you to modify attributes of a product using Magento's async API and bulk API.
+This tutorial will help you to modify attributes of a product using Magento&apos;s async API and bulk API.
 
 <!--more-->
 
