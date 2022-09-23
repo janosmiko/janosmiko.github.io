@@ -13,3 +13,6 @@ $RECYCLE.BIN/
 
 # IDEA
 /.idea/*
+
+node_modules
+resources/_gen/*
