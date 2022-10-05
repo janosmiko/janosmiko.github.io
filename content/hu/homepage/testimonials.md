@@ -42,6 +42,17 @@ testimonials:
     writeup: |
       "János fejleszti és kezeli minden informatika rendszeremet. Mindenben partner, bármikor számíthatok rá. Nincs olyan, ami lehetetlen lenne számára. Gyors, hatékony és kiváló szaktudással rendelkezik."
 
+  - name: Csongor Lempergel
+    title: E-Commerce Manager
+    organization:
+      name: Dockyard Islands Kft.
+      url: https://dockyard.hu
+    avatar: /images/csongorlempergel.jpeg
+    avatar_webp: /images/csongorlempergel.webp
+    writeup: |
+      "Igazán segítőkész és profi szakembert ismerhettem meg János személyében. A projektünk egyedi, így rengeteg kihívássál néztünk szembe mind backend-, mind szerver oldalról, melyek megoldásában János analitikus gondolkodása és gyors segítsége sokat jelentett. Nagyon élveztem vele a közös munkát."
+
+
 weight: 5
 widget:
   handler: testimonials
