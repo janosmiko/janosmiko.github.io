@@ -67,8 +67,8 @@ It sounds sentimental, but the "cloud" is where I feel at home.
 
 ### Some Personal Stuff
 
-- I prefer Everything as Code methodology.
+- I prefer Everything as Code methodology. When I need to do something twice, I'll try to automate it.
 - I manage my work and my life using GTD and OKR.
-- I am a perfectionist.
+- I follow stoic philosophy.
 - I meditate daily.
 - I am a proud dad of 2 dachshunds.

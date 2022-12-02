@@ -36,8 +36,8 @@ Mindig is imádtam az informatikát és a technológiát, közel 10 éve foglalk
 Szentimentálisan hangozhat, de a "felhőben" érzem magam igazán otthon.
 
 ### Néhány érdekesség
-- Az Everything as Code metodológiát vallom, vagyis ha egynél többször szükségem van valamire, akkor lekódolom.
+- Az Everything as Code metodológiát vallom. Ha egynél többször szükségem van valamire, akkor lekódolom.
 - A munkámat és az életemet is a GTD és OKR módszerek segítségével menedzselem.
-- Perfekcionistának vallom magam.
-- Napi rendszerességgel meditálok.
+- A sztoikus filozófiát követem.
+- Rendszeresen meditálok.
 - Van kettő fantasztikus tacskóm.
