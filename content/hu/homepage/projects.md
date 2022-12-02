@@ -21,6 +21,13 @@ projects:
       - Támogatja statikus és automatikusan skálázódó node poolok létrehozását.
       - Automatikusan telepítí a Hetznerhez szükséges kubernetes "addonokat" (CCM, CSI, cluster-autoscaler, stb.).
 
+  - title: Easy Helm
+    url: https://github.com/janosmiko/easyhelm
+    dates: 2023
+    logo: /images/easyhelm.png
+    writeup: |
+      - Helm chartok generálása egyszerűen egy konfigurációs fájlból.
+
   - title: Gitea LDAP Sync
     url: https://github.com/janosmiko/gitea-ldap-sync
     dates: 2022
@@ -29,7 +36,6 @@ projects:
       - A Gitea-ben lévő LDAP szinkronizáció nagyon limitált, ezért elkészítettem egy külső eszközt, amely képes szinkronizálni a felhasználókon túl a csoportokat (Organizations, Teams) és a köztük fennálló kapcsolatokat is.
       - Olyan haladó beállításokkal, mint attribútumok társítása (attribute mapping), kivételek kezelése (listából vagy reguláris kifejezések alapján), teljes (entitások felvétele és törlése) vagy részleges (csak entitások felvétele) szinkron, stb.
       - Docker és Kubernetes támogatással.
-
 
 weight: 6
 widget:

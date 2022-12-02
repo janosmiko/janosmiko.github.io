@@ -21,6 +21,13 @@ projects:
       - It supports static node pools or (multiple) autoscaling node pools
       - It automatically installs the required kubernetes addons for Hetzner (CCM, CSI driver, cluster-autoscaler, etc.)
 
+  - title: Easy Helm
+    url: https://github.com/janosmiko/easyhelm
+    dates: 2023
+    logo: /images/easyhelm.png
+    writeup: |
+      - Generate Helm charts with ease (based on a single config file).
+
   - title: Gitea LDAP Sync
     url: https://github.com/janosmiko/gitea-ldap-sync
     dates: 2022
