@@ -13,7 +13,8 @@ colorScheme:
 
 # E.g. Person, Organization, LocalBusiness, Project, EducationalOrganization
 siteType: Person
-#icon: images/icon.png
+#icon: images/janosmiko.jpeg
+ogimage: images/janosmiko.jpeg
 publisherName: Janos Miko
 publisherLogo:
 
