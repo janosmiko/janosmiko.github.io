@@ -52,7 +52,7 @@ testimonials:
     writeup: |
       "I met a very helpful and excellent professional in János. Due to the specificity of our project, we faced many difficulties both on the backend and server side, so János' analytical thinking and quick response helped a lot. I really enjoyed working with him."
 
-weight: 5
+weight: 9
 widget:
   handler: testimonials
 

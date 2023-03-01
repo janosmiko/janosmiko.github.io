@@ -37,7 +37,7 @@ projects:
       - This tool provides advanced configuration for sync like attribute mapping, exclusions (list or regex based), full (addition and deletion) or assert-only syncing, and many more.
       - It provides support for Docker and Kubernetes.
 
-weight: 6
+weight: 7
 widget:
   handler: projects
 

@@ -1,9 +1,12 @@
 main:
   - name: About
     weight: 1
+  - name: Technologies
+    url: /tech/
+    weight: 2
   - name: Blog
     url: /blog/
-    weight: 2
+    weight: 3
 
 language:
   - name: en
