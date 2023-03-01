@@ -12,9 +12,10 @@ sitemap_exclude: false
 
 <div class="bg-secondary-bg rounded px-6 py-6">
 
-In the past I have had the chance to try out many programming languages. My favorite ones are Golang and Rust.
+In the past I have had the chance to try out many programming languages. My favorites are Golang and Rust.
 
 <!--more-->
+<br>
 
 Languages I used lately:
 
@@ -28,7 +29,9 @@ Languages I used lately:
 - Markdown
 - and many more I used in the past...
 
-Tools and technologies I used lately:
+<br>
+
+Tools and technologies:
 
 - Jetbrains IDEs
 - Git
