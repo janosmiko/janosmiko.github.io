@@ -12,9 +12,11 @@ experiences:
       - I am responsible for the management of the DevOps team.
       - I build and maintain the whole IT development and production infrastructure
         including CI/CD pipelines, backup, monitoring, scaling, etc.
-      - I am an outsourced consultant for external partners, I do cloud architecture-, and cost
-        optimization, security guidance.
-      
+      - I am working on the development of a Cloud Native application written in Go.
+      - I regularly hold coding lectures and knowledge sharing sessions.
+      - I am an outsourced consultant for external partners. I do cloud architecture optimization, cost
+        optimization, and security guidance.
+
   - title: Lead Systems Engineer
     organization:
       name: AionHill

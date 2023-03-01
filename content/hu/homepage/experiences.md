@@ -12,6 +12,8 @@ experiences:
       - Jelenlegi munkahelyemen felelős vagyok a DevOps csapat vezetéséért.
       - A teljes IT infrastruktúra építését és üzemeltetését végzem, beleértve a CI/CD
         pipeline-okat, mentéseket, monitoringot, skálázást stb.
+      - Egy Cloud Native alkalmazás fejlesztésében veszek részt (Go nyelven).
+      - Rendszeresen tartok kódolási előadásokat és tudásmegosztó workshopokat.
       - Külső partnerekhez kiszervezett tanácsadóként segítek a felhőben architektúrájuk és
         költségeik optimalizálásában, és biztonsági tanácsadásban.
       
