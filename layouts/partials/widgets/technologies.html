@@ -10,13 +10,13 @@
           <span class="font-bold">{{ .title | markdownify }}</span>
           {{ end }}
 
-        {{ if .type }}
+        {{ if .description }}
         <div>
-          <span class="font-italic text-sm">{{ .type | markdownify }}</span>
+          <span class="font-italic text-sm">{{ .description | markdownify }}</span>
         </div>
         {{ end }}
         </div>
-        <div class="flex w-24">
+        <div class="flex w-24 p-2">
           <img src="{{ .logo }}" class="object-scale-down" alt="{{ .title }}">
         </div>
       </div>

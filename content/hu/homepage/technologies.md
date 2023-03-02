@@ -3,39 +3,68 @@ title: Technológiák
 draft: false
 technologies:
   - title: Felhő
-    url: /tech/cloud/
+    url: /hu/tech/cloud/
     dates: 2021-2022
     logo: /images/tech/cloud.png
+    description: |
+      - Több felhőszolgáltatóval volt már lehetőségem dolgozni, beleértve az AWS, GCP és Azure hármast is.
+        - <br>
+      - [Tovább...](/hu/tech/cloud/)
 
   - title: Konténerek és Kubernetes
-    url: /tech/containers
+    url: /hu/tech/containers
     dates: 2022
     logo: /images/tech/containers.png
+    description: |
+      - Úgy hiszem, hogy a konténerek jelentik a jelent és a jövőt a szoftverfejlesztésben.
+      - <br>
+      - [Tovább...](/hu/tech/containers/)
 
   - title: CI/CD
-    url: /tech/operations
+    url: /hu/tech/operations
     dates: 2023
     logo: /images/tech/cicd.png
+    description: |
+      - Elmélyült tapasztalattal rendelkezem a CI/CD folyamatok megvalósításában.
+      - <br>
+      - [Tovább...](/hu/tech/cicd/)
 
   - title: Üzemeltetés
-    url: /tech/operations
+    url: /hu/tech/operations
     dates: 2022
     logo: /images/tech/operations.png
+    description: |
+      - Úgy hiszem, hogy minden automatizálható és kódolható (és érdemes is lekódolni).
+      - <br>
+      - [Tovább...](/hu/tech/operations/)
 
   - title: Monitoring
-    url: /tech/monitoring
+    url: /hu/tech/monitoring
     dates: 2022
     logo: /images/tech/monitoring.png
+    description: |
+      - A múltban többféle monitoring eszközt és szolgáltatást is volt szerencsém használni.
+      - <br>
+      - [Tovább...](/hu/tech/monitoring/)
 
   - title: Operációs rendszerek és számítógépes hálózatok
-    url: /tech/os
+    url: /hu/tech/os
     dates: 2022
     logo: /images/tech/os.png
+    description: |
+      - Az évek során dolgoztam már Linux, Windows és macOS rendszerekkel.
+      - <br>
+      - [Tovább...](/hu/tech/os/)
 
   - title: Programozás
-    url: /tech/programming
+    url: /hu/tech/programming
     dates: 2022
     logo: /images/tech/programming.png
+    description: |
+      - Több programozási nyelvvel is volt már szerencsém megismerkedni. 
+      - A kedvenceim a Go és a Rust.
+      - <br>
+      - [Tovább...](/hu/tech/programming/)
 
 weight: 5
 widget:

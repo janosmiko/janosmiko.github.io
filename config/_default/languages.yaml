@@ -35,22 +35,21 @@ hu:
       - name: Rólam
         url: '/hu/#about'
         weight: 1
-#      - name: Tanúsítványok
-#        url: '/hu/#certifications'
-#        parent: Rólam
-#        weight: 1
-#      - name: Tapasztalat
-#        url: '/#experiences'
-#        parent: Rólam
-#        weight: 2
-#      - name: Vélemények
-#        url: '/#testimonials'
-#        parent: Rólam
-#        weight: 3
-#      - name: Projektek
-#        url: '/#projects'
-#        parent: Rólam
-#        weight: 4
+      - name: Tanúsítványok
+        url: '/hu/#certifications'
+        weight: 2
+      - name: Tapasztalat
+        url: '/hu/#experiences'
+        weight: 3
+      - name: Technológiák
+        url: '/hu/#technologies'
+        weight: 4
+      - name: Projektek
+        url: '/hu/#projects'
+        weight: 5
+      - name: Vélemények
+        url: '/hu/#testimonials'
+        weight: 6
       - name: Blog
         url: '/hu/blog'
         weight: 9

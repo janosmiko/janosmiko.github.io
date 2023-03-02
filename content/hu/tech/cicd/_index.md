@@ -19,6 +19,8 @@ Elmélyült tapasztalattal rendelkezem a CI/CD folyamatok megvalósításában.
 
 Tudom, hogy mi az, hogy Canary vagy Blue/Green deployment és hogyan lehet ezeket megvalósítani.
 
+<br>
+
 A következő deployment eszközöket használtam már az évek során:
 
 - ArgoCD (GitOps) - Argo Workflows - Argo Events

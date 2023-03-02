@@ -12,8 +12,8 @@ sitemap_exclude: false
 
 <div class="bg-secondary-bg rounded px-6 py-6">
 
-Az évek során dolgoztam már Linux, Windows és MacOS rendszerekkel. A legtöbbet Linux rendszerekkel, de a Windows
-rendszerekkel is van üzemeltetési tapasztalatom. Illetve MacOS-en dolgozom.
+Az évek során dolgoztam már Linux, Windows és macOS rendszerekkel. A legtöbbet Linux rendszerekkel, de a Windows
+rendszerekkel is van üzemeltetési tapasztalatom. Illetve macOS-en dolgozom.
 
 <!--more-->
 <br>

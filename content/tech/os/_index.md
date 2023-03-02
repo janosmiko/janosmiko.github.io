@@ -12,8 +12,8 @@ sitemap_exclude: false
 
 <div class="bg-secondary-bg rounded px-6 py-6">
 
-During the years I worked with Linux, Windows and MacOS systems. I have the most experience with Linux systems, but I also have
-experience with supervising Windows systems. I use MacOS as my daily driver.
+During the years I worked with Linux, Windows and macOS systems. I have the most experience with Linux systems, but I also have
+experience with supervising Windows systems. I use macOS as my daily driver.
 
 <!--more-->
 <br>

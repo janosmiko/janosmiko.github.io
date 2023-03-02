@@ -20,7 +20,7 @@ testimonials:
     avatar: /images/monikamezo.jpeg
     avatar_webp: /images/monikamezo.webp
     writeup: |
-      "Well as the leader of Peakshop.hu, I know that there is a great specialist in the background, when there are NO errors on the servers. Janos is one of the most reliable, "silent" specialist, that every company needs."
+      "As the leader of Peakshop.hu, I know that there is a great specialist in the background, when there are NO errors on the servers. Janos is one of the most reliable, "silent" specialist, that every company needs."
 
   - name: Shabab Gruberg
     title: CTO

@@ -19,6 +19,8 @@ I have deep knowledge in many areas around continuous integration and continuous
 
 I know what Canary or Blue/Green deployment means and how to implement them.
 
+<br>
+
 I have experience with the following CI/CD tools:
 
 - ArgoCD (GitOps) - Argo Workflows - Argo Events
