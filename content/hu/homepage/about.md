@@ -31,7 +31,7 @@ widget:
   handler: about
 
 # Options: sm, md, lg and xl. Default is md.
-width:
+width: lg
 
 sidebar:
 # Options: left and right. Leave blank to hide.
@@ -63,6 +63,7 @@ Mindig is imádtam az informatikát és a technológiát, közel 10 éve foglalk
 Szentimentálisan hangozhat, de a "felhőben" érzem magam igazán otthon.
 
 ### Néhány érdekesség
+
 - Az Everything as Code metodológiát vallom. Ha egynél többször szükségem van valamire, akkor lekódolom.
 - A munkámat és az életemet is a GTD és OKR módszerek segítségével menedzselem.
 - A sztoikus filozófiát követem.

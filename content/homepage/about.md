@@ -6,9 +6,6 @@ role: Lead DevOps Engineer
 avatar: images/janosmiko.jpeg
 avatar_webp: images/janosmiko.webp
 bio: Fill your bucket by drop by drop.
-#organization:
-#  name: ITG Commerce
-#  url: https://itgcommerce.com/
 social:
   - icon: envelope
     iconPack: fas
@@ -34,7 +31,7 @@ widget:
   handler: about
 
   # Options: sm, md, lg and xl. Default is md.
-  width:
+  width: lg
 
   sidebar:
     # Options: left and right. Leave blank to hide.
@@ -62,7 +59,7 @@ Let me introduce myself: I'm Janos Miko.
 
 I have always loved technology. I work as a Lead DevOps Engineer and Go developer for nearly 10 years.
 
-It sounds sentimental, but the "cloud" is where I feel at home.
+It may sound sentimental, but the "cloud" is where I feel at home.
 
 
 ### Some Personal Stuff
