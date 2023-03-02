@@ -1,5 +1,5 @@
 ---
-title: Cloud
+title: Felhő
 date: '2023-03-01'
 lastmod: '2023-03-01'
 authors:
@@ -12,18 +12,18 @@ sitemap_exclude: false
 
 <div class="bg-secondary-bg rounded px-6 py-6">
 
-I have experience with multiple cloud providers including AWS, GCP and Azure.
+Több felhőszolgáltatóval volt már lehetőségem dolgozni, beleértve az AWS, GCP és Azure hármast is.
 
 <!--more-->
 <br>
 
-I made audits, cost- and performance optimization, migrations, and operations in the Cloud.
+Foglalkoztam már audittal, költség-, és teljesítmény optimalizálással, migrálással, üzemeltetéssel.
 
-I worked with cloud providers' professional technology teams, and I have an AWS Developer Associate certification.
+Dolgoztam együtt felhőszolgáltatók technólógiai csapatával, illetve AWS fejlesztői tanúsítvánnyal is rendelkezem.
 
 <br>
 
-Here are some of the cloud providers and services I have experience with:
+A teljesség igénye nélkül az alábbi felhőszolgáltatókkal és itt felsorolt szolgáltatásaikkal volt már dolgom.
 
 - **AWS**
   - EC2
@@ -57,14 +57,15 @@ Here are some of the cloud providers and services I have experience with:
 - **Hetzner Cloud**
 - **Digital Ocean**
 - **Vultr**
-- and so on...
+- stb...
 
 <br>
 
-There's a bunch of other SaaS products that are loosely attached to the cloud, and I have experience with them as well:
+Vannak további olyan SaaS termékek is, amelyek lazán a felhőhöz köthetők és volt már velük dolgom:
 - Cloudflare
 - Heroku
 - Mailgun
-- and so on...
+- stb...
+
 
 </div>

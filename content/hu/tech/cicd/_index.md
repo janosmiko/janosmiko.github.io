@@ -12,14 +12,14 @@ sitemap_exclude: false
 
 <div class="bg-secondary-bg rounded px-6 py-6">
 
-I have deep knowledge in many areas around continuous integration and continuous delivery.
+Elmélyült tapasztalattal rendelkezem a CI/CD folyamatok megvalósításában.
 
 <!--more-->
 <br>
 
-I know what Canary or Blue/Green deployment means and how to implement them.
+Tudom, hogy mi az, hogy Canary vagy Blue/Green deployment és hogyan lehet ezeket megvalósítani.
 
-I have experience with the following CI/CD tools:
+A következő deployment eszközöket használtam már az évek során:
 
 - ArgoCD (GitOps) - Argo Workflows - Argo Events
 - Rancher Fleet (GitOps)

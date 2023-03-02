@@ -27,6 +27,7 @@ Languages I used lately:
 - JSON
 - HCL
 - Markdown
+- Regular expressions
 - and many more I used in the past...
 
 <br>

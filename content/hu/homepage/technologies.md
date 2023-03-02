@@ -1,13 +1,13 @@
 ---
-title: Technologies
+title: Technológiák
 draft: false
 technologies:
-  - title: Cloud
+  - title: Felhő
     url: /tech/cloud/
     dates: 2021-2022
     logo: /images/tech/cloud.png
 
-  - title: Containers and Orchestration
+  - title: Konténerek és Kubernetes
     url: /tech/containers
     dates: 2022
     logo: /images/tech/containers.png
@@ -17,7 +17,7 @@ technologies:
     dates: 2023
     logo: /images/tech/cicd.png
 
-  - title: Operations
+  - title: Üzemeltetés
     url: /tech/operations
     dates: 2022
     logo: /images/tech/operations.png
@@ -27,12 +27,12 @@ technologies:
     dates: 2022
     logo: /images/tech/monitoring.png
 
-  - title: Operating Systems and Computer Networks
+  - title: Operációs rendszerek és számítógépes hálózatok
     url: /tech/os
     dates: 2022
     logo: /images/tech/os.png
 
-  - title: Programming
+  - title: Programozás
     url: /tech/programming
     dates: 2022
     logo: /images/tech/programming.png
