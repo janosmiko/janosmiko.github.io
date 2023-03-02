@@ -25,18 +25,20 @@ Dolgoztam együtt felhőszolgáltatók technólógiai csapatával, illetve AWS f
 
 A teljesség igénye nélkül az alábbi felhőszolgáltatókkal és itt felsorolt szolgáltatásaikkal volt már dolgom.
 
-- **AWS**
+- AWS
   - EC2
   - ECS (Container Services) - even with Fargate
   - EKS (Kubernetes)
   - RDS
   - S3
+  - DynamoDB
   - CloudFront
   - Route53
   - CloudWatch
   - Lambda
-  - and so on...
-- **GCP**
+  - stb...
+
+- GCP
   - GCE (Compute Engine)
   - GKE (Kubernetes)
   - Cloud Storage
@@ -46,18 +48,19 @@ A teljesség igénye nélkül az alábbi felhőszolgáltatókkal és itt felsoro
   - Stackdriver
   - Cloud Run
   - Cloud Functions
-  - and so on...
-- **Azure**
+  - stb...
+  
+- Azure
   - Virtual Machines
   - SQL Database
   - Blob Storage
   - DNS
   - Azure Monitor
   - AKS (Kubernetes)
-- **Hetzner Cloud**
-- **Digital Ocean**
-- **Vultr**
-- stb...
+  
+- Hetzner Cloud
+- Digital Ocean
+- Vultr
 
 <br>
 
@@ -66,6 +69,5 @@ Vannak további olyan SaaS termékek is, amelyek lazán a felhőhöz köthetők 
 - Heroku
 - Mailgun
 - stb...
-
 
 </div>

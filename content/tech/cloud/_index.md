@@ -23,20 +23,24 @@ I worked with cloud providers' professional technology teams, and I have an AWS 
 
 <br>
 
-Here are some of the cloud providers and services I have experience with:
+Some cloud providers and their services I have experience with:
 
-- **AWS**
+<br>
+
+- AWS
   - EC2
   - ECS (Container Services) - even with Fargate
   - EKS (Kubernetes)
   - RDS
   - S3
+  - DynamoDB
   - CloudFront
   - Route53
   - CloudWatch
   - Lambda
-  - and so on...
-- **GCP**
+  - etc...
+
+- GCP
   - GCE (Compute Engine)
   - GKE (Kubernetes)
   - Cloud Storage
@@ -46,18 +50,19 @@ Here are some of the cloud providers and services I have experience with:
   - Stackdriver
   - Cloud Run
   - Cloud Functions
-  - and so on...
-- **Azure**
+  - etc...
+
+- Azure
   - Virtual Machines
   - SQL Database
   - Blob Storage
   - DNS
   - Azure Monitor
   - AKS (Kubernetes)
-- **Hetzner Cloud**
-- **Digital Ocean**
-- **Vultr**
-- and so on...
+
+- Hetzner Cloud
+- Digital Ocean
+- Vultr
 
 <br>
 
