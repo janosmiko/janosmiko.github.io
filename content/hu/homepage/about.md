@@ -3,8 +3,8 @@ title: Mikó János
 translationKey: about
 draft: false
 role: Lead DevOps Engineer
-avatar: images/janosmiko-400x300.jpeg
-avatar_webp: images/janosmiko-400x300.webp
+avatar: images/janosmiko.jpeg
+avatar_webp: images/janosmiko.webp
 bio: Fill your bucket by drop by drop.
 social:
   - icon: envelope
