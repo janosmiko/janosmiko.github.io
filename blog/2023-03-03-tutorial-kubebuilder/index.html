@@ -1,0 +1,285 @@
+<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content="width=device-width"><title>Janos Miko</title><meta name=generator content="Hugo Eureka 0.8.0"><link rel=stylesheet href=https://janosmiko.com/css/eureka.min.css><script defer src=https://janosmiko.com/js/eureka.min.js></script>
+<link rel=dns-prefetch href=//fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=preload href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" as=style onload='this.onload=null,this.rel="stylesheet"'><link rel=stylesheet href=/css/prism-okaidia.css media=print onload='this.media="all",this.onload=null' crossorigin><script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.24.1/prism.min.js crossorigin></script>
+<script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.24.1/plugins/autoloader/prism-autoloader.min.js crossorigin></script>
+<script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.24.1/components/prism-markup-templating.min.js crossorigin></script>
+<script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.24.1/components/prism-go.min.js crossorigin></script>
+<script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.24.1/components/prism-bash.min.js crossorigin></script>
+<script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.24.1/components/prism-php.min.js crossorigin></script>
+<script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.24.1/components/prism-json.min.js crossorigin></script>
+<script defer src=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/js/all.min.js integrity="sha256-uNYoXefWRqv+PsIF/OflNmwtKM4lStn9yrz2gVl6ymo=" crossorigin></script>
+<link rel=stylesheet href=/css/custom.css><script defer src=/js/custom.js></script>
+<link rel=apple-touch-icon sizes=57x57 href=/apple-icon-57x57.png><link rel=apple-touch-icon sizes=60x60 href=/apple-icon-60x60.png><link rel=apple-touch-icon sizes=72x72 href=/apple-icon-72x72.png><link rel=apple-touch-icon sizes=76x76 href=/apple-icon-76x76.png><link rel=apple-touch-icon sizes=114x114 href=/apple-icon-114x114.png><link rel=apple-touch-icon sizes=120x120 href=/apple-icon-120x120.png><link rel=apple-touch-icon sizes=144x144 href=/apple-icon-144x144.png><link rel=apple-touch-icon sizes=152x152 href=/apple-icon-152x152.png><link rel=apple-touch-icon sizes=180x180 href=/apple-icon-180x180.png><link rel=icon type=image/png sizes=192x192 href=/android-icon-192x192.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=96x96 href=/favicon-96x96.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><meta name=msapplication-TileColor content="#ffffff"><meta name=msapplication-TileImage content="/ms-icon-144x144.png"><meta name=apple-mobile-web-app-title content="Janos Miko"><meta name=application-name content="Janos Miko"><meta name=theme-color content="#1e2028"><meta name=description content="
+title: Tutorial - Kubernetes Operator with Kubebuilder part 1 - Preparing a development cluster
+draft: false
+toc: true
+authors:
+
+janos-miko
+tags:
+kubernetes
+kubebuilder
+aks
+eks
+gke
+cloud-native
+cloudnative
+openshift
+categories: tech
+date: &lsquo;2023-03-03&rsquo;
+lastmod: &lsquo;2023-03-03&rsquo;
+sitemap_exclude: false
+featuredImage: /images/blog/2023-03-03-tutorial-kubernetes-operator-with-kubebuilder/kubernetes-operator-1.png
+featuredImage_webp: /images/blog/2023-03-03-tutorial-kubernetes-operator-with-kubebuilder/kubernetes-operator-1.webp
+
+
+How to create a Kuberentes Operator with Kubebuilder."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Blog","item":"https://janosmiko.com/blog/"},{"@type":"ListItem","position":2,"name":"","item":"https://janosmiko.com/blog/2023-03-03-tutorial-kubebuilder/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://janosmiko.com/blog/2023-03-03-tutorial-kubebuilder/"},"headline":"Janos Miko","wordCount":716,"publisher":{"@type":"Person","name":"Janos Miko"},"description":"\u003chr\u003e\n\u003cp\u003etitle: Tutorial - Kubernetes Operator with Kubebuilder part 1 - Preparing a development cluster\ndraft: false\ntoc: true\nauthors:\u003c\/p\u003e\n\u003cul\u003e\n\u003cli\u003ejanos-miko\ntags:\u003c\/li\u003e\n\u003cli\u003ekubernetes\u003c\/li\u003e\n\u003cli\u003ekubebuilder\u003c\/li\u003e\n\u003cli\u003eaks\u003c\/li\u003e\n\u003cli\u003eeks\u003c\/li\u003e\n\u003cli\u003egke\u003c\/li\u003e\n\u003cli\u003ecloud-native\u003c\/li\u003e\n\u003cli\u003ecloudnative\u003c\/li\u003e\n\u003cli\u003eopenshift\ncategories: tech\ndate: \u0026lsquo;2023-03-03\u0026rsquo;\nlastmod: \u0026lsquo;2023-03-03\u0026rsquo;\nsitemap_exclude: false\nfeaturedImage: \/images\/blog\/2023-03-03-tutorial-kubernetes-operator-with-kubebuilder\/kubernetes-operator-1.png\nfeaturedImage_webp: \/images\/blog\/2023-03-03-tutorial-kubernetes-operator-with-kubebuilder\/kubernetes-operator-1.webp\u003c\/li\u003e\n\u003c\/ul\u003e\n\u003chr\u003e\n\u003cp\u003eHow to create a Kuberentes Operator with Kubebuilder.\u003c\/p\u003e"}</script><meta property="og:title" content="Janos Miko"><meta property="og:type" content="article"><meta property="og:image" content="https://janosmiko.com/images/janosmiko.jpeg"><meta property="og:url" content="https://janosmiko.com/blog/2023-03-03-tutorial-kubebuilder/"><meta property="og:description" content="
+title: Tutorial - Kubernetes Operator with Kubebuilder part 1 - Preparing a development cluster
+draft: false
+toc: true
+authors:
+
+janos-miko
+tags:
+kubernetes
+kubebuilder
+aks
+eks
+gke
+cloud-native
+cloudnative
+openshift
+categories: tech
+date: &lsquo;2023-03-03&rsquo;
+lastmod: &lsquo;2023-03-03&rsquo;
+sitemap_exclude: false
+featuredImage: /images/blog/2023-03-03-tutorial-kubernetes-operator-with-kubebuilder/kubernetes-operator-1.png
+featuredImage_webp: /images/blog/2023-03-03-tutorial-kubernetes-operator-with-kubebuilder/kubernetes-operator-1.webp
+
+
+How to create a Kuberentes Operator with Kubebuilder."><meta property="og:locale" content="en"><meta property="og:site_name" content="Janos Miko"><meta property="article:section" content="blog"><body class="flex flex-col min-h-screen"><header class="fixed flex items-center w-full min-h-16 pl-scrollbar z-50 bg-secondary-bg shadow-sm"><div class="w-full max-w-screen-xl mx-auto"><script>let storageColorScheme=localStorage.getItem("lightDarkMode");((storageColorScheme=="Auto"||storageColorScheme==null)&&window.matchMedia("(prefers-color-scheme: dark)").matches||storageColorScheme=="Dark")&&document.getElementsByTagName("html")[0].classList.add("dark")</script><nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0"><a href=/ class="mr-6 text-primary-text text-xl font-bold">Janos Miko</a>
+<button id=navbar-btn class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+<i class="fas fa-bars"></i></button><div id=target class="hidden block md:flex md:flex-grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20"><div class="md:flex md:h-16 text-sm md:flex-grow pb-4 md:pb-0 border-b md:border-b-0"><a href=/#about class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 border-transparent mr-4">About</a>
+<a href=/#certifications class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 border-transparent mr-4">Certifications</a>
+<a href=/#experiences class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 border-transparent mr-4">Experiences</a>
+<a href=/#technologies class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 border-transparent mr-4">Technologies</a>
+<a href=/#projects class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 border-transparent mr-4">Projects</a>
+<a href=/#testimonials class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 border-transparent mr-4">Testimonials</a>
+<a href=/blog class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 selected-menu-item mr-4">Blog</a></div><div class=flex><div class="relative pt-4 md:pt-0"><div class="cursor-pointer hover:text-eureka" id=lightDarkMode><i class="fas fa-adjust"></i></div><div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id=is-open></div><div class="absolute flex flex-col left-0 md:left-auto right-auto md:right-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40" id=lightDarkOptions><span class="px-4 py-1 hover:text-eureka" name=Light>Light</span>
+<span class="px-4 py-1 hover:text-eureka" name=Dark>Dark</span>
+<span class="px-4 py-1 hover:text-eureka" name=Auto>Auto</span></div></div></div></div><div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id=is-open-mobile></div></nav><script>let element=document.getElementById("lightDarkMode");storageColorScheme==null||storageColorScheme=="Auto"?document.addEventListener("DOMContentLoaded",()=>{window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",switchDarkMode)}):storageColorScheme=="Light"?(element.firstElementChild.classList.remove("fa-adjust"),element.firstElementChild.setAttribute("data-icon","sun"),element.firstElementChild.classList.add("fa-sun")):storageColorScheme=="Dark"&&(element.firstElementChild.classList.remove("fa-adjust"),element.firstElementChild.setAttribute("data-icon","moon"),element.firstElementChild.classList.add("fa-moon")),document.addEventListener("DOMContentLoaded",()=>{getcolorscheme(),switchBurger()})</script></div></header><main class="flex-grow pt-16"><div class=pl-scrollbar><div class="lg:w-3/4 w-full max-w-screen-xl lg:px-4 xl:px-8 mx-auto"><div class="grid grid-cols-2 lg:grid-cols-8 gap-4 lg:pt-12"><div class="col-span-2 lg:col-start-2 lg:col-span-6 bg-secondary-bg rounded px-6 py-8"><h1 class="font-bold text-3xl text-primary-text"></h1><div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text"><div class="mr-6 my-2"><i class="fas fa-calendar mr-1"></i>
+<span>0001-01-01</span></div><div class="mr-6 my-2"><i class="fa fa-sync mr-1"></i>
+<span>0001-01-01</span></div><div class="mr-6 my-2"><i class="fas fa-clock mr-1"></i>
+<span></span></div></div><div class=content><hr><p>title: Tutorial - Kubernetes Operator with Kubebuilder part 1 - Preparing a development cluster
+draft: false
+toc: true
+authors:</p><ul><li>janos-miko
+tags:</li><li>kubernetes</li><li>kubebuilder</li><li>aks</li><li>eks</li><li>gke</li><li>cloud-native</li><li>cloudnative</li><li>openshift
+categories: tech
+date: &lsquo;2023-03-03&rsquo;
+lastmod: &lsquo;2023-03-03&rsquo;
+sitemap_exclude: false
+featuredImage: /images/blog/2023-03-03-tutorial-kubernetes-operator-with-kubebuilder/kubernetes-operator-1.png
+featuredImage_webp: /images/blog/2023-03-03-tutorial-kubernetes-operator-with-kubebuilder/kubernetes-operator-1.webp</li></ul><hr><p>How to create a Kuberentes Operator with Kubebuilder.</p><h1 id=preparing-a-development-cluster>Preparing a development cluster&nbsp;<a class=anchor href=#preparing-a-development-cluster>#</a></h1><h2 id=intro>Intro&nbsp;<a class=anchor href=#intro>#</a></h2><p>This document is part of a tutorial series about creating a Kubernetes operator with Kubebuilder in Go. We are covering
+the following topics:</p><ul><li>Creating a development cluster</li><li>Tracing, Logging, Kubernetes event recording</li><li>Lifecycle of an Object in Kubernetes, including Finalizers</li><li>Triggering the reconciliation manually (based on a custom annotation)</li><li>Search indexing</li><li>Formatting the output of <code>kubectl get</code></li><li>Adding webhooks</li></ul><p>The operator will be simple. Our Custom Resource Definition will describe the following Object structure.</p><pre><code class=language-bash>apiVersion: janosmiko.com/v1alpha1
+kind: CustomObject
+metadata:
+  name: customobject-sample
+spec:
+  id: test
+  domain: janosmiko.com
+</code></pre><p>The operator will take the domain we give in the <code>spec.domain</code> attribute, get the domain’s IP address and write it to
+the object’s status field with a bunch of additional useful information. It will also determine the Controller Pod’s
+kube-rbac-proxy container’s image (demonstrating indexing Pods by a custom field).</p><pre><code class=language-bash>apiVersion: janosmiko.com/v1alpha1
+kind: CustomObject
+metadata:
+  name: customobject-sample
+status:
+  conditions:
+    - lastTransitionTime: '2023-03-03T22:38:00Z'
+      message: Object created
+      reason: CustomObjectCreated
+      status: 'True'
+      type: Created
+    - lastTransitionTime: '2023-03-03T22:38:00Z'
+      message: Object creating
+      reason: CustomObjectCreating
+      status: 'False'
+      type: Creating
+    - lastTransitionTime: '2023-03-03T22:38:00Z'
+      message: Preparing object
+      reason: CustomObjectNew
+      status: 'False'
+      type: Pending
+  ipAddress: 185.199.109.153
+  phase:
+    lastTransitionTime: '2023-03-03T22:38:00Z'
+    message: Object created
+    reason: CustomObjectCreated
+    status: 'True'
+    type: Created
+  ready: true
+  specHash: b442cc366de2547e17f97cf4dd72f9f90340639570f583bc801f2d570df820a1
+spec:
+  id: test
+  domain: janosmiko.com
+</code></pre><h2 id=prerequisites>Prerequisites&nbsp;<a class=anchor href=#prerequisites>#</a></h2><ul><li>Golang 1.19</li><li>Docker Desktop</li><li>Kind</li><li>Kubectl</li><li>Helm</li><li>Make</li></ul><h2 id=initialize-a-kubebuilder-project>Initialize a kubebuilder project&nbsp;<a class=anchor href=#initialize-a-kubebuilder-project>#</a></h2><pre><code class=language-bash>kubebuilder init --plugins=go/v4-alpha --domain janosmiko.com --repo github.com/janosmiko/tutorial-kubebuilder
+</code></pre><h2 id=create-a-test-kubernetes-cluster-with-kind-expose-port-80-and-443>Create a test Kubernetes Cluster with Kind, expose port 80 and 443&nbsp;<a class=anchor href=#create-a-test-kubernetes-cluster-with-kind-expose-port-80-and-443>#</a></h2><p>Of course, it’s possible to use Docker Desktop’s Kubernetes, Rancher Desktop or - put your favourite Kubernetes
+distribution here -.</p><pre><code class=language-bash>cat &lt;&lt; EOF &gt;hack/kind.yaml
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+name: test
+nodes:
+  - role: control-plane
+    kubeadmConfigPatches:
+      - |
+        kind: InitConfiguration
+        nodeRegistration:
+          kubeletExtraArgs:
+            node-labels: &quot;ingress-ready=true&quot;
+    extraPortMappings:
+      - containerPort: 80
+        hostPort: 80
+        protocol: TCP
+      - containerPort: 443
+        hostPort: 443
+        protocol: TCP
+  - role: worker
+EOF
+
+kind create cluster --config hack/kind.yaml
+
+</code></pre><p>When the Cluster is ready make sure to change the Kubernetes context:</p><pre><code class=language-bash>kubectl config use-context kind-test
+
+</code></pre><h3 id=enable-cert-manager-and-ingress-nginx>Enable cert-manager and ingress-nginx&nbsp;<a class=anchor href=#enable-cert-manager-and-ingress-nginx>#</a></h3><pre><code class=language-bash>kubectl config use-context kind-test
+
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.11.0/cert-manager.yaml
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
+
+kubectl wait --namespace ingress-nginx \
+	--for=condition=ready pod \
+	--selector=app.kubernetes.io/component=controller \
+	--timeout=90s
+</code></pre><h3 id=test-ingress--cert-manager>Test ingress + cert-manager&nbsp;<a class=anchor href=#test-ingress--cert-manager>#</a></h3><pre><code class=language-bash>kubectl create deployment web --image=gcr.io/google-samples/hello-app:1.0
+
+kubectl expose deployment web --type=ClusterIP --port=8080
+
+mkdir -p test
+cat &lt;&lt; EOF &gt; test/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: example-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  rules:
+    - host: localhost
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: web
+                port:
+                  number: 8080
+EOF
+
+kubectl apply -f test/ingress.yaml
+</code></pre><p>You can test if the ingress works with curl:</p><pre><code class=language-bash>curl http://localhost:80
+
+Hello, world!
+Version: 1.0.0
+Hostname: web-84fb9498c7-xgmmq
+</code></pre><h3 id=cleanup>Cleanup&nbsp;<a class=anchor href=#cleanup>#</a></h3><pre><code class=language-bash>kubectl delete deployment web
+kubectl delete svc web
+kubectl delete -f test/ingress.yaml
+</code></pre><h2 id=install-jaeger-to-the-cluster>Install Jaeger to the cluster&nbsp;<a class=anchor href=#install-jaeger-to-the-cluster>#</a></h2><pre><code class=language-bash>helm repo add jaegertracing https://jaegertracing.github.io/helm-charts
+
+cat &lt;&lt;EOF &gt; hack/jaeger-values.yaml
+provisionDataStore:
+  cassandra: false
+allInOne:
+  enabled: true
+  ingress:
+    enabled: true
+    hosts:
+      - jaeger-query.jaeger
+agent:
+  enabled: false
+query:
+  enabled: false
+collector:
+  enabled: false
+storage:
+  type: none
+
+extraObjects:
+  - apiVersion: networking.k8s.io/v1
+    kind: Ingress
+    metadata:
+      name: jaeger-collector
+      namespace: jaeger
+    spec:
+      rules:
+        - host: jaeger-collector.jaeger
+          http:
+            paths:
+              - path: /
+                pathType: ImplementationSpecific
+                backend:
+                  service:
+                    name: jaeger-collector
+                    port:
+                      number: 14268
+  - apiVersion: v1
+    kind: Service
+    metadata:
+      name: jaeger-collector-exposed
+      namespace: jaeger
+    spec:
+      ports:
+        - name: http-zipkin
+          protocol: TCP
+          port: 9411
+          targetPort: 9411
+        - name: grpc-http
+          protocol: TCP
+          port: 14250
+          targetPort: 14250
+        - name: c-tchan-trft
+          protocol: TCP
+          port: 14267
+          targetPort: 14267
+        - name: http-c-binary-trft
+          protocol: TCP
+          port: 14268
+          targetPort: 14268
+        - name: otlp-grpc
+          protocol: TCP
+          port: 4317
+          targetPort: 4317
+        - name: otlp-http
+          protocol: TCP
+          port: 4318
+          targetPort: 4318
+      selector:
+        app.kubernetes.io/component: all-in-one
+        app.kubernetes.io/instance: jaeger
+        app.kubernetes.io/name: jaeger
+      clusterIP: &quot;&quot;
+      type: ClusterIP
+EOF
+
+helm upgrade --install jaeger jaegertracing/jaeger \
+	--namespace jaeger \
+	--create-namespace \
+	-f hack/jaeger-values.yaml
+</code></pre><p>If you add the following line to your hosts file you’ll be able to reach Jaeger’s frontend in your browser without
+port-forwarding.</p><p>Note: we are using the same domain as it can be reached inside the Kubernetes cluster. With this you can send traces
+even if your application is running on your host machine (and not inside the Kubernetes cluster). E.g. if you are
+debugging it locally.</p><pre><code class=language-bash>127.0.0.1 jaeger-collector.jaeger jaeger-query.jaeger
+</code></pre><p><a href=http://jaeger-query.jaeger>http://jaeger-query.jaeger</a></p></div><div class="flex flex-col md:flex-row md:justify-between -mx-2 mt-4 px-2 pt-4 border-t"><div><span class="block font-bold">Previous</span>
+<a href=https://janosmiko.com/blog/2023-02-25-golang-functional-options/ class=block></a></div><div class="md:text-right mt-4 md:mt-0"></div></div></div></div></div></div></main><footer class=pl-scrollbar><div class="w-full max-w-screen-xl mx-auto"><div class="text-center p-6 pin-b"><p class="text-sm text-tertiary-text">&copy; Janos Miko
+&#183; Made with <i class="fas fa-heart"></i> using <a href=https://github.com/wangchucheng/hugo-eureka class=hover:text-eureka>Eureka</a> theme for <a href=https://gohugo.io class=hover:text-eureka>Hugo</a></p></div></div></footer></body></html>

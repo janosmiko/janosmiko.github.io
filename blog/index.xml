@@ -3,4 +3,48 @@ It can be a headache to determine what causes these issues.&lt;/p>
 &lt;p>In the following guide, I will give you some tools which will help to determine and eliminate these error messages.&lt;/p></description></item><item><title>Demystifying Bitbucket Pipelines Memory Limits</title><link>https://janosmiko.com/blog/2021-09-18-demystifying-bitbucket-pipelines-memory-limits/</link><pubDate>Fri, 17 Sep 2021 00:00:00 +0000</pubDate><guid>https://janosmiko.com/blog/2021-09-18-demystifying-bitbucket-pipelines-memory-limits/</guid><description>&lt;p>Bitbucket Pipelines memory management can be a headache in complex cases.&lt;/p>
 &lt;p>And its documentation is confusing.&lt;/p>
 &lt;p>So let's figure out through examples how it works.&lt;/p></description></item><item><title>How to run Self Hosted Bitbucket Pipelines Runners in Kubernetes</title><link>https://janosmiko.com/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/</link><pubDate>Wed, 08 Sep 2021 00:00:00 +0000</pubDate><guid>https://janosmiko.com/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/</guid><description>&lt;p>Atlassian &lt;a href="https://bitbucket.org/blog/pipelines-runners">announced&lt;/a> self-hosted Runners for Bitbucket Pipelines, let's try them out.&lt;/p></description></item><item><title>How to test if Magento RabbitMQ Consumers are working properly</title><link>https://janosmiko.com/blog/2021-07-04-magento-rabbitmq/</link><pubDate>Sun, 04 Jul 2021 00:00:00 +0000</pubDate><guid>https://janosmiko.com/blog/2021-07-04-magento-rabbitmq/</guid><description>&lt;p>How can you verify if Magento can reach and utilize the benefits of RabbitMQ?&lt;/p>
-&lt;p>This tutorial will help you to modify attributes of a product using Magento's async API and bulk API.&lt;/p></description></item><item><title>Reward – A development tool designed for Magento developers</title><link>https://janosmiko.com/blog/2021-03-06-reward/</link><pubDate>Sat, 06 Mar 2021 00:00:00 +0000</pubDate><guid>https://janosmiko.com/blog/2021-03-06-reward/</guid><description>&lt;p>It can be a headache to find solutions to run multiple local environments simultaneously without port conflicts when using tools like Docker. This is where Reward can be a very useful tool.&lt;/p></description></item></channel></rss>
+&lt;p>This tutorial will help you to modify attributes of a product using Magento's async API and bulk API.&lt;/p></description></item><item><title>Reward – A development tool designed for Magento developers</title><link>https://janosmiko.com/blog/2021-03-06-reward/</link><pubDate>Sat, 06 Mar 2021 00:00:00 +0000</pubDate><guid>https://janosmiko.com/blog/2021-03-06-reward/</guid><description>&lt;p>It can be a headache to find solutions to run multiple local environments simultaneously without port conflicts when using tools like Docker. This is where Reward can be a very useful tool.&lt;/p></description></item><item><title/><link>https://janosmiko.com/blog/2023-02-25-golang-functional-options/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://janosmiko.com/blog/2023-02-25-golang-functional-options/</guid><description>&lt;hr>
+&lt;p>title: Functional Options in Go
+draft: false
+toc: true
+authors:&lt;/p>
+&lt;ul>
+&lt;li>janos-miko
+tags:&lt;/li>
+&lt;li>go&lt;/li>
+&lt;li>golang&lt;/li>
+&lt;li>programming
+categories: tech
+date: &amp;lsquo;2023-02-25&amp;rsquo;
+lastmod: &amp;lsquo;2023-02-25&amp;rsquo;
+sitemap_exclude: false
+featuredImage: /images/blog/2023-02-25-functional-options-in-go/functional-options-in-go.png
+featuredImage_webp: /images/blog/2023-02-25-functional-options-in-go/functional-options-in-go.webp&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;p>Golang provides a fantastic way of writing functions called Functional Options. This is a design pattern that allows
+callers to pass a set of options to a function, each represented by a function. Super flexible, and easy to use.&lt;/p></description></item><item><title/><link>https://janosmiko.com/blog/2023-03-03-tutorial-kubebuilder/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://janosmiko.com/blog/2023-03-03-tutorial-kubebuilder/</guid><description>&lt;hr>
+&lt;p>title: Tutorial - Kubernetes Operator with Kubebuilder part 1 - Preparing a development cluster
+draft: false
+toc: true
+authors:&lt;/p>
+&lt;ul>
+&lt;li>janos-miko
+tags:&lt;/li>
+&lt;li>kubernetes&lt;/li>
+&lt;li>kubebuilder&lt;/li>
+&lt;li>aks&lt;/li>
+&lt;li>eks&lt;/li>
+&lt;li>gke&lt;/li>
+&lt;li>cloud-native&lt;/li>
+&lt;li>cloudnative&lt;/li>
+&lt;li>openshift
+categories: tech
+date: &amp;lsquo;2023-03-03&amp;rsquo;
+lastmod: &amp;lsquo;2023-03-03&amp;rsquo;
+sitemap_exclude: false
+featuredImage: /images/blog/2023-03-03-tutorial-kubernetes-operator-with-kubebuilder/kubernetes-operator-1.png
+featuredImage_webp: /images/blog/2023-03-03-tutorial-kubernetes-operator-with-kubebuilder/kubernetes-operator-1.webp&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;p>How to create a Kuberentes Operator with Kubebuilder.&lt;/p></description></item></channel></rss>
