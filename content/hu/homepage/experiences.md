@@ -10,9 +10,9 @@ experiences:
     location: Budapest - HU | Chapel Hill, NC - US
     writeup: |
       - Jelenlegi munkahelyemen felelős vagyok a DevOps csapat vezetéséért.
-      - A teljes IT infrastruktúra építését és üzemeltetését végzem, beleértve a CI/CD
+      - A teljes IT infrastruktúra építését és üzemeltetését végezzük a csapatommal, beleértve a CI/CD
         pipeline-okat, mentéseket, monitoringot, skálázást stb.
-      - Egy Cloud Native alkalmazás fejlesztésében veszek részt (Go nyelven).
+      - Egy Cloud-Native projekt technikai projektmenedzsere vagyok és Go fejlesztőként is dolgozom rajta.
       - Rendszeresen tartok kódolási előadásokat és tudásmegosztó workshopokat.
       - Külső partnerekhez kiszervezett tanácsadóként segítek a felhőben architektúrájuk és
         költségeik optimalizálásában, és biztonsági tanácsadásban.

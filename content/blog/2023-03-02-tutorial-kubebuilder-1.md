@@ -1,89 +1,102 @@
 ---
-title: Tutorial - Kubernetes Operator with Kubebuilder part 1 - Preparing a development cluster
+.formatter: # (@formatter:off)
+title: Tutorial - Kubernetes Operator with Kubebuilder part 1
 draft: false
 toc: true
 authors:
-
-- janos-miko
-  tags:
-- kubernetes
-- aks
-- eks
-- gke
-- cloud-native
-- cloudnative
-- openshift
-  categories: tech
-  date: '2023-03-03'
-  lastmod: '2023-03-03'
-  sitemap_exclude: false
-  featuredImage: /images/blog/2023-03-03-tutorial-kubernetes-operator-with-kubebuilder/kubernetes-operator-1.png
-  featuredImage_webp: /images/blog/2023-03-03-tutorial-kubernetes-operator-with-kubebuilder/kubernetes-operator-1.webp
+  - janos-miko
+tags:
+  - kubernetes
+  - kubebuilder
+  - aks
+  - eks
+  - gke
+  - cloud-native
+  - cloudnative
+  - openshift
+categories: tech
+date: '2023-03-02'
+lastmod: '2023-03-04'
+sitemap_exclude: false
+featuredImage: /images/blog/2023-03-02-tutorial-kubebuilder/tutorial-kubebuilder-1.png
+featuredImage_webp: /images/blog/2023-03-02-tutorial-kubebuilder/tutorial-kubebuilder-1.webp
 
 ---
 
-How to create a Kuberentes Operator with Kubebuilder.
+Preparing a development cluster
 
 <!--more-->
 
-# Preparing a development cluster
-
 ## Intro
 
-This document is part of a tutorial series about creating a Kubernetes operator with Kubebuilder in Go. We are covering
+This article is a part of a tutorial series about creating a Kubernetes operator with Kubebuilder in Go. We are covering
 the following topics:
 
 - Creating a development cluster
 - Tracing, Logging, Kubernetes event recording
-- Lifecycle of an Object in Kubernetes, including Finalizers
+- Lifecycle of a Resource in Kubernetes, including Finalizers
 - Triggering the reconciliation manually (based on a custom annotation)
 - Search indexing
 - Formatting the output of `kubectl get`
-- Adding webhooks
 
-The operator will be simple. Our Custom Resource Definition will describe the following Object structure.
+The articles of the series are:
+- [Part 1 - Preparing a development cluster](/blog/2023-03-02-tutorial-kubebuilder-1/)
+- [Part 2 - Creating an API and a Controller](/blog/2023-03-03-tutorial-kubebuilder-2/)
+- [Part 3 - Extending the operator](/blog/2023-03-04-tutorial-kubebuilder-3/)
+- Source code: [https://github.com/janosmiko/tutorial-kubebuilder](https://github.com/janosmiko/tutorial-kubebuilder)
 
-```bash
-apiVersion: janosmiko.com/v1alpha1
-kind: CustomObject
+## Getting started
+
+A Kubernetes Operator is a piece of software that extends the Kubernetes API to create, configure, and manage instances of Custom Resources.
+It's a controller that watches for changes to a Custom Resource and reconciles the actual state of the cluster with the desired state.
+
+The logic is like this:
+
+![kubernetes-operator.png](/images/blog/2023-03-02-tutorial-kubebuilder/kubernetes-operator.png)
+
+Our operator will be simple. Our Custom Resource Definition will describe the following Resource structure.
+
+```yaml
+apiVersion: tutorial.janosmiko.com/v1alpha1
+kind: DomainResolver
 metadata:
-  name: customobject-sample
+  name: domainresolver-sample
 spec:
   id: test
   domain: janosmiko.com
 ```
 
-The operator will take the domain we give in the `spec.domain` attribute, get the domain’s IP address and write it to
-the object’s status field with a bunch of additional useful information. It will also determine the Controller Pod’s
-kube-rbac-proxy container’s image (demonstrating indexing Pods by a custom field).
+The operator will take the domain defined in the `spec.domain` attribute, get the domain’s IP address and write it to
+the resource's `status.ipAddress` field with a bunch of additional useful information. It will also determine the Controller Pod’s
+`kube-rbac-proxy` container’s image (demonstrating indexing Pods by a custom field).
 
-```bash
-apiVersion: janosmiko.com/v1alpha1
-kind: CustomObject
+```yaml
+apiVersion: tutorial.janosmiko.com/v1alpha1
+kind: DomainResolver
 metadata:
-  name: customobject-sample
+  name: domainresolver-sample
 status:
   conditions:
     - lastTransitionTime: '2023-03-03T22:38:00Z'
-      message: Object created
-      reason: CustomObjectCreated
+      message: DomainResolver created
+      reason: DomainResolverCreated
       status: 'True'
       type: Created
     - lastTransitionTime: '2023-03-03T22:38:00Z'
-      message: Object creating
-      reason: CustomObjectCreating
+      message: DomainResolver creating
+      reason: DomainResolverCreating
       status: 'False'
       type: Creating
     - lastTransitionTime: '2023-03-03T22:38:00Z'
-      message: Preparing object
-      reason: CustomObjectNew
+      message: Preparing DomainResolver
+      reason: DomainResolverNew
       status: 'False'
       type: Pending
   ipAddress: 185.199.109.153
   phase:
     lastTransitionTime: '2023-03-03T22:38:00Z'
-    message: Object created
-    reason: CustomObjectCreated
+    message: DomainResolver created
+    reason: DomainResolverCreated
     status: 'True'
     type: Created
   ready: true
@@ -93,7 +106,9 @@ spec:
   domain: janosmiko.com
 ```
 
-## Prerequisites
+## Development cluster
+
+### Prerequisites
 
 - Golang 1.19
 - Docker Desktop
@@ -102,19 +117,19 @@ spec:
 - Helm
 - Make
 
-## Initialize a kubebuilder project
+### Initialize a kubebuilder project
 
 ```bash
-kubebuilder init --plugins=go/v4-alpha --domain janosmiko.com --repo github.com/janosmiko/tutorial-kubebuilder
+$ kubebuilder init --plugins=go/v4-alpha --domain tutorial.janosmiko.com --repo github.com/janosmiko/tutorial-kubebuilder
 ```
 
-## Create a test Kubernetes Cluster with Kind, expose port 80 and 443
+### Create a kind cluster
 
 Of course, it’s possible to use Docker Desktop’s Kubernetes, Rancher Desktop or - put your favourite Kubernetes
 distribution here -.
 
 ```bash
-cat << EOF >hack/kind.yaml
+$ cat << EOF >hack/kind.yaml
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
 name: test
@@ -136,41 +151,40 @@ nodes:
   - role: worker
 EOF
 
-kind create cluster --config hack/kind.yaml
+$ kind create cluster --config hack/kind.yaml
 
 ```
 
 When the Cluster is ready make sure to change the Kubernetes context:
 
 ```bash
-kubectl config use-context kind-test
-
+$ kubectl config use-context kind-test
 ```
 
-### Enable cert-manager and ingress-nginx
+#### Cert-manager and ingress-nginx
 
 ```bash
-kubectl config use-context kind-test
+$ kubectl config use-context kind-test
 
-kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.11.0/cert-manager.yaml
+$ kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.11.0/cert-manager.yaml
 
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
+$ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
 
-kubectl wait --namespace ingress-nginx \
+$ kubectl wait --namespace ingress-nginx \
 	--for=condition=ready pod \
 	--selector=app.kubernetes.io/component=controller \
 	--timeout=90s
 ```
 
-### Test ingress + cert-manager
+#### Test ingress and cert-manager
 
 ```bash
-kubectl create deployment web --image=gcr.io/google-samples/hello-app:1.0
+$ kubectl create deployment web --image=gcr.io/google-samples/hello-app:1.0
 
-kubectl expose deployment web --type=ClusterIP --port=8080
+$ kubectl expose deployment web --type=ClusterIP --port=8080
 
-mkdir -p test
-cat << EOF > test/ingress.yaml
+$ mkdir -p test
+$ cat << EOF > test/ingress.yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -191,33 +205,33 @@ spec:
                   number: 8080
 EOF
 
-kubectl apply -f test/ingress.yaml
+$ kubectl apply -f test/ingress.yaml
 ```
 
 You can test if the ingress works with curl:
 
 ```bash
-curl http://localhost:80
+$ curl http://localhost:80
 
 Hello, world!
 Version: 1.0.0
 Hostname: web-84fb9498c7-xgmmq
 ```
 
-### Cleanup
+#### Cleanup
 
 ```bash
-kubectl delete deployment web
-kubectl delete svc web
-kubectl delete -f test/ingress.yaml
+$ kubectl delete deployment web
+$ kubectl delete svc web
+$ kubectl delete -f test/ingress.yaml
 ```
 
-## Install Jaeger to the cluster
+### Install Jaeger Tracing
 
 ```bash
-helm repo add jaegertracing https://jaegertracing.github.io/helm-charts
+$ helm repo add jaegertracing https://jaegertracing.github.io/helm-charts
 
-cat <<EOF > hack/jaeger-values.yaml
+$ cat <<EOF > hack/jaeger-values.yaml
 provisionDataStore:
   cassandra: false
 allInOne:
@@ -292,7 +306,7 @@ extraObjects:
       type: ClusterIP
 EOF
 
-helm upgrade --install jaeger jaegertracing/jaeger \
+$ helm upgrade --install jaeger jaegertracing/jaeger \
 	--namespace jaeger \
 	--create-namespace \
 	-f hack/jaeger-values.yaml
@@ -309,4 +323,10 @@ debugging it locally.
 127.0.0.1 jaeger-collector.jaeger jaeger-query.jaeger
 ```
 
-http://jaeger-query.jaeger
+Now you can access the Jaeger frontend at http://jaeger-query.jaeger .
+
+## Further reading
+- [Operator best practices](https://github.com/slaise/community-operators/blob/master/docs/best-practices.md)
+- [Kubebuilder book](https://book.kubebuilder.io/)
+- [Kubebuilder docs](https://pkg.go.dev/sigs.k8s.io/kubebuilder)
+- The featured image was generated using [gopherize.me](https://gopherize.me/).

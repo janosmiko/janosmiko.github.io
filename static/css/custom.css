@@ -98,10 +98,12 @@ pre[class*="language-"] {
     padding: 0.5rem;
     background: #222222;
     border-radius: .25rem;
-    white-space: break-spaces;
     max-width: 100%;
     word-break: break-all;
-    word-wrap: break-word;
+    /*white-space: break-spaces;*/
+    /*word-wrap: break-word;*/
+    white-space: pre;
+    word-wrap: normal;
     color: white;
     font-size: small;
 }
@@ -133,11 +135,7 @@ pre[class*="language-"] {
 
 
 .content *:target, h1:target, h2:target, h3:target, h4:target, h5:target, h6:target {
-    opacity: 0;
-    /*filter: drop-shadow(2px 2px 6px rgba(0,0,0,0.5));*/
-    filter: invert(0.8);
-    /*padding-top: unset;*/
-    /*margin-top: calc(1ex / 0.42);*/
+    color: var(--color-eureka);
 }
 
 .content h1, h2, h3, h4 {

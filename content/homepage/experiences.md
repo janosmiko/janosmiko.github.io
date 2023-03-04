@@ -10,9 +10,9 @@ experiences:
     location: Budapest - HU | Chapel Hill, NC - US
     writeup: |
       - I am responsible for the management of the DevOps team.
-      - I build and maintain the whole IT development and production infrastructure
+      - I build and maintain the whole IT development and production infrastructure with my team,
         including CI/CD pipelines, backup, monitoring, scaling, etc.
-      - I am working on the development of a Cloud Native application written in Go.
+      - I am the Technical Project Manager and a Go Developer in a Cloud-Native project.
       - I regularly hold coding lectures and knowledge sharing sessions.
       - I am an outsourced consultant for external partners. I do cloud architecture optimization, cost
         optimization, and security guidance.

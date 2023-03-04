@@ -1,12 +1,15 @@
 main:
   - name: About
     weight: 1
+  - name: Certifications
+    parent: About
+    weight: 2
   - name: Technologies
     url: /tech/
-    weight: 2
+    weight: 3
   - name: Blog
     url: /blog/
-    weight: 3
+    weight: 9
 
 language:
   - name: en

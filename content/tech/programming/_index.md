@@ -1,5 +1,6 @@
 ---
 title: Programming
+type: page
 date: '2023-03-01'
 lastmod: '2023-03-01'
 authors:
