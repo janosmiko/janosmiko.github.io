@@ -133,11 +133,7 @@ pre[class*="language-"] {
 
 
 .content *:target, h1:target, h2:target, h3:target, h4:target, h5:target, h6:target {
-    /*opacity: 0;*/
-    /*filter: drop-shadow(2px 2px 6px rgba(0,0,0,0.5));*/
-    filter: invert(0.8);
-    /*padding-top: unset;*/
-    /*margin-top: calc(1ex / 0.42);*/
+    filter: invert(0.9);
 }
 
 .content h1, h2, h3, h4 {
