@@ -8,7 +8,7 @@
 <script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.24.1/components/prism-json.min.js crossorigin></script>
 <script defer src=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/js/all.min.js integrity="sha256-uNYoXefWRqv+PsIF/OflNmwtKM4lStn9yrz2gVl6ymo=" crossorigin></script>
 <link rel=stylesheet href=/css/custom.css><script defer src=/js/custom.js></script>
-<link rel=apple-touch-icon sizes=57x57 href=/apple-icon-57x57.png><link rel=apple-touch-icon sizes=60x60 href=/apple-icon-60x60.png><link rel=apple-touch-icon sizes=72x72 href=/apple-icon-72x72.png><link rel=apple-touch-icon sizes=76x76 href=/apple-icon-76x76.png><link rel=apple-touch-icon sizes=114x114 href=/apple-icon-114x114.png><link rel=apple-touch-icon sizes=120x120 href=/apple-icon-120x120.png><link rel=apple-touch-icon sizes=144x144 href=/apple-icon-144x144.png><link rel=apple-touch-icon sizes=152x152 href=/apple-icon-152x152.png><link rel=apple-touch-icon sizes=180x180 href=/apple-icon-180x180.png><link rel=icon type=image/png sizes=192x192 href=/android-icon-192x192.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=96x96 href=/favicon-96x96.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><meta name=msapplication-TileColor content="#ffffff"><meta name=msapplication-TileImage content="/ms-icon-144x144.png"><meta name=apple-mobile-web-app-title content="Janos Miko"><meta name=application-name content="Janos Miko"><meta name=theme-color content="#1e2028"><meta name=description content="Extending the Operator"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Blog","item":"https://janosmiko.com/blog/"},{"@type":"ListItem","position":2,"name":"Tutorial - Kubernetes Operator with Kubebuilder part 3","item":"https://janosmiko.com/blog/2023-03-04-tutorial-kubebuilder-3/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://janosmiko.com/blog/2023-03-04-tutorial-kubebuilder-3/"},"headline":"Tutorial - Kubernetes Operator with Kubebuilder part 3 | Janos Miko","image":"https://janosmiko.com/images/blog/2023-03-02-tutorial-kubebuilder/tutorial-kubebuilder-3.png","datePublished":"2023-03-04T00:00:00+00:00","dateModified":"2023-03-04T00:00:00+00:00","wordCount":898,"author":{"@type":"Person","name":["janos-miko"]},"publisher":{"@type":"Person","name":"Janos Miko"},"description":"\u003cp\u003eExtending the Operator\u003c\/p\u003e"}</script><meta property="og:title" content="Tutorial - Kubernetes Operator with Kubebuilder part 3 | Janos Miko"><meta property="og:type" content="article"><meta property="og:image" content="https://janosmiko.com/images/janosmiko.jpeg"><meta property="og:url" content="https://janosmiko.com/blog/2023-03-04-tutorial-kubebuilder-3/"><meta property="og:description" content="Extending the Operator"><meta property="og:locale" content="en"><meta property="og:site_name" content="Janos Miko"><meta property="article:published_time" content="2023-03-04T00:00:00+00:00"><meta property="article:modified_time" content="2023-03-04T00:00:00+00:00"><meta property="article:section" content="blog"><meta property="article:tag" content="kubernetes"><meta property="article:tag" content="kubebuilder"><meta property="article:tag" content="aks"><meta property="article:tag" content="eks"><meta property="article:tag" content="gke"><meta property="article:tag" content="cloud-native"><meta property="og:see_also" content="https://janosmiko.com/blog/2023-03-03-tutorial-kubebuilder-2/"><meta property="og:see_also" content="https://janosmiko.com/blog/2023-03-02-tutorial-kubebuilder-1/"><meta property="og:see_also" content="https://janosmiko.com/blog/2021-10-01-how-to-debug-varnish/"><meta property="og:see_also" content="https://janosmiko.com/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/"><body class="flex flex-col min-h-screen"><header class="fixed flex items-center w-full min-h-16 pl-scrollbar z-50 bg-secondary-bg shadow-sm"><div class="w-full max-w-screen-xl mx-auto"><script>let storageColorScheme=localStorage.getItem("lightDarkMode");((storageColorScheme=="Auto"||storageColorScheme==null)&&window.matchMedia("(prefers-color-scheme: dark)").matches||storageColorScheme=="Dark")&&document.getElementsByTagName("html")[0].classList.add("dark")</script><nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0"><a href=/ class="mr-6 text-primary-text text-xl font-bold">Janos Miko</a>
+<link rel=apple-touch-icon sizes=57x57 href=/apple-icon-57x57.png><link rel=apple-touch-icon sizes=60x60 href=/apple-icon-60x60.png><link rel=apple-touch-icon sizes=72x72 href=/apple-icon-72x72.png><link rel=apple-touch-icon sizes=76x76 href=/apple-icon-76x76.png><link rel=apple-touch-icon sizes=114x114 href=/apple-icon-114x114.png><link rel=apple-touch-icon sizes=120x120 href=/apple-icon-120x120.png><link rel=apple-touch-icon sizes=144x144 href=/apple-icon-144x144.png><link rel=apple-touch-icon sizes=152x152 href=/apple-icon-152x152.png><link rel=apple-touch-icon sizes=180x180 href=/apple-icon-180x180.png><link rel=icon type=image/png sizes=192x192 href=/android-icon-192x192.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=96x96 href=/favicon-96x96.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><meta name=msapplication-TileColor content="#ffffff"><meta name=msapplication-TileImage content="/ms-icon-144x144.png"><meta name=apple-mobile-web-app-title content="Janos Miko"><meta name=application-name content="Janos Miko"><meta name=theme-color content="#1e2028"><meta name=description content="Extending the Operator"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Blog","item":"https://janosmiko.com/blog/"},{"@type":"ListItem","position":2,"name":"Tutorial - Kubernetes Operator with Kubebuilder part 3","item":"https://janosmiko.com/blog/2023-03-04-tutorial-kubebuilder-3/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://janosmiko.com/blog/2023-03-04-tutorial-kubebuilder-3/"},"headline":"Tutorial - Kubernetes Operator with Kubebuilder part 3 | Janos Miko","image":"https://janosmiko.com/images/blog/2023-03-02-tutorial-kubebuilder/tutorial-kubebuilder-3.png","datePublished":"2023-03-04T00:00:00+00:00","dateModified":"2023-03-04T00:00:00+00:00","wordCount":776,"author":{"@type":"Person","name":["janos-miko"]},"publisher":{"@type":"Person","name":"Janos Miko"},"description":"\u003cp\u003eExtending the Operator\u003c\/p\u003e"}</script><meta property="og:title" content="Tutorial - Kubernetes Operator with Kubebuilder part 3 | Janos Miko"><meta property="og:type" content="article"><meta property="og:image" content="https://janosmiko.com/images/janosmiko.jpeg"><meta property="og:url" content="https://janosmiko.com/blog/2023-03-04-tutorial-kubebuilder-3/"><meta property="og:description" content="Extending the Operator"><meta property="og:locale" content="en"><meta property="og:site_name" content="Janos Miko"><meta property="article:published_time" content="2023-03-04T00:00:00+00:00"><meta property="article:modified_time" content="2023-03-04T00:00:00+00:00"><meta property="article:section" content="blog"><meta property="article:tag" content="kubernetes"><meta property="article:tag" content="kubebuilder"><meta property="article:tag" content="aks"><meta property="article:tag" content="eks"><meta property="article:tag" content="gke"><meta property="article:tag" content="cloud-native"><meta property="og:see_also" content="https://janosmiko.com/blog/2023-03-03-tutorial-kubebuilder-2/"><meta property="og:see_also" content="https://janosmiko.com/blog/2023-03-02-tutorial-kubebuilder-1/"><meta property="og:see_also" content="https://janosmiko.com/blog/2021-10-01-how-to-debug-varnish/"><meta property="og:see_also" content="https://janosmiko.com/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/"><body class="flex flex-col min-h-screen"><header class="fixed flex items-center w-full min-h-16 pl-scrollbar z-50 bg-secondary-bg shadow-sm"><div class="w-full max-w-screen-xl mx-auto"><script>let storageColorScheme=localStorage.getItem("lightDarkMode");((storageColorScheme=="Auto"||storageColorScheme==null)&&window.matchMedia("(prefers-color-scheme: dark)").matches||storageColorScheme=="Dark")&&document.getElementsByTagName("html")[0].classList.add("dark")</script><nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0"><a href=/ class="mr-6 text-primary-text text-xl font-bold">Janos Miko</a>
 <button id=navbar-btn class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
 <i class="fas fa-bars"></i></button><div id=target class="hidden block md:flex md:flex-grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20"><div class="md:flex md:h-16 text-sm md:flex-grow pb-4 md:pb-0 border-b md:border-b-0"><a href=/#about class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 border-transparent mr-4">About</a>
 <a href=/#certifications class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 border-transparent mr-4">Certifications</a>
@@ -19,63 +19,19 @@
 <a href=/blog class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 selected-menu-item mr-4">Blog</a></div><div class=flex><div class="relative pt-4 md:pt-0"><div class="cursor-pointer hover:text-eureka" id=lightDarkMode><i class="fas fa-adjust"></i></div><div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id=is-open></div><div class="absolute flex flex-col left-0 md:left-auto right-auto md:right-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40" id=lightDarkOptions><span class="px-4 py-1 hover:text-eureka" name=Light>Light</span>
 <span class="px-4 py-1 hover:text-eureka" name=Dark>Dark</span>
 <span class="px-4 py-1 hover:text-eureka" name=Auto>Auto</span></div></div></div></div><div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id=is-open-mobile></div></nav><script>let element=document.getElementById("lightDarkMode");storageColorScheme==null||storageColorScheme=="Auto"?document.addEventListener("DOMContentLoaded",()=>{window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",switchDarkMode)}):storageColorScheme=="Light"?(element.firstElementChild.classList.remove("fa-adjust"),element.firstElementChild.setAttribute("data-icon","sun"),element.firstElementChild.classList.add("fa-sun")):storageColorScheme=="Dark"&&(element.firstElementChild.classList.remove("fa-adjust"),element.firstElementChild.setAttribute("data-icon","moon"),element.firstElementChild.classList.add("fa-moon")),document.addEventListener("DOMContentLoaded",()=>{getcolorscheme(),switchBurger()})</script></div></header><main class="flex-grow pt-16"><div class=pl-scrollbar><div class="lg:w-3/4 w-full max-w-screen-xl lg:px-4 xl:px-8 mx-auto"><div class="grid grid-cols-2 lg:grid-cols-8 gap-4 lg:pt-12"><div class="col-span-2 lg:col-span-6 bg-secondary-bg rounded px-6 py-8"><h1 class="font-bold text-3xl text-primary-text">Tutorial - Kubernetes Operator with Kubebuilder part 3</h1><div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text"><div class="mr-6 my-2"><i class="fas fa-calendar mr-1"></i>
-<span>2023-03-04</span></div><div class="mr-6 my-2"><i class="fa fa-sync mr-1"></i>
-<span>2023-03-04</span></div><div class="mr-6 my-2"><i class="fas fa-clock mr-1"></i>
-<span></span></div><div class="mr-6 my-2"><i class="fas fa-folder mr-1"></i>
-<a href=https://janosmiko.com/categories/tech/ class=hover:text-eureka>tech</a></div></div><div class=my-4><img src=https://janosmiko.com/images/blog/2023-03-02-tutorial-kubebuilder/tutorial-kubebuilder-3.png class=w-full alt="Featured Image"></div><div class=content><p>Extending the Operator</p><h2 id=intro>Intro&nbsp;<a class=anchor href=#intro>#</a></h2><p>This document is part of a tutorial series about creating a Kubernetes operator with Kubebuilder in Go. We are covering
-the following topics:</p><ul><li>Creating a development cluster</li><li>Tracing, Logging, Kubernetes event recording</li><li>Lifecycle of an Object in Kubernetes, including Finalizers</li><li>Triggering the reconciliation manually (based on a custom annotation)</li><li>Search indexing</li><li>Formatting the output of <code>kubectl get</code></li><li>Adding webhooks</li></ul><p>The operator will be simple. Our Custom Resource Definition will describe the following Object structure.</p><pre><code class=language-bash>apiVersion: janosmiko.com/v1alpha1
-kind: CustomObject
-metadata:
-  name: customobject-sample
-spec:
-  id: test
-  domain: janosmiko.com
-</code></pre><p>The operator will take the domain we give in the <code>spec.domain</code> attribute, get the domain’s IP address and write it to
-the object’s status field with a bunch of additional useful information. It will also determine the Controller Pod’s
-kube-rbac-proxy container’s image (demonstrating indexing Pods by a custom field).</p><pre><code class=language-bash>apiVersion: janosmiko.com/v1alpha1
-kind: CustomObject
-metadata:
-  name: customobject-sample
-status:
-  conditions:
-    - lastTransitionTime: '2023-03-03T22:38:00Z'
-      message: Object created
-      reason: CustomObjectCreated
-      status: 'True'
-      type: Created
-    - lastTransitionTime: '2023-03-03T22:38:00Z'
-      message: Object creating
-      reason: CustomObjectCreating
-      status: 'False'
-      type: Creating
-    - lastTransitionTime: '2023-03-03T22:38:00Z'
-      message: Preparing object
-      reason: CustomObjectNew
-      status: 'False'
-      type: Pending
-  ipAddress: 185.199.109.153
-  phase:
-    lastTransitionTime: '2023-03-03T22:38:00Z'
-    message: Object created
-    reason: CustomObjectCreated
-    status: 'True'
-    type: Created
-  ready: true
-  specHash: b442cc366de2547e17f97cf4dd72f9f90340639570f583bc801f2d570df820a1
-spec:
-  id: test
-  domain: janosmiko.com
-</code></pre><h2 id=extending-the-operator>Extending the Operator&nbsp;<a class=anchor href=#extending-the-operator>#</a></h2><h3 id=the-reconciliation-loop>The Reconciliation loop&nbsp;<a class=anchor href=#the-reconciliation-loop>#</a></h3><p>In the next step we are going to do the following:</p><ul><li>Prepare a context with deadline to make sure we don’t get stuck in the loop.</li><li>Prepare the logger and the tracer.</li><li>Move the object to terminating state if the object’s <code>DeletionTimestamp</code> is not zero - and requeue the object.</li><li>Add a Finalizer to our object if it doesn’t contain one - and requeue the object.</li></ul><pre><code class=language-go>if !o.ObjectMeta.DeletionTimestamp.IsZero() &amp;&amp;
-	v1alpha1.CustomObjectStatusPhase(o.Status.Phase.Type) != v1alpha1.CustomObjectStatusPhaseTerminating {
-	span.AddEvent(&quot;Custom object is being deleted, setting it's status to terminating&quot;)
-	log.Info(&quot;Custom object is being deleted, setting it's status to terminating&quot;)
+<span>2023-03-04</span></div><div class="mr-6 my-2"><i class="fas fa-folder mr-1"></i>
+<a href=https://janosmiko.com/categories/tech/ class=hover:text-eureka>tech</a></div></div><div class=my-4><img src=https://janosmiko.com/images/blog/2023-03-02-tutorial-kubebuilder/tutorial-kubebuilder-3.png class=w-full alt="Featured Image"></div><div class=content><p>Extending the Operator</p><h2 id=intro>Intro&nbsp;<a class=anchor href=#intro>#</a></h2><p>This article is a part of a tutorial series about creating a Kubernetes operator with Kubebuilder in Go. We are covering
+the following topics:</p><ul><li>Creating a development cluster</li><li>Tracing, Logging, Kubernetes event recording</li><li>Lifecycle of a Resource in Kubernetes, including Finalizers</li><li>Triggering the reconciliation manually (based on a custom annotation)</li><li>Search indexing</li><li>Formatting the output of <code>kubectl get</code></li></ul><p>The articles of the series are:</p><ul><li><a href=/blog/2023-03-02-tutorial-kubebuilder-1/>Part 1 - Preparing a development cluster</a></li><li><a href=/blog/2023-03-03-tutorial-kubebuilder-2/>Part 2 - Creating an API and a Controller</a></li><li><a href=/blog/2023-03-04-tutorial-kubebuilder-3/>Part 3 - Extending the operator</a></li></ul><h2 id=extending-the-operator>Extending the Operator&nbsp;<a class=anchor href=#extending-the-operator>#</a></h2><h3 id=the-reconciliation-loop>The Reconciliation loop&nbsp;<a class=anchor href=#the-reconciliation-loop>#</a></h3><p>In the next step we are going to do the following:</p><ul><li>Prepare a context with deadline to make sure we don’t get stuck in the loop.</li><li>Prepare the logger and the tracer.</li><li>Move the Resource to terminating state if the Resource’s <code>DeletionTimestamp</code> is not zero - and restart the reconciliation.</li><li>Add a Finalizer to our Resource if it doesn’t contain one - and restart the reconciliation.</li></ul><pre><code class=language-go>if !o.ObjectMeta.DeletionTimestamp.IsZero() &amp;&amp;
+	v1alpha1.DomainresolverStatusPhase(o.Status.Phase.Type) != v1alpha1.DomainresolverStatusPhaseTerminating {
+	span.AddEvent(&quot;DomainResolver is being deleted, setting it's status to terminating&quot;)
+	log.Info(&quot;DomainResolver is being deleted, setting it's status to terminating&quot;)
 
 	err := r.statusNext(
 		ctx,
 		o,
-		v1alpha1.CustomObjectStatusPhaseTerminating,
-		&quot;Custom Object terminating&quot;,
-		CustomObjectReasonTerminating,
+		v1alpha1.DomainresolverStatusPhaseTerminating,
+		&quot;DomainResolver terminating&quot;,
+		DomainresolverReasonTerminating,
 		false,
 	)
 	if err != nil {
@@ -87,12 +43,12 @@ spec:
 	return ctrl.Result{Requeue: true}, nil
 }
 
-if !controllerutil.ContainsFinalizer(o, CustomObjectFinalizerName) {
-	span.AddEvent(&quot;Adding finalizer to the custom object&quot;)
-	log.Info(&quot;Adding finalizer to the custom object&quot;)
+if !controllerutil.ContainsFinalizer(o, DomainresolverFinalizerName) {
+	span.AddEvent(&quot;Adding finalizer to the DomainResolver&quot;)
+	log.Info(&quot;Adding finalizer to the DomainResolver&quot;)
 
 	patch := client.MergeFrom(o.DeepCopy())
-	controllerutil.AddFinalizer(o, CustomObjectFinalizerName)
+	controllerutil.AddFinalizer(o, DomainresolverFinalizerName)
 
 	err = r.Client.Patch(ctx, o, patch)
 	if err != nil {
@@ -104,34 +60,34 @@ if !controllerutil.ContainsFinalizer(o, CustomObjectFinalizerName) {
 	return ctrl.Result{Requeue: true}, nil
 }
 
-switch v1alpha1.CustomObjectStatusPhase(o.Status.Phase.Type) {
+switch v1alpha1.DomainresolverStatusPhase(o.Status.Phase.Type) {
 case &quot;&quot;:
 	return r.ReconcileNew(ctx, o)
 
-case v1alpha1.CustomObjectStatusPhasePending:
+case v1alpha1.DomainresolverStatusPhasePending:
 	return r.ReconcilePending(ctx, o)
 
-case v1alpha1.CustomObjectStatusPhaseCreating:
+case v1alpha1.DomainresolverStatusPhaseCreating:
 	return r.ReconcileCreating(ctx, o)
 
-case v1alpha1.CustomObjectStatusPhaseCreated:
+case v1alpha1.DomainresolverStatusPhaseCreated:
 	return r.ReconcileCreated(ctx, o)
 
-case v1alpha1.CustomObjectStatusPhaseTerminating:
+case v1alpha1.DomainresolverStatusPhaseTerminating:
 	return r.ReconcileTerminating(ctx, o)
 
-case v1alpha1.CustomObjectStatusPhaseDeleted:
+case v1alpha1.DomainresolverStatusPhaseDeleted:
 	return r.ReconcileDeleted(ctx, o)
 
-case v1alpha1.CustomObjectStatusPhaseError:
+case v1alpha1.DomainresolverStatusPhaseError:
 	return r.ReconcileError(ctx, o)
 
 default:
 	return ctrl.Result{}, fmt.Errorf(&quot;unknown status: %s&quot;, o.Status.Phase.Type)
 }
 </code></pre><h3 id=statusupdate-statusnext-createspechash-functions>StatusUpdate, StatusNext, CreateSpecHash functions&nbsp;<a class=anchor href=#statusupdate-statusnext-createspechash-functions>#</a></h3><pre><code class=language-go>
-</code></pre><h3 id=trigger-to-reset-the-reconciliation-process>Trigger to reset the reconciliation process&nbsp;<a class=anchor href=#trigger-to-reset-the-reconciliation-process>#</a></h3><p>We can also add a trigger to make it easy to restart the reconciliation process from the beginning.</p><p>To do so, we have to define a checkTrigger function. This is going to look for an annotation that should contain a date. If it’s older than the last transition time, it’s going to return true.</p><pre><code class=language-go>func (r *CustomObjectReconciler) checkTrigger(o *v1alpha1.CustomObject) bool {
-	reset := o.GetAnnotations()[&quot;janosmiko.com/reset&quot;]
+</code></pre><h3 id=trigger-to-reset-the-reconciliation-process>Trigger to reset the reconciliation process&nbsp;<a class=anchor href=#trigger-to-reset-the-reconciliation-process>#</a></h3><p>We can also add a trigger to make it easy to restart the reconciliation process from the beginning.</p><p>To do so, we have to define a checkTrigger function. This is going to look for an annotation that should contain a date. If it’s older than the last transition time, it’s going to return true.</p><pre><code class=language-go>func (r *DomainresolverReconciler) checkTrigger(o *v1alpha1.Domainresolver) bool {
+	reset := o.GetAnnotations()[&quot;tutorial.janosmiko.com/reset&quot;]
 
 	// Parse date from trigger annotation if it's formatted: `date -Iseconds -r 1533415339`
 	layout := time.RFC3339
@@ -150,7 +106,7 @@ default:
 </code></pre><p>Now inject that function to the main reconciliation loop.</p><pre><code class=language-go>if r.checkTrigger(o) {
 	return r.ReconcileReset(ctx, o)
 }
-</code></pre><h3 id=create-an-example-indexer>Create an example indexer&nbsp;<a class=anchor href=#create-an-example-indexer>#</a></h3><p>First of all, to enable access to additional resources, you’ll have to add the following annotation to the beginning of the ``internal/controller/customobject_controller.go` file:</p><pre><code class=language-go>//+kubebuilder:rbac:groups=&quot;*&quot;,resources=pods,verbs=get;list
+</code></pre><h3 id=create-an-example-indexer>Create an example indexer&nbsp;<a class=anchor href=#create-an-example-indexer>#</a></h3><p>First of all, to enable access to additional resources, you’ll have to add the following annotation to the beginning of the ``internal/controller/domainresolver_controller.go` file:</p><pre><code class=language-go>//+kubebuilder:rbac:groups=&quot;*&quot;,resources=pods,verbs=get;list
 </code></pre><p>Next, add an indexer to the SetupWithManager function.</p><p>The following example is going to index the Pods by the first container’s names inside them.</p><p>Using this indexer we will be able to search for all Pods whose first container’s name is “x”.</p><pre><code class=language-go>if err := mgr.GetFieldIndexer().IndexField(
 	context.Background(),
 	&amp;apiv1.Pod{},
@@ -167,47 +123,47 @@ default:
 	return err
 }
 </code></pre><h3 id=restart>Restart&nbsp;<a class=anchor href=#restart>#</a></h3><pre><code class=language-go>kubectl rollout restart deployment -n tutorial-kubebuilder-system tutorial-kubebuilder-controller-manager
-</code></pre><h3 id=define-and-apply-our-custom-resource>Define and Apply our Custom Resource&nbsp;<a class=anchor href=#define-and-apply-our-custom-resource>#</a></h3><pre><code class=language-bash>$ cat &lt;&lt; EOF &gt;config/samples/_v1alpha1_customobject.yaml
-apiVersion: janosmiko.com/v1alpha1
-kind: CustomObject
+</code></pre><h3 id=define-and-apply-our-custom-resource>Define and Apply our Custom Resource&nbsp;<a class=anchor href=#define-and-apply-our-custom-resource>#</a></h3><pre><code class=language-bash>$ cat &lt;&lt; EOF &gt;config/samples/_v1alpha1_domainresolver.yaml
+apiVersion: tutorial.janosmiko.com/v1alpha1
+kind: Domainresolver
 metadata:
   labels:
-    app.kubernetes.io/name: customobject
-    app.kubernetes.io/instance: customobject-sample
+    app.kubernetes.io/name: domainresolver
+    app.kubernetes.io/instance: domainresolver-sample
     app.kubernetes.io/part-of: tutorial-kubebuilder
     app.kubernetes.io/managed-by: kustomize
     app.kubernetes.io/created-by: tutorial-kubebuilder
-  name: customobject-sample
+  name: domainresolver-sample
 spec:
   id: test
   domain: janosmiko.com
 EOF
 
-$ kubectl apply -f config/samples/_v1alpha1_customobject.yaml
-</code></pre><h3 id=the-results>The results&nbsp;<a class=anchor href=#the-results>#</a></h3><p>We can check the custom resource’s status by running</p><pre><code class=language-go>kubectl get customobject.janosmiko.com customobject-sample -o yaml
+$ kubectl apply -f config/samples/_v1alpha1_domainresolver.yaml
+</code></pre><h3 id=the-results>The results&nbsp;<a class=anchor href=#the-results>#</a></h3><p>We can check the custom resource’s status by running</p><pre><code class=language-go>kubectl get domainresolver.tutorial.janosmiko.com domainresolver-sample -o yaml
 </code></pre><pre><code class=language-yaml>...
 status:
   conditions:
     - lastTransitionTime: '2023-03-03T22:38:00Z'
-      message: Object created
-      reason: CustomObjectCreated
+      message: DomainResolver created
+      reason: DomainresolverCreated
       status: 'True'
       type: Created
     - lastTransitionTime: '2023-03-03T22:38:00Z'
-      message: Object creating
-      reason: CustomObjectCreating
+      message: DomainResolver creating
+      reason: DomainresolverCreating
       status: 'False'
       type: Creating
     - lastTransitionTime: '2023-03-03T22:38:00Z'
-      message: Preparing object
-      reason: CustomObjectNew
+      message: Preparing DomainResolver
+      reason: DomainresolverNew
       status: 'False'
       type: Pending
   ipAddress: 185.199.109.153
   phase:
     lastTransitionTime: '2023-03-03T22:38:00Z'
-    message: Object created
-    reason: CustomObjectCreated
+    message: DomainResolver created
+    reason: DomainresolverCreated
     status: 'True'
     type: Created
   ready: true
@@ -215,16 +171,16 @@ status:
 spec:
   domain: janosmiko.com
   id: test
-</code></pre><h3 id=formatting>Formatting&nbsp;<a class=anchor href=#formatting>#</a></h3><p>If we print the results in regular format, we will not see anything from the spec or the status.</p><pre><code class=language-bash>$ kubectl get customobject.janosmiko.com customobject-sample -o wide
+</code></pre><h3 id=formatting>Formatting&nbsp;<a class=anchor href=#formatting>#</a></h3><p>If we print the results in regular format, we will not see anything from the spec or the status.</p><pre><code class=language-bash>$ kubectl get domainresolver.tutorial.janosmiko.com domainresolver-sample -o wide
 </code></pre><pre><code class=language-text>NAME                  AGE
-customobject-sample   5m24s
-</code></pre><p>But it is possible to add custom columns to make the <code>kubectl get</code> output prettier.</p><p>Add the following lines to the <code>api/v1alpha1/customobject_types.go</code> to get better results.</p><pre><code class=language-go>//+kubebuilder:printcolumn:name=&quot;Age&quot;,type=&quot;date&quot;,JSONPath=&quot;.metadata.creationTimestamp&quot;,description=&quot;The age of the object&quot;
-//+kubebuilder:printcolumn:name=&quot;Domain&quot;,type=&quot;string&quot;,JSONPath=&quot;.spec.domain&quot;,description=&quot;The domain name assigned to the object&quot;
-//+kubebuilder:printcolumn:name=&quot;IP Address&quot;,type=&quot;string&quot;,JSONPath=&quot;.status.ipAddress&quot;,description=&quot;The IP address assigned to the object&quot;
+domainresolver-sample   5m24s
+</code></pre><p>But it is possible to add custom columns to make the <code>kubectl get</code> output prettier.</p><p>Add the following lines to the <code>api/v1alpha1/domainresolver_types.go</code> to get better results.</p><pre><code class=language-go>//+kubebuilder:printcolumn:name=&quot;Age&quot;,type=&quot;date&quot;,JSONPath=&quot;.metadata.creationTimestamp&quot;,description=&quot;The age of the domainresolver&quot;
+//+kubebuilder:printcolumn:name=&quot;Domain&quot;,type=&quot;string&quot;,JSONPath=&quot;.spec.domain&quot;,description=&quot;The domain name assigned to the domainresolver&quot;
+//+kubebuilder:printcolumn:name=&quot;IP Address&quot;,type=&quot;string&quot;,JSONPath=&quot;.status.ipAddress&quot;,description=&quot;The IP address assigned to the domainresolver&quot;
 //+kubebuilder:printcolumn:name=&quot;Image ID&quot;,type=&quot;string&quot;,JSONPath=&quot;.status.controllerImageID&quot;,description=&quot;The Image ID of the kube-rbac-proxy&quot;
-</code></pre><p>Now rebuild and check the results again.</p><pre><code class=language-bash>$ kubectl get customobject.janosmiko.com customobject-sample -o wide
+</code></pre><p>Now rebuild and check the results again.</p><pre><code class=language-bash>$ kubectl get domainresolver.tutorial.janosmiko.com domainresolver-sample -o wide
 </code></pre><pre><code class=language-text>NAME                  AGE   DOMAIN          IP ADDRESS        IMAGE ID
-customobject-sample   12s   janosmiko.com   185.199.109.153   blabla
+domainresolver-sample   12s   janosmiko.com   185.199.109.153   blabla
 </code></pre></div><div class=my-4><a href=https://janosmiko.com/tags/kubernetes/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#kubernetes</a>
 <a href=https://janosmiko.com/tags/kubebuilder/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#kubebuilder</a>
 <a href=https://janosmiko.com/tags/aks/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#aks</a>

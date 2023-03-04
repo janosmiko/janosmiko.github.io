@@ -9,7 +9,7 @@
 <script defer src=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/js/all.min.js integrity="sha256-uNYoXefWRqv+PsIF/OflNmwtKM4lStn9yrz2gVl6ymo=" crossorigin></script>
 <link rel=stylesheet href=/css/custom.css><script defer src=/js/custom.js></script>
 <link rel=apple-touch-icon sizes=57x57 href=/apple-icon-57x57.png><link rel=apple-touch-icon sizes=60x60 href=/apple-icon-60x60.png><link rel=apple-touch-icon sizes=72x72 href=/apple-icon-72x72.png><link rel=apple-touch-icon sizes=76x76 href=/apple-icon-76x76.png><link rel=apple-touch-icon sizes=114x114 href=/apple-icon-114x114.png><link rel=apple-touch-icon sizes=120x120 href=/apple-icon-120x120.png><link rel=apple-touch-icon sizes=144x144 href=/apple-icon-144x144.png><link rel=apple-touch-icon sizes=152x152 href=/apple-icon-152x152.png><link rel=apple-touch-icon sizes=180x180 href=/apple-icon-180x180.png><link rel=icon type=image/png sizes=192x192 href=/android-icon-192x192.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=96x96 href=/favicon-96x96.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><meta name=msapplication-TileColor content="#ffffff"><meta name=msapplication-TileImage content="/ms-icon-144x144.png"><meta name=apple-mobile-web-app-title content="Janos Miko"><meta name=application-name content="Janos Miko"><meta name=theme-color content="#1e2028"><meta name=description content="Golang provides a fantastic way of writing functions called Functional Options. This is a design pattern that allows
-callers to pass a set of options to a function, each represented by a function. Super flexible, and easy to use."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Blog","item":"https://janosmiko.com/blog/"},{"@type":"ListItem","position":2,"name":"Functional Options in Go","item":"https://janosmiko.com/blog/2023-02-25-golang-functional-options/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://janosmiko.com/blog/2023-02-25-golang-functional-options/"},"headline":"Functional Options in Go | Janos Miko","image":"https://janosmiko.com/images/blog/2023-02-25-functional-options-in-go/functional-options-in-go.png","datePublished":"2023-02-25T00:00:00+00:00","dateModified":"2023-03-04T00:00:00+00:00","wordCount":770,"author":{"@type":"Person","name":["janos-miko"]},"publisher":{"@type":"Person","name":"Janos Miko"},"description":"\u003cp\u003eGolang provides a fantastic way of writing functions called Functional Options. This is a design pattern that allows\ncallers to pass a set of options to a function, each represented by a function. Super flexible, and easy to use.\u003c\/p\u003e"}</script><meta property="og:title" content="Functional Options in Go | Janos Miko"><meta property="og:type" content="article"><meta property="og:image" content="https://janosmiko.com/images/janosmiko.jpeg"><meta property="og:url" content="https://janosmiko.com/blog/2023-02-25-golang-functional-options/"><meta property="og:description" content="Golang provides a fantastic way of writing functions called Functional Options. This is a design pattern that allows
+callers to pass a set of options to a function, each represented by a function. Super flexible, and easy to use."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Blog","item":"https://janosmiko.com/blog/"},{"@type":"ListItem","position":2,"name":"Functional Options in Go","item":"https://janosmiko.com/blog/2023-02-25-golang-functional-options/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://janosmiko.com/blog/2023-02-25-golang-functional-options/"},"headline":"Functional Options in Go | Janos Miko","image":"https://janosmiko.com/images/blog/2023-02-25-functional-options-in-go/functional-options-in-go.png","datePublished":"2023-02-25T00:00:00+00:00","dateModified":"2023-03-04T00:00:00+00:00","wordCount":996,"author":{"@type":"Person","name":["janos-miko"]},"publisher":{"@type":"Person","name":"Janos Miko"},"description":"\u003cp\u003eGolang provides a fantastic way of writing functions called Functional Options. This is a design pattern that allows\ncallers to pass a set of options to a function, each represented by a function. Super flexible, and easy to use.\u003c\/p\u003e"}</script><meta property="og:title" content="Functional Options in Go | Janos Miko"><meta property="og:type" content="article"><meta property="og:image" content="https://janosmiko.com/images/janosmiko.jpeg"><meta property="og:url" content="https://janosmiko.com/blog/2023-02-25-golang-functional-options/"><meta property="og:description" content="Golang provides a fantastic way of writing functions called Functional Options. This is a design pattern that allows
 callers to pass a set of options to a function, each represented by a function. Super flexible, and easy to use."><meta property="og:locale" content="en"><meta property="og:site_name" content="Janos Miko"><meta property="article:published_time" content="2023-02-25T00:00:00+00:00"><meta property="article:modified_time" content="2023-03-04T00:00:00+00:00"><meta property="article:section" content="blog"><meta property="article:tag" content="go"><meta property="article:tag" content="golang"><meta property="article:tag" content="programming"><body class="flex flex-col min-h-screen"><header class="fixed flex items-center w-full min-h-16 pl-scrollbar z-50 bg-secondary-bg shadow-sm"><div class="w-full max-w-screen-xl mx-auto"><script>let storageColorScheme=localStorage.getItem("lightDarkMode");((storageColorScheme=="Auto"||storageColorScheme==null)&&window.matchMedia("(prefers-color-scheme: dark)").matches||storageColorScheme=="Dark")&&document.getElementsByTagName("html")[0].classList.add("dark")</script><nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0"><a href=/ class="mr-6 text-primary-text text-xl font-bold">Janos Miko</a>
 <button id=navbar-btn class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
 <i class="fas fa-bars"></i></button><div id=target class="hidden block md:flex md:flex-grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20"><div class="md:flex md:h-16 text-sm md:flex-grow pb-4 md:pb-0 border-b md:border-b-0"><a href=/#about class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 border-transparent mr-4">About</a>
@@ -21,9 +21,7 @@ callers to pass a set of options to a function, each represented by a function. 
 <a href=/blog class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 selected-menu-item mr-4">Blog</a></div><div class=flex><div class="relative pt-4 md:pt-0"><div class="cursor-pointer hover:text-eureka" id=lightDarkMode><i class="fas fa-adjust"></i></div><div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id=is-open></div><div class="absolute flex flex-col left-0 md:left-auto right-auto md:right-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40" id=lightDarkOptions><span class="px-4 py-1 hover:text-eureka" name=Light>Light</span>
 <span class="px-4 py-1 hover:text-eureka" name=Dark>Dark</span>
 <span class="px-4 py-1 hover:text-eureka" name=Auto>Auto</span></div></div></div></div><div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id=is-open-mobile></div></nav><script>let element=document.getElementById("lightDarkMode");storageColorScheme==null||storageColorScheme=="Auto"?document.addEventListener("DOMContentLoaded",()=>{window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",switchDarkMode)}):storageColorScheme=="Light"?(element.firstElementChild.classList.remove("fa-adjust"),element.firstElementChild.setAttribute("data-icon","sun"),element.firstElementChild.classList.add("fa-sun")):storageColorScheme=="Dark"&&(element.firstElementChild.classList.remove("fa-adjust"),element.firstElementChild.setAttribute("data-icon","moon"),element.firstElementChild.classList.add("fa-moon")),document.addEventListener("DOMContentLoaded",()=>{getcolorscheme(),switchBurger()})</script></div></header><main class="flex-grow pt-16"><div class=pl-scrollbar><div class="lg:w-3/4 w-full max-w-screen-xl lg:px-4 xl:px-8 mx-auto"><div class="grid grid-cols-2 lg:grid-cols-8 gap-4 lg:pt-12"><div class="col-span-2 lg:col-span-6 bg-secondary-bg rounded px-6 py-8"><h1 class="font-bold text-3xl text-primary-text">Functional Options in Go</h1><div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text"><div class="mr-6 my-2"><i class="fas fa-calendar mr-1"></i>
-<span>2023-02-25</span></div><div class="mr-6 my-2"><i class="fa fa-sync mr-1"></i>
-<span>2023-03-04</span></div><div class="mr-6 my-2"><i class="fas fa-clock mr-1"></i>
-<span></span></div><div class="mr-6 my-2"><i class="fas fa-folder mr-1"></i>
+<span>2023-02-25</span></div><div class="mr-6 my-2"><i class="fas fa-folder mr-1"></i>
 <a href=https://janosmiko.com/categories/tech/ class=hover:text-eureka>tech</a></div></div><div class=my-4><img src=https://janosmiko.com/images/blog/2023-02-25-functional-options-in-go/functional-options-in-go.png class=w-full alt="Featured Image"></div><div class=content><p>Golang provides a fantastic way of writing functions called Functional Options. This is a design pattern that allows
 callers to pass a set of options to a function, each represented by a function. Super flexible, and easy to use.</p><p>This is the n+1th article about Golang functional options but there&rsquo;s a reason for that. It&rsquo;s a very useful pattern.
 This pattern allows a lot of flexibility when writing functions, as each option can be composed together in any
@@ -41,7 +39,8 @@ func TakeAWalk(destination string, dogs ...Dog) {
 	// fmt.Println(&quot;Destination:&quot;, destination)
 }
 </code></pre><p>Until this point it&rsquo;s pretty simple. But what if we want to add more parameters to the function?</p><p>For example, I go to the mountains and I love it so much, next time I want to repeat and take a walk together with my
-girlfriend, bringing our dogs, and we also want to bring a ball.</p><p>In this case we should add new parameters to the function, and the function signature would start to look embarrassing.</p><p>There&rsquo;s a better way to do this, let&rsquo;s see how.</p><h2 id=prepare-the-ground>Prepare the ground&nbsp;<a class=anchor href=#prepare-the-ground>#</a></h2><p>First, extend our code with a <code>Walk</code> struct, which contains the options for the walk. Create a method <code>Go</code> that represents taking the walk.</p><pre><code class=language-go>type Dog struct {
+girlfriend, bringing our dogs, and we also want to bring a ball.</p><p>In this case we have to add new parameters to the function, and the function signature would start to look embarrassing.</p><p>There&rsquo;s a better way to do this, let&rsquo;s see how.</p><h2 id=prepare-the-ground>Prepare the ground&nbsp;<a class=anchor href=#prepare-the-ground>#</a></h2><p>First, extend our code with a <code>Walk</code> struct, that contains the options for the &ldquo;walk&rdquo;. Create a method called <code>Go</code> that
+represents taking the walk.</p><pre><code class=language-go>type Dog struct {
 	Name string
 }
 
@@ -55,7 +54,7 @@ type Walk struct {
 func (w *Walk) Go() {
 	// Do something with the options 
 	if w.Destination == &quot;&quot; { 
-	// Set a default destination 
+	    // Set a default destination 
 		w.Destination = &quot;The park&quot;
 	}
 	fmt.Println(&quot;I'm walking to:&quot;, w.Destination)
@@ -76,7 +75,7 @@ func (w *Walk) Go() {
 	}
 }
 
-</code></pre><p>Using this struct, we can define the Walk and call the <code>Go</code> method like this:</p><pre><code class=language-go>func main() {
+</code></pre><p>Using this struct, define the <code>Walk</code> struct and call the <code>Go</code> method like this:</p><pre><code class=language-go>func main() {
 	d1 := Dog{Name: &quot;Pure&quot;}
 	d2 := Dog{Name: &quot;Gerbaud&quot;}
 	
@@ -89,34 +88,34 @@ func (w *Walk) Go() {
 	
 	walk.Go()
 }
-</code></pre><p>Getting better, but in this case if we want to modify an attribute of the <code>walk</code> object, we have to modify it outside the function call.</p><p>To solve this, we can use functional options.</p><h2 id=functional-options>Functional options&nbsp;<a class=anchor href=#functional-options>#</a></h2><h3 id=the-basics>The basics&nbsp;<a class=anchor href=#the-basics>#</a></h3><p>We define functions that return a function that modifies the <code>Walk</code> struct. These functions are called <code>With*</code> functions.</p><pre><code class=language-go>func WithDog(dog Dog) func(opts *Walk) {
-	return func(opts *Walk) {
-		opts.Dogs = append(opts.Dogs, dog)
+</code></pre><p>Getting better, but if we want to modify an attribute of the <code>walk</code> object, we have to modify it outside.</p><p>To solve this, we can use functional options.</p><h2 id=functional-options>Functional options&nbsp;<a class=anchor href=#functional-options>#</a></h2><h3 id=the-basics>The basics&nbsp;<a class=anchor href=#the-basics>#</a></h3><p>Define functions that return a function that modifies the <code>Walk</code> struct. These functions are usually called <code>With*</code> functions.</p><pre><code class=language-go>func WithDog(dog Dog) func(w *Walk) {
+	return func(w *Walk) {
+		w.Dogs = append(w.Dogs, dog)
 	}
 }
-</code></pre><h3 id=code-cleanup>Code cleanup&nbsp;<a class=anchor href=#code-cleanup>#</a></h3><p>Making the code cleaner we can define a type <code>Option</code> that represents the all functions that modify the <code>Walk</code> struct.</p><p>We can use this <code>Option</code> to define the <code>With*</code> functions.</p><pre><code class=language-go>type Option func(opts *Walk)
+</code></pre><h3 id=code-cleanup>Code cleanup&nbsp;<a class=anchor href=#code-cleanup>#</a></h3><p>Let&rsquo;s make the code cleaner: define a type <code>Option</code> that represents the all functions that modify the <code>Walk</code> struct.</p><p>Use this <code>Option</code> to define the <code>With*</code> functions.</p><pre><code class=language-go>type Option func(w *Walk)
 
 func WithDog(dog Dog) Option {
-	return func(opts *Walk) {
-		opts.Dogs = append(opts.Dogs, dog)
+	return func(w *Walk) {
+		w.Dogs = append(w.Dogs, dog)
 	}
 }
 
 func WithDestination(destination string) Option {
-	return func(opts *Walk) {
-		opts.Destination = destination
+	return func(w *Walk) {
+		w.Destination = destination
 	}
 }
 
 func WithGirlfriend() Option {
-	return func(opts *Walk) {
-		opts.WithGirlfriend = true
+	return func(w *Walk) {
+		w.WithGirlfriend = true
 	}
 }
 
 func WithBall(color string) Option {
-	return func(opts *Walk) {
-		opts.BallColor = color
+	return func(w *Walk) {
+		w.BallColor = color
 	}
 }
 </code></pre><h3 id=using-the-options>Using the options&nbsp;<a class=anchor href=#using-the-options>#</a></h3><p>And lastly, we have to update the <code>Go</code> method to accept <code>Option</code> parameters.</p><pre><code class=language-go>func (w *Walk) Go(opts ...Option) {
@@ -159,7 +158,97 @@ With my dogs:
 And we are bringing a ball colored: red
 
 Program exited.
-</code></pre><h2 id=example-code>Example Code&nbsp;<a class=anchor href=#example-code>#</a></h2><p>The full code snippet can be found <a href=https://go.dev/play/p/8VJHCX5jSM1>here</a>.</p><h2 id=conclusion>Conclusion&nbsp;<a class=anchor href=#conclusion>#</a></h2><p>In this way, functional options provide an excellent way of writing flexible functions in Golang.</p><h2 id=further-reading>Further reading&nbsp;<a class=anchor href=#further-reading>#</a></h2><ul><li><a href=https://dave.cheney.net/2014/10/17/functional-options-for-friendly-apis>Functional Options for Friendly APIs</a></li><li><a href=https://commandcenter.blogspot.com/2014/01/self-referential-functions-and-design.html>Functional Options in Go</a></li></ul></div><div class=my-4><a href=https://janosmiko.com/tags/go/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#go</a>
+</code></pre><h2 id=example-code>Example Code&nbsp;<a class=anchor href=#example-code>#</a></h2><p>The final form of the code will look like this:</p><pre><code class=language-go>package main
+
+import (
+	&quot;fmt&quot;
+)
+
+func main() {
+	d1 := Dog{Name: &quot;Pure&quot;}
+	d2 := Dog{Name: &quot;Gerbaud&quot;}
+
+	// Initialize a new empty Walk
+	walk := &amp;Walk{}
+	walk.Go(WithDog(d1), WithDog(d2), WithDestination(&quot;the beach&quot;))
+
+	fmt.Println()
+
+	// Initialize a new empty Walk
+	walk = &amp;Walk{}
+	walk.Go(WithDestination(&quot;the mountains&quot;))
+
+	fmt.Println()
+	// Reuse the previous walk, but this time with my girlfriend, dogs and a ball
+	walk.Go(WithGirlfriend(), WithDog(d1), WithDog(d2), WithBall(&quot;red&quot;))
+}
+
+func (w *Walk) Go(opts ...Option) {
+	// Apply the options to the WalkOptions struct
+	for _, opt := range opts {
+		opt(w)
+	}
+
+	// Do something with the options
+	if w.Destination == &quot;&quot; {
+		// Set a default destination
+		w.Destination = &quot;The park&quot;
+	}
+	fmt.Println(&quot;I'm walking to:&quot;, w.Destination)
+
+	if w.WithGirlfriend {
+		fmt.Println(&quot;With my girlfriend&quot;)
+	}
+
+	if w.Dogs != nil {
+		fmt.Println(&quot;With my dogs:&quot;)
+		for _, dog := range w.Dogs {
+			fmt.Println(&quot;-&quot;, dog.Name)
+		}
+	}
+
+	if w.BallColor != &quot;&quot; {
+		fmt.Println(&quot;And we are bringing a ball colored:&quot;, w.BallColor)
+	}
+}
+
+type Option func(w *Walk)
+
+func WithDog(dog Dog) Option {
+	return func(w *Walk) {
+		w.Dogs = append(w.Dogs, dog)
+	}
+}
+
+func WithDestination(destination string) Option {
+	return func(w *Walk) {
+		w.Destination = destination
+	}
+}
+
+func WithGirlfriend() Option {
+	return func(w *Walk) {
+		w.WithGirlfriend = true
+	}
+}
+
+func WithBall(color string) Option {
+	return func(w *Walk) {
+		w.BallColor = color
+	}
+}
+
+type Dog struct {
+	Name string
+}
+
+type Walk struct {
+	Dogs           []Dog
+	Destination    string
+	WithGirlfriend bool
+	BallColor      string
+}
+</code></pre><h2 id=conclusion>Conclusion&nbsp;<a class=anchor href=#conclusion>#</a></h2><p>In this way, functional options provide an excellent way of writing flexible functions in Golang.</p><h2 id=further-reading>Further reading&nbsp;<a class=anchor href=#further-reading>#</a></h2><ul><li><a href=https://dave.cheney.net/2014/10/17/functional-options-for-friendly-apis>Functional Options for Friendly APIs</a></li><li><a href=https://commandcenter.blogspot.com/2014/01/self-referential-functions-and-design.html>Functional Options in Go</a></li></ul></div><div class=my-4><a href=https://janosmiko.com/tags/go/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#go</a>
 <a href=https://janosmiko.com/tags/golang/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#golang</a>
 <a href=https://janosmiko.com/tags/programming/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#programming</a></div><div class=py-2><div class="flex flex-col md:flex-row items-center my-8"><a href=https://janosmiko.com/authors/janos-miko/ class="w-24 h-24 md:mr-4"><img src=https://janosmiko.com/images/janosmiko.jpeg class="w-full bg-primary-bg rounded-full" alt=Avatar></a><div class="w-full md:w-auto mt-4 md:mt-0"><a href=https://janosmiko.com/authors/janos-miko/ class="block font-bold text-lg pb-1 mb-2 border-b">Janos Miko</a>
 <span class="block pb-2">Fill your bucket by drop by drop.</span>
