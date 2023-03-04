@@ -98,10 +98,12 @@ pre[class*="language-"] {
     padding: 0.5rem;
     background: #222222;
     border-radius: .25rem;
-    white-space: break-spaces;
     max-width: 100%;
     word-break: break-all;
-    word-wrap: break-word;
+    /*white-space: break-spaces;*/
+    /*word-wrap: break-word;*/
+    white-space: pre;
+    word-wrap: normal;
     color: white;
     font-size: small;
 }
