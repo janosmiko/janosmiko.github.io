@@ -26,7 +26,7 @@ Preparing a development cluster"><meta property="og:locale" content="en"><meta p
 <span>2023-03-02</span></div><div class="mr-6 my-2"><i class="fa fa-sync mr-1"></i>
 <span>2023-03-04</span></div><div class="mr-6 my-2"><i class="fas fa-clock mr-1"></i>
 <span></span></div><div class="mr-6 my-2"><i class="fas fa-folder mr-1"></i>
-<a href=https://janosmiko.com/categories/tech/ class=hover:text-eureka>tech</a></div></div><div class=my-4><img src=https://janosmiko.com/images/blog/2023-03-02-tutorial-kubebuilder/tutorial-kubebuilder-1.png class=w-full alt="Featured Image"></div><div class=content><p>Creating a Kuberentes Operator with Kubebuilder - Part 1<br>Preparing a development cluster</p><h1 id=intro>Intro&nbsp;<a class=anchor href=#intro>#</a></h1><p>This document is part of a tutorial series about creating a Kubernetes operator with Kubebuilder in Go. We are covering
+<a href=https://janosmiko.com/categories/tech/ class=hover:text-eureka>tech</a></div></div><div class=my-4><img src=https://janosmiko.com/images/blog/2023-03-02-tutorial-kubebuilder/tutorial-kubebuilder-1.png class=w-full alt="Featured Image"></div><div class=content><p>Creating a Kuberentes Operator with Kubebuilder - Part 1<br>Preparing a development cluster</p><h2 id=intro>Intro&nbsp;<a class=anchor href=#intro>#</a></h2><p>This document is part of a tutorial series about creating a Kubernetes operator with Kubebuilder in Go. We are covering
 the following topics:</p><ul><li>Creating a development cluster</li><li>Tracing, Logging, Kubernetes event recording</li><li>Lifecycle of an Object in Kubernetes, including Finalizers</li><li>Triggering the reconciliation manually (based on a custom annotation)</li><li>Search indexing</li><li>Formatting the output of <code>kubectl get</code></li><li>Adding webhooks</li></ul><p>The operator will be simple. Our Custom Resource Definition will describe the following Object structure.</p><pre><code class=language-bash>apiVersion: janosmiko.com/v1alpha1
 kind: CustomObject
 metadata:
@@ -69,8 +69,8 @@ status:
 spec:
   id: test
   domain: janosmiko.com
-</code></pre><h1 id=preparing-a-development-cluster>Preparing a development cluster&nbsp;<a class=anchor href=#preparing-a-development-cluster>#</a></h1><h2 id=prerequisites>Prerequisites&nbsp;<a class=anchor href=#prerequisites>#</a></h2><ul><li>Golang 1.19</li><li>Docker Desktop</li><li>Kind</li><li>Kubectl</li><li>Helm</li><li>Make</li></ul><h2 id=initialize-a-kubebuilder-project>Initialize a kubebuilder project&nbsp;<a class=anchor href=#initialize-a-kubebuilder-project>#</a></h2><pre><code class=language-bash>kubebuilder init --plugins=go/v4-alpha --domain janosmiko.com --repo github.com/janosmiko/tutorial-kubebuilder
-</code></pre><h2 id=create-a-test-kubernetes-cluster-with-kind-expose-port-80-and-443>Create a test Kubernetes Cluster with Kind, expose port 80 and 443&nbsp;<a class=anchor href=#create-a-test-kubernetes-cluster-with-kind-expose-port-80-and-443>#</a></h2><p>Of course, it’s possible to use Docker Desktop’s Kubernetes, Rancher Desktop or - put your favourite Kubernetes
+</code></pre><h2 id=preparing-a-development-cluster>Preparing a development cluster&nbsp;<a class=anchor href=#preparing-a-development-cluster>#</a></h2><h3 id=prerequisites>Prerequisites&nbsp;<a class=anchor href=#prerequisites>#</a></h3><ul><li>Golang 1.19</li><li>Docker Desktop</li><li>Kind</li><li>Kubectl</li><li>Helm</li><li>Make</li></ul><h3 id=initialize-a-kubebuilder-project>Initialize a kubebuilder project&nbsp;<a class=anchor href=#initialize-a-kubebuilder-project>#</a></h3><pre><code class=language-bash>kubebuilder init --plugins=go/v4-alpha --domain janosmiko.com --repo github.com/janosmiko/tutorial-kubebuilder
+</code></pre><h3 id=create-a-test-kubernetes-cluster-with-kind-expose-port-80-and-443>Create a test Kubernetes Cluster with Kind, expose port 80 and 443&nbsp;<a class=anchor href=#create-a-test-kubernetes-cluster-with-kind-expose-port-80-and-443>#</a></h3><p>Of course, it’s possible to use Docker Desktop’s Kubernetes, Rancher Desktop or - put your favourite Kubernetes
 distribution here -.</p><pre><code class=language-bash>cat &lt;&lt; EOF &gt;hack/kind.yaml
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
@@ -97,7 +97,7 @@ kind create cluster --config hack/kind.yaml
 
 </code></pre><p>When the Cluster is ready make sure to change the Kubernetes context:</p><pre><code class=language-bash>kubectl config use-context kind-test
 
-</code></pre><h3 id=enable-cert-manager-and-ingress-nginx>Enable cert-manager and ingress-nginx&nbsp;<a class=anchor href=#enable-cert-manager-and-ingress-nginx>#</a></h3><pre><code class=language-bash>kubectl config use-context kind-test
+</code></pre><h4 id=enable-cert-manager-and-ingress-nginx>Enable cert-manager and ingress-nginx&nbsp;<a class=anchor href=#enable-cert-manager-and-ingress-nginx>#</a></h4><pre><code class=language-bash>kubectl config use-context kind-test
 
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.11.0/cert-manager.yaml
 
@@ -107,7 +107,7 @@ kubectl wait --namespace ingress-nginx \
 	--for=condition=ready pod \
 	--selector=app.kubernetes.io/component=controller \
 	--timeout=90s
-</code></pre><h3 id=test-ingress--cert-manager>Test ingress + cert-manager&nbsp;<a class=anchor href=#test-ingress--cert-manager>#</a></h3><pre><code class=language-bash>kubectl create deployment web --image=gcr.io/google-samples/hello-app:1.0
+</code></pre><h4 id=test-ingress--cert-manager>Test ingress + cert-manager&nbsp;<a class=anchor href=#test-ingress--cert-manager>#</a></h4><pre><code class=language-bash>kubectl create deployment web --image=gcr.io/google-samples/hello-app:1.0
 
 kubectl expose deployment web --type=ClusterIP --port=8080
 
@@ -139,10 +139,10 @@ kubectl apply -f test/ingress.yaml
 Hello, world!
 Version: 1.0.0
 Hostname: web-84fb9498c7-xgmmq
-</code></pre><h3 id=cleanup>Cleanup&nbsp;<a class=anchor href=#cleanup>#</a></h3><pre><code class=language-bash>kubectl delete deployment web
+</code></pre><h4 id=cleanup>Cleanup&nbsp;<a class=anchor href=#cleanup>#</a></h4><pre><code class=language-bash>kubectl delete deployment web
 kubectl delete svc web
 kubectl delete -f test/ingress.yaml
-</code></pre><h2 id=install-jaeger-to-the-cluster>Install Jaeger to the cluster&nbsp;<a class=anchor href=#install-jaeger-to-the-cluster>#</a></h2><pre><code class=language-bash>helm repo add jaegertracing https://jaegertracing.github.io/helm-charts
+</code></pre><h3 id=install-jaeger-to-the-cluster>Install Jaeger to the cluster&nbsp;<a class=anchor href=#install-jaeger-to-the-cluster>#</a></h3><pre><code class=language-bash>helm repo add jaegertracing https://jaegertracing.github.io/helm-charts
 
 cat &lt;&lt;EOF &gt; hack/jaeger-values.yaml
 provisionDataStore:
@@ -241,5 +241,5 @@ debugging it locally.</p><pre><code class=language-bash>127.0.0.1 jaeger-collect
 <a href=https://github.com/janosmiko/ class=mr-1><i class="fab fa-github"></i></a>
 <a href=https://www.facebook.com/mixe3y/ class=mr-1><i class="fab fa-facebook"></i></a>
 <a href="https://www.upwork.com/freelancers/~01bbf22d354f4e322c?viewMode=1" class=mr-1><i class="fas fa-suitcase"></i></a></div></div></div><div class="flex flex-col md:flex-row md:justify-between -mx-2 mt-4 px-2 pt-4 border-t"><div></div><div class="md:text-right mt-4 md:mt-0"><span class="block font-bold">Next</span>
-<a href=https://janosmiko.com/blog/2023-02-25-golang-functional-options/ class=block>Functional Options in Go</a></div></div></div><div class=col-span-2><div class="sticky top-16 z-10 hidden lg:block px-6 py-4 bg-primary-bg"><span class="text-lg font-semibold">On This Page</span></div><div class="sticky-toc hidden lg:block px-6 pb-6"><nav id=TableOfContents><ul><li><a href=#prerequisites>Prerequisites</a></li><li><a href=#initialize-a-kubebuilder-project>Initialize a kubebuilder project</a></li><li><a href=#create-a-test-kubernetes-cluster-with-kind-expose-port-80-and-443>Create a test Kubernetes Cluster with Kind, expose port 80 and 443</a><ul><li><a href=#enable-cert-manager-and-ingress-nginx>Enable cert-manager and ingress-nginx</a></li><li><a href=#test-ingress--cert-manager>Test ingress + cert-manager</a></li><li><a href=#cleanup>Cleanup</a></li></ul></li><li><a href=#install-jaeger-to-the-cluster>Install Jaeger to the cluster</a></li></ul></nav></div><script>window.addEventListener("DOMContentLoaded",()=>{enableStickyToc()})</script></div><div class="col-span-2 lg:col-span-6 bg-secondary-bg rounded p-6"><h2 class="text-lg font-semibold mb-4">See Also</h2><div class=content><a href=https://janosmiko.com/blog/2021-10-01-how-to-debug-varnish/>How to debug Varnish? - A detailed guide with some practical examples</a><br><a href=https://janosmiko.com/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/>How to run Self Hosted Bitbucket Pipelines Runners in Kubernetes</a><br></div></div></div></div></div></main><footer class=pl-scrollbar><div class="w-full max-w-screen-xl mx-auto"><div class="text-center p-6 pin-b"><p class="text-sm text-tertiary-text">&copy; Janos Miko
+<a href=https://janosmiko.com/blog/2023-02-25-golang-functional-options/ class=block>Functional Options in Go</a></div></div></div><div class=col-span-2><div class="sticky top-16 z-10 hidden lg:block px-6 py-4 bg-primary-bg"><span class="text-lg font-semibold">On This Page</span></div><div class="sticky-toc hidden lg:block px-6 pb-6"><nav id=TableOfContents><ul><li><a href=#intro>Intro</a></li><li><a href=#preparing-a-development-cluster>Preparing a development cluster</a><ul><li><a href=#prerequisites>Prerequisites</a></li><li><a href=#initialize-a-kubebuilder-project>Initialize a kubebuilder project</a></li><li><a href=#create-a-test-kubernetes-cluster-with-kind-expose-port-80-and-443>Create a test Kubernetes Cluster with Kind, expose port 80 and 443</a><ul><li><a href=#enable-cert-manager-and-ingress-nginx>Enable cert-manager and ingress-nginx</a></li><li><a href=#test-ingress--cert-manager>Test ingress + cert-manager</a></li><li><a href=#cleanup>Cleanup</a></li></ul></li><li><a href=#install-jaeger-to-the-cluster>Install Jaeger to the cluster</a></li></ul></li></ul></nav></div><script>window.addEventListener("DOMContentLoaded",()=>{enableStickyToc()})</script></div><div class="col-span-2 lg:col-span-6 bg-secondary-bg rounded p-6"><h2 class="text-lg font-semibold mb-4">See Also</h2><div class=content><a href=https://janosmiko.com/blog/2021-10-01-how-to-debug-varnish/>How to debug Varnish? - A detailed guide with some practical examples</a><br><a href=https://janosmiko.com/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/>How to run Self Hosted Bitbucket Pipelines Runners in Kubernetes</a><br></div></div></div></div></div></main><footer class=pl-scrollbar><div class="w-full max-w-screen-xl mx-auto"><div class="text-center p-6 pin-b"><p class="text-sm text-tertiary-text">&copy; Janos Miko
 &#183; Made with <i class="fas fa-heart"></i> using <a href=https://github.com/wangchucheng/hugo-eureka class=hover:text-eureka>Eureka</a> theme for <a href=https://gohugo.io class=hover:text-eureka>Hugo</a></p></div></div></footer></body></html>
