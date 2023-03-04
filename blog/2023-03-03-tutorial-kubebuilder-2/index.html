@@ -1,0 +1,186 @@
+<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content="width=device-width"><title>Tutorial - Kubernetes Operator with Kubebuilder part 2 - Creating an API and the Operator | Janos Miko</title><meta name=generator content="Hugo Eureka 0.8.0"><link rel=stylesheet href=https://janosmiko.com/css/eureka.min.css><script defer src=https://janosmiko.com/js/eureka.min.js></script>
+<link rel=dns-prefetch href=//fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=preload href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" as=style onload='this.onload=null,this.rel="stylesheet"'><link rel=stylesheet href=/css/prism-okaidia.css media=print onload='this.media="all",this.onload=null' crossorigin><script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.24.1/prism.min.js crossorigin></script>
+<script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.24.1/plugins/autoloader/prism-autoloader.min.js crossorigin></script>
+<script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.24.1/components/prism-markup-templating.min.js crossorigin></script>
+<script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.24.1/components/prism-go.min.js crossorigin></script>
+<script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.24.1/components/prism-bash.min.js crossorigin></script>
+<script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.24.1/components/prism-php.min.js crossorigin></script>
+<script defer src=https://cdn.jsdelivr.net/npm/prismjs@1.24.1/components/prism-json.min.js crossorigin></script>
+<script defer src=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/js/all.min.js integrity="sha256-uNYoXefWRqv+PsIF/OflNmwtKM4lStn9yrz2gVl6ymo=" crossorigin></script>
+<link rel=stylesheet href=/css/custom.css><script defer src=/js/custom.js></script>
+<link rel=apple-touch-icon sizes=57x57 href=/apple-icon-57x57.png><link rel=apple-touch-icon sizes=60x60 href=/apple-icon-60x60.png><link rel=apple-touch-icon sizes=72x72 href=/apple-icon-72x72.png><link rel=apple-touch-icon sizes=76x76 href=/apple-icon-76x76.png><link rel=apple-touch-icon sizes=114x114 href=/apple-icon-114x114.png><link rel=apple-touch-icon sizes=120x120 href=/apple-icon-120x120.png><link rel=apple-touch-icon sizes=144x144 href=/apple-icon-144x144.png><link rel=apple-touch-icon sizes=152x152 href=/apple-icon-152x152.png><link rel=apple-touch-icon sizes=180x180 href=/apple-icon-180x180.png><link rel=icon type=image/png sizes=192x192 href=/android-icon-192x192.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=96x96 href=/favicon-96x96.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><meta name=msapplication-TileColor content="#ffffff"><meta name=msapplication-TileImage content="/ms-icon-144x144.png"><meta name=apple-mobile-web-app-title content="Janos Miko"><meta name=application-name content="Janos Miko"><meta name=theme-color content="#1e2028"><meta name=description content="Creating a Kuberentes Operator with Kubebuilder - Part 2
+
+Creating an API and the Operator"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Blog","item":"https://janosmiko.com/blog/"},{"@type":"ListItem","position":2,"name":"Tutorial - Kubernetes Operator with Kubebuilder part 2 - Creating an API and the Operator","item":"https://janosmiko.com/blog/2023-03-03-tutorial-kubebuilder-2/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://janosmiko.com/blog/2023-03-03-tutorial-kubebuilder-2/"},"headline":"Tutorial - Kubernetes Operator with Kubebuilder part 2 - Creating an API and the Operator | Janos Miko","image":"https://janosmiko.com/images/blog/2023-03-02-tutorial-kubebuilder/tutorial-kubebuilder-2.png","datePublished":"2023-03-03T00:00:00+00:00","dateModified":"2023-03-04T00:00:00+00:00","wordCount":935,"author":{"@type":"Person","name":["janos-miko"]},"publisher":{"@type":"Person","name":"Janos Miko"},"description":"\u003cp\u003eCreating a Kuberentes Operator with Kubebuilder - Part 2\n\u003cbr\u003e\nCreating an API and the Operator\u003c\/p\u003e"}</script><meta property="og:title" content="Tutorial - Kubernetes Operator with Kubebuilder part 2 - Creating an API and the Operator | Janos Miko"><meta property="og:type" content="article"><meta property="og:image" content="https://janosmiko.com/images/janosmiko.jpeg"><meta property="og:url" content="https://janosmiko.com/blog/2023-03-03-tutorial-kubebuilder-2/"><meta property="og:description" content="Creating a Kuberentes Operator with Kubebuilder - Part 2
+
+Creating an API and the Operator"><meta property="og:locale" content="en"><meta property="og:site_name" content="Janos Miko"><meta property="article:published_time" content="2023-03-03T00:00:00+00:00"><meta property="article:modified_time" content="2023-03-04T00:00:00+00:00"><meta property="article:section" content="blog"><meta property="article:tag" content="kubernetes"><meta property="article:tag" content="kubebuilder"><meta property="article:tag" content="aks"><meta property="article:tag" content="eks"><meta property="article:tag" content="gke"><meta property="article:tag" content="cloud-native"><meta property="og:see_also" content="https://janosmiko.com/blog/2023-03-02-tutorial-kubebuilder-1/"><meta property="og:see_also" content="https://janosmiko.com/blog/2021-10-01-how-to-debug-varnish/"><meta property="og:see_also" content="https://janosmiko.com/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/"><body class="flex flex-col min-h-screen"><header class="fixed flex items-center w-full min-h-16 pl-scrollbar z-50 bg-secondary-bg shadow-sm"><div class="w-full max-w-screen-xl mx-auto"><script>let storageColorScheme=localStorage.getItem("lightDarkMode");((storageColorScheme=="Auto"||storageColorScheme==null)&&window.matchMedia("(prefers-color-scheme: dark)").matches||storageColorScheme=="Dark")&&document.getElementsByTagName("html")[0].classList.add("dark")</script><nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0"><a href=/ class="mr-6 text-primary-text text-xl font-bold">Janos Miko</a>
+<button id=navbar-btn class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+<i class="fas fa-bars"></i></button><div id=target class="hidden block md:flex md:flex-grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20"><div class="md:flex md:h-16 text-sm md:flex-grow pb-4 md:pb-0 border-b md:border-b-0"><a href=/#about class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 border-transparent mr-4">About</a>
+<a href=/#certifications class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 border-transparent mr-4">Certifications</a>
+<a href=/#experiences class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 border-transparent mr-4">Experiences</a>
+<a href=/#technologies class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 border-transparent mr-4">Technologies</a>
+<a href=/#projects class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 border-transparent mr-4">Projects</a>
+<a href=/#testimonials class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 border-transparent mr-4">Testimonials</a>
+<a href=/blog class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 selected-menu-item mr-4">Blog</a></div><div class=flex><div class="relative pt-4 md:pt-0"><div class="cursor-pointer hover:text-eureka" id=lightDarkMode><i class="fas fa-adjust"></i></div><div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id=is-open></div><div class="absolute flex flex-col left-0 md:left-auto right-auto md:right-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40" id=lightDarkOptions><span class="px-4 py-1 hover:text-eureka" name=Light>Light</span>
+<span class="px-4 py-1 hover:text-eureka" name=Dark>Dark</span>
+<span class="px-4 py-1 hover:text-eureka" name=Auto>Auto</span></div></div></div></div><div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id=is-open-mobile></div></nav><script>let element=document.getElementById("lightDarkMode");storageColorScheme==null||storageColorScheme=="Auto"?document.addEventListener("DOMContentLoaded",()=>{window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",switchDarkMode)}):storageColorScheme=="Light"?(element.firstElementChild.classList.remove("fa-adjust"),element.firstElementChild.setAttribute("data-icon","sun"),element.firstElementChild.classList.add("fa-sun")):storageColorScheme=="Dark"&&(element.firstElementChild.classList.remove("fa-adjust"),element.firstElementChild.setAttribute("data-icon","moon"),element.firstElementChild.classList.add("fa-moon")),document.addEventListener("DOMContentLoaded",()=>{getcolorscheme(),switchBurger()})</script></div></header><main class="flex-grow pt-16"><div class=pl-scrollbar><div class="lg:w-3/4 w-full max-w-screen-xl lg:px-4 xl:px-8 mx-auto"><div class="grid grid-cols-2 lg:grid-cols-8 gap-4 lg:pt-12"><div class="col-span-2 lg:col-span-6 bg-secondary-bg rounded px-6 py-8"><h1 class="font-bold text-3xl text-primary-text">Tutorial - Kubernetes Operator with Kubebuilder part 2 - Creating an API and the Operator</h1><div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text"><div class="mr-6 my-2"><i class="fas fa-calendar mr-1"></i>
+<span>2023-03-03</span></div><div class="mr-6 my-2"><i class="fa fa-sync mr-1"></i>
+<span>2023-03-04</span></div><div class="mr-6 my-2"><i class="fas fa-clock mr-1"></i>
+<span></span></div><div class="mr-6 my-2"><i class="fas fa-folder mr-1"></i>
+<a href=https://janosmiko.com/categories/tech/ class=hover:text-eureka>tech</a></div></div><div class=my-4><img src=https://janosmiko.com/images/blog/2023-03-02-tutorial-kubebuilder/tutorial-kubebuilder-2.png class=w-full alt="Featured Image"></div><div class=content><p>Creating a Kuberentes Operator with Kubebuilder - Part 2<br>Creating an API and the Operator</p><h1 id=intro>Intro&nbsp;<a class=anchor href=#intro>#</a></h1><p>This document is part of a tutorial series about creating a Kubernetes operator with Kubebuilder in Go. We are covering
+the following topics:</p><ul><li>Creating a development cluster</li><li>Tracing, Logging, Kubernetes event recording</li><li>Lifecycle of an Object in Kubernetes, including Finalizers</li><li>Triggering the reconciliation manually (based on a custom annotation)</li><li>Search indexing</li><li>Formatting the output of <code>kubectl get</code></li><li>Adding webhooks</li></ul><p>The operator will be simple. Our Custom Resource Definition will describe the following Object structure.</p><pre><code class=language-bash>apiVersion: janosmiko.com/v1alpha1
+kind: CustomObject
+metadata:
+  name: customobject-sample
+spec:
+  id: test
+  domain: janosmiko.com
+</code></pre><p>The operator will take the domain we give in the <code>spec.domain</code> attribute, get the domain’s IP address and write it to
+the object’s status field with a bunch of additional useful information. It will also determine the Controller Pod’s
+kube-rbac-proxy container’s image (demonstrating indexing Pods by a custom field).</p><pre><code class=language-bash>apiVersion: janosmiko.com/v1alpha1
+kind: CustomObject
+metadata:
+  name: customobject-sample
+status:
+  conditions:
+    - lastTransitionTime: '2023-03-03T22:38:00Z'
+      message: Object created
+      reason: CustomObjectCreated
+      status: 'True'
+      type: Created
+    - lastTransitionTime: '2023-03-03T22:38:00Z'
+      message: Object creating
+      reason: CustomObjectCreating
+      status: 'False'
+      type: Creating
+    - lastTransitionTime: '2023-03-03T22:38:00Z'
+      message: Preparing object
+      reason: CustomObjectNew
+      status: 'False'
+      type: Pending
+  ipAddress: 185.199.109.153
+  phase:
+    lastTransitionTime: '2023-03-03T22:38:00Z'
+    message: Object created
+    reason: CustomObjectCreated
+    status: 'True'
+    type: Created
+  ready: true
+  specHash: b442cc366de2547e17f97cf4dd72f9f90340639570f583bc801f2d570df820a1
+spec:
+  id: test
+  domain: janosmiko.com
+</code></pre><h2 id=create-an-api>Create an API&nbsp;<a class=anchor href=#create-an-api>#</a></h2><pre><code class=language-bash>$ kubebuilder create api --version v1alpha1 --kind CustomObject --resource --controller --make
+
+$ make generate &amp;&amp; make manifests
+</code></pre><h3 id=allow-unsigned-custom-resource-definitions>Allow unsigned Custom Resource Definitions&nbsp;<a class=anchor href=#allow-unsigned-custom-resource-definitions>#</a></h3><p>Add the following kubebuilder tag to the <code>api/customobject_types.go</code> file just above the <code>CustomObject</code> struct.</p><pre><code class=language-go>//+kubebuilder:metadata:annotations=&quot;api-approved.kubernetes.io=https://janosmiko.com&quot;
+</code></pre><h3 id=add-the-ready-failed-phase-conditions-and-spechash-attributes-to-custom-objects-status>Add the Ready, Failed, Phase, Conditions and SpecHash attributes to Custom Object’s status&nbsp;<a class=anchor href=#add-the-ready-failed-phase-conditions-and-spechash-attributes-to-custom-objects-status>#</a></h3><p>Extend the CustomObjectStatus struct in the <code>api/customobject_types.go</code> with some status indicators.</p><ul><li>Ready will be true when the Object is ready.</li><li>Failed is a counter showing how many times the process failed.</li><li>Phase and Conditions are structs defined in metav1 package. Phase is the current state of the Object, Conditions is a slice of the previous Phases.</li><li>SpecHash contains the hash of the current Spec. It will allow us to watch if the spec of the object changed and restart the reconciliation process.</li></ul><pre><code class=language-go>type CustomObjectStatus struct {
+	Ready      bool               `json:&quot;ready&quot;`
+	Failed     int                `json:&quot;failed,omitempty&quot;`
+	Phase      metav1.Condition   `json:&quot;phase,omitempty&quot;`
+	Conditions []metav1.Condition `json:&quot;conditions,omitempty&quot; patchStrategy:&quot;merge&quot; patchMergeKey:&quot;type&quot; protobuf:&quot;bytes,1,rep,name=conditions&quot;`
+	SpecHash   string             `json:&quot;specHash,omitempty&quot;`
+	IPAddress  string             `json:&quot;ipAddress,omitempty&quot;`
+}
+</code></pre><h3 id=define-status-phases>Define Status Phases&nbsp;<a class=anchor href=#define-status-phases>#</a></h3><p>Add the following lines to <code>api/customobject_types.go</code>. We are going to use these phases through the Reconciliation process.</p><ul><li>Pending: can be used when the object cannot be created because it is waiting for another object to be ready. (Eg: you are creating a user, but it’s team is not yet created)</li><li>Creating: the reconciler started to create the object. As it can be a long process it’s worth to create a dedicated status while the process is running.</li><li>Created: the reconciler finished the creation of the object. The object is ready.</li><li>Terminating: the reconciler started to delete the object.</li><li>Deleted: the reconciler finished to delete the object. In this phase we are going to remove the finalizer so Kubernetes can remove the Custom Resource.</li><li>Error: an error occurred during the process.</li></ul><pre><code class=language-go>type CustomObjectStatusPhase string
+
+const (
+	CustomObjectStatusPhasePending        CustomObjectStatusPhase = &quot;Pending&quot;
+	CustomObjectStatusPhaseCreating       CustomObjectStatusPhase = &quot;Creating&quot;
+	CustomObjectStatusPhaseCreated        CustomObjectStatusPhase = &quot;Created&quot;
+	CustomObjectStatusPhaseTerminating    CustomObjectStatusPhase = &quot;Terminating&quot;
+	CustomObjectStatusPhaseDeleted        CustomObjectStatusPhase = &quot;Deleted&quot;
+	CustomObjectStatusPhaseError          CustomObjectStatusPhase = &quot;Error&quot;
+)
+</code></pre><h3 id=define-the-custom-objects-spec>Define the Custom Object’s Spec&nbsp;<a class=anchor href=#define-the-custom-objects-spec>#</a></h3><p>We will add two attributes to the object.</p><ul><li>Id: the identifier of the object. Assuming it’s required and it cannot be changed we can add some validations.</li><li>Domain: a custom domain. We are going to fetch the domain’s IP address and store it in the object’s Status.</li></ul><pre><code class=language-go>type CustomObjectSpec struct {
+	//+kubebuilder:validation:Required
+	//+kubebuilder:validation:MinLength=1
+	//+kubebuilder:validation:XValidation:rule=&quot;self == oldSelf&quot;,message=&quot;Value is immutable&quot;
+	Id string `json:&quot;id&quot;`
+
+	//+kubebuilder:validation:Required
+	//+kubebuilder:validation:MinLength=1
+	Domain string `json:&quot;domain&quot;`
+}
+</code></pre><h2 id=update-the-main-function-of-the-controller>Update the main function of the controller&nbsp;<a class=anchor href=#update-the-main-function-of-the-controller>#</a></h2><h3 id=make-it-namespace-scoped>Make it namespace scoped&nbsp;<a class=anchor href=#make-it-namespace-scoped>#</a></h3><p>Just below the beginning of the main function, add a new variable and bind to a flag.</p><pre><code class=language-go>func main() {
+	var namespace string
+	flag.StringVar(&amp;namespace, &quot;namespace&quot;, &quot;&quot;, &quot;The namespace the controller will watch&quot;)
+  ...
+</code></pre><p>Add it to the controller manager initialization</p><pre><code class=language-go>mgr, err := ctrl.NewManager(
+		ctrl.GetConfigOrDie(), ctrl.Options{
+			Namespace:              namespace,
+			Scheme:                 scheme,
+			MetricsBindAddress:     metricsAddr,
+			Port:                   9443,
+			HealthProbeBindAddress: probeAddr,
+			LeaderElection:         enableLeaderElection,
+			LeaderElectionID:       &quot;1e00d489.janosmiko.com&quot;,
+</code></pre><h2 id=initialize-tracing>Initialize tracing&nbsp;<a class=anchor href=#initialize-tracing>#</a></h2><p>Add OTEL dependencies:</p><pre><code class=language-go>go get go.opentelemetry.io/otel
+go get go.opentelemetry.io/otel/exporters/jaeger
+go get go.opentelemetry.io/otel/sdk/trace
+go get go.opentelemetry.io/otel/semconv/v1.17.0
+</code></pre><pre><code class=language-go>// Create the Jaeger exporter
+exp, err := jaeger.New(jaeger.WithCollectorEndpoint(jaeger.WithEndpoint(&quot;http://localhost:14268/api/traces&quot;)))
+if err != nil {
+	panic(err)
+}
+provider := trace.NewTracerProvider(
+	trace.WithBatcher(exp),
+	trace.WithResource(
+		resource.NewWithAttributes(
+			semconv.SchemaURL,
+			semconv.ServiceName(&quot;tutorial-kubebuilder&quot;),
+		),
+	),
+)
+flush := func() {
+	_ = provider.Shutdown(context.TODO())
+}
+defer flush()
+
+otel.SetTracerProvider(provider)
+</code></pre><h2 id=add-logger-tracer-and-recorder-to-the-controller>Add Logger, Tracer and Recorder to the Controller&nbsp;<a class=anchor href=#add-logger-tracer-and-recorder-to-the-controller>#</a></h2><p>Update the controller struct in <code>internal/controller/customobject_controller.go</code> and add a Logger, a Tracer and a Recorder.</p><pre><code class=language-go>// CustomObjectReconciler reconciles a CustomObject object
+type CustomObjectReconciler struct {
+	client.Client
+	Scheme *runtime.Scheme
+	Logger    logr.Logger
+	Recorder  record.EventRecorder
+	Tracer    trace.Tracer
+}
+</code></pre><p>Go back to the <code>main.go</code> file and pass the logger, recorder and tracer to the Controller.</p><pre><code class=language-go>if err = (&amp;controller.CustomObjectReconciler{
+	Client: mgr.GetClient(),
+	Scheme: mgr.GetScheme(),
+	Logger: mgr.GetLogger(),
+	Recorder: mgr.GetEventRecorderFor(&quot;tutorial-kubebuilder&quot;),
+	Tracer:    otel.Tracer(&quot;tutorial-kubebuilder&quot;),
+}).SetupWithManager(mgr); err != nil {
+	setupLog.Error(err, &quot;unable to create controller&quot;, &quot;controller&quot;, &quot;CustomObject&quot;)
+	os.Exit(1)
+}
+</code></pre><h2 id=build-and-add-the-image-to-the-kind-cluster>Build and add the image to the kind cluster&nbsp;<a class=anchor href=#build-and-add-the-image-to-the-kind-cluster>#</a></h2><p>Now we are ready to build and install the first version of the Operator to the cluster.</p><p>But before doing that… <strong>Make sure the Kubernetes cluster is not trying to download the latest image from Docker Hub (as this image will not available there)</strong>.</p><p>Update the deployment spec in <code>config/manager/manager.yaml</code> and add <code>imagePullPolicy: Never</code>.</p><pre><code class=language-yaml>containers:
+  - command:
+    - /manager
+  args:
+    - --leader-elect
+  image: controller:latest
+  imagePullPolicy: Never
+</code></pre><p>Now we can install and deploy the controller.</p><pre><code class=language-bash>$ make generate &amp;&amp; make manifests &amp;&amp; make install
+
+$ make docker-build IMG=controller:latest
+$ kind load docker-image controller:latest -n test
+$ make deploy IMG=controller:latest
+</code></pre></div><div class=my-4><a href=https://janosmiko.com/tags/kubernetes/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#kubernetes</a>
+<a href=https://janosmiko.com/tags/kubebuilder/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#kubebuilder</a>
+<a href=https://janosmiko.com/tags/aks/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#aks</a>
+<a href=https://janosmiko.com/tags/eks/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#eks</a>
+<a href=https://janosmiko.com/tags/gke/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#gke</a>
+<a href=https://janosmiko.com/tags/cloud-native/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#cloud-native</a>
+<a href=https://janosmiko.com/tags/cloudnative/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#cloudnative</a>
+<a href=https://janosmiko.com/tags/openshift/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#openshift</a></div><div class=py-2><div class="flex flex-col md:flex-row items-center my-8"><a href=https://janosmiko.com/authors/janos-miko/ class="w-24 h-24 md:mr-4"><img src=https://janosmiko.com/images/janosmiko.jpeg class="w-full bg-primary-bg rounded-full" alt=Avatar></a><div class="w-full md:w-auto mt-4 md:mt-0"><a href=https://janosmiko.com/authors/janos-miko/ class="block font-bold text-lg pb-1 mb-2 border-b">Janos Miko</a>
+<span class="block pb-2">Fill your bucket by drop by drop.</span>
+<a href=mailto:example@example.com class=mr-1><i class="fas fa-envelope"></i></a>
+<a href=https://twitter.com/mixe3y/ class=mr-1><i class="fab fa-twitter"></i></a>
+<a href=https://github.com/janosmiko/ class=mr-1><i class="fab fa-github"></i></a>
+<a href=https://www.facebook.com/mixe3y/ class=mr-1><i class="fab fa-facebook"></i></a>
+<a href="https://www.upwork.com/freelancers/~01bbf22d354f4e322c?viewMode=1" class=mr-1><i class="fas fa-suitcase"></i></a></div></div></div><div class="flex flex-col md:flex-row md:justify-between -mx-2 mt-4 px-2 pt-4 border-t"><div></div><div class="md:text-right mt-4 md:mt-0"><span class="block font-bold">Next</span>
+<a href=https://janosmiko.com/blog/2023-03-02-tutorial-kubebuilder-1/ class=block>Tutorial - Kubernetes Operator with Kubebuilder part 1 - Preparing a development cluster</a></div></div></div><div class=col-span-2><div class="sticky top-16 z-10 hidden lg:block px-6 py-4 bg-primary-bg"><span class="text-lg font-semibold">On This Page</span></div><div class="sticky-toc hidden lg:block px-6 pb-6"><nav id=TableOfContents><ul><li><a href=#create-an-api>Create an API</a><ul><li><a href=#allow-unsigned-custom-resource-definitions>Allow unsigned Custom Resource Definitions</a></li><li><a href=#add-the-ready-failed-phase-conditions-and-spechash-attributes-to-custom-objects-status>Add the Ready, Failed, Phase, Conditions and SpecHash attributes to Custom Object’s status</a></li><li><a href=#define-status-phases>Define Status Phases</a></li><li><a href=#define-the-custom-objects-spec>Define the Custom Object’s Spec</a></li></ul></li><li><a href=#update-the-main-function-of-the-controller>Update the main function of the controller</a><ul><li><a href=#make-it-namespace-scoped>Make it namespace scoped</a></li></ul></li><li><a href=#initialize-tracing>Initialize tracing</a></li><li><a href=#add-logger-tracer-and-recorder-to-the-controller>Add Logger, Tracer and Recorder to the Controller</a></li><li><a href=#build-and-add-the-image-to-the-kind-cluster>Build and add the image to the kind cluster</a></li></ul></nav></div><script>window.addEventListener("DOMContentLoaded",()=>{enableStickyToc()})</script></div><div class="col-span-2 lg:col-span-6 bg-secondary-bg rounded p-6"><h2 class="text-lg font-semibold mb-4">See Also</h2><div class=content><a href=https://janosmiko.com/blog/2023-03-02-tutorial-kubebuilder-1/>Tutorial - Kubernetes Operator with Kubebuilder part 1 - Preparing a development cluster</a><br><a href=https://janosmiko.com/blog/2021-10-01-how-to-debug-varnish/>How to debug Varnish? - A detailed guide with some practical examples</a><br><a href=https://janosmiko.com/blog/2021-09-08-bitbucket-pipelines-runners-in-k8s/>How to run Self Hosted Bitbucket Pipelines Runners in Kubernetes</a><br></div></div></div></div></div></main><footer class=pl-scrollbar><div class="w-full max-w-screen-xl mx-auto"><div class="text-center p-6 pin-b"><p class="text-sm text-tertiary-text">&copy; Janos Miko
+&#183; Made with <i class="fas fa-heart"></i> using <a href=https://github.com/wangchucheng/hugo-eureka class=hover:text-eureka>Eureka</a> theme for <a href=https://gohugo.io class=hover:text-eureka>Hugo</a></p></div></div></footer></body></html>
