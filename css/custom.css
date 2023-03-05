@@ -135,7 +135,7 @@ pre[class*="language-"] {
 
 
 .content *:target, h1:target, h2:target, h3:target, h4:target, h5:target, h6:target {
-    filter: invert(0.9);
+    color: var(--color-eureka);
 }
 
 .content h1, h2, h3, h4 {
