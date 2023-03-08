@@ -21,6 +21,7 @@ I believe that everything should be automated and written as code.
 I use the following tools to write down the infrastructure as code and the configurations as code:
 
 - Terraform
+- Crossplane
 - Ansible
 
 <br>

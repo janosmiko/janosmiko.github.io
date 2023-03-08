@@ -21,6 +21,7 @@ sitemap_exclude: false
 A következő eszközöket használom Infrastruktúra és Konfigurációk kódolásához:
 
 - Terraform
+- Crossplane
 - Ansible
 
 <br>
