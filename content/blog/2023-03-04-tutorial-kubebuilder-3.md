@@ -16,7 +16,7 @@ tags:
   - openshift
 categories: tech
 date: '2023-03-04'
-lastmod: '2023-03-04'
+lastmod: '2023-03-08'
 sitemap_exclude: false
 featuredImage: /images/blog/2023-03-02-tutorial-kubebuilder/tutorial-kubebuilder-3.png
 featuredImage_webp: /images/blog/2023-03-02-tutorial-kubebuilder/tutorial-kubebuilder-3.webp
