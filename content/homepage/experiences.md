@@ -2,7 +2,7 @@
 title: Experiences
 draft: false
 experiences:
-  - title: Lead DevOps Engineer
+  - title: Lead DevOps Engineer / Senior Go Developer
     organization:
       name: ITG Commerce
       url: https://itgcommerce.com

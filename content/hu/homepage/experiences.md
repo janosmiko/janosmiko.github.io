@@ -2,7 +2,7 @@
 title: Tapasztalat
 draft: false
 experiences:
-  - title: Vezető DevOps mérnök
+  - title: Vezető DevOps mérnök / Senior Go fejlesztő
     organization:
       name: ITG Commerce
       url: https://itgcommerce.com
