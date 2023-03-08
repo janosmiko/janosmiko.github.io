@@ -125,9 +125,11 @@ default:
 
 ### Additional functions
 
-```go
-// TODO: StatusUpdate, StatusNext, CreateSpecHash functions
-```
+We are going to create a few helper functions to make the code more readable. As they are quiet long, I'm not going to
+include them here. I'll just add a link to the source code.
+
+- [statusNext](https://github.com/janosmiko/tutorial-kubebuilder/blob/839dd4bb7e56e4fd01f5299adb01f59c221864c8/internal/controller/domainresolver_controller.go#L452): this function is going to update the status of the Resource and set the next phase.
+- [CreateSpecHash](https://github.com/janosmiko/tutorial-kubebuilder/blob/839dd4bb7e56e4fd01f5299adb01f59c221864c8/api/v1alpha1/domainresolver_types.go#L92): this function is going to create an SHA-256 hash from the Spec of the Resource. It is useful to track if the Spec has changed.
 
 ### Add a manual trigger
 
@@ -172,7 +174,7 @@ kubectl annotate -n default domainresolver.tutorial.janosmiko.com domainresolver
 
 ### Create an example indexer
 
-First of all, to enable access to additional resources, you’ll have to add the following annotation to the beginning of the ``internal/controller/domainresolver_controller.go` file:
+First of all, to enable access to additional resources, you’ll have to add the following annotation to the beginning of the `internal/controller/domainresolver_controller.go` file:
 
 ```go
 //+kubebuilder:rbac:groups="*",resources=pods,verbs=get;list
