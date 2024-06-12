@@ -7,7 +7,8 @@ tags:
   - bitbucket
   - pipelines
   - memory
-categories: tech
+categories: 
+  - tech
 date: '2021-09-17'
 lastmod: '2021-09-17'
 sitemap_exclude: false

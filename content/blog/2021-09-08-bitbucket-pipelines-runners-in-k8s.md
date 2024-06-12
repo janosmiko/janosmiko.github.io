@@ -8,7 +8,8 @@ tags:
   - pipelines
   - runners
   - kubernetes
-categories: tech
+categories: 
+  - tech
 date: '2021-09-08'
 lastmod: '2021-09-17'
 sitemap_exclude: false

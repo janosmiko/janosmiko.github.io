@@ -13,7 +13,8 @@ tags:
   - googlecloudplatform
   - gke
   - kubernetes
-categories: tech
+categories: 
+  - tech
 date: '2021-10-01'
 lastmod: '2021-10-01'
 sitemap_exclude: false

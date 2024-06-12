@@ -24,6 +24,9 @@ en:
       - name: Blog
         url: '/blog'
         weight: 9
+      - name: ✂︎ Snippets
+        url: '/snippets'
+        weight: 11
 
 hu:
   languageCode: hu
@@ -50,6 +53,3 @@ hu:
       - name: Vélemények
         url: '/hu/#testimonials'
         weight: 6
-      - name: Blog
-        url: '/hu/blog'
-        weight: 9

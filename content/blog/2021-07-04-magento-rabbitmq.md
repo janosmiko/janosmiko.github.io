@@ -6,7 +6,8 @@ authors:
 tags:
   - magento
   - rabbitmq
-categories: tech
+categories: 
+  - tech
 date: '2021-07-04'
 lastmod: '2021-07-04'
 sitemap_exclude: false

@@ -14,7 +14,8 @@ tags:
   - cloud-native
   - cloudnative
   - openshift
-categories: tech
+categories: 
+  - tech
 date: '2023-03-03'
 lastmod: '2023-03-04'
 sitemap_exclude: false

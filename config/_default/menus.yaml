@@ -10,6 +10,9 @@ main:
   - name: Blog
     url: /blog/
     weight: 9
+  - name: ✂︎ Snippets
+    url: /snippets/
+    weight: 10
 
 language:
   - name: en

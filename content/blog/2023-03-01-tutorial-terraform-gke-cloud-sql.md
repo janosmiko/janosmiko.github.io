@@ -12,7 +12,8 @@ tags:
   - terraform
   - googlecloudplatform
   - kubernetes
-categories: tech
+categories: 
+  - tech
 date: '2023-03-01'
 lastmod: '2023-03-01'
 sitemap_exclude: false

@@ -9,7 +9,8 @@ tags:
   - go
   - golang
   - programming
-categories: tech
+categories: 
+  - tech
 date: '2023-02-25'
 lastmod: '2023-03-04'
 sitemap_exclude: false
