@@ -6,7 +6,8 @@ theme: eureka
 # Uncomment when installing using Hugo Modules
 # theme: github.com/wangchucheng/hugo-eureka
 
-paginate: 10
+pagination:
+  pagerSize: 10
 copyright: >
   &copy; Janos Miko
 enableEmoji: true
@@ -18,7 +19,9 @@ hasCJKLanguage: false # Set `true` for Chinese/Japanese/Korean.
 defaultContentLanguageInSubdir: false
 
 # Uncomment for google analytics
-# googleAnalytics: UA-123-45
+services:
+  googleAnalytics:
+    id: G-CY7ZENB6SN
 
 markup:
   # Do not modify markup.highlight
