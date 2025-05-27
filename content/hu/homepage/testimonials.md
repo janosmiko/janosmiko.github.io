@@ -2,6 +2,16 @@
 title: Vélemények
 draft: false
 testimonials:
+  - name: Fabian Helm
+    title: Platform Team Lead
+    organization:
+      name: Finmatics
+      url: https://finmatics.com
+    avatar: /images/fabianhelm.jpg
+    avatar_webp: /images/fabianhelm.webp
+    writeup: |
+      "János sokat segített nekünk a Finmaticsnál abban, hogy az infrastruktúránkat a következő szintre emeljük, és az alkalmazásunkat felhőkompatibilissé tegyük. Minden feladatot nagy szakértelemmel közelített meg, és mindig megbízhatóan törekedett a legjobb, mégis egyszerű és robusztus megoldásra."
+
   - name: Belányi József
     title: CEO
     organization:
@@ -21,7 +31,7 @@ testimonials:
     avatar_webp: /images/monikamezo.webp
     writeup: |
       "A Peakshop.hu vezetőjeként tudom, hogy egy nagyszerű szakértő dolgozik a háttérben, ha a szervereinkkel egyáltalán nincsenek gondok. János az egyik legmegbízhatóbb "láthatatlan" szakember, akire minden vállalatnak szüksége lenne."
-    
+
   - name: Shabab Gruberg
     title: CTO
     organization:
@@ -51,7 +61,6 @@ testimonials:
     avatar_webp: /images/csongorlempergel.webp
     writeup: |
       "Igazán segítőkész és profi szakembert ismerhettem meg János személyében. A projektünk egyedi, így rengeteg kihívássál néztünk szembe mind backend-, mind szerver oldalról, melyek megoldásában János analitikus gondolkodása és gyors segítsége sokat jelentett. Nagyon élveztem vele a közös munkát."
-
 
 weight: 5
 widget:

@@ -2,6 +2,16 @@
 title: Testimonials
 draft: false
 testimonials:
+  - name: Fabian Helm
+    title: Platform Team Lead
+    organization:
+      name: Finmatics
+      url: https://finmatics.com
+    avatar: /images/fabianhelm.jpg
+    avatar_webp: /images/fabianhelm.webp
+    writeup: |
+      "Janos helped us a lot at Finmatics to bring our infrastructure to the next level and make our application cloud-ready. He approached each task with great expertise and always strived reliably for the best, yet simple and robust solution."
+
   - name: József Belányi
     title: CEO
     organization:
