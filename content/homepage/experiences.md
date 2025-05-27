@@ -4,10 +4,10 @@ draft: false
 experiences:
   - title: Lead DevOps Engineer / Senior Go Developer
     organization:
-      name: ITG Commerce
-      url: https://itgcommerce.com
-    dates: '2019 - Present'
-    location: Budapest - HU | Chapel Hill, NC - US
+      name: Bluprintx
+      url: https://bluprintx.com
+    dates: "2024 - Present"
+    location: Szeged - HU | Remote
     writeup: |
       - I am responsible for the management of the DevOps team.
       - I build and maintain the whole IT development and production infrastructure with my team,
@@ -17,23 +17,30 @@ experiences:
       - I am an outsourced consultant for external partners. I do cloud architecture optimization, cost
         optimization, and security guidance.
 
+  - title: Lead DevOps Engineer / Senior Go Developer
+    organization:
+      name: ITG Commerce, now part of Bluprintx
+      url: https://itgcommerce.com
+    dates: "2019 - 2024"
+    location: Budapest - HU | Remote
+
   - title: Lead Systems Engineer
     organization:
       name: AionHill
       url: https://aionhill.com
-    dates: '2017 - 2019'
+    dates: "2017 - 2019"
     location: Budapest - HU
     writeup: |
       - I was responsible for the management of the IT team. 
       - I managed and maintained various web applications and the required cloud and
         bare metal infrastructure.
       - I did IT audits, determination and realization of IT policies.
-      
+
   - title: System Administrator
     organization:
       name: Ikron Kft.
       url: https://ikron.hu
-    dates: '2015 - 2017'
+    dates: "2015 - 2017"
     location: Szeged - HU
     writeup: |
       - I was a part of the system administrator team and I was responsible for managing and supervising 
@@ -51,7 +58,7 @@ widget:
     position: left
     # Options: sm, md, lg and xl. Default is md.
     scale: md
-  
+
   background:
     # Options: primary, secondary, tertiary or any valid color value. Default is primary.
     color: primary

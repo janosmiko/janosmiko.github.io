@@ -2,7 +2,7 @@
 title: Janos Miko
 translationKey: about
 draft: false
-role: Lead DevOps Engineer
+role: DevOps Engineer
 avatar: images/janosmiko.jpeg
 avatar_webp: images/janosmiko.webp
 bio: Fill your bucket by drop by drop.
@@ -38,7 +38,7 @@ widget:
     position:
     # Options: sm, md, lg and xl. Default is md.
     scale: md
-  
+
   background:
     # Options: primary, secondary, tertiary or any valid color value. Default is primary.
     #image: images/bluebg.jpg
@@ -60,7 +60,6 @@ Let me introduce myself: I'm Janos Miko.
 I have always loved technology. I work as a Lead DevOps Engineer and Go developer for nearly 10 years.
 
 It may sound sentimental, but the "cloud" is where I feel at home.
-
 
 ### Some Personal Stuff
 

@@ -4,10 +4,10 @@ draft: false
 experiences:
   - title: Vezető DevOps mérnök / Senior Go fejlesztő
     organization:
-      name: ITG Commerce
-      url: https://itgcommerce.com
-    dates: '2019 - Present'
-    location: Budapest - HU | Chapel Hill, NC - US
+      name: Bluprintx
+      url: https://bluprintx.com
+    dates: "2024 - Present"
+    location: Szeged - HU | Remote
     writeup: |
       - Jelenlegi munkahelyemen felelős vagyok a DevOps csapat vezetéséért.
       - A teljes IT infrastruktúra építését és üzemeltetését végezzük a csapatommal, beleértve a CI/CD
@@ -16,24 +16,31 @@ experiences:
       - Rendszeresen tartok kódolási előadásokat és tudásmegosztó workshopokat.
       - Külső partnerekhez kiszervezett tanácsadóként segítek a felhőben architektúrájuk és
         költségeik optimalizálásában, és biztonsági tanácsadásban.
-      
+
+  - title: Vezető DevOps mérnök / Senior Go fejlesztő
+    organization:
+      name: ITG Commerce, a Bluprintx csoport tagja
+      url: https://itgcommerce.com
+    dates: "2019 - 2024"
+    location: Budapest - HU | Remote
+
   - title: Vezető rendszermérnök
     organization:
       name: AionHill Kft.
       url: https://aionhill.com
-    dates: '2017 - 2019'
+    dates: "2017 - 2019"
     location: Budapest - HU
     writeup: |
       - Az IT csapat vezetéséért voltam felelős.
       - Különböző webes alkalmazások üzemeltetését végeztem felhőben és saját fizikai
         szervereken.
       - IT auditokat végeztem, és résztvettem az IT biztonsági irányelvek megvalósításában.
-      
+
   - title: Rendszergazda
     organization:
       name: Ikron Kft.
       url: https://ikron.hu
-    dates: '2015 - 2017'
+    dates: "2015 - 2017"
     location: Szeged - HU
     writeup: |
       - A rendszergazda csapat tagjaként DOCSIS kábeltévé-hálózatokat, könyvtárkezelő és vállalatirányítási 
@@ -51,7 +58,7 @@ widget:
     position: left
     # Options: sm, md, lg and xl. Default is md.
     scale: md
-  
+
   background:
     # Options: primary, secondary, tertiary or any valid color value. Default is primary.
     color: primary
