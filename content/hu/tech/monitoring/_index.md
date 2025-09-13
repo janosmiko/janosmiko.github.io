@@ -1,5 +1,5 @@
 ---
-title: Monitoring
+title: Monitoring and Observability
 type: page
 date: '2023-03-01'
 lastmod: '2023-03-01'
@@ -21,12 +21,14 @@ rendszereket is. Sokféle környezetben, sokféle célra használtam őket. Mind
 
 Példák, a teljesség igénye nélkül:
 
-- New Relic
+- Prometheus, Thanos, Grafana, Loki
+- Victoriametrics
+- ELK (Elasticsearch, Logstash, Kibana)
+- Sentry
 - Datadog
+- New Relic
 - PagerDuty
 - CloudWatch
-- Prometheus, Grafana
-- ELK (Elasticsearch, Logstash, Kibana)
 - Nagios and Icinga
 - Zabbix
 

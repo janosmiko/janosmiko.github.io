@@ -35,6 +35,7 @@ Languages I used lately:
 
 Tools and technologies:
 
+- Neovim
 - Jetbrains IDEs
 - Git
 - Kubebuilder/Operator SDK - for building Kubernetes Operators

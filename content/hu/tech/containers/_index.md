@@ -14,17 +14,17 @@ sitemap_exclude: false
 <div class="bg-secondary-bg rounded px-6 py-6">
 
 Úgy hiszem, hogy a konténerek jelentik a jelent és a jövőt a szoftverfejlesztésben. Sok éve dolgozom velük és regeteg
-tapasztalatot gyűjtöttem az évek során. Értem a konténerek alapvető fogalmait és ismerem a technológiai hátterüket is.
+tapasztalatot gyűjtöttem az évek során. Mélyen ismerem a Kubernetes technológiai hátterét is.
 Többféle tanúsítvánnyal is rendelkezem ezen a területen.
 
 <!--more-->
 <br>
 
-- Docker
-- Docker Swarm
-- On-prem Kubernetes
-- Managed Kubernetes (GKE, EKS, AKS)
+- Docker és Podman
+- On-prem / Managed Kubernetes (GKE, EKS, AKS)
 - Helm and Kustomize
 - Rancher
+- Service mesh (Istio, Linkerd)
+- Kubebuilder (Kubernetes Operator keretrendszer)
 
 </div>

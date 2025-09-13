@@ -64,8 +64,8 @@ Szentimentálisan hangozhat, de a "felhőben" érzem magam igazán otthon.
 
 ### Néhány érdekesség
 
-- Az Everything as Code metodológiát vallom. Ha egynél többször szükségem van valamire, akkor lekódolom.
-- A munkámat és az életemet is a GTD és OKR módszerek segítségével menedzselem.
+- Az Everything as Code elvet követem. Ha egynél többször szükségem van valamire, akkor lekódolom.
+- A munkámat és az életemet is a GTD és OKRs módszerek segítségével menedzselem.
 - A sztoikus filozófiát követem.
 - Rendszeresen meditálok.
 - Van kettő fantasztikus tacskóm.

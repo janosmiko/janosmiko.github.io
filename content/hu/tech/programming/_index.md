@@ -35,6 +35,7 @@ Nyelvek, melyekkel az utóbbi időben a legtöbbet foglalkoztam:
 
 Eszközök és szolgáltatások:
 
+- Neovim
 - Jetbrains fejlesztőkörnyezetek
 - Git
 - Kubebuilder/Operator SDK - Kubernetes Operatorok megvalósításához

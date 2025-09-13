@@ -57,14 +57,14 @@ Welcome to my site!
 
 Let me introduce myself: I'm Janos Miko.
 
-I have always loved technology. I work as a Lead DevOps Engineer and Go developer for nearly 10 years.
+I have always loved technology. I work as a DevOps Engineer and Go developer for nearly 10 years.
 
 It may sound sentimental, but the "cloud" is where I feel at home.
 
 ### Some Personal Stuff
 
-- I prefer Everything as Code methodology. When I need to do something twice, I'll try to automate it.
-- I manage my work and my life using GTD and OKR.
+- I prefer Everything as Code. When I need to do something twice, I'll try to automate it.
+- I manage my work and my life using GTD and OKRs.
 - I follow stoic philosophy.
 - I meditate daily.
 - I am a proud dad of 2 dachshunds.
