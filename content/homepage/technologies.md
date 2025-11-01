@@ -66,6 +66,15 @@ technologies:
       - <br>
       - [More...](/tech/programming/)
 
+  - title: AI/MLOps
+    url: /tech/ai
+    dates: 2025
+    logo: /images/tech/ai.png
+    description: |
+      - I'm actively working with various AI / ML technologies.
+      - <br>
+      - [More...](/tech/ai/)
+
 weight: 5
 widget:
   handler: technologies

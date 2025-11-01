@@ -66,6 +66,15 @@ technologies:
       - <br>
       - [Tovább...](/hu/tech/programming/)
 
+  - title: AI/MLOps
+    url: /hu/tech/ai
+    dates: 2025
+    logo: /images/tech/ai.png
+    description: |
+      - Aktívan foglalkozom a legújabb AI és Machine Learning technolgóiákkal.
+      - <br>
+      - [Tovább...](/tech/ai/)
+
 weight: 5
 widget:
   handler: technologies

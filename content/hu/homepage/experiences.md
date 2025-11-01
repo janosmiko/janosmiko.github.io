@@ -6,7 +6,7 @@ experiences:
     organization:
       name: Bluprintx
       url: https://bluprintx.com
-    dates: "2024 - Present"
+    dates: "2024 - Jelenleg is"
     location: Szeged - HU | Remote
     writeup: |
       - Jelenlegi munkahelyemen felelős vagyok a DevOps csapat vezetéséért.
@@ -16,6 +16,28 @@ experiences:
       - Rendszeresen tartok kódolási előadásokat és tudásmegosztó workshopokat.
       - Külső partnerekhez kiszervezett tanácsadóként segítek a felhőben architektúrájuk és
         költségeik optimalizálásában, és biztonsági tanácsadásban.
+
+  - title: DevOps tanácsadó / Cloud Engineer
+    organization:
+      name: See Tickets - Eventim US
+      url: https://eventim.us
+    dates: "2020 - Jelenleg is"
+    location: Budapest/Szeged - HU | Remote
+    writeup: |
+      - A jegyértékesítő rendszer stabilizálásban, sklázásában valamint biztonságosabbá tételén
+        dolgozom (beleértve az ISO27001 és egyéb tanúsítványok elérését)
+      - A platform új komponenseinek infrastruktúráját tervezem és valósítom meg
+      - Folyamatosan monitorozom és minimalizálom az AWS költségeiket.
+
+  - title: DevOps tanácsadó
+    organization:
+      name: Finmatics GmbH
+      url: https://finmatics.com
+    dates: "2023 - 2025"
+    location: Budapest/Szeged - HU | Remote
+    writeup: |
+      - Új technológiákkal ismertettem meg a csapatot és segítettem nekik a megvalósításukban és
+        a beemelésükben a korábbi rendszereikbe.
 
   - title: Vezető DevOps mérnök / Senior Go fejlesztő
     organization:

@@ -10,12 +10,33 @@ experiences:
     location: Szeged - HU | Remote
     writeup: |
       - I am responsible for the management of the DevOps team.
-      - I build and maintain the whole IT development and production infrastructure with my team,
+      - Build and maintain the whole IT development and production infrastructure with my team,
         including CI/CD pipelines, backup, monitoring, scaling, etc.
       - I am the Technical Project Manager and a Go Developer in a Cloud-Native project.
-      - I regularly hold coding lectures and knowledge sharing sessions.
-      - I am an outsourced consultant for external partners. I do cloud architecture optimization, cost
-        optimization, and security guidance.
+      - Regularly hold coding lectures and knowledge sharing sessions.
+      - I do cloud architecture optimization, cost optimization and security guidance for external partners.
+
+  - title: DevOps Consultant / Cloud Engineer
+    organization:
+      name: See Tickets, now Eventim US
+      url: https://eventim.us
+    dates: "2020 - Present"
+    location: Budapest/Szeged - HU | Remote
+    writeup: |
+      - Working on making the Ticketing Platform more stable, scalable and secure.
+        (Securing the platform for ISO27001 and other security standards.)
+      - I'm implementing the infrastructure for new components.
+      - Constantly monitoring their cloud costs for possible saving opportunities.
+
+  - title: DevOps Consultant
+    organization:
+      name: Finmatics GmbH
+      url: https://finmatics.com
+    dates: "2023 - 2025"
+    location: Budapest/Szeged - HU | Remote
+    writeup: |
+      - Introduced the team various containerization, orchestration, and other
+        technologies and helped to implement these to their legacy infrastructure.
 
   - title: Lead DevOps Engineer / Senior Go Developer
     organization:
@@ -32,9 +53,9 @@ experiences:
     location: Budapest - HU
     writeup: |
       - I was responsible for the management of the IT team. 
-      - I managed and maintained various web applications and the required cloud and
+      - Managed and maintained various web applications and the required cloud and
         bare metal infrastructure.
-      - I did IT audits, determination and realization of IT policies.
+      - Did IT audits, determination and realization of IT policies.
 
   - title: System Administrator
     organization:
