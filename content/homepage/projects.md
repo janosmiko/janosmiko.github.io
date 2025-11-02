@@ -1,6 +1,31 @@
 ---
 title: Projects
 draft: false
+weight: 7
+
+widget:
+  handler: projects
+
+  # Options: sm, md, lg and xl. Default is md.
+  width: lg
+
+  sidebar:
+    # Options: left and right. Leave blank to hide.
+    position: left
+    # Options: sm, md, lg and xl. Default is md.
+    scale: md
+
+  background:
+    # Options: primary, secondary, tertiary or any valid color value. Default is primary.
+    color: primary
+    #image: images/funky-lines.png
+    # Options: auto, cover and contain. Default is auto.
+    size:
+    # Options: center, top, right, bottom, left.
+    position: center
+    # Options: fixed, local, scroll.
+    attachment: fixed
+
 projects:
   - title: Reward
     url: https://github.com/rewardenv/reward
@@ -36,28 +61,4 @@ projects:
       - LDAP Synchronization in Gitea is very limited so I created a tool which is able to sync Organizations, Teams, Users and the relation (memberships) between these entities.
       - This tool provides advanced configuration for sync like attribute mapping, exclusions (list or regex based), full (addition and deletion) or assert-only syncing, and many more.
       - It provides support for Docker and Kubernetes.
-
-weight: 7
-widget:
-  handler: projects
-
-  # Options: sm, md, lg and xl. Default is md.
-  width: lg
-
-  sidebar:
-    # Options: left and right. Leave blank to hide.
-    position: left
-    # Options: sm, md, lg and xl. Default is md.
-    scale: md
-
-  background:
-    # Options: primary, secondary, tertiary or any valid color value. Default is primary.
-    color: primary
-    #image: images/funky-lines.png
-    # Options: auto, cover and contain. Default is auto.
-    size:
-    # Options: center, top, right, bottom, left.
-    position: center
-    # Options: fixed, local, scroll.
-    attachment: fixed
 ---

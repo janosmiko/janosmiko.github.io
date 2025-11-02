@@ -1,6 +1,31 @@
 ---
 title: Technológiák
 draft: false
+weight: 3
+
+widget:
+  handler: technologies
+
+  # Options: sm, md, lg and xl. Default is md.
+  width: lg
+
+  sidebar:
+    # Options: left and right. Leave blank to hide.
+    position: left
+    # Options: sm, md, lg and xl. Default is md.
+    scale: md
+
+  background:
+    # Options: primary, secondary, tertiary or any valid color value. Default is primary.
+    color: secondary
+    #image: images/funky-lines.png
+    # Options: auto, cover and contain. Default is auto.
+    size: auto
+    # Options: center, top, right, bottom, left.
+    position: center
+    # Options: fixed, local, scroll.
+    attachment: fixed
+
 technologies:
   - title: Felhő
     url: /hu/tech/cloud/
@@ -74,28 +99,4 @@ technologies:
       - Aktívan foglalkozom a legújabb AI és Machine Learning technolgóiákkal.
       - <br>
       - [Tovább...](/tech/ai/)
-
-weight: 5
-widget:
-  handler: technologies
-
-  # Options: sm, md, lg and xl. Default is md.
-  width: lg
-
-  sidebar:
-    # Options: left and right. Leave blank to hide.
-    position: left
-    # Options: sm, md, lg and xl. Default is md.
-    scale: md
-
-  background:
-    # Options: primary, secondary, tertiary or any valid color value. Default is primary.
-    color: secondary
-    #image: images/funky-lines.png
-    # Options: auto, cover and contain. Default is auto.
-    size: auto
-    # Options: center, top, right, bottom, left.
-    position: center
-    # Options: fixed, local, scroll.
-    attachment: fixed
 ---

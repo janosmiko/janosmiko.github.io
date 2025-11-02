@@ -7,8 +7,8 @@ section: blog
 count: 5
 # Options: card, plain and masonry.
 style: plain
-
 weight: 10
+
 widget:
   handler: pages
 

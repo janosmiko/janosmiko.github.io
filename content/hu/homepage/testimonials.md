@@ -1,6 +1,31 @@
 ---
 title: Vélemények
 draft: false
+weight: 6
+
+widget:
+  handler: testimonials
+
+  # Options: sm, md, lg and xl. Default is md.
+  width: lg
+
+  sidebar:
+    # Options: left and right. Leave blank to hide.
+    position: left
+    # Options: sm, md, lg and xl. Default is md.
+    scale: md
+
+  background:
+    # Options: primary, secondary, tertiary or any valid color value. Default is primary.
+    color: secondary
+    #image: images/funky-lines.png
+    # Options: auto, cover and contain. Default is auto.
+    size:
+    # Options: center, top, right, bottom, left.
+    position: center
+    # Options: fixed, local, scroll.
+    attachment: fixed
+
 testimonials:
   - name: Fabian Helm
     title: Platform Team Lead
@@ -61,28 +86,4 @@ testimonials:
     avatar_webp: /images/csongorlempergel.webp
     writeup: |
       "Igazán segítőkész és profi szakembert ismerhettem meg János személyében. A projektünk egyedi, így rengeteg kihívássál néztünk szembe mind backend-, mind szerver oldalról, melyek megoldásában János analitikus gondolkodása és gyors segítsége sokat jelentett. Nagyon élveztem vele a közös munkát."
-
-weight: 5
-widget:
-  handler: testimonials
-
-  # Options: sm, md, lg and xl. Default is md.
-  width: lg
-
-  sidebar:
-    # Options: left and right. Leave blank to hide.
-    position: left
-    # Options: sm, md, lg and xl. Default is md.
-    scale: md
-
-  background:
-    # Options: primary, secondary, tertiary or any valid color value. Default is primary.
-    color: secondary
-    #image: images/funky-lines.png
-    # Options: auto, cover and contain. Default is auto.
-    size:
-    # Options: center, top, right, bottom, left.
-    position: center
-    # Options: fixed, local, scroll.
-    attachment: fixed
 ---

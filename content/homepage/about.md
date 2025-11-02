@@ -6,27 +6,8 @@ role: DevOps Engineer
 avatar: images/janosmiko.jpeg
 avatar_webp: images/janosmiko.webp
 bio: Fill your bucket by drop by drop.
-social:
-  - icon: envelope
-    iconPack: fas
-    url: mailto:info@janosmiko.com
-  - icon: twitter
-    iconPack: fab
-    url: https://twitter.com/mixe3y/
-  - icon: github
-    iconPack: fab
-    url: https://github.com/janosmiko/
-  - icon: linkedin
-    iconPack: fab
-    url: https://www.linkedin.com/in/janosmiko/
-  - icon: facebook
-    iconPack: fab
-    url: https://www.facebook.com/mixe3y/
-  - icon: suitcase
-    iconPack: fas
-    url: https://www.upwork.com/freelancers/~01bbf22d354f4e322c?viewMode=1
-
 weight: 2
+
 widget:
   handler: about
 
@@ -49,6 +30,27 @@ widget:
     position: center
     # Options: fixed, local, scroll.
     attachment: fixed
+
+social:
+  - icon: envelope
+    iconPack: fas
+    url: mailto:info@janosmiko.com
+  - icon: twitter
+    iconPack: fab
+    url: https://twitter.com/mixe3y/
+  - icon: github
+    iconPack: fab
+    url: https://github.com/janosmiko/
+  - icon: linkedin
+    iconPack: fab
+    url: https://www.linkedin.com/in/janosmiko/
+  - icon: facebook
+    iconPack: fab
+    url: https://www.facebook.com/mixe3y/
+  - icon: suitcase
+    iconPack: fas
+    url: https://www.upwork.com/freelancers/~01bbf22d354f4e322c?viewMode=1
+
 ---
 
 ## Introduction

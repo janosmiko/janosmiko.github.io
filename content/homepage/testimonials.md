@@ -1,6 +1,31 @@
 ---
 title: Testimonials
 draft: false
+weight: 6
+
+widget:
+  handler: testimonials
+
+  # Options: sm, md, lg and xl. Default is md.
+  width: lg
+
+  sidebar:
+    # Options: left and right. Leave blank to hide.
+    position: left
+    # Options: sm, md, lg and xl. Default is md.
+    scale: md
+
+  background:
+    # Options: primary, secondary, tertiary or any valid color value. Default is primary.
+    color: secondary
+    #image: images/funky-lines.png
+    # Options: auto, cover and contain. Default is auto.
+    size:
+    # Options: center, top, right, bottom, left.
+    position: center
+    # Options: fixed, local, scroll.
+    attachment: fixed
+
 testimonials:
   - name: Fabian Helm
     title: Platform Team Lead
@@ -62,27 +87,4 @@ testimonials:
     writeup: |
       "I met a very helpful and excellent professional in János. Due to the specificity of our project, we faced many difficulties both on the backend and server side, so János' analytical thinking and quick response helped a lot. I really enjoyed working with him."
 
-weight: 9
-widget:
-  handler: testimonials
-
-  # Options: sm, md, lg and xl. Default is md.
-  width: lg
-
-  sidebar:
-    # Options: left and right. Leave blank to hide.
-    position: left
-    # Options: sm, md, lg and xl. Default is md.
-    scale: md
-
-  background:
-    # Options: primary, secondary, tertiary or any valid color value. Default is primary.
-    color: secondary
-    #image: images/funky-lines.png
-    # Options: auto, cover and contain. Default is auto.
-    size:
-    # Options: center, top, right, bottom, left.
-    position: center
-    # Options: fixed, local, scroll.
-    attachment: fixed
 ---
