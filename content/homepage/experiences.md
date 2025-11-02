@@ -33,12 +33,12 @@ experiences:
     dates: "2018 - Present"
     location: Szeged - HU | Remote
     writeup: |
-      - I am responsible for the management of the DevOps team.
+      - Responsible for the management of the DevOps team.
       - Build and maintain the whole IT development and production infrastructure with my team,
         including CI/CD pipelines, backup, monitoring, scaling, etc.
-      - I am the Technical Project Manager and a Go Developer in a Cloud-Native project.
+      - Technical Project Manager and Go Developer in a Cloud-Native project.
       - Regularly hold coding lectures and knowledge sharing sessions.
-      - I do cloud architecture optimization, cost optimization and security guidance for external partners.
+      - Cloud architecture optimization, cost optimization and security guidance for external partners.
 
   - title: DevOps Consultant / Cloud Engineer
     organization:
@@ -47,9 +47,9 @@ experiences:
     dates: "2020 - Present"
     location: Budapest/Szeged - HU | Remote
     writeup: |
-      - Working on making the Ticketing Platform more stable, scalable and secure.
+      - Making the Ticketing Platform more stable, scalable and secure.
         (Securing the platform for ISO27001 and other security standards.)
-      - I'm implementing the infrastructure for new components.
+      - Planning and implementing the infrastructure of new components.
       - Constantly monitoring their cloud costs for possible saving opportunities.
 
   - title: DevOps Consultant
