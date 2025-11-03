@@ -46,7 +46,7 @@ technologies:
       - [More...](/tech/containers/)
 
   - title: CI/CD
-    url: /tech/operations
+    url: /tech/cicd
     dates: 2023
     logo: /images/tech/cicd.png
     description: |

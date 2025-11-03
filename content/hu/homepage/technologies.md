@@ -46,7 +46,7 @@ technologies:
       - [Tovább...](/hu/tech/containers/)
 
   - title: CI/CD
-    url: /hu/tech/operations
+    url: /hu/tech/cicd
     dates: 2023
     logo: /images/tech/cicd.png
     description: |
