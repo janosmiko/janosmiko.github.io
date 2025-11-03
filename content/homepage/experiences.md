@@ -70,7 +70,7 @@ experiences:
     organization:
       name: AionHill
       url: https://aionhill.com
-    dates: "2017 - 2019"
+    dates: "2016 - 2018"
     location: Budapest - HU
     writeup: |
       - Managed IT team operations and maintain web applications across cloud and
@@ -81,7 +81,7 @@ experiences:
     organization:
       name: Ikron Kft.
       url: https://ikron.hu
-    dates: "2015 - 2017"
+    dates: "2013 - 2016"
     location: Szeged - HU
     writeup: |
       - Managed DOCSIS CATV networks, Library Manager software, and ERP systems 

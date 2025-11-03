@@ -71,7 +71,7 @@ experiences:
     organization:
       name: AionHill Kft.
       url: https://aionhill.com
-    dates: "2017 - 2019"
+    dates: "2016 - 2018"
     location: Budapest - HU
     writeup: |
       - IT csapat működésének irányítása és webes alkalmazások karbantartása
@@ -82,7 +82,7 @@ experiences:
     organization:
       name: Ikron Kft.
       url: https://ikron.hu
-    dates: "2015 - 2017"
+    dates: "2013 - 2016"
     location: Szeged - HU
     writeup: |
       - DOCSIS CATV hálózatok, könyvtárkezelő szoftverek és ERP rendszerek
