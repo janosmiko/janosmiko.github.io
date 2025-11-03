@@ -54,19 +54,21 @@ social:
 
 ## Bemutatkozás
 
-Üdvözöllek az oldalamon!
+Mikó János vagyok, DevOps mérnök és Go fejlesztő, több mint egy évtizedes
+tapasztalattal a felhő infrastruktúra és automatizálás területén.
 
-Hadd mutatkozzam be: Mikó Jánosnak hívnak.
+A cloud-natív architektúrákra és infrastruktúra automatizálásra specializálódtam.
 
-Mindig is imádtam az informatikát és a technológiát, közel 10 éve foglalkozom vállalati informatikai rendszerek
-üzemeltetésével és egyedi szoftverfejlesztéssel, mint vezető DevOps mérnök és Go fejlesztő.
+A felhő nem csak a munkahelyem - itt érzem magam igazán otthon.
 
-Szentimentálisan hangozhat, de a "felhőben" érzem magam igazán otthon.
+### Filozófia és érdeklődési körök
 
-### Néhány érdekesség
-
-- Az Everything as Code elvet követem. Ha egynél többször szükségem van valamire, akkor lekódolom.
-- A munkámat és az életemet is a GTD és OKRs módszerek segítségével menedzselem.
-- A sztoikus filozófiát követem.
-- Rendszeresen meditálok.
-- Van kettő fantasztikus tacskóm.
+- **Everything as Code**: Az ismétlődő feladatokat automatizálom és mindent
+megpróbálok lekódolni.
+- **Produktivitás**: A GTD (Getting Things Done) módszertant és OKR-t (Objectives and Key
+Results) alkalmazom professzionális és személyes projektjeim menedzselésére.
+- **Filozófia**: A sztoikus elveket követve
+- **Mentális jólét**: Rendszeresen meditálok.
+- **A kódoláson túl**: Túrázás, kerékpározás, olvasás, podcasteket és
+hangosönyveket hallgatok, és élvezem az életet, mint két tacskó és egy
+kisfiú apukája.

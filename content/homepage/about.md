@@ -55,18 +55,26 @@ social:
 
 ## Introduction
 
-Welcome to my site!
+I'm Janos Miko, a DevOps Engineer and Go developer with more than a decade of
+experience in cloud infrastructure and automation.
 
-Let me introduce myself: I'm Janos Miko.
+My passion for technology drives me to build scalable, reliable systems that
+solve real-world problems.
 
-I have always loved technology. I work as a DevOps Engineer and Go developer for nearly 10 years.
+I specialize in cloud-native architectures, infrastructure automation, and
+building developer-focused tools.
 
-It may sound sentimental, but the "cloud" is where I feel at home.
+The cloud isn't just where I work - it's where I thrive.
 
-### Some Personal Stuff
+### Philosophy & Interests
 
-- I prefer Everything as Code. When I need to do something twice, I'll try to automate it.
-- I manage my work and my life using GTD and OKRs.
-- I follow stoic philosophy.
-- I meditate daily.
-- I am a proud dad of 2 dachshunds.
+- **Everything as Code advocate**: Automating repetitive tasks and treating
+infrastructure, configuration, and processes as code.
+- **Productivity**: Leveraging GTD (Getting Things Done) methodology and OKRs
+(Objectives and Key Results) to manage both professional and personal projects.
+- **Philosophy**: Applying stoic principles to maintain focus, resilience,
+and clear thinking.
+- **Mental Well-being**: I practice daily meditation to maintain clarity and
+balance.
+- **Beyond Coding**: Hiking, biking, reading, podcasts, e-books and enjoying
+life as a dad of two dachshunds and a little boy.

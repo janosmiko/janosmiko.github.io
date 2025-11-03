@@ -31,16 +31,17 @@ experiences:
     organization:
       name: Bluprintx (korábban ITG Commerce)
       url: https://bluprintx.com
-    dates: "2019 - Jelenleg is"
+    dates: "2018 - Jelenleg is"
     location: Szeged - HU | Remote
     writeup: |
-      - Jelenlegi munkahelyemen felelős vagyok a DevOps csapat vezetéséért.
-      - A teljes IT infrastruktúra építését és üzemeltetését végezzük a csapatommal, beleértve a CI/CD
-        pipeline-okat, mentéseket, monitoringot, skálázást stb.
-      - Egy Cloud-Native projekt technikai projektmenedzsere vagyok és Go fejlesztőként is dolgozom rajta.
+      - A DevOps csapat vezetése.
+      - CI/CD pipeline-ok, monitoring, skálázási és mentési rendszerek építése
+      és karbantartása.
+      - Technikai projektmenedzser és Senior Go fejlesztő cloud-native
+      projekteken.
       - Rendszeresen tartok kódolási előadásokat és tudásmegosztó workshopokat.
-      - Külső partnerekhez kiszervezett tanácsadóként segítek a felhőben architektúrájuk és
-        költségeik optimalizálásában, és biztonsági tanácsadásban.
+      - Felhő architektúra optimalizálás, költségcsökkentés és biztonsági
+      tanácsadás külső partnerek számára.
 
   - title: DevOps tanácsadó / Cloud Engineer
     organization:
@@ -49,10 +50,11 @@ experiences:
     dates: "2020 - Jelenleg is"
     location: Budapest/Szeged - HU | Remote
     writeup: |
-      - A jegyértékesítő rendszer stabilizálásban, sklázásában valamint biztonságosabbá tételén
-        dolgozom (beleértve az ISO27001 és egyéb tanúsítványok elérését)
-      - A platform új komponenseinek infrastruktúráját tervezem és valósítom meg
-      - Folyamatosan monitorozom és minimalizálom az AWS költségeiket.
+      - A jegyértékesítő platform stabilitásának, skálázhatóságának és
+      biztonságának fejlesztése.
+      - ISO27001 megfelelőség és biztonsági szabványok implementálása.
+      - Új komponensek infrastruktúrájának tervezése és telepítése.
+      - Felhő költségek optimalizálása folyamatos monitoring és elemzés révén.
 
   - title: DevOps tanácsadó
     organization:
@@ -61,8 +63,9 @@ experiences:
     dates: "2023 - 2025"
     location: Budapest/Szeged - HU | Remote
     writeup: |
-      - Új technológiákkal ismertettem meg a csapatot és segítettem nekik a megvalósításukban és
-        a beemelésükben a korábbi rendszereikbe.
+      - Korábbi infrastruktúra modernizálása.
+      - A csapat támogatása a Kubernetes best practice-ek bevezetésében és az
+      infrastruktúra fejlesztésében.
 
   - title: Vezető rendszermérnök
     organization:
@@ -71,10 +74,9 @@ experiences:
     dates: "2017 - 2019"
     location: Budapest - HU
     writeup: |
-      - Az IT csapat vezetéséért voltam felelős.
-      - Különböző webes alkalmazások üzemeltetését végeztem felhőben és saját fizikai
-        szervereken.
-      - IT auditokat végeztem, és résztvettem az IT biztonsági irányelvek megvalósításában.
+      - IT csapat működésének irányítása és webes alkalmazások karbantartása
+      felhő alapú és bare metal infrastruktúrán.
+      - Szervezeti IT biztonsági irányelvek kidolgozása.
 
   - title: Rendszergazda
     organization:
@@ -83,6 +85,6 @@ experiences:
     dates: "2015 - 2017"
     location: Szeged - HU
     writeup: |
-      - A rendszergazda csapat tagjaként DOCSIS kábeltévé-hálózatokat, könyvtárkezelő és vállalatirányítási 
-        rendszereket üzemeltettünk, saját, fizikai szervereken.
+      - DOCSIS CATV hálózatok, könyvtárkezelő szoftverek és ERP rendszerek
+      menedzselése bare metal szervereken, a rendszergazda csapat tagjaként.
 ---

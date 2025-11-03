@@ -13,15 +13,17 @@ sitemap_exclude: false
 
 <div class="bg-secondary-bg rounded px-6 py-6">
 
-Nagyon foglalkoztat az AI, a gépi tanulás és az ezekben rejlő lehetőségek.
+Lenyűgöz az AI és a gépi tanulás, valamint a bennük rejlő lehetőségek.
 
 <!--more-->
 <br>
+
+**Tapasztalati területek:**
 
 - Claude Code
 - ChatGPT
 - AWS Bedrock
 - Azure AI Studio
-- Egyedi modellek hostolása Kubernetes alapon
+- Saját modellek deployolása Kubernetes alapon
 
 </div>

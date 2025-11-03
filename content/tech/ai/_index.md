@@ -13,15 +13,17 @@ sitemap_exclude: false
 
 <div class="bg-secondary-bg rounded px-6 py-6">
 
-I'm really interested in the AI and Machine Learning and I think there's a huge potential in those.
+I'm fascinated by AI and Machine Learning technologies and their potential.
 
 <!--more-->
 <br>
+
+**Key Areas of Experience:**
 
 - Claude Code
 - ChatGPT
 - AWS Bedrock
 - Azure AI Studio
-- Hosting custom models on Kubernetes
+- Self-hosted model deployment on Kubernetes
 
 </div>
