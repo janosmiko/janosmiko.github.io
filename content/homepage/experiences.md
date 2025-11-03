@@ -52,7 +52,7 @@ experiences:
       - Enhance ticketing platform stability, scalability, and security.
       - Implement ISO27001 compliance and security standards.
       - Design and deploy infrastructure for new components.
-      - Optimize cloud costs through continuous onitoring and analysis.
+      - Optimize cloud costs through continuous monitoring and analysis.
 
   - title: DevOps Consultant
     organization:

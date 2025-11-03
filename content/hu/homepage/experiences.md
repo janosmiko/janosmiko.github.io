@@ -53,8 +53,8 @@ experiences:
       - A jegyértékesítő platform stabilitásának, skálázhatóságának és
       biztonságának fejlesztése.
       - ISO27001 megfelelőség és biztonsági szabványok implementálása.
-      - Új komponensek infrastruktúrájának tervezése és telepítése.
-      - Felhő költségek optimalizálása folyamatos monitoring és elemzés révén.
+      - Új komponensek infrastruktúrájának tervezése és építése.
+      - Felhő költségek optimalizálása folyamatos elemzés révén.
 
   - title: DevOps tanácsadó
     organization:
