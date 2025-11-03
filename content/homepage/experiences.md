@@ -28,7 +28,7 @@ widget:
 experiences:
   - title: Lead DevOps Engineer / Senior Go Developer
     organization:
-      name: Bluprintx (previously ITG Commerce)
+      name: Bluprintx (formerly ITG Commerce)
       url: https://bluprintx.com
     dates: "2018 - Present"
     location: Budapest/Szeged - HU | Remote
@@ -44,7 +44,7 @@ experiences:
 
   - title: DevOps Consultant / Cloud Engineer
     organization:
-      name: Eventim (previously See Tickets USA)
+      name: Eventim (formerly See Tickets USA)
       url: https://eventim.us
     dates: "2020 - Present"
     location: Budapest/Szeged - HU | Remote
