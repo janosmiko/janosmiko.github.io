@@ -30,7 +30,7 @@ projects:
   - title: LFK
     url: https://github.com/janosmiko/lfk
     dates: 2026
-    logo: https://github.com/janosmiko/lfk/docs/imgs/logo.png
+    logo: https://github.com/janosmiko/lfk/raw/main/docs/imgs/logo.png
     writeup: |
       - LFK (Lightning Fast Kubernetes navigator) is a keyboard-focused, terminal user interface for navigating and managing Kubernetes clusters.
       - Built-in integrations with ArgoCD and Helm, multi-cluster and multi-context support via merged kubeconfig loading, and context-aware actions for logs, exec, attach, debug, scale, restart, port-forward, and more.

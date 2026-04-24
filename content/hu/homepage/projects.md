@@ -30,7 +30,7 @@ projects:
   - title: LFK
     url: https://github.com/janosmiko/lfk
     dates: 2026
-    logo: https://github.com/janosmiko/lfk/docs/imgs/logo.png
+    logo: https://github.com/janosmiko/lfk/raw/main/docs/imgs/logo.png
     writeup: |
       - Az LFK (Lightning Fast Kubernetes navigator) egy billentyűzetes navigáció fókuszú TUI Kubernetes clusterek kezeléséhez.
       - Beépített integrációk ArgoCD-vel és Helm-mel, támogat több clustert és több kontextust, valamint számtalan hasznos funkciót skálázáshoz, logok olvasáshoz, debugoláshoz, stb.
