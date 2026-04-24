@@ -27,6 +27,23 @@ widget:
     attachment: fixed
 
 projects:
+  - title: LFK
+    url: https://github.com/janosmiko/lfk
+    dates: 2026
+    logo: https://github.com/janosmiko/lfk/docs/imgs/logo.png
+    writeup: |
+      - Az LFK (Lightning Fast Kubernetes navigator) egy billentyűzetes navigáció fókuszú TUI Kubernetes clusterek kezeléséhez.
+      - Beépített integrációk ArgoCD-vel és Helm-mel, támogat több clustert és több kontextust, valamint számtalan hasznos funkciót skálázáshoz, logok olvasáshoz, debugoláshoz, stb.
+      - Tartalmaz API Explorert, Can-I RBAC böngészőt, ConfigMap és Secret szerkesztőket, YAML előnézetet szintaxis kiemeléssel, és még sok mást.
+
+  - title: Vau
+    url: https://github.com/janosmiko/vau
+    dates: 2026
+    logo: https://github.com/hashicorp/vault/raw/f22d202cde2018f9455dec755118a9b84586e082/Vault_PrimaryLogo_Black.png
+    writeup: |
+      - A Vau (Vault Navigator) egy TUI felület HashiCorp Vault KV secretek böngészéséhez és szerkesztéséhez.
+      - Funkciói között megtalálható a vim-stílusú navigáció, secretek szerkesztése, rekurzív másolás/áthelyezés/törlés műveletek és még sok más.
+
   - title: Reward
     url: https://github.com/rewardenv/reward
     dates: 2021-2022
@@ -45,20 +62,4 @@ projects:
       - Képes nagy rendelkezésre állású (HA) cluster telepítésére több master node létrehozásával.
       - Támogatja statikus és automatikusan skálázódó node poolok létrehozását.
       - Automatikusan telepítí a Hetznerhez szükséges kubernetes "addonokat" (CCM, CSI, cluster-autoscaler, stb.).
-
-  - title: Easy Helm
-    url: https://github.com/janosmiko/easyhelm
-    dates: 2023
-    logo: /images/easyhelm.png
-    writeup: |
-      - Helm chartok generálása egyszerűen egy konfigurációs fájlból.
-
-  - title: Gitea LDAP Sync
-    url: https://github.com/janosmiko/gitea-ldap-sync
-    dates: 2022
-    logo: /images/gitea-ldap-sync.png
-    writeup: |
-      - A Gitea-ben lévő LDAP szinkronizáció nagyon limitált, ezért elkészítettem egy külső eszközt, amely képes szinkronizálni a felhasználókon túl a csoportokat (Organizations, Teams) és a köztük fennálló kapcsolatokat is.
-      - Olyan haladó beállításokkal, mint attribútumok társítása (attribute mapping), kivételek kezelése (listából vagy reguláris kifejezések alapján), teljes (entitások felvétele és törlése) vagy részleges (csak entitások felvétele) szinkron, stb.
-      - Docker és Kubernetes támogatással.
 ---

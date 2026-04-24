@@ -27,9 +27,27 @@ widget:
     attachment: fixed
 
 projects:
+  - title: LFK
+    url: https://github.com/janosmiko/lfk
+    dates: 2026
+    logo: https://github.com/janosmiko/lfk/docs/imgs/logo.png
+    writeup: |
+      - LFK (Lightning Fast Kubernetes navigator) is a keyboard-focused, terminal user interface for navigating and managing Kubernetes clusters.
+      - Built-in integrations with ArgoCD and Helm, multi-cluster and multi-context support via merged kubeconfig loading, and context-aware actions for logs, exec, attach, debug, scale, restart, port-forward, and more.
+      - Includes an API Explorer, Can-I RBAC browser, ConfigMap and Secret editors, YAML preview with syntax highlighting, and a lot more.
+
+  - title: Vau
+    url: https://github.com/janosmiko/vau
+    dates: 2026
+    logo: https://github.com/hashicorp/vault/raw/f22d202cde2018f9455dec755118a9b84586e082/Vault_PrimaryLogo_Black.png
+    writeup: |
+      - Vau (Vault Navigator) is a terminal UI for browsing and editing HashiCorp Vault KV secrets.
+      - Features include vim-style navigation, in-place secret editing, recursive copy/move/delete operations and more.
+      - Vau is written in Go and is distributed via Homebrew, Docker, Debian/RPM packages and pre-built binaries for Linux and macOS.
+
   - title: Reward
     url: https://github.com/rewardenv/reward
-    dates: 2021-2022
+    dates: 2021-2026
     logo: https://github.com/rewardenv/reward/raw/main/docs/imgs/reward-logo.png
     writeup: |
       - Reward is a Swiss Army knife CLI utility for orchestrating Docker based development environments.
@@ -45,20 +63,4 @@ projects:
       - It can install Highly-Available kubernetes clusters with multiple masters
       - It supports static node pools or (multiple) autoscaling node pools
       - It automatically installs the required kubernetes addons for Hetzner (CCM, CSI driver, cluster-autoscaler, etc.)
-
-  - title: Easy Helm
-    url: https://github.com/janosmiko/easyhelm
-    dates: 2023
-    logo: /images/easyhelm.png
-    writeup: |
-      - Generate Helm charts with ease (based on a single config file).
-
-  - title: Gitea LDAP Sync
-    url: https://github.com/janosmiko/gitea-ldap-sync
-    dates: 2022
-    logo: /images/gitea-ldap-sync.png
-    writeup: |
-      - LDAP Synchronization in Gitea is very limited so I created a tool which is able to sync Organizations, Teams, Users and the relation (memberships) between these entities.
-      - This tool provides advanced configuration for sync like attribute mapping, exclusions (list or regex based), full (addition and deletion) or assert-only syncing, and many more.
-      - It provides support for Docker and Kubernetes.
 ---
