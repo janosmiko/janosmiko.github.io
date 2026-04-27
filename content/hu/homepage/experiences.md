@@ -43,30 +43,6 @@ experiences:
       - Felhő architektúra optimalizálás, költségcsökkentés és biztonsági
       tanácsadás külső partnerek számára.
 
-  - title: DevOps tanácsadó / Cloud Engineer
-    organization:
-      name: Eventim (korábban See Tickets USA)
-      url: https://eventim.us
-    dates: "2020 - Jelenleg is"
-    location: Budapest/Szeged - HU | Remote
-    writeup: |
-      - A jegyértékesítő platform stabilitásának, skálázhatóságának és
-      biztonságának fejlesztése.
-      - ISO27001 megfelelőség és biztonsági szabványok implementálása.
-      - Új komponensek infrastruktúrájának tervezése és építése.
-      - Felhő költségek optimalizálása folyamatos elemzés révén.
-
-  - title: DevOps tanácsadó
-    organization:
-      name: Finmatics GmbH
-      url: https://finmatics.com
-    dates: "2023 - 2025"
-    location: Budapest/Szeged - HU | Remote
-    writeup: |
-      - Korábbi infrastruktúra modernizálása.
-      - A csapat támogatása a Kubernetes best practice-ek bevezetésében és az
-      infrastruktúra fejlesztésében.
-
   - title: Vezető rendszermérnök
     organization:
       name: AionHill Kft.

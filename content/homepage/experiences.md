@@ -42,30 +42,6 @@ experiences:
       guidance to external partners.
       - Regularly hold coding lectures and knowledge sharing sessions.
 
-  - title: DevOps Consultant / Cloud Engineer
-    organization:
-      name: Eventim (formerly See Tickets USA)
-      url: https://eventim.us
-    dates: "2020 - Present"
-    location: Budapest/Szeged - HU | Remote
-    writeup: |
-      - Enhance ticketing platform stability, scalability, and security.
-      - Implement ISO27001 compliance and security standards.
-      - Design and deploy infrastructure for new components.
-      - Optimize cloud costs through continuous monitoring and analysis.
-
-  - title: DevOps Consultant
-    organization:
-      name: Finmatics GmbH
-      url: https://finmatics.com
-    dates: "2023 - 2025"
-    location: Budapest/Szeged - HU | Remote
-    writeup: |
-      - Modernized legacy infrastructure through containerization and
-      orchestration technologies.
-      - Guided the team on adoption of Kubernetes best practices and implement
-      infrastructure improvements.
-
   - title: Lead Systems Engineer
     organization:
       name: AionHill
