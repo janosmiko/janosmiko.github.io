@@ -26,7 +26,7 @@ widget:
     attachment: fixed
 
 experiences:
-  - title: Lead DevOps Engineer / Senior Go Developer
+  - title: Cloud Engineering Lead / Senior Go Developer
     organization:
       name: Bluprintx (formerly ITG Commerce)
       url: https://bluprintx.com

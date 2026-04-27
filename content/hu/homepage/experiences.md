@@ -27,7 +27,7 @@ widget:
     attachment: fixed
 
 experiences:
-  - title: Vezető DevOps mérnök / Senior Go fejlesztő
+  - title: Cloud Engineering Lead / Senior Go fejlesztő
     organization:
       name: Bluprintx (korábban ITG Commerce)
       url: https://bluprintx.com
